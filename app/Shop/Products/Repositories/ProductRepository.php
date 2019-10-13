@@ -220,6 +220,15 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
     }
 
     /**
+     * @param UploadedFile $file
+     * @return string
+     */
+    public function saveFilePath(UploadedFile $file) : string
+    {
+        return $file->store('products', ['disk' => 'public']);
+    }
+
+    /**
      * @param Collection $collection
      *
      * @return void

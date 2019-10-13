@@ -117,11 +117,11 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categories = $this->categoryRepo->listCategories('name', 'asc')->where('parent_id', 1);
+        $categories = $this->categoryRepo->listCategories('id', 'asc');//->where('parent_id', 1);
 
         return view('admin.products.create', [
             'categories' => $categories,
-            'brands' => $this->brandRepo->listBrands(['*'], 'name', 'asc'),
+            'brands' => $this->brandRepo->listBrands(['*'], 'id', 'asc'),
             'default_weight' => env('SHOP_WEIGHT'),
             'weight_units' => Product::MASS_UNIT,
             'product' => new Product
@@ -142,6 +142,9 @@ class ProductController extends Controller
 
         if ($request->hasFile('cover') && $request->file('cover') instanceof UploadedFile) {
             $data['cover'] = $this->productRepo->saveCoverImage($request->file('cover'));
+        }
+        if ($request->hasFile('file_path') && $request->file('file_path') instanceof UploadedFile) {
+            $data['file_path'] = $this->productRepo->saveFilePath($request->file('file_path'));
         }
 
         $product = $this->productRepo->createProduct($data);
@@ -204,9 +207,8 @@ class ProductController extends Controller
             return redirect()->route('admin.products.edit', [$product->id, 'combination' => 1]);
         }
 
-        $categories = $this->categoryRepo->listCategories('name', 'asc')
-            ->where('parent_id', 1);
-
+        $categories = $this->categoryRepo->listCategories('id', 'asc');
+            // ->where('parent_id', 1);
         return view('admin.products.edit', [
             'product' => $product,
             'images' => $product->images()->get(['src']),
@@ -215,7 +217,7 @@ class ProductController extends Controller
             'attributes' => $this->attributeRepo->listAttributes(),
             'productAttributes' => $productAttributes,
             'qty' => $qty,
-            'brands' => $this->brandRepo->listBrands(['*'], 'name', 'asc'),
+            'brands' => $this->brandRepo->listBrands(['*'], 'id', 'asc'),
             'weight' => $product->weight,
             'default_weight' => $product->mass_unit,
             'weight_units' => Product::MASS_UNIT
@@ -258,6 +260,10 @@ class ProductController extends Controller
 
         if ($request->hasFile('cover')) {
             $data['cover'] = $productRepo->saveCoverImage($request->file('cover'));
+        }
+
+        if ($request->hasFile('file_path') && $request->file('file_path') instanceof UploadedFile) {
+            $data['file_path'] = $productRepo->saveFilePath($request->file('file_path'));
         }
 
         if ($request->hasFile('image')) {

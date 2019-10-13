@@ -12,7 +12,10 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <td class="col-md-3">Name</td>
+                                <td class="col-md-3">Name Farsi</td>
+                                <td class="col-md-3">Name English</td>
+                                <td class="col-md-3">Name Arabic</td>
+                                <td class="col-md-3">Name Turkey</td>
                                 <td class="col-md-3">Cover</td>
                                 <td class="col-md-3">Status</td>
                                 <td class="col-md-3">Actions</td>
@@ -22,7 +25,13 @@
                         @foreach ($categories as $category)
                             <tr>
                                 <td>
-                                    <a href="{{ route('admin.categories.show', $category->id) }}">{{ $category->name }}</a></td>
+                                    <a href="{{ route('admin.categories.show', $category->id) }}">{{ $category->name_fa }}</a></td>
+                                <td>
+                                    <a href="{{ route('admin.categories.show', $category->id) }}">{{ $category->name_en }}</a></td>
+                                <td>
+                                    <a href="{{ route('admin.categories.show', $category->id) }}">{{ $category->name_ar }}</a></td>
+                                <td>
+                                    <a href="{{ route('admin.categories.show', $category->id) }}">{{ $category->name_tr }}</a></td>
                                 <td>
                                     @if(isset($category->cover))
                                         <img src="{{ asset("storage/$category->cover") }}" alt="" class="img-responsive">

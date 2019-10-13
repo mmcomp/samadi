@@ -12,18 +12,43 @@
                     <div class="form-group">
                         <label for="parent">Parent Category</label>
                         <select name="parent" id="parent" class="form-control select2">
+                            <option></option>
                             @foreach($categories as $cat)
                                 <option @if($cat->id == $category->parent_id) selected="selected" @endif value="{{$cat->id}}">{{$cat->name}}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="name">Name <span class="text-danger">*</span></label>
-                        <input type="text" name="name" id="name" placeholder="Name" class="form-control" value="{!! $category->name ?: old('name')  !!}">
+                        <label for="name_fa">Name Farsi<span class="text-danger">*</span></label>
+                        <input type="text" name="name_fa" id="name_fa" placeholder="Name" class="form-control" value="{!! $category->name_fa ?: old('name_fa')  !!}">
                     </div>
                     <div class="form-group">
-                        <label for="description">Description </label>
-                        <textarea class="form-control ckeditor" name="description" id="description" rows="5" placeholder="Description">{!! $category->description ?: old('description')  !!}</textarea>
+                        <label for="name_en">Name English<span class="text-danger">*</span></label>
+                        <input type="text" name="name_en" id="name_en" placeholder="Name" class="form-control" value="{!! $category->name_en ?: old('name_en')  !!}">
+                    </div>
+                    <div class="form-group">
+                        <label for="name_ar">Name Arabic<span class="text-danger">*</span></label>
+                        <input type="text" name="name_ar" id="name_ar" placeholder="Name" class="form-control" value="{!! $category->name_ar ?: old('name_ar')  !!}">
+                    </div>
+                    <div class="form-group">
+                        <label for="name_tr">Name Turkey<span class="text-danger">*</span></label>
+                        <input type="text" name="name_tr" id="name_tr" placeholder="Name" class="form-control" value="{!! $category->name_tr ?: old('name_tr')  !!}">
+                    </div>
+                    <div class="form-group">
+                        <label for="description-fa">Description Farsi</label>
+                        <textarea class="form-control ckeditor" name="description_fa" id="description_fa" rows="5" placeholder="Description">{!! $category->description_fa ?: old('description_fa')  !!}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="description-en">Description English</label>
+                        <textarea class="form-control ckeditor" name="description_en" id="description_en" rows="5" placeholder="Description">{!! $category->description_en ?: old('description_en')  !!}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="description-ar">Description Arabic</label>
+                        <textarea class="form-control ckeditor" name="description_ar" id="description_ar" rows="5" placeholder="Description">{!! $category->description_ar ?: old('description_ar')  !!}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="description-tr">Description Turkey</label>
+                        <textarea class="form-control ckeditor" name="description_tr" id="description_tr" rows="5" placeholder="Description">{!! $category->description_tr ?: old('description_tr')  !!}</textarea>
                     </div>
                     @if(isset($category->cover))
                     <div class="form-group">

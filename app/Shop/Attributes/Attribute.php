@@ -8,7 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Attribute extends Model
 {
     protected $fillable = [
-        'name'
+        'name_fa',
+        'name_en',
+        'name_ar',
+        'name_tr',
     ];
 
     /**

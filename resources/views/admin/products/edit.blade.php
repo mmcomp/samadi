@@ -21,18 +21,42 @@
                                 <div role="tabpanel" class="tab-pane @if(!request()->has('combination')) active @endif" id="info">
                                     <div class="row">
                                         <div class="col-md-8">
-                                            <h2>{{ ucfirst($product->name) }}</h2>
+                                            <h2>{{ ucfirst($product->name_fa) }}</h2>
                                             <div class="form-group">
                                                 <label for="sku">SKU <span class="text-danger">*</span></label>
                                                 <input type="text" name="sku" id="sku" placeholder="xxxxx" class="form-control" value="{!! $product->sku !!}">
                                             </div>
                                             <div class="form-group">
-                                                <label for="name">Name <span class="text-danger">*</span></label>
-                                                <input type="text" name="name" id="name" placeholder="Name" class="form-control" value="{!! $product->name !!}">
+                                                <label for="name_fa">Name Farsi<span class="text-danger">*</span></label>
+                                                <input type="text" name="name_fa" id="name_fa" placeholder="Name" class="form-control" value="{!! $product->name_fa !!}">
                                             </div>
                                             <div class="form-group">
-                                                <label for="description">Description </label>
-                                                <textarea class="form-control ckeditor" name="description" id="description" rows="5" placeholder="Description">{!! $product->description  !!}</textarea>
+                                                <label for="name_en">Name English<span class="text-danger">*</span></label>
+                                                <input type="text" name="name_en" id="name_en" placeholder="Name" class="form-control" value="{!! $product->name_en !!}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="name_ar">Name Arabic<span class="text-danger">*</span></label>
+                                                <input type="text" name="name_ar" id="name_ar" placeholder="Name" class="form-control" value="{!! $product->name_ar !!}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="name_tr">Name Turkey<span class="text-danger">*</span></label>
+                                                <input type="text" name="name_tr" id="name_tr" placeholder="Name" class="form-control" value="{!! $product->name_tr !!}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="description_fa">Description Farsi</label>
+                                                <textarea class="form-control ckeditor" name="description_fa" id="description_fa" rows="5" placeholder="Description">{!! $product->description_fa  !!}</textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="description_en">Description English</label>
+                                                <textarea class="form-control ckeditor" name="description_en" id="description_en" rows="5" placeholder="Description">{!! $product->description_en  !!}</textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="description_ar">Description Arabic</label>
+                                                <textarea class="form-control ckeditor" name="description_ar" id="description_ar" rows="5" placeholder="Description">{!! $product->description_ar  !!}</textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="description_tr">Description Turkey</label>
+                                                <textarea class="form-control ckeditor" name="description_tr" id="description_tr" rows="5" placeholder="Description">{!! $product->description_tr  !!}</textarea>
                                             </div>
                                             <div class="form-group">
                                                 <div class="col-md-3">
@@ -45,6 +69,10 @@
                                             <div class="form-group">
                                                 <label for="cover">Cover </label>
                                                 <input type="file" name="cover" id="cover" class="form-control">
+                                            </div>                                            
+                                            <div class="form-group">
+                                                <label for="file_path"><a href="{{ asset("storage/$product->file_path") }}" target="_blank">File </a><span class="text-danger">*</span></label>
+                                                <input type="file" name="file_path" id="file_path" placeholder="File" class="form-control">
                                             </div>
                                             <div class="form-group">
                                                 @foreach($images as $image)
@@ -62,6 +90,7 @@
                                                 <input type="file" name="image[]" id="image" class="form-control" multiple>
                                                 <span class="text-warning">You can use ctr (cmd) to select multiple images</span>
                                             </div>
+                                            <!--
                                             <div class="form-group">
                                                 <label for="quantity">Quantity <span class="text-danger">*</span></label>
                                                 @if($productAttributes->isEmpty())
@@ -79,6 +108,7 @@
                                                 @endif
                                                 @if(!$productAttributes->isEmpty())<span class="text-danger">Note: Quantity is disabled. Total quantity is calculated by the sum of all the combinations.</span> @endif
                                             </div>
+                                            -->
                                             <div class="form-group">
                                                 <label for="price">Price</label>
                                                 @if($productAttributes->isEmpty())
@@ -95,6 +125,7 @@
                                                 @endif
                                                 @if(!$productAttributes->isEmpty())<span class="text-danger">Note: Price is disabled. Price is derived based on the combination.</span> @endif
                                             </div>
+                                            <!--
                                             <div class="form-group">
                                                 <label for="sale_price">Sale Price</label>
                                                 <div class="input-group">
@@ -102,6 +133,7 @@
                                                     <input type="text" name="sale_price" id="sale_price" placeholder="Sale Price" class="form-control" value="{{ $product->sale_price }}">
                                                 </div>
                                             </div>
+                                            -->
                                             @if(!$brands->isEmpty())
                                                 <div class="form-group">
                                                     <label for="brand_id">Brand </label>
@@ -116,12 +148,11 @@
                                             <div class="form-group">
                                                 @include('admin.shared.status-select', ['status' => $product->status])
                                             </div>
-                                            @include('admin.shared.attribute-select', [compact('default_weight')])
                                             <!-- /.box-body -->
                                         </div>
                                         <div class="col-md-4">
                                             <h2>Categories</h2>
-                                            @include('admin.shared.categories', ['categories' => $categories, 'ids' => $product])
+                                            @include('admin.shared.categories', ['categories' => $categories, 'ids' => $selectedIds])
                                         </div>
                                     </div>
                                     <div class="row">

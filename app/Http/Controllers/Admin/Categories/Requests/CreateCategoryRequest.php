@@ -14,7 +14,7 @@ class CreateCategoryRequest extends BaseFormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'unique:categories']
+            'name_fa' => ['required', 'unique:categories']
         ];
     }
 }

@@ -37,8 +37,14 @@ class Product extends Model implements Buyable
      */
     protected $searchable = [
         'columns' => [
-            'products.name' => 10,
-            'products.description' => 5
+            'products.name_fa' => 10,
+            'products.name_en' => 10,
+            'products.name_ar' => 10,
+            'products.name_tr' => 10,
+            'products.description_fa' => 5,
+            'products.description_en' => 5,
+            'products.description_ar' => 5,
+            'products.description_tr' => 5
         ]
     ];
 
@@ -49,8 +55,14 @@ class Product extends Model implements Buyable
      */
     protected $fillable = [
         'sku',
-        'name',
-        'description',
+        'name_fa',
+        'name_en',
+        'name_ar',
+        'name_tr',
+        'description_fa',
+        'description_en',
+        'description_ar',
+        'description_tr',
         'cover',
         'quantity',
         'price',
@@ -65,6 +77,7 @@ class Product extends Model implements Buyable
         'height',
         'distance_unit',
         'slug',
+        'file_path',
     ];
 
     /**

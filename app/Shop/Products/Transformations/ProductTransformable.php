@@ -17,10 +17,16 @@ trait ProductTransformable
     {
         $prod = new Product;
         $prod->id = (int) $product->id;
-        $prod->name = $product->name;
+        $prod->name_fa = $product->name_fa;
+        $prod->name_en = $product->name_en;
+        $prod->name_ar = $product->name_ar;
+        $prod->name_tr = $product->name_tr;
         $prod->sku = $product->sku;
         $prod->slug = $product->slug;
-        $prod->description = $product->description;
+        $prod->description_fa = $product->description_fa;
+        $prod->description_en = $product->description_en;
+        $prod->description_ar = $product->description_ar;
+        $prod->description_tr = $product->description_tr;
         $prod->cover = asset("storage/$product->cover");
         $prod->quantity = $product->quantity;
         $prod->price = $product->price;
@@ -29,7 +35,7 @@ trait ProductTransformable
         $prod->mass_unit = $product->mass_unit;
         $prod->sale_price = $product->sale_price;
         $prod->brand_id = (int) $product->brand_id;
-
+        $prod->file_path = $product->file_path;
         return $prod;
     }
 }

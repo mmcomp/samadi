@@ -48,7 +48,7 @@ class CategoryController extends Controller
     public function create()
     {
         return view('admin.categories.create', [
-            'categories' => $this->categoryRepo->listCategories('name', 'asc')
+            'categories' => $this->categoryRepo->listCategories('id', 'asc')
         ]);
     }
 
@@ -93,7 +93,7 @@ class CategoryController extends Controller
     public function edit($id)
     {
         return view('admin.categories.edit', [
-            'categories' => $this->categoryRepo->listCategories('name', 'asc', $id),
+            'categories' => $this->categoryRepo->listCategories('id', 'asc', $id),
             'category' => $this->categoryRepo->findCategoryById($id)
         ]);
     }
@@ -110,6 +110,7 @@ class CategoryController extends Controller
         $category = $this->categoryRepo->findCategoryById($id);
 
         $update = new CategoryRepository($category);
+        dump($request->except('_token', '_method'));
         $update->updateCategory($request->except('_token', '_method'));
 
         $request->session()->flash('message', 'Update successful');

@@ -16,9 +16,15 @@
                 <td>{{ $product->id }}</td>
                 <td>
                     @if($admin->hasPermission('view-product'))
-                        <a href="{{ route('admin.products.show', $product->id) }}">{{ $product->name }}</a>
+                        <a href="{{ route('admin.products.show', $product->id) }}">{{ $product->name_fa }}</a><br/>
+                        {{ $product->name_en }}<br/>
+                        {{ $product->name_ar }}<br/>
+                        {{ $product->name_tr }}
                     @else
-                        {{ $product->name }}
+                        {{ $product->name_fa }}<br/>
+                        {{ $product->name_en }}<br/>
+                        {{ $product->name_ar }}<br/>
+                        {{ $product->name_tr }}
                     @endif
                 </td>
                 <td>{{ $product->quantity }}</td>

@@ -21,8 +21,18 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>{{ $product->name }}</td>
-                                <td>{{ $product->description }}</td>
+                                <td>
+                                    {{ $product->name_fa }}<br/>
+                                    {{ $product->name_en }}<br/>
+                                    {{ $product->name_ar }}<br/>
+                                    {{ $product->name_tr }}
+                                </td>
+                                <td>
+                                    {{ $product->description_fa }}<br/>
+                                    {{ $product->description_en }}<br/>
+                                    {{ $product->description_ar }}<br/>
+                                    {{ $product->description_tr }}
+                                </td>
                                 <td>
                                     @if(isset($product->cover))
                                         <img src="{{ asset("storage/$product->cover") }}" class="img-responsive" alt="">
