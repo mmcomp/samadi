@@ -30,9 +30,10 @@ class HomeController
         $locale = $request->session()->get('locale');
         $cat1 = $this->categoryRepo->findCategoryById(2);
         $cat2 = $this->categoryRepo->findCategoryById(3);
-        if($locale) {
-            App::setlocale($locale);
+        if($locale==null) {
+            $locale = 'fa';
         }
+        App::setlocale($locale);
         return view('front.index', compact('cat1', 'cat2', 'locale'));
     }
 }
