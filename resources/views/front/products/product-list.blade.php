@@ -13,24 +13,24 @@
                                                 {{ csrf_field() }}
                                                 <input type="hidden" name="quantity" value="1" />
                                                 <input type="hidden" name="product" value="{{ $product->id }}">
-                                                <button id="add-to-cart-btn" type="submit" class="btn btn-warning" data-toggle="modal" data-target="#cart-modal"> <i class="fa fa-cart-plus"></i> Add to cart</button>
+                                                <button id="add-to-cart-btn" type="submit" class="btn btn-warning" data-toggle="modal" data-target="#cart-modal"> <i class="fa fa-cart-plus"></i> {{__('main.add_to_cart')}}</button>
                                             </form>
                                         </li>
-                                        <li>  <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal_{{ $product->id }}"> <i class="fa fa-eye"></i> Quick View</button>
-                                        <li>  <a class="btn btn-default product-btn" href="{{ route('front.get.product', str_slug($product->slug)) }}"> <i class="fa fa-link"></i> Go to product</a> </li>
+                                        <li>  <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal_{{ $product->id }}"> <i class="fa fa-eye"></i> {{__('main.quick_view')}}</button>
+                                        <li>  <a class="btn btn-default product-btn" href="{{ route('front.get.product', str_slug($product->slug)) }}"> <i class="fa fa-link"></i> {{__('main.go_to_product')}}</a> </li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                         @if(isset($product->cover))
-                            <img src="{{ asset("storage/$product->cover") }}" alt="{{ $product->name }}" class="img-bordered img-responsive">
+                            <img src="{{ asset("storage/$product->cover") }}" alt="{{ $product->{'name_' . $locale} }}" class="img-bordered img-responsive">
                         @else
-                            <img src="https://placehold.it/263x330" alt="{{ $product->name }}" class="img-bordered img-responsive" />
+                            <img src="https://placehold.it/263x330" alt="{{ $product->{'name_' . $locale} }}" class="img-bordered img-responsive" />
                         @endif
                     </div>
 
                     <div class="product-text">
-                        <h4>{{ $product->name }}</h4>
+                        <h4>{{ $product->{'name_' . $locale} }}</h4>
                         <p>
                             {{ config('cart.currency') }}
                             @if(!is_null($product->attributes->where('default', 1)->first()))

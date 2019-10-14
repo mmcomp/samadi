@@ -27,9 +27,9 @@ class HomeController
      */
     public function index(Request $request)
     {
-        $locale = $request->session()->get('locale');
         $cat1 = $this->categoryRepo->findCategoryById(2);
         $cat2 = $this->categoryRepo->findCategoryById(3);
+        $locale = $request->session()->get('locale');
         if($locale==null) {
             $locale = 'fa';
         }

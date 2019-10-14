@@ -6,11 +6,11 @@
                     @if(isset($product->cover))
                     <img class="img-responsive img-thumbnail"
                          src="{{ asset("storage/$product->cover") }}"
-                         alt="{{ $product->name }}" />
+                         alt="{{ $product->{'name_' . $locale} }}" />
                     @else
                     <img class="img-responsive img-thumbnail"
                          src="{{ asset("https://placehold.it/180x180") }}"
-                         alt="{{ $product->name }}" />
+                         alt="{{ $product->{'name_' . $locale} }}" />
                     @endif
                 </a>
             </li>
@@ -20,7 +20,7 @@
                     <a href="javascript: void(0)">
                     <img class="img-responsive img-thumbnail"
                          src="{{ asset("storage/$image->src") }}"
-                         alt="{{ $product->name }}" />
+                         alt="{{ $product->{'name_' . $locale} }}" />
                     </a>
                 </li>
                 @endforeach
@@ -33,18 +33,18 @@
                      data-zoom="{{ asset("storage/$product->cover") }}?w=1200">
             @else
                 <img id="main-image" class="product-cover" src="https://placehold.it/300x300"
-                     data-zoom="{{ asset("storage/$product->cover") }}?w=1200" alt="{{ $product->name }}">
+                     data-zoom="{{ asset("storage/$product->cover") }}?w=1200" alt="{{ $product->{'name_' . $locale} }}">
             @endif
         </figure>
     </div>
     <div class="col-md-6">
         <div class="product-description">
-            <h1>{{ $product->name }}
+            <h1>{{ $product->{'name_' . $locale} }}
                 <small>{{ config('cart.currency') }} {{ $product->price }}</small>
             </h1>
-            <div class="description">{!! $product->description !!}</div>
+            <div class="description">{!! $product->{'description_' . $locale} !!}</div>
             <div class="excerpt">
-                <hr>{!!  str_limit($product->description, 100, ' ...') !!}</div>
+                <hr>{!!  str_limit($product->{'description_' . $locale}, 100, ' ...') !!}</div>
             <hr>
             <div class="row">
                 <div class="col-md-12">
@@ -69,15 +69,16 @@
                             </div><hr>
                         @endif
                         <div class="form-group">
-                            <input type="text"
+                            <!-- <input type="text"
                                    class="form-control"
                                    name="quantity"
                                    id="quantity"
                                    placeholder="Quantity"
-                                   value="{{ old('quantity') }}" />
+                                   value="{{ old('quantity') }}" /> -->
+                            <input type="hidden" name="quantity" value="1" />
                             <input type="hidden" name="product" value="{{ $product->id }}" />
                         </div>
-                        <button type="submit" class="btn btn-warning"><i class="fa fa-cart-plus"></i> Add to cart
+                        <button type="submit" class="btn btn-warning"><i class="fa fa-cart-plus"></i> {{__('main.add_to_cart')}}
                         </button>
                     </form>
                 </div>

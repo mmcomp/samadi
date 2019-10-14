@@ -138,7 +138,7 @@ class ProductController extends Controller
     public function store(CreateProductRequest $request)
     {
         $data = $request->except('_token', '_method');
-        $data['slug'] = str_slug($request->input('name'));
+        $data['slug'] = str_slug($request->input('name_en'));
 
         if ($request->hasFile('cover') && $request->file('cover') instanceof UploadedFile) {
             $data['cover'] = $this->productRepo->saveCoverImage($request->file('cover'));
@@ -256,7 +256,7 @@ class ProductController extends Controller
             'combination'
         );
 
-        $data['slug'] = str_slug($request->input('name'));
+        $data['slug'] = str_slug($request->input('name_en'));
 
         if ($request->hasFile('cover')) {
             $data['cover'] = $productRepo->saveCoverImage($request->file('cover'));
