@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Shop\Customers\Customer;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\App;
 use App\Shop\Customers\Repositories\Interfaces\CustomerRepositoryInterface;
 use App\Shop\Customers\Requests\CreateCustomerRequest;
 use App\Shop\Customers\Requests\RegisterCustomerRequest;
@@ -11,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Session;
 
 class RegisterController extends Controller
 {
@@ -44,6 +46,24 @@ class RegisterController extends Controller
     {
         $this->middleware('guest');
         $this->customerRepo = $customerRepository;
+    }
+
+    /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegistrationForm(Request $request)
+    {
+        $locale = $request->session()->get('locale');
+        if($locale==null) {
+            $locale = 'fa';
+        }
+        App::setlocale($locale);
+
+        return view('auth.register', [
+            'locale' => $locale
+        ]);
     }
 
     /**

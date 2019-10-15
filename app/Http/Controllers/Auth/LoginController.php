@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Shop\Admins\Requests\LoginRequest;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\App;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -37,9 +39,16 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function showLoginForm()
+    public function showLoginForm(Request $request)
     {
-        return view('auth.login');
+        $locale = $request->session()->get('locale');
+        if($locale==null) {
+            $locale = 'fa';
+        }
+        App::setlocale($locale);
+        return view('auth.login', [
+            'locale' => $locale
+        ]);
     }
 
     /**

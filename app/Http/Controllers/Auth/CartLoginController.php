@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\App;
 use App\Shop\Admins\Requests\LoginRequest;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
@@ -38,9 +40,16 @@ class CartLoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function showLoginForm()
+    public function showLoginForm(Request $request)
     {
-        return view('front.carts.login');
+        $locale = $request->session()->get('locale');
+        if($locale==null) {
+            $locale = 'fa';
+        }
+        App::setlocale($locale);
+        return view('front.carts.login', [
+            'locale' => $locale
+        ]);
     }
 
     /**

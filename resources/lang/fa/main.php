@@ -36,5 +36,7 @@ return [
     'paypal'=>'پی پل',
     'PayPal - Safe, Secured and Easy to pay online!'=>'پی پل - امن ، ایمن و آسان در پرداخت آنلاین است',
     'no_products_in_cart'=>'محصولی در سبد نیست',
-    'shop_now'=>'خرید کنید'
+    'shop_now'=>'خرید کنید',
+    'e-mail_address'=>'آدرس ایمیل',
+    'confirm_password'=>'تایید رمز عبور'
 ];

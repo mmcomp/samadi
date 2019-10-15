@@ -1,3 +1,12 @@
+@php
+if(!isset($locale)) {
+    $locale = Session::get('locale');
+    if($locale=='' || $locale==null) {
+        $locale = 'fa';
+    }
+    App::setlocale($locale);
+}
+@endphp
 <!DOCTYPE html>
 <html lang="en">
 <head>

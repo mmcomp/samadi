@@ -36,5 +36,7 @@ return [
     'paypal'=>'paypal',
     'PayPal - Safe, Secured and Easy to pay online!'=>'PayPal - Safe, Secured and Easy to pay online!',
     'no_products_in_cart'=>'No products in cart yet.',
-    'shop_now'=>'Shop now!'
+    'shop_now'=>'Shop now!',
+    'e-mail_address'=>'E-Mail Address',
+    'confirm_password'=>'Confirm Password'
 ];
