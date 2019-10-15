@@ -116,7 +116,7 @@
             @else
                 <div class="row">
                     <div class="col-md-12">
-                        <p class="alert alert-warning">No products in cart yet. <a href="{{ route('home') }}">Shop now!</a></p>
+                        <p class="alert alert-warning">{{__('main.no_products_in_cart')}} <a href="{{ route('home') }}">{{__('main.shop_now')}}</a></p>
                     </div>
                 </div>
             @endif

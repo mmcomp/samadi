@@ -34,5 +34,7 @@ return [
     'choose_payment'=>'Choose Payment',
     'pay_with'=>'Pay with',
     'paypal'=>'paypal',
-    'PayPal - Safe, Secured and Easy to pay online!'=>'PayPal - Safe, Secured and Easy to pay online!'
+    'PayPal - Safe, Secured and Easy to pay online!'=>'PayPal - Safe, Secured and Easy to pay online!',
+    'no_products_in_cart'=>'No products in cart yet.',
+    'shop_now'=>'Shop now!'
 ];

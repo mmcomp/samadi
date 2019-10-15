@@ -34,5 +34,7 @@ return [
     'choose_payment'=>'روش پرداخت را انتخاب کنید',
     'pay_with'=>'پرداخت با',
     'paypal'=>'پی پل',
-    'PayPal - Safe, Secured and Easy to pay online!'=>'پی پل - امن ، ایمن و آسان در پرداخت آنلاین است'
+    'PayPal - Safe, Secured and Easy to pay online!'=>'پی پل - امن ، ایمن و آسان در پرداخت آنلاین است',
+    'no_products_in_cart'=>'محصولی در سبد نیست',
+    'shop_now'=>'خرید کنید'
 ];
