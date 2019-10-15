@@ -11,7 +11,7 @@
                 {{ csrf_field() }}
                 <div class="form-group">
                     <label for="email">{{__('main.email')}}</label>
-                    <input type="email" id="email" name="email" value="{{ old('email') }}" class="form-control" placeholder="Email" autofocus>
+                    <input type="email" id="email" name="email" value="{{ old('email') }}" class="form-control" placeholder="{{__('main.email')}}" autofocus>
                 </div>
                 <div class="form-group">
                     <label for="password">{{__('main.password')}}</label>
