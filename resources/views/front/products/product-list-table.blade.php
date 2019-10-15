@@ -1,38 +1,40 @@
 @if(!$products->isEmpty())
     <table class="table table-striped">
         <thead>
-        <th class="col-md-2 col-lg-2">Cover</th>
-        <th class="col-md-2 col-lg-5">Name</th>
-        <th class="col-md-2 col-lg-2">Quantity</th>
+        <th class="col-md-2 col-lg-2">{{__('main.cover')}}</th>
+        <th class="col-md-2 col-lg-5">{{__('main.name')}}</th>
+        <!-- <th class="col-md-2 col-lg-2">Quantity</th> -->
         <th class="col-md-2 col-lg-1"></th>
-        <th class="col-md-2 col-lg-2">Price</th>
+        <th class="col-md-2 col-lg-2">{{__('main.price')}}</th>
         </thead>
         <tfoot>
         <tr>
-            <td class="bg-warning">Subtotal</td>
+            <td class="bg-warning">{{__('main.subtotal')}}</td>
             <td class="bg-warning"></td>
-            <td class="bg-warning"></td>
+            <!-- <td class="bg-warning"></td> -->
             <td class="bg-warning"></td>
             <td class="bg-warning">{{config('cart.currency')}} {{ number_format($subtotal, 2, '.', ',') }}</td>
         </tr>
-        <tr>
+        <!-- <tr>
             <td class="bg-warning">Shipping</td>
-            <td class="bg-warning"></td>
-            <td class="bg-warning"></td>
-            <td class="bg-warning"></td>
+            <td class="bg-warning"></td>-->
+            <!-- <td class="bg-warning"></td> -->
+            <!--<td class="bg-warning"></td>
             <td class="bg-warning">{{config('cart.currency')}} <span id="shippingFee">{{ number_format(0, 2) }}</span></td>
-        </tr>
+        </tr> -->
+        <!--
         <tr>
             <td class="bg-warning">Tax</td>
-            <td class="bg-warning"></td>
-            <td class="bg-warning"></td>
-            <td class="bg-warning"></td>
+            <td class="bg-warning"></td>-->
+            <!-- <td class="bg-warning"></td> -->
+            <!--<td class="bg-warning"></td>
             <td class="bg-warning">{{config('cart.currency')}} {{ number_format($tax, 2) }}</td>
         </tr>
+        -->
         <tr>
-            <td class="bg-success">Total</td>
+            <td class="bg-success">{{__('main.total')}}</td>
             <td class="bg-success"></td>
-            <td class="bg-success"></td>
+            <!-- <td class="bg-success"></td> -->
             <td class="bg-success"></td>
             <td class="bg-success">{{config('cart.currency')}} <span id="grandTotal" data-total="{{ $total }}">{{ number_format($total, 2, '.', ',') }}</span></td>
         </tr>
@@ -63,7 +65,7 @@
                         {!! $cartItem->product->description !!}
                     </div>
                 </td>
-                <td>
+                <!-- <td>
                     <form action="{{ route('cart.update', $cartItem->rowId) }}" class="form-inline" method="post">
                         {{ csrf_field() }}
                         <input type="hidden" name="_method" value="put">
@@ -72,7 +74,7 @@
                             <span class="input-group-btn"><button class="btn btn-default">Update</button></span>
                         </div>
                     </form>
-                </td>
+                </td> -->
                 <td>
                     <form action="{{ route('cart.destroy', $cartItem->rowId) }}" method="post">
                         {{ csrf_field() }}

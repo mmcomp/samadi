@@ -1,14 +1,14 @@
 <tr>
     <td>
         @if(isset($payment['name']))
-            {{ ucwords($payment['name']) }}
+            {{ ucwords(__('main.' . $payment['name'])) }}
         @else
             <p class="alert alert-danger">You need to have <strong>name</strong> key in your config</p>
         @endif
     </td>
     <td>
         @if(isset($payment['description']))
-            {{ $payment['description'] }}
+            {{ __('main.' . $payment['description']) }}
         @endif
     </td>
     <td>
@@ -18,7 +18,7 @@
             <input type="hidden" class="billing_address" name="billing_address" value="">
             <input type="hidden" class="delivery_address_id" name="delivery_address" value="">
             <input type="hidden" class="courier" name="courier" value="">
-            <button onclick="return confirm('Are you sure?')" type="submit" class="btn btn-success pull-right">Pay with {{ ucwords($payment['name']) }} <i class="fa fa-paypal"></i></button>
+            <button onclick="return confirm('Are you sure?')" type="submit" class="btn btn-success pull-right">{{__('main.pay_with')}} {{ ucwords(__('main.' . $payment['name'])) }} <i class="fa fa-paypal"></i></button>
         </form>
     </td>
 </tr>

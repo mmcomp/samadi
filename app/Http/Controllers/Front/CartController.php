@@ -13,6 +13,7 @@ use App\Shop\Products\Transformations\ProductTransformable;
 use Gloudemans\Shoppingcart\CartItem;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\App;
 
 class CartController extends Controller
 {
@@ -62,17 +63,22 @@ class CartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $courier = $this->courierRepo->findCourierById(request()->session()->get('courierId', 1));
-        $shippingFee = $this->cartRepo->getShippingFee($courier);
-
+        // $courier = $this->courierRepo->findCourierById(request()->session()->get('courierId', 1));
+        $shippingFee = 0; //$this->cartRepo->getShippingFee($courier);
+        $locale = $request->session()->get('locale');
+        if($locale==null) {
+            $locale = 'fa';
+        }
+        App::setlocale($locale);
         return view('front.carts.cart', [
             'cartItems' => $this->cartRepo->getCartItemsTransformed(),
             'subtotal' => $this->cartRepo->getSubTotal(),
             'tax' => $this->cartRepo->getTax(),
             'shippingFee' => $shippingFee,
-            'total' => $this->cartRepo->getTotal(2, $shippingFee)
+            'total' => $this->cartRepo->getTotal(2, $shippingFee),
+            'locale'=>$locale
         ]);
     }
 

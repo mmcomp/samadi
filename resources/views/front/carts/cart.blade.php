@@ -6,28 +6,28 @@
                 <div class="row">
                     <div class="col-md-12">
                         <ol class="breadcrumb">
-                            <li><a href="{{ route('home') }}"> <i class="fa fa-home"></i> Home</a></li>
-                            <li class="active">Cart</li>
+                            <li><a href="{{ route('home') }}"> <i class="fa fa-home"></i> {{__('main.home')}}</a></li>
+                            <li class="active">{{__('main.cart')}}</li>
                         </ol>
                     </div>
                     <div class="col-md-12 content">
                         <div class="box-body">
                             @include('layouts.errors-and-messages')
                         </div>
-                        <h3><i class="fa fa-cart-plus"></i> Shopping Cart</h3>
+                        <h3><i class="fa fa-cart-plus"></i> {{__('main.shoppingcart')}}</h3>
                         <table class="table table-striped">
                             <thead>
-                                <th class="col-md-2 col-lg-2">Cover</th>
-                                <th class="col-md-2 col-lg-5">Name</th>
-                                <th class="col-md-2 col-lg-2">Quantity</th>
+                                <th class="col-md-2 col-lg-2">{{__('main.cover')}}</th>
+                                <th class="col-md-2 col-lg-5">{{__('main.name')}}</th>
+                                <!-- <th class="col-md-2 col-lg-2">Quantity</th> -->
                                 <th class="col-md-2 col-lg-1"></th>
-                                <th class="col-md-2 col-lg-2">Price</th>
+                                <th class="col-md-2 col-lg-2">{{__('main.price')}}</th>
                             </thead>
                             <tfoot>
                             <tr>
-                                <td class="bg-warning">Subtotal</td>
+                                <td class="bg-warning">{{__('main.subtotal')}}</td>
                                 <td class="bg-warning"></td>
-                                <td class="bg-warning"></td>
+                                <!-- <td class="bg-warning"></td> -->
                                 <td class="bg-warning"></td>
                                 <td class="bg-warning">{{config('cart.currency')}} {{ number_format($subtotal, 2, '.', ',') }}</td>
                             </tr>
@@ -35,22 +35,24 @@
                             <tr>
                                 <td class="bg-warning">Shipping</td>
                                 <td class="bg-warning"></td>
-                                <td class="bg-warning"></td>
+                                <!-- <td class="bg-warning"></td> -->
                                 <td class="bg-warning"></td>
                                 <td class="bg-warning">{{config('cart.currency')}} {{ $shippingFee }}</td>
                             </tr>
                             @endif
+                            <!--
                             <tr>
                                 <td class="bg-warning">Tax</td>
-                                <td class="bg-warning"></td>
-                                <td class="bg-warning"></td>
-                                <td class="bg-warning"></td>
+                                <td class="bg-warning"></td> -->
+                                <!-- <td class="bg-warning"></td> -->
+                                <!--<td class="bg-warning"></td>
                                 <td class="bg-warning">{{config('cart.currency')}} {{ number_format($tax, 2) }}</td>
                             </tr>
+                            -->
                             <tr>
-                                <td class="bg-success">Total</td>
+                                <td class="bg-success">{{__('main.total')}}</td>
                                 <td class="bg-success"></td>
-                                <td class="bg-success"></td>
+                                <!-- <td class="bg-success"></td> -->
                                 <td class="bg-success"></td>
                                 <td class="bg-success">{{config('cart.currency')}} {{ number_format($total, 2, '.', ',') }}</td>
                             </tr>
@@ -78,7 +80,7 @@
                                             {!! $cartItem->product->description !!}
                                         </div>
                                     </td>
-                                    <td>
+                                    <!-- <td>
                                         <form action="{{ route('cart.update', $cartItem->rowId) }}" class="form-inline" method="post">
                                             {{ csrf_field() }}
                                             <input type="hidden" name="_method" value="put">
@@ -87,7 +89,7 @@
                                                 <span class="input-group-btn"><button class="btn btn-default">Update</button></span>
                                             </div>
                                         </form>
-                                    </td>
+                                    </td> -->
                                     <td>
                                         <form action="{{ route('cart.destroy', $cartItem->rowId) }}" method="post">
                                             {{ csrf_field() }}
@@ -104,8 +106,8 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="btn-group pull-right">
-                                    <a href="{{ route('home') }}" class="btn btn-default">Continue shopping</a>
-                                    <a href="{{ route('checkout.index') }}" class="btn btn-primary">Go to checkout</a>
+                                    <a href="{{ route('home') }}" class="btn btn-default">{{__('main.continue_shopping')}}</a>
+                                    <a href="{{ route('checkout.index') }}" class="btn btn-primary">{{__('main.go_to_checkout')}}</a>
                                 </div>
                             </div>
                         </div>

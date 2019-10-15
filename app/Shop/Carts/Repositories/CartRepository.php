@@ -14,6 +14,7 @@ use Gloudemans\Shoppingcart\Cart;
 use Gloudemans\Shoppingcart\CartItem;
 use Gloudemans\Shoppingcart\Exceptions\InvalidRowIDException;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\App;
 
 class CartRepository extends BaseRepository implements CartRepositoryInterface
 {
@@ -34,6 +35,11 @@ class CartRepository extends BaseRepository implements CartRepositoryInterface
      */
     public function addToCart(Product $product, int $int, $options = []) : CartItem
     {
+        $locale = App::getLocale();
+        if($locale=='' || $locale==null) {
+            $locale = 'fa';
+        }
+        $product->name = $product->{'name_' . $locale};
         return $this->model->add($product, $int, $options);
     }
 

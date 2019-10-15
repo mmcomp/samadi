@@ -78,7 +78,7 @@ Route::namespace('Auth')->group(function () {
 Route::namespace('Front')->group(function () {
     Route::get('/lang/{locale}', function (Request $request, $locale) {
         $request->session()->put('locale', $locale);
-        return redirect('/');
+        return redirect()->back();
     });
     Route::get('/', 'HomeController@index')->name('home');
     Route::group(['middleware' => ['auth', 'web']], function () {

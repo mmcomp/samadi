@@ -69,6 +69,12 @@
                         <li><a href="{{ route('login') }}"> <i class="fa fa-lock"></i> {{__('main.login')}}</a></li>
                         <li><a href="{{ route('register') }}"> <i class="fa fa-sign-in"></i> {{__('main.register')}}</a></li>
                     @endif
+                    @if($locale!='fa')
+                    <li><a href="/lang/fa">Fa</a></li>
+                    @endif
+                    @if($locale!='en')
+                    <li><a href="/lang/en">En</a></li>
+                    @endif
                     <li id="cart" class="menubar-cart">
                         <a href="{{ route('cart.index') }}" title="View Cart" class="awemenu-icon menu-shopping-cart">
                             <i class="fa fa-shopping-cart" aria-hidden="true"></i>

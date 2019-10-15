@@ -26,6 +26,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;
 use PayPal\Exception\PayPalConnectionException;
+use Illuminate\Support\Facades\App;
 
 class CheckoutController extends Controller
 {
@@ -113,12 +114,18 @@ class CheckoutController extends Controller
         }
 
         // Get payment gateways
+        // dump(config('payees.name'));
         $paymentGateways = collect(explode(',', config('payees.name')))->transform(function ($name) {
             return config($name);
         })->all();
+        // dump($paymentGateways);
 
         $billingAddress = $customer->addresses()->first();
-
+        $locale = $request->session()->get('locale');
+        if($locale==null) {
+            $locale = 'fa';
+        }
+        App::setlocale($locale);
         return view('front.checkout', [
             'customer' => $customer,
             'billingAddress' => $billingAddress,
@@ -130,7 +137,8 @@ class CheckoutController extends Controller
             'payments' => $paymentGateways,
             'cartItems' => $this->cartRepo->getCartItemsTransformed(),
             'shipment_object_id' => $shipment_object_id,
-            'rates' => $rates
+            'rates' => $rates,
+            'locale' => $locale
         ]);
     }
 

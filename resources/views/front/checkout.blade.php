@@ -6,21 +6,21 @@
             <div class="row">
                 <div class="col-md-12">
                     <ol class="breadcrumb">
-                        <li><a href="{{ route('home') }}"> <i class="fa fa-home"></i> Home</a></li>
-                        <li class="active">Shopping Cart</li>
+                        <li><a href="{{ route('home') }}"> <i class="fa fa-home"></i> {{__('main.home')}}</a></li>
+                        <li class="active">{{__('main.shoppingcart')}}</li>
                     </ol>
                 </div>
                 <div class="col-md-12 content">
                     <div class="box-body">
                         @include('layouts.errors-and-messages')
                     </div>
-                    @if(count($addresses) > 0)
+                    @if(count($addresses) >= 0)
                         <div class="row">
                             <div class="col-md-12">
                                 @include('front.products.product-list-table', compact('products'))
                             </div>
                         </div>
-                        @if(isset($addresses))
+                        @if(isset($addresses) && count($addresses) > 0)
                             <div class="row">
                                 <div class="col-md-12">
                                     <legend><i class="fa fa-home"></i> Addresses</legend>
@@ -111,13 +111,13 @@
                         @endif
                         <div class="row">
                             <div class="col-md-12">
-                                <legend><i class="fa fa-credit-card"></i> Payment</legend>
+                                <legend><i class="fa fa-credit-card"></i> {{__('main.payment')}}</legend>
                                 @if(isset($payments) && !empty($payments))
                                     <table class="table table-striped">
                                         <thead>
-                                        <th class="col-md-4">Name</th>
-                                        <th class="col-md-4">Description</th>
-                                        <th class="col-md-4 text-right">Choose payment</th>
+                                        <th class="col-md-4">{{__('main.name')}}</th>
+                                        <th class="col-md-4">{{__('main.description')}}</th>
+                                        <th class="col-md-4 text-right">{{__('main.choose_payment')}}</th>
                                         </thead>
                                         <tbody>
                                         @foreach($payments as $payment)
