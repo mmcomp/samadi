@@ -36,4 +36,13 @@ class HomeController
         App::setlocale($locale);
         return view('front.index', compact('cat1', 'cat2', 'locale'));
     }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function splash(Request $request)
+    {
+        return view('layouts.front.splash');
+    }
+
 }
