@@ -78,6 +78,9 @@ Route::namespace('Auth')->group(function () {
 Route::namespace('Front')->group(function () {
     Route::get('/lang/{locale}', function (Request $request, $locale) {
         $request->session()->put('locale', $locale);
+        if(app('router')->getRoutes()->match(app('request')->create(url()->previous()))->getName()=='splash') {
+            return redirect('/home');
+        }
         return redirect()->back();
     });
     Route::get('/', 'HomeController@splash')->name('splash');
