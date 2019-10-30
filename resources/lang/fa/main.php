@@ -38,5 +38,15 @@ return [
     'no_products_in_cart'=>'محصولی در سبد نیست',
     'shop_now'=>'خرید کنید',
     'e-mail_address'=>'آدرس ایمیل',
-    'confirm_password'=>'تایید رمز عبور'
+    'confirm_password'=>'تایید رمز عبور',
+    'mobile'=>'تلفن همراه',
+    'sirname'=>'نام خانوادگی',
+    'birthdate'=>'تاریخ تولد',
+    'gender'=>'جنسیت',
+    'male'=>'مرد',
+    'female'=>'زن',
+    'country'=>'کشور',
+    'register_form'=>'فرم ثبت نام',
+    'register_data'=>'ثبت اطلاعات',
+    'country_of_bank_account'=>'کشوری که حساب بانکی شما در انجاست'
 ];

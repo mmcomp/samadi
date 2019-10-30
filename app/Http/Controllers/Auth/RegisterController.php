@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Session;
+use App\Shop\Countries\Country;
 
 class RegisterController extends Controller
 {
@@ -60,9 +61,11 @@ class RegisterController extends Controller
             $locale = 'fa';
         }
         App::setlocale($locale);
+        $countries = Country::all();
 
         return view('auth.register', [
-            'locale' => $locale
+            'locale' => $locale,
+            'countries' => $countries,
         ]);
     }
 

@@ -38,5 +38,15 @@ return [
     'no_products_in_cart'=>'No products in cart yet.',
     'shop_now'=>'Shop now!',
     'e-mail_address'=>'E-Mail Address',
-    'confirm_password'=>'Confirm Password'
+    'confirm_password'=>'Confirm Password',
+    'mobile'=>'Mobile',
+    'sirname'=>'Sir Name',
+    'birtdate'=>'Birth Date',
+    'gender'=>'Gender',
+    'male'=>'Male',
+    'female'=>'Female',
+    'country'=>'Country',
+    'register_form'=>'Register Form',
+    'register_data'=>'Register',
+    'country_of_bank_account'=>'Select the country that your Bank Account blongs to'
 ];
