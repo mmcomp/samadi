@@ -32,47 +32,48 @@
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+				@include('layouts.errors-and-messages')
 				<form class="login100-form validate-form" method="POST" action="{{ route('register') }}">
 					{{ csrf_field() }}
 					<span style="text-align: right;font-family: b yekan;color: red;" class="login100-form-title p-b-49">
 						{{__('main.register')}}
 					</span>
 
-					<div  style="text-align: right;font-family: b yekan;" class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
+					<div  style="text-align: right;font-family: b yekan;" class="wrap-input100 validate-input m-b-23" data-validate = "Name is reauired">
 						<span style="text-align: right;font-family: b yekan;" class="label-input100">{{__('main.name')}}</span>
-						<input class="input100" type="text" name="username" placeholder="Type your Name">
+						<input class="input100" type="text" name="name" placeholder="Type your Name">
 						<span class="focus-input100" data-symbol="&#xf206;"></span>
 					</div>
-					<div  style="text-align: right;font-family: b yekan;" class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
+					<div  style="text-align: right;font-family: b yekan;" class="wrap-input100 validate-input m-b-23" data-validate = "SirName is reauired">
 						<span style="text-align: right;font-family: b yekan;" class="label-input100">{{__('main.sirname')}}</span>
-						<input class="input100" type="text" name="username" placeholder="Type your Family">
+						<input class="input100" type="text" name="sir_name" placeholder="Type your Family">
 						<span class="focus-input100" data-symbol="&#xf206;"></span>
 					</div>
-					<div  style="text-align: right;font-family: b yekan;" class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
+					<div  style="text-align: right;font-family: b yekan;" class="wrap-input100 validate-input m-b-23" data-validate = "Email is reauired">
 						<span style="text-align: right;font-family: b yekan;" class="label-input100"></span>{{__('main.username_must_be_email')}}</span>
-						<input class="input100" type="text" name="username" placeholder="Type your (Email)">
+						<input class="input100" type="text" name="email" placeholder="Type your (Email)">
 						<span class="focus-input100" data-symbol="&#xf206;"></span>
 					</div>
 					<div  style="text-align: right;font-family: b yekan;" class="wrap-input100 validate-input" data-validate="Password is required">
 						<span style="text-align: right;font-family: b yekan;" class="label-input100">{{__('main.password')}}</span>
-						<input class="input100" type="password" name="pass" placeholder="Type your password">
+						<input class="input100" type="password" name="password" placeholder="Type your password">
 						<span class="focus-input100" data-symbol="&#xf190;"></span>
 					</div>
-					<div  style="text-align: right;font-family: b yekan;" class="wrap-input100 validate-input" data-validate="Password is required">
+					<div  style="text-align: right;font-family: b yekan;" class="wrap-input100 validate-input" data-validate="Password Confirm is required">
 						<span style="text-align: right;font-family: b yekan;" class="label-input100">{{__('main.confirm_password')}}</span>
-						<input class="input100" type="password" name="pass" placeholder="Repeat your password">
+						<input class="input100" type="password" name="password_confirmation" placeholder="Repeat your password">
 						<span class="focus-input100" data-symbol="&#xf190;"></span>
 					</div>
-					<div  style="text-align: right;font-family: b yekan;" class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
+					<div  style="text-align: right;font-family: b yekan;" class="wrap-input100 validate-input m-b-23" data-validate = "Mobile is reauired">
 						<span style="text-align: right;font-family: b yekan;" class="label-input100"></span>{{__('main.mobile')}}</span>
-						<input class="input100" type="text" name="Mobile" placeholder="Your Mobile Number">
+						<input class="input100" type="text" name="mobile" placeholder="Your Mobile Number">
 						<span class="focus-input100" data-symbol="&#xf206;"></span>
 					</div>
 					
 					<div style="text-align: right;font-family: b yekan;direction: rtl;" class="text-right p-t-8 p-b-31">
-						<input style="text-align: right;font-family: b yekan;height: 25px;width: 25px;float: right;"class="input100" type="checkbox" name="Conditions" placeholder="Conditions"><a style="padding-right: 10px; color:red;font-family: b yekan;" href="#">{{__('main.accept_roles')}}</a>
+						<input style="text-align: right;font-family: b yekan;height: 25px;width: 25px;float: right;" class="input100" type="checkbox" name="conditions" id="conditions" placeholder="Conditions"><a style="padding-right: 10px; color:red;font-family: b yekan;" href="#">{{__('main.accept_roles')}}</a>
 					</div>
-					
+
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>

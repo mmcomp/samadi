@@ -31,6 +31,13 @@
             }
         }
 
+        if($("#conditions").prop('checked')!=true) {
+            check = false;
+            $("#conditions").parent().css('border', '1px dashed red');
+        }else {
+            $("#conditions").parent().css('border', 'none');
+        }
+
         return check;
     });
 
