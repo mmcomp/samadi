@@ -48,5 +48,7 @@ return [
     'country'=>'کشور',
     'register_form'=>'فرم ثبت نام',
     'register_data'=>'ثبت اطلاعات',
-    'country_of_bank_account'=>'کشوری که حساب بانکی شما در انجاست'
+    'country_of_bank_account'=>'کشوری که حساب بانکی شما در انجاست',
+    'username_must_be_email'=>'نام کاربری ( نام کاربری حتما ایمیل وارد شود )',
+    'accept_roles'=>'  *   قوانین و مقررات سایت را می پذیرم'
 ];

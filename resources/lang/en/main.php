@@ -48,5 +48,7 @@ return [
     'country'=>'Country',
     'register_form'=>'Register Form',
     'register_data'=>'Register',
-    'country_of_bank_account'=>'Select the country that your Bank Account blongs to'
+    'country_of_bank_account'=>'Select the country that your Bank Account blongs to',
+    'username_must_be_email'=>'Username (Username must be your Email)',
+    'accept_roles'=>'* I accept the roles and conditios of this site'
 ];

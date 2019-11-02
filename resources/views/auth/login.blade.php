@@ -32,54 +32,69 @@
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-				<form class="login100-form validate-form" method="POST" action="{{ route('register') }}">
+				<form class="login100-form validate-form">
 					{{ csrf_field() }}
-					<span style="text-align: right;font-family: b yekan;color: red;" class="login100-form-title p-b-49">
-						{{__('main.register')}}
+					<span style="text-align: right;font-family: b yekan;" class="login100-form-title p-b-49">
+						{{__('main.login_to_your_account')}}
 					</span>
+					@include('layouts.errors-and-messages')
+					<div  style="text-align: right;font-family: b yekan;" class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
+						<span class="label-input100">{{__('main.email')}}</span>
+						<input class="input100" type="text" name="username" placeholder="Type your username">
+						<span class="focus-input100" data-symbol="&#xf206;"></span>
+					</div>
 
-					<div  style="text-align: right;font-family: b yekan;" class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
-						<span style="text-align: right;font-family: b yekan;" class="label-input100">{{__('main.name')}}</span>
-						<input class="input100" type="text" name="username" placeholder="Type your Name">
-						<span class="focus-input100" data-symbol="&#xf206;"></span>
-					</div>
-					<div  style="text-align: right;font-family: b yekan;" class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
-						<span style="text-align: right;font-family: b yekan;" class="label-input100">{{__('main.sirname')}}</span>
-						<input class="input100" type="text" name="username" placeholder="Type your Family">
-						<span class="focus-input100" data-symbol="&#xf206;"></span>
-					</div>
-					<div  style="text-align: right;font-family: b yekan;" class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
-						<span style="text-align: right;font-family: b yekan;" class="label-input100"></span>{{__('main.username_must_be_email')}}</span>
-						<input class="input100" type="text" name="username" placeholder="Type your (Email)">
-						<span class="focus-input100" data-symbol="&#xf206;"></span>
-					</div>
 					<div  style="text-align: right;font-family: b yekan;" class="wrap-input100 validate-input" data-validate="Password is required">
-						<span style="text-align: right;font-family: b yekan;" class="label-input100">{{__('main.password')}}</span>
+						<span class="label-input100">{{__('main.password')}}</span>
 						<input class="input100" type="password" name="pass" placeholder="Type your password">
 						<span class="focus-input100" data-symbol="&#xf190;"></span>
 					</div>
-					<div  style="text-align: right;font-family: b yekan;" class="wrap-input100 validate-input" data-validate="Password is required">
-						<span style="text-align: right;font-family: b yekan;" class="label-input100">{{__('main.confirm_password')}}</span>
-						<input class="input100" type="password" name="pass" placeholder="Repeat your password">
-						<span class="focus-input100" data-symbol="&#xf190;"></span>
-					</div>
-					<div  style="text-align: right;font-family: b yekan;" class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
-						<span style="text-align: right;font-family: b yekan;" class="label-input100"></span>{{__('main.mobile')}}</span>
-						<input class="input100" type="text" name="Mobile" placeholder="Your Mobile Number">
-						<span class="focus-input100" data-symbol="&#xf206;"></span>
-					</div>
 					
-					<div style="text-align: right;font-family: b yekan;direction: rtl;" class="text-right p-t-8 p-b-31">
-						<input style="text-align: right;font-family: b yekan;height: 25px;width: 25px;float: right;"class="input100" type="checkbox" name="Conditions" placeholder="Conditions"><a style="padding-right: 10px; color:red;font-family: b yekan;" href="#">{{__('main.accept_roles')}}</a>
+					<div  style="text-align: right;font-family: b yekan;" class="text-right p-t-8 p-b-31">
+						<a href="#">
+							{{__('main.i_forgot_my_password')}}
+						</a>
 					</div>
 					
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-							<button style="text-align: right;font-family: b yekan;font-size:large;color:cornsilk;text-shadow: 0 0 5px black;" class="login100-form-btn">
-								{{__('main.register')}}
+							<button class="login100-form-btn">
+							{{__('main.login_now')}}
 							</button>
 						</div>
+					</div>
+
+					<!--
+					<div  style="text-align: right;font-family: b yekan;" class="txt1 text-center p-t-54 p-b-20">
+						<span>
+							: با استفاده از موارد زیر 
+						</span>
+					</div>
+
+					<div class="flex-c-m">
+						<a href="#" class="login100-social-item bg1">
+							<i class="fa fa-facebook"></i>
+						</a>
+
+						<a href="#" class="login100-social-item bg2">
+							<i class="fa fa-twitter"></i>
+						</a>
+
+						<a href="#" class="login100-social-item bg3">
+							<i class="fa fa-google"></i>
+						</a>
+					</div>
+					-->
+					<div class="flex-col-c p-t-155">
+						<span class="txt1 p-b-17">
+							{{__('main.no_account?_register_here.')}}
+						</span>
+
+						<a href="/register" class="txt2">
+							{{__('main.register')}}
+						</a>
+					</div>
 				</form>
 			</div>
 		</div>
