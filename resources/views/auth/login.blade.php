@@ -32,7 +32,7 @@
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-				<form class="login100-form validate-form" action="{{ route('login') }}"  method="post">
+				<form class="login100-form" action="{{ route('login') }}"  method="post">
 					{{ csrf_field() }}
 					<span style="text-align: right;font-family: b yekan;" class="login100-form-title p-b-49">
 						{{__('main.login_to_your_account')}}

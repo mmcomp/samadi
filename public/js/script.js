@@ -299,7 +299,178 @@ var navigatorResizeHandler = (function ($) {
     };
 })(jQuery);
 jQuery(function ($) {
+    "use strict";
+    if ($('#art-main').children('header.art-header').length) {
+        $('#art-header-bg').insertAfter($('header.art-header'));
+    }
+});
+
+jQuery(function ($) {
+    "use strict";
+    if ($('#art-main').children('header.art-header').length) {
+        $('#art-menu-bg').insertAfter($('header.art-header'));
+    }
+});
+
+jQuery(window).bind('resize', (function ($) {
+    "use strict";
+    return function() {
+        var headerOffset = $("header.art-header").offset();
+        var pageOffset = $("#art-main").offset();
+        if (!headerOffset || !pageOffset) {
+            return;
+        }
+        $("#art-header-bg").css({
+            "top": (headerOffset.top - pageOffset.top) + "px"
+        });
+    };
+})(jQuery));
+
+jQuery(function($) {
+    "use strict";
+    $('nav.art-nav').addClass("desktop-nav");
+});
+
+jQuery(window).bind('resize', (function ($) {
+    "use strict";
+    return function() {
+        var menu = jQuery("nav.art-nav");
+        var menuOffset = menu.offset();
+        var pageOffset = jQuery('#art-main').offset();
+        if (!menuOffset || !pageOffset) {
+            return;
+        }
+        jQuery("#art-hmenu-bg").css({
+            "height": menu.outerHeight() + "px",
+            "top": (menuOffset.top - pageOffset.top) + "px"
+        });
+    };
+})(jQuery));
+
+
+jQuery(function ($) {
+    "use strict";
+    if (!browser.ie || browser.version > 7) {
+        return;
+    }
+    $('ul.art-hmenu>li:not(:first-child)').each(function () { $(this).prepend('<span class="art-hmenu-separator"> </span>'); });
+});
+
+jQuery(function ($) {
+    "use strict";
+    $("ul.art-hmenu a:not([href])").attr('href', '#').click(function (e) { e.preventDefault(); });
+});
+
+
+jQuery(function ($) {
+    "use strict";
+    if (!browser.ie || browser.version > 7) {
+        return;
+    }
+
+    /* Fix width of submenu items.
+    * The width of submenu item calculated incorrectly in IE6-7. IE6 has wider items, IE7 display items like stairs.
+    */
+    $.each($("ul.art-hmenu ul"), function () {
+        var maxSubitemWidth = 0;
+        var submenu = $(this);
+        var subitem = null;
+        $.each(submenu.children("li").children("a"), function () {
+            subitem = $(this);
+            var subitemWidth = subitem.outerWidth(false);
+            if (maxSubitemWidth < subitemWidth) {
+                maxSubitemWidth = subitemWidth;
+            }
+        });
+        if (subitem !== null) {
+            var subitemBorderLeft = parseInt(subitem.css("border-left-width"), 10) || 0;
+            var subitemBorderRight = parseInt(subitem.css("border-right-width"), 10) || 0;
+            var subitemPaddingLeft = parseInt(subitem.css("padding-left"), 10) || 0;
+            var subitemPaddingRight = parseInt(subitem.css("padding-right"), 10) || 0;
+            maxSubitemWidth -= subitemBorderLeft + subitemBorderRight + subitemPaddingLeft + subitemPaddingRight;
+            submenu.children("li").children("a").css("width", maxSubitemWidth + "px");
+        }
+    });
+});
+jQuery(function () {
+    "use strict";
+    setHMenuOpenDirection({
+        container: "div.art-sheet",
+        defaultContainer: "#art-main",
+        menuClass: "art-hmenu",
+        leftToRightClass: "art-hmenu-left-to-right",
+        rightToLeftClass: "art-hmenu-right-to-left"
+    });
+});
+
+var setHMenuOpenDirection = (function ($) {
+    "use strict";
+    return (function(menuInfo) {
+        var defaultContainer = $(menuInfo.defaultContainer);
+        defaultContainer = defaultContainer.length > 0 ? defaultContainer = $(defaultContainer[0]) : null;
+
+        $("ul." + menuInfo.menuClass + ">li>ul").each(function () {
+            var submenu = $(this);
+            submenu.addClass(menuInfo.rightToLeftClass).find("ul").addClass(menuInfo.rightToLeftClass);
+
+            var submenuWidth = submenu.outerWidth(false);
+            var submenuLeft = submenu.offset().left;
+
+            var mainContainer = submenu.parents(menuInfo.container);
+            mainContainer = mainContainer.length > 0 ? mainContainer = $(mainContainer[0]) : null;
+
+            var container = mainContainer || defaultContainer;
+            if (container !== null) {
+                var containerLeft = container.offset().left;
+                var containerWidth = container.outerWidth(false);
+
+                if (submenuLeft + submenuWidth >= containerLeft + containerWidth) {
+                    /* right to left */
+                    submenu.addClass(menuInfo.rightToLeftClass).find("ul").addClass(menuInfo.rightToLeftClass);
+                } else if (submenuLeft <= containerLeft) {
+                    /* left to right */
+                    submenu.addClass(menuInfo.leftToRightClass).find("ul").addClass(menuInfo.leftToRightClass);
+                }
+            }
+        });
+    });
+})(jQuery);
+
+
+jQuery(function($) {
+    "use strict";
+     $(window).bind("resize", function () {
+        /*global responsiveDesign */
+        "use strict";
+        if (typeof responsiveDesign !== "undefined" && responsiveDesign.isResponsive)
+            return;
+        var sheetLeft = $(".art-sheet").offset().left;
+        $("header.art-header #art-flash-area").each(function () {
+            var object = $(this);
+            object.css("left", sheetLeft + "px");
+        });
+    });
+});
+
+jQuery(function ($) {
     'use strict';
+    $(window).bind('resize', function () {
+        var bh = $('body').height();
+        var mh = 0;
+        var c = $('div.art-content');
+        c.removeAttr('style');
+
+        $('#art-main').children().each(function() {
+            if ($(this).css('position') !== 'absolute') {
+                mh += $(this).outerHeight(true);
+            }
+        });
+        
+        if (mh < bh) {
+            var r = bh - mh;
+            c.css('height', (c.outerHeight(true) + r) + 'px');
+        }
+    });
 
     if (browser.ie && browser.version < 8) {
         $(window).bind('resize', function() {
@@ -978,7 +1149,7 @@ var processHeaderMultipleBg = (function ($) {
             }
             header.append("<div style=\"position:absolute;top:0;left:0;width:100%;height:100%;background:" + bgimage + " " + bgpositions[i] + " no-repeat\">");
         }
-        header.css('background-image', "url('images/header.jpg')".replace(/(url\(['"]?)/i, "$1" + path));
-        header.css('background-position', "0 0");
+        header.css('background-image', "url('images/header.png')".replace(/(url\(['"]?)/i, "$1" + path));
+        header.css('background-position', "center top");
     });
 })(jQuery);
