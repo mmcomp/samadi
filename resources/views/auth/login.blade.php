@@ -7,24 +7,24 @@
 <!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="Login-Page-vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="Login-Page-fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+	<link rel="stylesheet" type="text/css" href="Login-Page-fonts/iconic/css/material-design-iconic-font.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+	<link rel="stylesheet" type="text/css" href="Login-Page-vendor/animate/animate.css">
 <!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+	<link rel="stylesheet" type="text/css" href="Login-Page-vendor/css-hamburgers/hamburgers.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+	<link rel="stylesheet" type="text/css" href="Login-Page-vendor/animsition/css/animsition.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+	<link rel="stylesheet" type="text/css" href="Login-Page-vendor/select2/select2.min.css">
 <!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+	<link rel="stylesheet" type="text/css" href="Login-Page-vendor/daterangepicker/daterangepicker.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/util-Login-Page.css">
+	<link rel="stylesheet" type="text/css" href="css/main-Login-Page.css">
 <!--===============================================================================================-->
 </head>
 <body>
@@ -32,25 +32,24 @@
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-				<form class="login100-form" action="{{ route('login') }}"  method="post">
+				<form class="login100-form validate-form" action="{{ route('login') }}"  method="post">
 					{{ csrf_field() }}
-					<span style="text-align: right;font-family: b yekan;" class="login100-form-title p-b-49">
-						{{__('main.login_to_your_account')}}
+					<span style="text-align: right;font-family: iranyekan;" class="login100-form-title p-b-49">
 					</span>
 					@include('layouts.errors-and-messages')
-					<div  style="text-align: right;font-family: b yekan;" class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
+					<div  style="text-align: right;font-family: iranyekan;" class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
 						<span class="label-input100">{{__('main.email')}}</span>
 						<input class="input100" type="text" name="email" placeholder="Type your username">
 						<span class="focus-input100" data-symbol="&#xf206;"></span>
 					</div>
 
-					<div  style="text-align: right;font-family: b yekan;" class="wrap-input100 validate-input" data-validate="Password is required">
+					<div  style="text-align: right;font-family: iranyekan;" class="wrap-input100 validate-input" data-validate="Password is required">
 						<span class="label-input100">{{__('main.password')}}</span>
 						<input class="input100" type="password" name="password" placeholder="Type your password">
 						<span class="focus-input100" data-symbol="&#xf190;"></span>
 					</div>
 					
-					<div  style="text-align: right;font-family: b yekan;" class="text-right p-t-8 p-b-31">
+					<div  style="text-align: right;font-family: iranyekan;" class="text-right p-t-8 p-b-31">
 						<a href="#">
 							{{__('main.i_forgot_my_password')}}
 						</a>
@@ -64,9 +63,8 @@
 							</button>
 						</div>
 					</div>
-
 					<!--
-					<div  style="text-align: right;font-family: b yekan;" class="txt1 text-center p-t-54 p-b-20">
+					<div  style="text-align: right;font-family: iranyekan;" class="txt1 text-center p-t-54 p-b-20">
 						<span>
 							: با استفاده از موارد زیر 
 						</span>
@@ -87,10 +85,6 @@
 					</div>
 					-->
 					<div class="flex-col-c p-t-155">
-						<span class="txt1 p-b-17">
-							{{__('main.no_account?_register_here.')}}
-						</span>
-
 						<a href="/register" class="txt2">
 							{{__('main.register')}}
 						</a>
@@ -104,21 +98,21 @@
 	<div id="dropDownSelect1"></div>
 	
 <!--===============================================================================================-->
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="Login-Page-vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
-	<script src="vendor/animsition/js/animsition.min.js"></script>
+	<script src="Login-Page-vendor/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->
-	<script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="Login-Page-vendor/bootstrap/js/popper.js"></script>
+	<script src="Login-Page-vendor/bootstrap/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
-	<script src="vendor/select2/select2.min.js"></script>
+	<script src="Login-Page-vendor/select2/select2.min.js"></script>
 <!--===============================================================================================-->
-	<script src="vendor/daterangepicker/moment.min.js"></script>
-	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+	<script src="Login-Page-vendor/daterangepicker/moment.min.js"></script>
+	<script src="Login-Page-vendor/daterangepicker/daterangepicker.js"></script>
 <!--===============================================================================================-->
-	<script src="vendor/countdowntime/countdowntime.js"></script>
+	<script src="Login-Page-vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
-	<script src="js/main.js"></script>
+	<script src="js/main-Login-Page.js"></script>
 
 </body>
 </html>
