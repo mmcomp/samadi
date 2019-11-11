@@ -6,6 +6,7 @@ use App\Shop\Admins\Requests\LoginRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -41,6 +42,7 @@ class LoginController extends Controller
 
     public function showLoginForm(Request $request)
     {
+        Auth::logout();
         $locale = $request->session()->get('locale');
         if($locale==null) {
             $locale = 'fa';
