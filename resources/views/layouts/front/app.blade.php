@@ -212,18 +212,18 @@
                     </h1>
 
                     <div style="z-index: 99999;" id="navbar">
-                        <a href="/home">صفحه نخست</a>
-                        <a href="#">نمونه کارها</a>
-                        <a href="#">محصولات</a>
-                        <a href="#">آموزش سایت</a>
-                        <a href="#">درباره ما</a>
-                        <a href="#">تماس با ما</a>
+                        <a href="/home">{{__('app.home')}}</a>
+                        <a href="#">{{__('app.samples')}}</a>
+                        <a href="#">{{__('app.products')}}</a>
+                        <a href="#">{{__('app.lesson')}}</a>
+                        <a href="#">{{__('app.aboutus')}}</a>
+                        <a href="#">{{__('app.contactus')}}</a>
                         @if(auth()->check())
-                        <a href="/accounts?tab=profile">اطلاعات کاربری</a>
-                        <a href="/login">خروج</a>
+                        <a href="/accounts?tab=profile">{{__('app.profile')}}</a>
+                        <a href="/login">{{__('app.exit')}}</a>
                         @else
-                        <a href="/login">ورود به سایت</a>
-                        <a href="/register">ثبت نام</a>
+                        <a href="/login">{{__('app.login')}}</a>
+                        <a href="/register">{{__('main.register')}}</a>
                         @endif
                     </div>
                     <!--   <div class="art-nav-inner">
@@ -278,8 +278,9 @@
                                             class="art-content-layout-row">
                                             <div style="z-index:1;background-color:khaki;align-content: center;align-items: center;align-self: center;padding:0px;text-align: center;"
                                                 class="art-layout-cell layout-item-1" style="width: 100%">
-                                                <h1 style="color:blue;padding: 5px;">هر فایلی رو که توی سایت دنبالش می
-                                                    گردین ، اینجا میتونید جستجو کنید</h1>
+                                                <h1 style="color:blue;padding: 5px;">
+                                                    {{__('app.search_here')}}
+                                                </h1>
                                                 <form
                                                     style="padding-top: 50px;margin-left: 150px;margin-right: 150px; text-align: center;border: #000000 ;background-color:none;border-radius: 0px;border-style: none; width:max-content%;height:60px;">
 
@@ -291,11 +292,12 @@
                                                                 style="color: #757575;padding-right:5px;font-size:15px;border-bottom-right-radius:5px;border-top-right-radius:5px;border-style: none;border-left:1px solid #000;width: 15%;margin: 0%;height: 50px;"
                                                                 name="example">
                                                                 <option style="display: none;height: 1px;width;1px ;">
-                                                                    فیلترهای جستجو </option>
+                                                                    {{__('app.search_filter')}}
+                                                                </option>
                                                             </select>
                                                             <input
                                                                 style="margin-left: -5px;font-size:17px;padding-right:2%;border-style: none;width: 40%;margin-right:-5px;height: 50px;"
-                                                                placeholder="&nbsp;&nbsp;&nbsp;عنوان فایل مورد نظر رو جستجو کنید&nbsp;&nbsp;&nbsp;"
+                                                                placeholder="&nbsp;&nbsp;&nbsp;{{__('app.type_file_search')}}&nbsp;&nbsp;&nbsp;"
                                                                 type="search" name="other">
                                                             <button style="font-size:24px;height:50px;width: 5%;"
                                                                 class="art-button" type="button">
@@ -305,16 +307,16 @@
                                                         <div style="line-height:3rm;text-align:right;padding:15px;font-size: 17px;border-bottom-left-radius: 25px;
                         BORDER-COLOR: darksalmon;border-top-right-radius: 25px;contain: layout;font-family:iranyekan;background-color:#ffffff6e;margin-right: 18%;margin-top:3px;width:15%;color: black;"
                                                             id="checkboxes">
-                                                            <label for="رایگان">
+                                                            <label for="free">
                                                                 <input
                                                                     style="border-style: solid;border-width: 2px;border:#2E2314;font-size: 25px;"
                                                                     class="art-checkbox" type="checkbox"
-                                                                    id="رایگان" />رایگان</label>
-                                                            <label for="پولی">
-                                                                <input type="checkbox" id="پولی" />پولی</label>
+                                                                    id="free" value="free" />{{__('app.free')}}</label>
+                                                            <label for="nofree">
+                                                                <input type="checkbox" id="nofree" value="nofree" />{{__('app.nofree')}}</label>
                                                             <hr
                                                                 style="color: black;font-size: 20px;font-style: initial;">
-                                                            <label for="النگو">
+                                                            <!-- <label for="النگو">
                                                                 <input type="checkbox" id="مدال" />مدال</label>
                                                             <label for="النگو">
                                                                 <input type="checkbox" id="حلقه" /> حلقه ست </label>
@@ -323,7 +325,7 @@
                                                             <label for="گوشواره">
                                                                 <input type="checkbox" id="النگو" />گوشواره</label>
                                                             <label for="نیم ست">
-                                                                <input type="checkbox" id="النگو" />نیم ست</label>
+                                                                <input type="checkbox" id="النگو" />نیم ست</label> -->
                                                         </div>
 
                                                     </div>
@@ -338,9 +340,11 @@
                                             <div class="art-layout-cell layout-item-3" style="width: 100%">
                                                 <h1 style="text-align: center;"><span
                                                         style="font-family: 'iranYekan';"><br></span></h1>
-                                                <h1 style="text-align: center;"><span
-                                                        style="font-family: 'iranYekan'; color: #000000;">جدیدترین نمونه
-                                                        کارهای ارسال شده</span></h1>
+                                                <h1 style="text-align: center;">
+                                                    <span style="font-family: 'iranYekan'; color: #000000;">
+                                                        {{__('app.new_products')}}
+                                                    </span>
+                                                </h1>
                                             </div>
                                         </div>
                                     </div>
@@ -382,21 +386,27 @@
                                             <div class="art-layout-cell layout-item-8" style="width: 100%">
                                                 <p style="text-align: center;"><span
                                                         style="color: rgb(92, 70, 40); font-size: 16px;"><br></span></p>
-                                                <p style="text-align: center;"><span
-                                                        style="font-family: IRANYekan;"><span
-                                                            style="font-size: 16px; color: rgb(252, 230, 191); text-shadow: rgb(246, 172, 44) 0px 0px 25px;">---
-                                                            &nbsp; <span
-                                                                style="text-shadow: rgb(246, 172, 44) 0px 0px 25px;">عضویت
-                                                                در خبرنامه مجموعه طراحان طلا و جواهر پیوه ژن</span>
-                                                            &nbsp; ---</span><br></span></p>
+                                                <p style="text-align: center;">
+                                                    <span style="font-family: IRANYekan;">
+                                                        <span style="font-size: 16px; color: rgb(252, 230, 191); text-shadow: rgb(246, 172, 44) 0px 0px 25px;">---
+                                                            &nbsp; 
+                                                            <span style="text-shadow: rgb(246, 172, 44) 0px 0px 25px;">
+                                                            {{__('app.register_newsletter')}}
+                                                            </span>
+                                                            &nbsp; ---
+                                                        </span>
+                                                        <br>
+                                                    </span>
+                                                </p>
                                                 <p style="text-align: center;"><span
                                                         style="font-size: 16px; color: #FACD80;"><br></span></p>
                                                 <p style="text-align: center;"><input style="width: 50%;padding: 5px;"
-                                                        type="text" placeholder="ایمیل خود را اینجا وارد کنید"><span
+                                                        type="text" placeholder="{{__('app.email_here')}}"><span
                                                         style="color: #BE996A; font-size: 16px;">&nbsp; &nbsp;
                                                         &nbsp;&nbsp;</span>&nbsp;<a href="#" target="_blank"
-                                                        title="عضویت در خبرنامه" class="art-button">عضویت در
-                                                        خبرنامه</a>&nbsp;</p>
+                                                        title="{{__('app.subscribe_newsletter')}}" class="art-button">
+                                                            {{__('app.subscribe_newsletter')}}
+                                                        </a>&nbsp;</p>
                                                 <p style="text-align: center;"><br></p>
                                             </div>
                                         </div>
@@ -415,8 +425,9 @@
                                                         style="color: rgb(67, 104, 107); font-family: 'iranyekan';"><br></span>
                                                 </h1>
                                                 <h1 style="text-align: center;"><span
-                                                        style="font-family: 'iranyekan'; color: #000000;">پرفروش ترین
-                                                        نمونه کارهای ارسال شده</span></h1>
+                                                        style="font-family: 'iranyekan'; color: #000000;">
+                                                        {{__('app.top_sales')}}
+                                                        </span></h1>
                                             </div>
                                         </div>
                                     </div>
@@ -457,13 +468,8 @@
                                             <div class="art-layout-cell layout-item-11" style="width: 100%">
                                                 <p style="text-align: center;"><span
                                                         style="font-size: 16px; color: #2E2314;"><br></span></p>
-                                                <p style="text-align: center;"><span
-                                                        style="font-size: 16px; color: rgb(224, 215, 204); text-shadow: rgba(246, 172, 44, 0.976563) 0px 0px 12px; font-family: IRANYekan;">---
-                                                        <span
-                                                            style="text-shadow: rgba(246, 172, 44, 0.976563) 0px 0px 12px;">&nbsp;
-                                                            هنر <span
-                                                                style="text-shadow: rgba(246, 172, 44, 0.976563) 0px 0px 25px;">نمایی</span>
-                                                            های ما را در فضای مجازی دنبال کنید</span> &nbsp; ---</span>
+                                                <p style="text-align: center;">
+                                                {!!__('app.social')!!}
                                                 </p>
                                             </div>
                                         </div>
@@ -502,8 +508,9 @@
                                                 <p style="text-align: left;"><span style="font-size: 18px;"><br></span>
                                                 </p>
                                                 <p style="text-align: center;"><span
-                                                        style="font-size: 18px; text-align: left; color: #000000;">پر
-                                                        کار ترین نمونه های ارسال شده</span><br></p>
+                                                         style="font-size: 18px; text-align: left; color: #000000;">
+                                                         {{__('app.top_works')}}
+                                                        </span><br></p>
                                             </div>
                                         </div>
                                     </div>
@@ -546,8 +553,7 @@
                                                             style="color: rgb(83, 108, 9); font-family: 'iranyekan';"><br></span>
                                                     </h1>
                                                     <h1 style="text-align: center;"><span
-                                                            style="font-family: IRANYekan; color: #000000;">جدیدترین
-                                                            اخبار و مطالب جذاب و خواندنی</span><br></h1>
+                                                            style="font-family: IRANYekan; color: #000000;">{{__('app.news')}}</span><br></h1>
                                                 </div>
                                             </div>
                                         </div>
