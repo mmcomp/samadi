@@ -110,5 +110,6 @@ Route::namespace('Front')->group(function () {
     Route::get("category/{slug}", 'CategoryController@getCategory')->name('front.category.slug');
     Route::get("search", 'ProductController@search')->name('search.product');
     Route::get('about', 'HomeController@about')->name('about');
+    Route::get('contact', 'HomeController@contact')->name('contact');
     Route::get("{product}", 'ProductController@show')->name('front.get.product');
 });
