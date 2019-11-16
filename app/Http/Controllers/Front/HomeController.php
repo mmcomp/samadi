@@ -62,12 +62,19 @@ class HomeController
         return view('front.about');
     }
 
-    
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function contact(Request $request)
     {
         return view('front.contact');
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function privacy(Request $request)
+    {
+        return view('front.privacy');
     }
 }
