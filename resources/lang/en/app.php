@@ -44,4 +44,5 @@ return [
     'copyright'=>'All rights reserved - Pivejhan Jewellery Design Group © ',
     'develop'=>' Created by ',
     'pdco'=>'Parsian Dade Pardaz',
+    'privacy'=>'ًRules and Regulations',
 ];

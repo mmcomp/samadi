@@ -218,6 +218,7 @@
                         <a href="#">{{__('app.lesson')}}</a>
                         <a href="/about">{{__('app.aboutus')}}</a>
                         <a href="/contact">{{__('app.contactus')}}</a>
+                        <a href="/privacy">{{__('app.privacy')}}</a>
                         @if(auth()->check())
                         <a href="/accounts?tab=profile">{{__('app.profile')}}</a>
                         <a href="/login">{{__('app.exit')}}</a>
