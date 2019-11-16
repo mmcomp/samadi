@@ -216,7 +216,7 @@
                         <a href="#">{{__('app.samples')}}</a>
                         <a href="#">{{__('app.products')}}</a>
                         <a href="#">{{__('app.lesson')}}</a>
-                        <a href="#">{{__('app.aboutus')}}</a>
+                        <a href="/about">{{__('app.aboutus')}}</a>
                         <a href="#">{{__('app.contactus')}}</a>
                         @if(auth()->check())
                         <a href="/accounts?tab=profile">{{__('app.profile')}}</a>
@@ -263,373 +263,27 @@
             <div class="art-layout-wrapper">
                 <div class="art-content-layout">
                     <div class="art-content-layout-row">
-                        <div class="art-layout-cell art-content">
-                            <article class="art-post art-article">
-
-
-                                <div class="art-postcontent art-postcontent-0 clearfix">
-                                    <div class="art-content-layout layout-item-0">
-                                        <div style="text-align: center;" class="art-content-layout-row">
-                                        </div>
-                                    </div>
-                                    <div style="z-index:1;align-content: center;align-items: center;align-self: center;text-align: center;padding:0px"
-                                        class="art-content-layout layout-item-0">
-                                        <div style="z-index:1;align-content: center;align-items: center;align-self: center;text-align: center;padding:0px"
-                                            class="art-content-layout-row">
-                                            <div style="z-index:1;background-color:khaki;align-content: center;align-items: center;align-self: center;padding:0px;text-align: center;"
-                                                class="art-layout-cell layout-item-1" style="width: 100%">
-                                                <h1 style="color:blue;padding: 5px;">
-                                                    {{__('app.search_here')}}
-                                                </h1>
-                                                <form
-                                                    style="padding-top: 50px;margin-left: 150px;margin-right: 150px; text-align: center;border: #000000 ;background-color:none;border-radius: 0px;border-style: none; width:max-content%;height:60px;">
-
-
-                                                    <div style="text-align: center;width: 100%;" class="multiselect">
-                                                        <div style="border-style: solid;border-width: 2px;border:#2E2314;font-size: 25px;"
-                                                            class="selectBox" onclick="showCheckboxes()">
-                                                            <select
-                                                                style="color: #757575;padding-right:5px;font-size:15px;border-bottom-right-radius:5px;border-top-right-radius:5px;border-style: none;border-left:1px solid #000;width: 15%;margin: 0%;height: 50px;"
-                                                                name="example">
-                                                                <option style="display: none;height: 1px;width;1px ;">
-                                                                    {{__('app.search_filter')}}
-                                                                </option>
-                                                            </select>
-                                                            <input
-                                                                style="margin-left: -5px;font-size:17px;padding-right:2%;border-style: none;width: 40%;margin-right:-5px;height: 50px;"
-                                                                placeholder="&nbsp;&nbsp;&nbsp;{{__('app.type_file_search')}}&nbsp;&nbsp;&nbsp;"
-                                                                type="search" name="other">
-                                                            <button style="font-size:24px;height:50px;width: 5%;"
-                                                                class="art-button" type="button">
-                                                                <i class="fa fa-search"></i>
-                                                                <div class="overSelect"></div>
-                                                        </div>
-                                                        <div style="line-height:3rm;text-align:right;padding:15px;font-size: 17px;border-bottom-left-radius: 25px;
-                        BORDER-COLOR: darksalmon;border-top-right-radius: 25px;contain: layout;font-family:iranyekan;background-color:#ffffff6e;margin-right: 18%;margin-top:3px;width:15%;color: black;"
-                                                            id="checkboxes">
-                                                            <label for="free">
-                                                                <input
-                                                                    style="border-style: solid;border-width: 2px;border:#2E2314;font-size: 25px;"
-                                                                    class="art-checkbox" type="checkbox"
-                                                                    id="free" value="free" />{{__('app.free')}}</label>
-                                                            <label for="nofree">
-                                                                <input type="checkbox" id="nofree" value="nofree" />{{__('app.nofree')}}</label>
-                                                            <hr
-                                                                style="color: black;font-size: 20px;font-style: initial;">
-                                                            <!-- <label for="النگو">
-                                                                <input type="checkbox" id="مدال" />مدال</label>
-                                                            <label for="النگو">
-                                                                <input type="checkbox" id="حلقه" /> حلقه ست </label>
-                                                            <label for="النگو">
-                                                                <input type="checkbox" id="النگو" />مدال</label>
-                                                            <label for="گوشواره">
-                                                                <input type="checkbox" id="النگو" />گوشواره</label>
-                                                            <label for="نیم ست">
-                                                                <input type="checkbox" id="النگو" />نیم ست</label> -->
-                                                        </div>
-
-                                                    </div>
-
-                                                    </button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="art-content-layout layout-item-2">
-                                        <div class="art-content-layout-row">
-                                            <div class="art-layout-cell layout-item-3" style="width: 100%">
-                                                <h1 style="text-align: center;"><span
-                                                        style="font-family: 'iranYekan';"><br></span></h1>
-                                                <h1 style="text-align: center;">
-                                                    <span style="font-family: 'iranYekan'; color: #000000;">
-                                                        {{__('app.new_products')}}
-                                                    </span>
-                                                </h1>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="art-content-layout layout-item-0">
-                                        <div class="art-content-layout-row">
-                                            <div class="art-layout-cell layout-item-4" style="width: 20%">
-                                                <p><img width="100%" height="100%" alt="" class="fade"
-                                                        src="images/11-1-copy.jpg"><br></p>
-                                            </div>
-                                            <div class="art-layout-cell layout-item-4" style="width: 20%">
-                                                <p><img width="100%" height="100%" alt="" class="fade"
-                                                        src="images/11-1-copy.jpg"><br></p>
-                                            </div>
-                                            <div class="art-layout-cell layout-item-4" style="width: 20%">
-                                                <p><img width="100%" height="100%" alt="" class="fade"
-                                                        src="images/11-1-copy.jpg"><br></p>
-                                            </div>
-                                            <div class="art-layout-cell layout-item-4" style="width: 20%">
-                                                <p><img width="100%" height="100%" alt="" class="fade"
-                                                        src="images/11-1-copy.jpg"><br></p>
-                                            </div>
-                                            <div class="art-layout-cell layout-item-4" style="width: 20%">
-                                                <p><img width="100%" height="100%" alt="" class="fade"
-                                                        src="images/11-1-copy.jpg"><br></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="art-content-layout layout-item-5">
-                                        <div class="art-content-layout-row">
-                                            <div class="art-layout-cell layout-item-6" style="width: 100%">
-                                                <p><br></p>
-                                                <p style="text-align: center;"><br></p>
-                                                <p><br></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="art-content-layout layout-item-7">
-                                        <div class="art-content-layout-row">
-                                            <div class="art-layout-cell layout-item-8" style="width: 100%">
-                                                <p style="text-align: center;"><span
-                                                        style="color: rgb(92, 70, 40); font-size: 16px;"><br></span></p>
-                                                <p style="text-align: center;">
-                                                    <span style="font-family: IRANYekan;">
-                                                        <span style="font-size: 16px; color: rgb(252, 230, 191); text-shadow: rgb(246, 172, 44) 0px 0px 25px;">---
-                                                            &nbsp; 
-                                                            <span style="text-shadow: rgb(246, 172, 44) 0px 0px 25px;">
-                                                            {{__('app.register_newsletter')}}
-                                                            </span>
-                                                            &nbsp; ---
-                                                        </span>
-                                                        <br>
-                                                    </span>
-                                                </p>
-                                                <p style="text-align: center;"><span
-                                                        style="font-size: 16px; color: #FACD80;"><br></span></p>
-                                                <p style="text-align: center;"><input style="width: 50%;padding: 5px;"
-                                                        type="text" placeholder="{{__('app.email_here')}}"><span
-                                                        style="color: #BE996A; font-size: 16px;">&nbsp; &nbsp;
-                                                        &nbsp;&nbsp;</span>&nbsp;<a href="#" target="_blank"
-                                                        title="{{__('app.subscribe_newsletter')}}" class="art-button">
-                                                            {{__('app.subscribe_newsletter')}}
-                                                        </a>&nbsp;</p>
-                                                <p style="text-align: center;"><br></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="art-content-layout layout-item-0">
-                                        <div class="art-content-layout-row">
-                                            <div class="art-layout-cell layout-item-6" style="width: 100%">
-                                                <p><br></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="art-content-layout layout-item-9">
-                                        <div class="art-content-layout-row">
-                                            <div class="art-layout-cell layout-item-3" style="width: 100%">
-                                                <h1 style="text-align: center;"><span
-                                                        style="color: rgb(67, 104, 107); font-family: 'iranyekan';"><br></span>
-                                                </h1>
-                                                <h1 style="text-align: center;"><span
-                                                        style="font-family: 'iranyekan'; color: #000000;">
-                                                        {{__('app.top_sales')}}
-                                                        </span></h1>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="art-content-layout layout-item-0">
-                                        <div class="art-content-layout-row">
-                                            <div class="art-layout-cell layout-item-4" style="width: 20%">
-                                                <p><img width="100%" height="100%" alt="" class="fade"
-                                                        src="images/11-1-copy.jpg"><br></p>
-                                            </div>
-                                            <div class="art-layout-cell layout-item-4" style="width: 20%">
-                                                <p><img width="100%" height="100%" alt="" class="fade"
-                                                        src="images/11-1-copy.jpg"><br></p>
-                                            </div>
-                                            <div class="art-layout-cell layout-item-4" style="width: 20%">
-                                                <p><img width="100%" height="100%" alt="" class="fade"
-                                                        src="images/11-1-copy.jpg"><br></p>
-                                            </div>
-                                            <div class="art-layout-cell layout-item-4" style="width: 20%">
-                                                <p><img width="100%" height="100%" alt="" class="fade"
-                                                        src="images/11-1-copy.jpg"><br></p>
-                                            </div>
-                                            <div class="art-layout-cell layout-item-4" style="width: 20%">
-                                                <p><img width="100%" height="100%" alt="" class="fade"
-                                                        src="images/11-1-copy.jpg"><br></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="art-content-layout layout-item-5">
-                                        <div class="art-content-layout-row">
-                                            <div class="art-layout-cell layout-item-6" style="width: 100%">
-                                                <p><br></p>
-                                                <p><br></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="art-content-layout layout-item-10">
-                                        <div class="art-content-layout-row">
-                                            <div class="art-layout-cell layout-item-11" style="width: 100%">
-                                                <p style="text-align: center;"><span
-                                                        style="font-size: 16px; color: #2E2314;"><br></span></p>
-                                                <p style="text-align: center;">
-                                                {!!__('app.social')!!}
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="art-content-layout layout-item-10">
-                                        <div class="art-content-layout-row">
-                                            <div class="art-layout-cell layout-item-12" style="width: 25%">
-                                                <p style="text-align: center;"><img width="35" height="35" alt=""
-                                                        class="art-lightbox" src="images/thumbnail%20(1).png"><br></p>
-                                                <p style="text-align: center;"><br></p>
-                                            </div>
-                                            <div class="art-layout-cell layout-item-12" style="width: 25%">
-                                                <p style="text-align: center;"><img width="35" height="35" alt=""
-                                                        class="art-lightbox" src="images/thumbnail%20(2).png"><br></p>
-                                            </div>
-                                            <div class="art-layout-cell layout-item-12" style="width: 25%">
-                                                <p style="text-align: center;"><img width="35" height="35" alt=""
-                                                        class="art-lightbox" src="images/thumbnail.png"><br></p>
-                                            </div>
-                                            <div class="art-layout-cell layout-item-12" style="width: 25%">
-                                                <p style="text-align: center;"><img width="35" height="35" alt=""
-                                                        class="art-lightbox" src="images/thumbnail%20(3).png"><br></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="art-content-layout layout-item-5">
-                                        <div class="art-content-layout-row">
-                                            <div class="art-layout-cell layout-item-6" style="width: 100%">
-                                                <p><br></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="art-content-layout layout-item-13">
-                                        <div class="art-content-layout-row">
-                                            <div class="art-layout-cell layout-item-3" style="width: 100%">
-                                                <p style="text-align: left;"><span style="font-size: 18px;"><br></span>
-                                                </p>
-                                                <p style="text-align: center;"><span
-                                                         style="font-size: 18px; text-align: left; color: #000000;">
-                                                         {{__('app.top_works')}}
-                                                        </span><br></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="art-content-layout layout-item-0">
-                                        <div class="art-content-layout layout-item-0">
-                                            <div class="art-content-layout-row">
-                                                <div class="art-layout-cell layout-item-4" style="width: 20%">
-                                                    <p><img width="100%" height="100%" alt="" class="fade"
-                                                            src="images/11-1-copy.jpg"><br></p>
-                                                </div>
-                                                <div class="art-layout-cell layout-item-4" style="width: 20%">
-                                                    <p><img width="100%" height="100%" alt="" class="fade"
-                                                            src="images/11-1-copy.jpg"><br></p>
-                                                </div>
-                                                <div class="art-layout-cell layout-item-4" style="width: 20%">
-                                                    <p><img width="100%" height="100%" alt="" class="fade"
-                                                            src="images/11-1-copy.jpg"><br></p>
-                                                </div>
-                                                <div class="art-layout-cell layout-item-4" style="width: 20%">
-                                                    <p><img width="100%" height="100%" alt="" class="fade"
-                                                            src="images/11-1-copy.jpg"><br></p>
-                                                </div>
-                                                <div class="art-layout-cell layout-item-4" style="width: 20%">
-                                                    <p><img width="100%" height="100%" alt="" class="fade"
-                                                            src="images/11-1-copy.jpg"><br></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="art-content-layout layout-item-5">
-                                            <div class="art-content-layout-row">
-                                                <div class="art-layout-cell layout-item-6" style="width: 100%">
-                                                    <p><br></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="art-content-layout layout-item-14">
-                                            <div class="art-content-layout-row">
-                                                <div class="art-layout-cell layout-item-3" style="width: 100%">
-                                                    <h1 style="text-align: center;"><span
-                                                            style="color: rgb(83, 108, 9); font-family: 'iranyekan';"><br></span>
-                                                    </h1>
-                                                    <h1 style="text-align: center;"><span
-                                                            style="font-family: IRANYekan; color: #000000;">{{__('app.news')}}</span><br></h1>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="art-content-layout layout-item-5">
-                                            <div class="art-content-layout-row">
-                                                <div class="art-layout-cell layout-item-1" style="width: 20%">
-                                                    <p style="text-align: center;"><img width="99" height="99" alt=""
-                                                            class="fade"
-                                                            src="images/68719970-vector-jewelry-logo-design-template-circle-ring-with-blue-stone-crystal-wedding-ring.jpg"><br>
-                                                    </p>
-                                                    <p style="text-align: center;">آموزش ساخت طلا و زیورآلات از طریق نرم
-                                                        افزار ماتریکس</p>
-                                                </div>
-                                                <div class="art-layout-cell layout-item-1" style="width: 20%">
-                                                    <p style="text-align: center;"><img width="99" height="99" alt=""
-                                                            class="fade"
-                                                            src="images/68719970-vector-jewelry-logo-design-template-circle-ring-with-blue-stone-crystal-wedding-ring.jpg"><br>
-                                                    </p>
-                                                    <p style="text-align: center;">آموزش ساخت طلا و زیورآلات از طریق نرم
-                                                        افزار ماتریکس</p>
-                                                    <p><br></p>
-                                                </div>
-                                                <div class="art-layout-cell layout-item-1" style="width: 20%">
-                                                    <p style="text-align: center;"><img width="99" height="99" alt=""
-                                                            class="fade"
-                                                            src="images/68719970-vector-jewelry-logo-design-template-circle-ring-with-blue-stone-crystal-wedding-ring.jpg"><br>
-                                                    </p>
-                                                    <p style="text-align: center;">آموزش ساخت طلا و زیورآلات از طریق نرم
-                                                        افزار ماتریکس</p>
-                                                    <p><br></p>
-                                                </div>
-                                                <div class="art-layout-cell layout-item-1" style="width: 20%">
-                                                    <p style="text-align: center;"><img width="99" height="99" alt=""
-                                                            class="fade"
-                                                            src="images/68719970-vector-jewelry-logo-design-template-circle-ring-with-blue-stone-crystal-wedding-ring.jpg"><br>
-                                                    </p>
-                                                    <p style="text-align: center;">آموزش ساخت طلا و زیورآلات از طریق نرم
-                                                        افزار ماتریکس</p>
-                                                    <p><br></p>
-                                                </div>
-                                                <div class="art-layout-cell layout-item-1" style="width: 20%">
-                                                    <p style="text-align: center;"><img width="99" height="99" alt=""
-                                                            class="fade"
-                                                            src="images/68719970-vector-jewelry-logo-design-template-circle-ring-with-blue-stone-crystal-wedding-ring.jpg"><br>
-                                                    </p>
-                                                    <p style="text-align: center;">آموزش ساخت طلا و زیورآلات از طریق نرم
-                                                        افزار ماتریکس</p>
-                                                    <p><br></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-
-                            </article>
-                        </div>
+                        @yield('content')
                     </div>
                 </div>
             </div>
         </div>
+        <!-- Footer -->
         <footer class="art-footer">
             <div class="art-footer-inner">
                 <div class="art-content-layout-wrapper layout-item-0">
                     <div class="art-content-layout">
                         <div class="art-content-layout-row">
                             <div class="art-layout-cell layout-item-1" style="width: 20%">
-                                <h3 style="text-align: center;"><span style="color: #BE996A;">پیوتدهای سایت</span></h3>
+                                <h3 style="text-align: center;"><span style="color: #BE996A;">{{__('app.links')}}</span></h3>
                                 <p><span style="color: #BE996A;"><br></span></p>
-                                <p style="text-align: center;"><span style="color: #FFFFFF;">لیست نمونه کارها</span></p>
-                                <p style="text-align: center;"><span style="color: #FFFFFF;">تماس با ما</span></p>
-                                <p style="text-align: center;">درباره ما<span style="color: #FFFFFF;"><br></span></p>
-                                <p style="text-align: center;">آموزش</p>
-                                <p style="text-align: center;"><span style="color: #FFFFFF;">سوالات متداول</span></p>
-                                <p style="text-align: center;"><span style="color: #FFFFFF;">ورود به سایت</span></p>
-                                <p style="text-align: center;"><span style="color: #FFFFFF;">ثبت نام در سایت</span></p>
+                                <p style="text-align: center;"><span style="color: #FFFFFF;">{{__('app.samples')}}</span></p>
+                                <p style="text-align: center;"><span style="color: #FFFFFF;">{{__('app.contactus')}}</span></p>
+                                <p style="text-align: center;">{{__('app.aboutus')}}<span style="color: #FFFFFF;"><br></span></p>
+                                <p style="text-align: center;">{{__('app.lesson')}}</p>
+                                <p style="text-align: center;"><span style="color: #FFFFFF;">{{__('app.faq')}}</span></p>
+                                <p style="text-align: center;"><span style="color: #FFFFFF;"><a href="/login">{{__('main.login')}}</a></span></p>
+                                <p style="text-align: center;"><span style="color: #FFFFFF;"><a href="/register">{{__('main.register')}}</a></span></p>
                                 <p style="text-align: center;"><span style="color: #FFFFFF;"><br></span></p>
                                 <p style="text-align: center;"><span style="color: #FFFFFF;"><br></span></p>
                                 <div style="margin-left: 2em;">
@@ -637,18 +291,17 @@
                             </div>
                             <div class="art-layout-cell layout-item-2" style="width: 20%">
                                 <p style="text-align: center;"><span
-                                        style="color: rgb(190, 153, 106); font-size: 15px; font-weight: bold;">شبکه های
-                                        مجازی</span></p>
+                                        style="color: rgb(190, 153, 106); font-size: 15px; font-weight: bold;">{{__('app.social_nets')}}</span></p>
                                 <p style="text-align: center;"><span
                                         style="color: rgb(190, 153, 106); font-size: 15px; font-weight: bold;"><br></span>
                                 </p>
-                                <p style="text-align: center;">اینستاگرام</p>
-                                <p style="text-align: center;">واتس آپ<br></p>
-                                <p style="text-align: center;">تلگرام</p>
-                                <p style="text-align: center;">سروش</p>
-                                <p style="text-align: center;">پینترست</p>
-                                <p style="text-align: center;">فیس بوک</p>
-                                <p style="text-align: center;">واتس آپ</p>
+                                <p style="text-align: center;">{{__('app.instagram')}}</p>
+                                <p style="text-align: center;">{{__('app.whatsapp')}}<br></p>
+                                <p style="text-align: center;">{{__('app.telegram')}}</p>
+                                <p style="text-align: center;">{{__('app.soroush')}}</p>
+                                <p style="text-align: center;">{{__('app.pintrest')}}</p>
+                                <p style="text-align: center;">{{__('app.facebook')}}</p>
+                                <p style="text-align: center;">{{__('app.twitter')}}</p>
                                 <h3></h3>
                                 <ul>
                                     <li><a href="#"></a></li>
@@ -656,7 +309,7 @@
                             </div>
                             <div class="art-layout-cell layout-item-2" style="width: 25%">
                                 <h3 style="text-align: center;"><span
-                                        style="color: rgb(190, 153, 106);">محصولات</span><br></h3>
+                                        style="color: rgb(190, 153, 106);">{{__('app.products')}}</span><br></h3>
                                 <p><span style="color: rgb(190, 153, 106);"><br></span></p>
                                 <p style="text-align: center;">نیم ست</p>
                                 <p style="text-align: center;">حلقه ست</p>
@@ -671,8 +324,7 @@
                                 </ul>
                             </div>
                             <div class="art-layout-cell layout-item-3" style="width: 35%">
-                                <h3 style="text-align: center;"><span style="color: rgb(190, 153, 106);">جدیدترین مطالب
-                                        خواندنی</span><br></h3>
+                                <h3 style="text-align: center;"><span style="color: rgb(190, 153, 106);">{{__('app.news')}}</span><br></h3>
                                 <p><span style="color: rgb(190, 153, 106);"><br></span></p>
                                 <p style="text-align: center;">النگو</p>
                                 <p style="text-align: center;">دستبند</p>
@@ -688,8 +340,7 @@
                     <div style="vertical-align: middle:" class="art-content-layout-row">
                         <div class="art-layout-cell layout-item-5" style="width: 50%">
                             <p style="text-align: center;"><span
-                                    style="font-family: iranyekan;font-size:large;color: #BE996A;">© تمام حقوق محفوظ است
-                                    - گروه هنرمندان طلاساز پیوه ژن</span><span
+                                    style="font-family: iranyekan;font-size:large;color: #BE996A;">{{__('app.copyright')}}</span><span
                                     style="color: rgb(189, 153, 105); font-family: iranyekan, Tahoma, Helvetica, sans-serif; font-size: 11px;"><br></span>
                             </p>
                             <p style="text-align: center;">
@@ -708,9 +359,8 @@
                 </div>
                 <br /><br /><br />
                 <p class="art-page-footer">
-                    <span id="art-footnote-links" style="color:#646464;font-family: iranyekan;font-size:medium ;"> طراحی
-                        شده توسط <a style="color: #646464;font-family: iranyekan;font-size:medium ;"
-                            href="http://pdr.co.ir/" target="_blank">پارسیان داده پرداز</a></span>
+                    <span id="art-footnote-links" style="color:#646464;font-family: iranyekan;font-size:medium ;">{{__('app.develop')}}<a style="color: #646464;font-family: iranyekan;font-size:medium ;"
+                            href="http://pdr.co.ir/" target="_blank">{{__('app.pdco')}}</a></span>
                 </p>
             </div>
         </footer>

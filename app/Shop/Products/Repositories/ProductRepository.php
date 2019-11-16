@@ -35,6 +35,17 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
     }
 
     /**
+     * List new products
+     *
+     * @param string $count
+     * @return Collection
+     */
+    public function newProducts(int $count = 10) : Collection
+    {
+        return $this->model->orderBy('created_at')->limit($count)->get();
+    }
+
+    /**
      * List all the products
      *
      * @param string $order
