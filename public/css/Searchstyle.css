@@ -108,13 +108,15 @@ ul.art-vmenu a
    font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    text-decoration: none;
    color: #FAD189;
+   font-size: 16px;
+   
 }
 
 .art-postcontent a:visited, .art-postcontent a.visited
 {
    font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    text-decoration: none;
-   color: #FAD189;
+   color: #333333;
 }
 
 .art-postcontent  a:hover, .art-postcontent a.hover
@@ -128,7 +130,7 @@ ul.art-vmenu a
 {
    color: #F98B90;
    margin: 10px 0 0;
-   font-size: 18px;
+   font-size: 16px;
    font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
 }
 
@@ -1981,6 +1983,7 @@ pre
 .art-postcontent ul>li:before,  .art-post ul>li:before,  .art-textblock ul>li:before
 {
    margin-right: -11px;
+   display: none;
 }
 
 .opera .art-postcontent ul>li:before, .opera   .art-post ul>li:before, .opera   .art-textblock ul>li:before
