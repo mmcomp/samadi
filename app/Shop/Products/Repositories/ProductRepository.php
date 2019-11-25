@@ -35,6 +35,17 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
     }
 
     /**
+     * List top sale products
+     *
+     * @param string $count
+     * @return Collection
+     */
+    public function topSaleProducts(int $count = 10) : Collection
+    {
+        return $this->model->orderBy('sale_count', 'desc')->limit($count)->get();
+    }
+
+    /**
      * List new products
      *
      * @param string $count
@@ -42,7 +53,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
      */
     public function newProducts(int $count = 10) : Collection
     {
-        return $this->model->orderBy('created_at')->limit($count)->get();
+        return $this->model->orderBy('created_at', 'desc')->limit($count)->get();
     }
 
     /**

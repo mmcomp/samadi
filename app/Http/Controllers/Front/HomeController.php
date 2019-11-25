@@ -34,7 +34,9 @@ class HomeController
         // $cat1 = $this->categoryRepo->findCategoryById(2);
         // $cat2 = $this->categoryRepo->findCategoryById(3);
         $newProducts = $this->productRepo->newProducts();
+        $topSaleProducts = $this->productRepo->topSaleProducts();
         // dd($newProducts);
+        // dd($topSaleProducts);
         $locale = $request->session()->get('locale');
         if($locale==null) {
             $locale = 'fa';
@@ -43,6 +45,7 @@ class HomeController
         return view('front.index', [
             "locale"=>$locale,
             "newProducts"=>$newProducts,
+            "topSaleProducts"=>$topSaleProducts,
         ]);//compact('cat1', 'cat2', 'locale'));
     }
 
@@ -51,7 +54,7 @@ class HomeController
      */
     public function splash(Request $request)
     {
-        return view('layouts.front.splash');
+        return view('layouts.front.splash1');
     }
     
     /**
