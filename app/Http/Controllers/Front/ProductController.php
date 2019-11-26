@@ -74,4 +74,32 @@ class ProductController extends Controller
             'locale'
         ));
     }
+
+    /**
+     * Get a product
+     *
+     * @param int $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function showId(Request $request, int $id)
+    {
+        $product = $this->productRepo->findProductById($id);
+        $images = $product->images()->get();
+        $category = $product->categories()->first();
+        $productAttributes = $product->attributes;
+        $locale = $request->session()->get('locale');
+        if($locale==null) {
+            $locale = 'fa';
+        }
+        App::setlocale($locale);
+
+        return view('front.products.product', compact(
+            'product',
+            'images',
+            'productAttributes',
+            'category',
+            'combos',
+            'locale'
+        ));
+    }
 }

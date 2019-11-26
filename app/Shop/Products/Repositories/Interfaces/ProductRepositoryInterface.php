@@ -14,6 +14,12 @@ interface ProductRepositoryInterface extends BaseRepositoryInterface
 {
     public function listProducts(string $order = 'id', string $sort = 'desc', array $columns = ['*']) : Collection;
 
+    public function topSaleProducts(int $count = 10) : Collection;
+
+    public function newProducts(int $count = 10) : Collection;
+
+    public function topWorkProducts(int $count = 10) : Collection;
+
     public function createProduct(array $data) : Product;
 
     public function updateProduct(array $data) : bool;

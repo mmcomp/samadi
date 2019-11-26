@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Shop\Categories\Repositories\Interfaces\CategoryRepositoryInterface;
 use App\Shop\Products\Repositories\Interfaces\ProductRepositoryInterface;
+use App\Shop\News\News;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 
@@ -14,6 +15,7 @@ class HomeController
      */
     private $categoryRepo;
     private $productRepo;
+    private $newsRepo;
 
     /**
      * HomeController constructor.
@@ -31,12 +33,14 @@ class HomeController
      */
     public function index(Request $request)
     {
-        // $cat1 = $this->categoryRepo->findCategoryById(2);
-        // $cat2 = $this->categoryRepo->findCategoryById(3);
+        // Products
         $newProducts = $this->productRepo->newProducts();
         $topSaleProducts = $this->productRepo->topSaleProducts();
-        // dd($newProducts);
-        // dd($topSaleProducts);
+        $topWorkProducts = $this->productRepo->topWorkProducts();
+        //\Products
+        // News
+        $topNews = News::orderBy('updated_at', 'desc')->limit(10)->get();
+        //\News
         $locale = $request->session()->get('locale');
         if($locale==null) {
             $locale = 'fa';
@@ -46,7 +50,9 @@ class HomeController
             "locale"=>$locale,
             "newProducts"=>$newProducts,
             "topSaleProducts"=>$topSaleProducts,
-        ]);//compact('cat1', 'cat2', 'locale'));
+            "topWorkProducts"=>$topWorkProducts,
+            "topNews"=>$topNews,
+        ]);
     }
 
     /**

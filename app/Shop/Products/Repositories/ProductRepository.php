@@ -35,6 +35,17 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
     }
 
     /**
+     * List top work products
+     *
+     * @param string $count
+     * @return Collection
+     */
+    public function topWorkProducts(int $count = 10) : Collection
+    {
+        return $this->model->orderBy('work_amount', 'desc')->limit($count)->get();
+    }
+
+    /**
      * List top sale products
      *
      * @param string $count

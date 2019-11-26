@@ -2,7 +2,7 @@
 <html dir="rtl" lang="en-US">
 
 <head>
-    <link rel="icon" type="image/png" href="images/icons/favicon.ico" /> <!-- start Show Scroll Menu -->
+    <link rel="icon" type="/image/png" href="/images/icons/favicon.ico" /> <!-- start Show Scroll Menu -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         body {
@@ -42,10 +42,11 @@
     <meta name="viewport" content="initial-scale = 1.0, maximum-scale = 1.0, user-scalable = no, width = device-width">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!--[if lt IE 9]><script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-    <link rel="stylesheet" href="css/mainpage100style.css" media="screen">
-    <!--[if lte IE 7]><link rel="stylesheet" href="css/mainpage100style.ie7.css" media="screen" /><![endif]-->
-    <link rel="stylesheet" href="css/mainpage100style.responsive.css" media="all">
-
+    @section('css')
+    <link rel="stylesheet" href="/css/mainpage100style.css" media="screen">
+    <!--[if lte IE 7]><link rel="stylesheet" href="/css/mainpage100style.ie7.css" media="screen" /><![endif]-->
+    <link rel="stylesheet" href="/css/mainpage100style.responsive.css" media="all">
+    @show
     <!--Start Animation Fade -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script>
@@ -77,9 +78,9 @@
 
     <!--End Animation Fade -->
 
-    <script src="js/mainpage100jquery.js"></script>
-    <script src="js/mainpage100script.js"></script>
-    <script src="js/mainpage100script.responsive.js"></script>
+    <script src="/js/mainpage100jquery.js"></script>
+    <script src="/js/mainpage100script.js"></script>
+    <script src="/js/mainpage100script.responsive.js"></script>
 
 
     <style>
@@ -349,12 +350,12 @@
                         </div>
                         <div class="art-layout-cell layout-item-6" style="width: 50%">
                             <p style="text-align: center;"><a href="#"><img width="32" height="32" alt=""
-                                        src="images/twitter_32.png"></a><a href="#"
+                                        src=""/image"s/twitter_32.png"></a><a href="#"
                                     style="color: rgb(245, 159, 10); text-decoration: underline;"><img width="32"
-                                        height="32" alt="" src="images/rss_32.png"></a><span
+                                        height="32" alt="" src="/images/rss_32.png"></a><span
                                     style="font-size: 18px; color: #BE996A;">&nbsp;</span><a href="#"
                                     style="color: #F59F0A; text-decoration: underline;"><img width="32" height="32"
-                                        alt="" src="images/facebook_32.png" class=""></a>&nbsp;<br></p>
+                                        alt="" src="/images/facebook_32.png" class=""></a>&nbsp;<br></p>
                         </div>
                     </div>
                 </div>

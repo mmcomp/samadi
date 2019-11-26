@@ -112,114 +112,6 @@
         padding: 0 !important;
     }
 </style>
-<!--
-<style>
-    .art-content .art-postcontent-0 .layout-item-0 {
-        color: #4A4A4A;
-        background: #FFFFFF;
-        border-collapse: separate;
-    }
-
-    .art-content .art-postcontent-0 .layout-item-1 {
-        color: #4A4A4A;
-        padding: 25px;
-    }
-
-    .art-content .art-postcontent-0 .layout-item-2 {
-        color: #454545;
-        background: #FFFFFF url('images/f2d72.png') top center no-repeat scroll;
-    }
-
-    .art-content .art-postcontent-0 .layout-item-3 {
-        color: #454545;
-        padding: 25px;
-    }
-
-    .art-content .art-postcontent-0 .layout-item-4 {
-        color: #4A4A4A;
-        padding: 0px;
-    }
-
-    .art-content .art-postcontent-0 .layout-item-5 {
-        color: #4A4A4A;
-        background: #FFFFFF;
-        border-spacing: 3px 0px;
-        border-collapse: separate;
-    }
-
-    .art-content .art-postcontent-0 .layout-item-6 {
-        color: #4A4A4A;
-        padding: 5px;
-    }
-
-    .art-content .art-postcontent-0 .layout-item-7 {
-        border-top-style: solid;
-        border-right-style: solid;
-        border-bottom-style: solid;
-        border-left-style: solid;
-        border-width: 0px;
-        border-top-color: #A6A6A6;
-        border-right-color: #A6A6A6;
-        border-bottom-color: #A6A6A6;
-        border-left-color: #A6A6A6;
-        color: #F2F2F2;
-        background: ;
-        border-collapse: separate;
-    }
-
-    .art-content .art-postcontent-0 .layout-item-8 {
-        color: #F2F2F2;
-        padding: 25px;
-    }
-
-    .art-content .art-postcontent-0 .layout-item-9 {
-        color: #454545;
-        background: #FFFFFF url('images/6c8a5.png') top center no-repeat scroll;
-        border-collapse: separate;
-    }
-
-    .art-content .art-postcontent-0 .layout-item-10 {
-        color: #F2F2F2;
-        background: ;
-        border-spacing: 3px 0px;
-        border-collapse: separate;
-    }
-
-    .art-content .art-postcontent-0 .layout-item-11 {
-        color: #F2F2F2;
-        padding: 15px;
-    }
-
-    .art-content .art-postcontent-0 .layout-item-12 {
-        color: #F2F2F2;
-        padding: 5px;
-    }
-
-    .art-content .art-postcontent-0 .layout-item-13 {
-        color: #454545;
-        background: #FFFFFF url('images/fd227.png') top center no-repeat scroll;
-        border-spacing: 3px 0px;
-        border-collapse: separate;
-    }
-
-    .art-content .art-postcontent-0 .layout-item-14 {
-        color: #454545;
-        background: #FFFFFF url('images/47535.png') top center no-repeat scroll;
-        border-spacing: 3px 0px;
-        border-collapse: separate;
-    }
-
-    .ie7 .art-post .art-layout-cell {
-        border: none !important;
-        padding: 0 !important;
-    }
-
-    .ie6 .art-post .art-layout-cell {
-        border: none !important;
-        padding: 0 !important;
-    }
-</style>
--->
 @endsection
 
 @section('content')
@@ -309,8 +201,16 @@
                 <div class="art-content-layout-row">
                     @foreach($newProducts as $newProduct)
                     <div class="art-layout-cell layout-item-4" style="width: 20%">
-                        <p><img width="100%" height="100%" alt="{{ $newProduct->{'name_' . $locale} }}" class="fade"
-                                src="/storage/{{ $newProduct->cover }}"><br></p>
+                        <p>
+                            <a href="/product/{{ $newProduct->id }}">
+                                @if($newProduct->cover!=null && $newProduct->cover!='')
+                                <img width="100%" height="100%" alt="{{ $newProduct->{'name_' . $locale} }}" class="fade" src="/storage/{{ $newProduct->cover }}">
+                                @else
+                                <img width="100%" height="100%" alt="{{ $newProduct->{'name_' . $locale} }}" class="fade" src="/images/11-1-copy.jpg">
+                                @endif
+                            </a>
+                            <br>
+                        </p>
                     </div>
                     @endforeach
                 </div>
@@ -385,21 +285,20 @@
             </div>
             <div class="art-content-layout layout-item-0">
                 <div class="art-content-layout-row">
+                    @foreach($topSaleProducts as $newProduct)
                     <div class="art-layout-cell layout-item-4" style="width: 20%">
-                        <p><img width="100%" height="100%" alt="" class="fade" src="images/11-1-copy.jpg"><br></p>
+                        <p>
+                            <a href="/product/{{ $newProduct->id }}">
+                                @if($newProduct->cover!=null && $newProduct->cover!='')
+                                <img width="100%" height="100%" alt="{{ $newProduct->{'name_' . $locale} }}" class="fade" src="/storage/{{ $newProduct->cover }}">
+                                @else
+                                <img width="100%" height="100%" alt="{{ $newProduct->{'name_' . $locale} }}" class="fade" src="/images/11-1-copy.jpg">
+                                @endif
+                            </a>
+                            <br>
+                        </p>
                     </div>
-                    <div class="art-layout-cell layout-item-4" style="width: 20%">
-                        <p><img width="100%" height="100%" alt="" class="fade" src="images/11-1-copy.jpg"><br></p>
-                    </div>
-                    <div class="art-layout-cell layout-item-4" style="width: 20%">
-                        <p><img width="100%" height="100%" alt="" class="fade" src="images/11-1-copy.jpg"><br></p>
-                    </div>
-                    <div class="art-layout-cell layout-item-4" style="width: 20%">
-                        <p><img width="100%" height="100%" alt="" class="fade" src="images/11-1-copy.jpg"><br></p>
-                    </div>
-                    <div class="art-layout-cell layout-item-4" style="width: 20%">
-                        <p><img width="100%" height="100%" alt="" class="fade" src="images/11-1-copy.jpg"><br></p>
-                    </div>
+                    @endforeach
                 </div>
             </div>
             <div class="art-content-layout layout-item-5">
@@ -464,21 +363,20 @@
             <div class="art-content-layout layout-item-0">
                 <div class="art-content-layout layout-item-0">
                     <div class="art-content-layout-row">
-                        <div class="art-layout-cell layout-item-4" style="width: 20%">
-                            <p><img width="100%" height="100%" alt="" class="fade" src="images/11-1-copy.jpg"><br></p>
-                        </div>
-                        <div class="art-layout-cell layout-item-4" style="width: 20%">
-                            <p><img width="100%" height="100%" alt="" class="fade" src="images/11-1-copy.jpg"><br></p>
-                        </div>
-                        <div class="art-layout-cell layout-item-4" style="width: 20%">
-                            <p><img width="100%" height="100%" alt="" class="fade" src="images/11-1-copy.jpg"><br></p>
-                        </div>
-                        <div class="art-layout-cell layout-item-4" style="width: 20%">
-                            <p><img width="100%" height="100%" alt="" class="fade" src="images/11-1-copy.jpg"><br></p>
-                        </div>
-                        <div class="art-layout-cell layout-item-4" style="width: 20%">
-                            <p><img width="100%" height="100%" alt="" class="fade" src="images/11-1-copy.jpg"><br></p>
-                        </div>
+                    @foreach($topWorkProducts as $newProduct)
+                    <div class="art-layout-cell layout-item-4" style="width: 20%">
+                        <p>
+                            <a href="/product/{{ $newProduct->id }}">
+                                @if($newProduct->cover!=null && $newProduct->cover!='')
+                                <img width="100%" height="100%" alt="{{ $newProduct->{'name_' . $locale} }}" class="fade" src="/storage/{{ $newProduct->cover }}">
+                                @else
+                                <img width="100%" height="100%" alt="{{ $newProduct->{'name_' . $locale} }}" class="fade" src="/images/11-1-copy.jpg">
+                                @endif
+                            </a>
+                            <br>
+                        </p>
+                    </div>
+                    @endforeach
                     </div>
                 </div>
                 <div class="art-content-layout layout-item-5">
@@ -502,12 +400,36 @@
                 </div>
                 <div class="art-content-layout layout-item-5">
                     <div class="art-content-layout-row">
+                        @foreach($topNews as $news)
+                        <div class="art-layout-cell layout-item-1" style="width: 20%">
+                            <p style="text-align: center;">
+                                @if($news->image_path!=null && $news->image_path!='')
+                                <img width="99" height="99" alt="" class="fade" src="{{ $news->image_path }}">
+                                @else
+                                <img width="99" height="99" alt="" class="fade" src="images/75f2fb3f-8631-4716-acf3-70cffdacb232.jpg">
+                                @endif
+                                <br>
+                            </p>
+                            <p style="text-align: center;">
+                                {{ $news->title }}
+                            </p>
+                        </div>
+                        @endforeach
+                        <!-- <div class="art-layout-cell layout-item-1" style="width: 20%">
+                            <p style="text-align: center;"><img width="99" height="99" alt="" class="fade"
+                                    src="images/68719970-vector-jewelry-logo-design-template-circle-ring-with-blue-stone-crystal-wedding-ring.jpg"><br>
+                            </p>
+                            <p style="text-align: center;">آموزش ساخت طلا و زیورآلات از طریق نرم
+                                افزار ماتریکس</p>
+                            <p><br></p>
+                        </div>
                         <div class="art-layout-cell layout-item-1" style="width: 20%">
                             <p style="text-align: center;"><img width="99" height="99" alt="" class="fade"
                                     src="images/68719970-vector-jewelry-logo-design-template-circle-ring-with-blue-stone-crystal-wedding-ring.jpg"><br>
                             </p>
                             <p style="text-align: center;">آموزش ساخت طلا و زیورآلات از طریق نرم
                                 افزار ماتریکس</p>
+                            <p><br></p>
                         </div>
                         <div class="art-layout-cell layout-item-1" style="width: 20%">
                             <p style="text-align: center;"><img width="99" height="99" alt="" class="fade"
@@ -524,23 +446,7 @@
                             <p style="text-align: center;">آموزش ساخت طلا و زیورآلات از طریق نرم
                                 افزار ماتریکس</p>
                             <p><br></p>
-                        </div>
-                        <div class="art-layout-cell layout-item-1" style="width: 20%">
-                            <p style="text-align: center;"><img width="99" height="99" alt="" class="fade"
-                                    src="images/68719970-vector-jewelry-logo-design-template-circle-ring-with-blue-stone-crystal-wedding-ring.jpg"><br>
-                            </p>
-                            <p style="text-align: center;">آموزش ساخت طلا و زیورآلات از طریق نرم
-                                افزار ماتریکس</p>
-                            <p><br></p>
-                        </div>
-                        <div class="art-layout-cell layout-item-1" style="width: 20%">
-                            <p style="text-align: center;"><img width="99" height="99" alt="" class="fade"
-                                    src="images/68719970-vector-jewelry-logo-design-template-circle-ring-with-blue-stone-crystal-wedding-ring.jpg"><br>
-                            </p>
-                            <p style="text-align: center;">آموزش ساخت طلا و زیورآلات از طریق نرم
-                                افزار ماتریکس</p>
-                            <p><br></p>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
