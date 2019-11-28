@@ -36,6 +36,7 @@ trait ProductTransformable
         $prod->sale_price = $product->sale_price;
         $prod->brand_id = (int) $product->brand_id;
         $prod->file_path = $product->file_path;
+        $prod->customer_id = (int) $product->customer_id;
         return $prod;
     }
 }

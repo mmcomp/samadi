@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Front;
 
 use App\Shop\Products\Product;
+use App\Shop\Orders\Order;
+use App\Shop\Orders\OrderProduct;
 use App\Shop\Products\Repositories\Interfaces\ProductRepositoryInterface;
 use App\Http\Controllers\Controller;
 use App\Shop\Products\Transformations\ProductTransformable;
@@ -85,21 +87,32 @@ class ProductController extends Controller
     {
         $product = $this->productRepo->findProductById($id);
         $images = $product->images()->get();
+        $categories = $product->categories()->get();
         $category = $product->categories()->first();
+        $owner = $product->customer()->first();
         $productAttributes = $product->attributes;
+        $orders = OrderProduct::where('product_id', $product->id)->pluck('order_id')->toArray();
+        $otherProductsIds = OrderProduct::whereIn('order_id', $orders)->where('product_id', '!=', $product->id)->groupBy('product_id')->pluck('product_id')->toArray();
+        $otherProducts = Product::whereIn('id', $otherProductsIds)->get();
+        $newProducts = Product::orderBy('created_at', 'desc')->limit(4)->with('categories')->get();
+        // dd($newProducts);
         $locale = $request->session()->get('locale');
         if($locale==null) {
             $locale = 'fa';
         }
         App::setlocale($locale);
-
+        // dd($images);
         return view('front.products.product', compact(
             'product',
             'images',
             'productAttributes',
             'category',
+            'categories',
             'combos',
-            'locale'
+            'locale',
+            'owner',
+            'otherProducts',
+            'newProducts'
         ));
     }
 }

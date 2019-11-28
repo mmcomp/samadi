@@ -4,6 +4,7 @@ namespace App\Shop\Products;
 
 use App\Shop\Brands\Brand;
 use App\Shop\Categories\Category;
+use App\Shop\Customers\Customer;
 use App\Shop\ProductAttributes\ProductAttribute;
 use App\Shop\ProductImages\ProductImage;
 use Gloudemans\Shoppingcart\Contracts\Buyable;
@@ -78,6 +79,7 @@ class Product extends Model implements Buyable
         'distance_unit',
         'slug',
         'file_path',
+        'customer_id',
     ];
 
     /**
@@ -156,5 +158,13 @@ class Product extends Model implements Buyable
     public function brand()
     {
         return $this->belongsTo(Brand::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class);
     }
 }
