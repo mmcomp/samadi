@@ -84,7 +84,7 @@ Route::namespace('Front')->group(function () {
         return redirect()->back();
     });
     Route::get('/', 'HomeController@splash')->name('splash');
-    Route::get('/home', 'HomeController@index')->name('home');
+    Route::any('/home', 'HomeController@index')->name('home');
     Route::group(['middleware' => ['auth', 'web']], function () {
 
         Route::namespace('Payments')->group(function () {

@@ -112,6 +112,13 @@
         padding: 0 !important;
     }
 </style>
+<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<script src="vendor/select2/select2.min.js"></script>
+<style>
+    .select2-results__option {
+        color: black !important;
+    }
+</style>
 @endsection
 
 @section('content')
@@ -133,23 +140,34 @@
                         <form style="padding-top: 50px;margin-left: 150px;margin-right: 150px; text-align: center;border: #000000 ;background-color:none;border-radius: 0px;border-style: none; width:max-content%;height:60px;" method="POST">
                             {{ csrf_field() }}
                             <div style="text-align: center;width: 100%;" class="multiselect">
-                                <div style="border-style: solid;border-width: 2px;border:#2E2314;font-size: 25px;"
-                                    class="selectBox" onclick="showCheckboxes()">
-                                    <select
-                                        style="color: #757575;padding-right:5px;font-size:15px;border-bottom-right-radius:5px;border-top-right-radius:5px;border-style: none;border-left:1px solid #000;width: 15%;margin: 0%;height: 50px;"
-                                        name="example">
-                                        <option style="display: none;height: 1px;width;1px ;">
+                                <div style="border-style: solid;border-width: 2px;border:#2E2314;font-size: 25px;" class="selectBox" > <!-- onclick="showCheckboxes()"> -->
+                                    <select style="/*color: #757575;*/padding-right:5px;font-size:15px;border-bottom-right-radius:5px;border-top-right-radius:5px;border-style: none;border-left:1px solid #000;width: 15%;margin: 0%;height: 50px;" name="filter[]" multiple class="select2">
+                                        <!-- <option style="height: 1px;width;1px ;" disabled>
                                             {{__('app.search_filter')}}
-                                        </option>
+                                        </option> -->
+                                        <optgroup label="{{__('app.cost')}}">
+                                            <option value="free" style="height: 1px;width;1px ;">
+                                                {{__('app.free')}}
+                                            </option>
+                                            <option value="nofree" style="height: 1px;width;1px ;">
+                                                {{__('app.nofree')}}
+                                            </option>
+                                        </optgroup>
+                                        <optgroup label="{{__('app.category')}}">
+                                            @foreach($allCats as $cat)
+                                            <option value="{{ $cat->id }}" style="height: 1px;width;1px ;">
+                                                {{ $cat->{'name_' . $locale} }}
+                                            </option>
+                                            @endforeach
+                                        </optgroup>
                                     </select>
-                                    <input style="margin-left: -5px;font-size:17px;padding-right:2%;border-style: none;width: 40%;margin-right:-5px;height: 50px;" placeholder="&nbsp;&nbsp;&nbsp;عنوان فایل مورد نظر رو جستجو کنید&nbsp;&nbsp;&nbsp;" type="search" name="other">
-                                    <button style="font-size:24px;height:50px;width: 5%;" class="art-button" type="button">
+                                    <input style="margin-left: -5px;font-size:17px;padding-right:2%;border-style: none;width: 40%;margin-right:-5px;height: 50px;" placeholder="&nbsp;&nbsp;&nbsp;{{__('app.search_file_title')}}&nbsp;&nbsp;&nbsp;" type="search" name="search">
+                                    <button style="font-size:24px;height:50px;width: 5%;" class="art-button" type="submit">
                                         <i class="fa fa-search"></i>
                                     </button>
-                                    <div class="overSelect"></div>
+                                    <!-- <div class="overSelect"></div> -->
                                 </div>
-                                <div style="line-height:3rm;text-align:right;padding:15px;font-size: 17px;border-bottom-left-radius: 25px;BORDER-COLOR: #744e1c;border-top-right-radius: 25px;contain: layout;font-family:iranyekan;background-color:rgba(255, 255, 255, 0.73);margin-right: 18%;margin-top:3px;width:15%;color: black;"
-                                    id="checkboxes">
+                                <!-- <div style="line-height:3rm;text-align:right;padding:15px;font-size: 17px;border-bottom-left-radius: 25px;BORDER-COLOR: #744e1c;border-top-right-radius: 25px;contain: layout;font-family:iranyekan;background-color:rgba(255, 255, 255, 0.73);margin-right: 18%;margin-top:3px;width:15%;color: black;" id="checkboxes">
                                     <label for="free">
                                         <input
                                             style="border-style: solid;border-width: 2px;border:#2E2314;font-size: 25px;"
@@ -160,7 +178,7 @@
                                         <input type="checkbox" id="nofree" value="nofree" />{{__('app.nofree')}}
                                     </label>
                                     <hr style="color: black;font-size: 20px;font-style: initial;">
-                                    <!-- <label for="رایگان">
+                                    <label for="رایگان">
                                         <input
                                             style="border-style: solid;border-width: 2px;border:#2E2314;font-size: 25px;"
                                             class="art-checkbox" type="checkbox" id="رایگان" />رایگان</label>
@@ -176,14 +194,30 @@
                                     <label for="گوشواره">
                                         <input type="checkbox" id="النگو" />گوشواره</label>
                                     <label for="نیم ست">
-                                        <input type="checkbox" id="النگو" />نیم ست</label> -->
-                                </div>
-
+                                        <input type="checkbox" id="النگو" />نیم ست</label>
+                                </div> -->
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
+            @if($isSearch)
+            <div style="background-color: white;">
+                <h3 style="text-align: center;">
+                    {{__('app.search_results')}} «{{$search}}»
+                </h3>
+                @foreach($searchResults as $searchRes)
+                <div style="text-align: right;color: black;">
+                    <img src="/storage/{{ $searchRes->cover }}" style="height: 100px;" />
+                    <a href="/product/{{ $searchRes->id }}" target="_blank">
+                    <span style="font-size: 40px;">
+                    {{ $searchRes->{'name_' . $locale} }}
+                    </span>
+                    </a>
+                </div>
+                @endforeach
+            </div>
+            @endif
             <!-- new products -->
             <div class="art-content-layout layout-item-2">
                 <div class="art-content-layout-row">
@@ -452,4 +486,10 @@
             </div>
     </article>
 </div>
+<script>
+$(".select2").select2({
+    placeholder: "{{__('app.search_filter')}}",
+    allowClear: true
+});
+</script>
 @endsection

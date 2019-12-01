@@ -45,4 +45,8 @@ return [
     'develop'=>' Created by ',
     'pdco'=>'Parsian Dade Pardaz',
     'privacy'=>'ًRules and Regulations',
+    'search_file_title'=>'Search file here',
+    'cost'=>'Cost',
+    'category'=>'Category',
+    'search_results'=>'Search Results',
 ];

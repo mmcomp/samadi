@@ -162,6 +162,7 @@
       <p style="text-align: center;"><span style="font-size: 20px; color: #D50B15;"></span></p>
     </div>
   </div>
+  @if(isset($owner->id))
   <div class="art-block clearfix">
     <div class="art-blockheader">
       <h3 class="t">{{__('product.name_star_customer')}}</h3>
@@ -187,6 +188,7 @@
       </p>
     </div>
   </div>
+  @endif
 </div>
 <div class="art-layout-cell art-content">
   <article class="art-post art-article">
