@@ -10,7 +10,7 @@
                 <img src="{{ asset('img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-                <p>{{ $user->name }}</p>
+                <p>{{ $user->name }} {{ $user->sir_name }}</p>
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>
@@ -114,7 +114,7 @@
                     <li><a href="{{ route('admin.order-statuses.create') }}"><i class="fa fa-plus"></i> Create order status</a></li>
                 </ul>
             </li>
-            <li class="header">DELIVERY</li>
+            <!-- <li class="header">DELIVERY</li>
             <li class="treeview @if(request()->segment(2) == 'couriers') active @endif">
                 <a href="#">
                     <i class="fa fa-truck"></i> <span>Couriers</span>
@@ -126,7 +126,7 @@
                     <li><a href="{{ route('admin.couriers.index') }}"><i class="fa fa-circle-o"></i> List couriers</a></li>
                     <li><a href="{{ route('admin.couriers.create') }}"><i class="fa fa-plus"></i> Create courier</a></li>
                 </ul>
-            </li>
+            </li> -->
             <li class="header">CONFIG</li>
             @if($user->hasRole('admin|superadmin'))
                 <li class="treeview @if(request()->segment(2) == 'employees' || request()->segment(2) == 'roles' || request()->segment(2) == 'permissions') active @endif">

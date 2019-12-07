@@ -42,6 +42,11 @@
                                                 <label for="name_tr">Name Turkey<span class="text-danger">*</span></label>
                                                 <input type="text" name="name_tr" id="name_tr" placeholder="Name" class="form-control" value="{!! $product->name_tr !!}">
                                             </div>
+                                            <div>
+                                                <p>
+                                                Description should be seperated by |
+                                                </p>
+                                            </div>
                                             <div class="form-group">
                                                 <label for="description_fa">Description Farsi</label>
                                                 <textarea class="form-control ckeditor" name="description_fa" id="description_fa" rows="5" placeholder="Description">{!! $product->description_fa  !!}</textarea>
