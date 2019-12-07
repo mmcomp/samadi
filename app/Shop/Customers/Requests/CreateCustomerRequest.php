@@ -15,7 +15,7 @@ class CreateCustomerRequest extends BaseFormRequest
     {
         return [
             'name' => ['required'],
-            'sirname' => ['required'],
+            'sir_name' => ['required'],
             'email' => ['required', 'email', 'unique:customers'],
             'password' => ['required', 'min:8']
         ];

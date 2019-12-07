@@ -15,6 +15,7 @@
                         <thead>
                             <tr>
                                 <td class="col-md-2">ID</td>
+                                <td class="col-md-2">Image</td>
                                 <td class="col-md-2">Name</td>
                                 <td class="col-md-2">Email</td>
                                 <td class="col-md-2">Status</td>
@@ -25,7 +26,12 @@
                         @foreach ($customers as $customer)
                             <tr>
                                 <td>{{ $customer['id'] }}</td>
-                                <td>{{ $customer['name'] }}</td>
+                                <td>
+                                @if($customer['image_path']!=null && $customer['image_path']!='')
+                                <img src="/storage/{!! $customer['image_path']  !!}" style="height: 50px;"/>
+                                @endif
+                                </td>
+                                <td>{{ $customer['name'] }} {{ $customer['sir_name'] }}</td>
                                 <td>{{ $customer['email'] }}</td>
                                 <td>@include('layouts.status', ['status' => $customer['status']])</td>
                                 <td>
@@ -33,7 +39,7 @@
                                         {{ csrf_field() }}
                                         <input type="hidden" name="_method" value="delete">
                                         <div class="btn-group">
-                                            <a href="{{ route('admin.customers.show', $customer['id']) }}" class="btn btn-default btn-sm"><i class="fa fa-eye"></i> Show</a>
+                                            <!-- <a href="{{ route('admin.customers.show', $customer['id']) }}" class="btn btn-default btn-sm"><i class="fa fa-eye"></i> Show</a> -->
                                             <a href="{{ route('admin.customers.edit', $customer['id']) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Edit</a>
                                             <button onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger btn-sm"><i class="fa fa-times"></i> Delete</button>
                                         </div>

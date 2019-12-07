@@ -21,6 +21,8 @@ class Customer extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'sir_name',
+        'image_path',
         'email',
         'password',
         'status'
@@ -46,6 +48,7 @@ class Customer extends Authenticatable
     protected $searchable = [
         'columns' => [
             'customers.name' => 10,
+            'customers.sir_name' => 10,
             'customers.email' => 5
         ]
     ];

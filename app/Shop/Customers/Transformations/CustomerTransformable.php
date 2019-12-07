@@ -11,6 +11,9 @@ trait CustomerTransformable
         $prop = new Customer;
         $prop->id = (int) $customer->id;
         $prop->name = $customer->name;
+        $prop->sir_name = $customer->sir_name;
+        $prop->image_path = $customer->image_path;
+        $prop->name = $customer->name;
         $prop->email = $customer->email;
         $prop->status = (int) $customer->status;
 

@@ -77,7 +77,7 @@
                 <ul class="treeview-menu">
                     <li><a href="{{ route('admin.customers.index') }}"><i class="fa fa-circle-o"></i> List customers</a></li>
                     <li><a href="{{ route('admin.customers.create') }}"><i class="fa fa-plus"></i> Create customer</a></li>
-                    <li class="@if(request()->segment(2) == 'addresses') active @endif">
+                    <!-- <li class="@if(request()->segment(2) == 'addresses') active @endif">
                         <a href="#"><i class="fa fa-map-marker"></i> Addresses
                             <span class="pull-right-container">
                               <i class="fa fa-angle-left pull-right"></i>
@@ -87,7 +87,7 @@
                             <li><a href="{{ route('admin.addresses.index') }}"><i class="fa fa-circle-o"></i> List addresses</a></li>
                             <li><a href="{{ route('admin.addresses.create') }}"><i class="fa fa-plus"></i> Create address</a></li>
                         </ul>
-                    </li>
+                    </li> -->
                 </ul>
             </li>
             <li class="header">ORDERS</li>

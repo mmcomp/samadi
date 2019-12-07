@@ -45,7 +45,6 @@ class CustomerController extends Controller
             return $this->transformCustomer($customer);
         })->all();
 
-
         return view('admin.customers.list', [
             'customers' => $this->customerRepo->paginateArrayResults($customers)
         ]);
@@ -69,7 +68,11 @@ class CustomerController extends Controller
      */
     public function store(CreateCustomerRequest $request)
     {
-        $this->customerRepo->createCustomer($request->except('_token', '_method'));
+        $customer = $this->customerRepo->createCustomer($request->except('_token', '_method', 'image_path'));
+        if ($request->hasFile('image_path')) {
+            $customer->image_path = $request->file('image_path')->store('customers', ['disk' => 'public']);
+            $customer->save();
+        }
 
         return redirect()->route('admin.customers.index');
     }
@@ -117,6 +120,10 @@ class CustomerController extends Controller
 
         if ($request->has('password')) {
             $data['password'] = bcrypt($request->input('password'));
+        }
+
+        if ($request->hasFile('image_path')) {
+            $data['image_path'] = $request->file('image_path')->store('customers', ['disk' => 'public']);
         }
 
         $update->updateCustomer($data);
