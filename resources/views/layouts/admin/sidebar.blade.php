@@ -29,7 +29,7 @@
                 <ul class="treeview-menu">
                     @if($user->hasPermission('view-product'))<li><a href="{{ route('admin.products.index') }}"><i class="fa fa-circle-o"></i> List products</a></li>@endif
                     @if($user->hasPermission('create-product'))<li><a href="{{ route('admin.products.create') }}"><i class="fa fa-plus"></i> Create product</a></li>@endif
-                    <li class="@if(request()->segment(2) == 'attributes') active @endif">
+                    <!-- <li class="@if(request()->segment(2) == 'attributes') active @endif">
                     <a href="#">
                         <i class="fa fa-gear"></i> <span>Attributes</span>
                         <span class="pull-right-container">
@@ -40,7 +40,7 @@
                         <li><a href="{{ route('admin.attributes.index') }}"><i class="fa fa-circle-o"></i> List attributes</a></li>
                         <li><a href="{{ route('admin.attributes.create') }}"><i class="fa fa-plus"></i> Create attribute</a></li>
                     </ul>
-                    </li>
+                    </li> -->
                     <li class="@if(request()->segment(2) == 'brands') active @endif">
                     <a href="#">
                         <i class="fa fa-tag"></i> <span>Brands</span>
