@@ -120,6 +120,12 @@
 </style>
 @endsection
 
+@section('js')
+<script>
+
+</script>
+@endsection
+
 @section('content')
 <div class="art-layout-cell art-sidebar1">
   <div class="art-block clearfix">

@@ -76,7 +76,7 @@ class HomeController
         $allCats = Category::all();
         //\Categories
         // Products
-        $newProducts = $this->productRepo->newProducts();
+        $newProducts = $this->productRepo->newProducts(6);
         $topSaleProducts = $this->productRepo->topSaleProducts();
         $topWorkProducts = $this->productRepo->topWorkProducts();
         //\Products
