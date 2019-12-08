@@ -81,10 +81,10 @@ return [
             'model' => App\Shop\Customers\Customer::class,
         ],
 
-         'employee' => [
+        'employee' => [
              'driver' => 'eloquent',
              'model' => App\Shop\Employees\Employee::class,
-         ],
+        ],
     ],
 
     /*
