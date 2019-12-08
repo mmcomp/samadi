@@ -149,7 +149,6 @@ class ProductController extends Controller
     {
         $categories = $this->categoryRepo->listCategories('id', 'asc');//->where('parent_id', 1);
         $admin = Auth::user();
-        $roles = $admin->roles()->get();
         $isCustomer = false;
         if($admin) {
             $roles = $admin->roles()->get();
