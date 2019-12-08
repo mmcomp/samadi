@@ -97,11 +97,14 @@ class ProductController extends Controller
     public function index()
     {
         $admin = Auth::user();
-        $roles = $admin->roles()->get();
-        $isCustomer = true;
-        foreach($roles as $role) {
-            if($role->name!='customer') {
-                $isCustomer = false;
+        $isCustomer = false;
+        if($admin) {
+            $roles = $admin->roles()->get();
+            $isCustomer = true;
+            foreach($roles as $role) {
+                if($role->name!='customer') {
+                    $isCustomer = false;
+                }
             }
         }
         if($isCustomer==false) {
@@ -147,10 +150,14 @@ class ProductController extends Controller
         $categories = $this->categoryRepo->listCategories('id', 'asc');//->where('parent_id', 1);
         $admin = Auth::user();
         $roles = $admin->roles()->get();
-        $isCustomer = true;
-        foreach($roles as $role) {
-            if($role->name!='customer') {
-                $isCustomer = false;
+        $isCustomer = false;
+        if($admin) {
+            $roles = $admin->roles()->get();
+            $isCustomer = true;
+            foreach($roles as $role) {
+                if($role->name!='customer') {
+                    $isCustomer = false;
+                }
             }
         }
         return view('admin.products.create', [
@@ -229,10 +236,14 @@ class ProductController extends Controller
     {
         $admin = Auth::user();
         $roles = $admin->roles()->get();
-        $isCustomer = true;
-        foreach($roles as $role) {
-            if($role->name!='customer') {
-                $isCustomer = false;
+        $isCustomer = false;
+        if($admin) {
+            $roles = $admin->roles()->get();
+            $isCustomer = true;
+            foreach($roles as $role) {
+                if($role->name!='customer') {
+                    $isCustomer = false;
+                }
             }
         }
         $product = $this->productRepo->findProductById($id);

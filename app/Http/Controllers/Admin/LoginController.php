@@ -65,7 +65,7 @@ class LoginController extends Controller
         //     return $this->sendLoginResponse($request);
         // }
         $customer = Customer::where('email', $details['email'])->first();
-        if(password_verify($details['password'], $customer->password)) {
+        if($customer && password_verify($details['password'], $customer->password)) {
             Auth::loginUsingId($customer->id);
             return $this->sendLoginResponse($request);
         }
