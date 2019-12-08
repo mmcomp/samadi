@@ -98,14 +98,18 @@
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        @if($user->image_path!=null && $user->image_path!='')
+                        <img src="/storage/{{ $user->image_path }}" class="user-image" alt="User Image">
+                        @else
                         <img src="{{ asset('img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
+                        @endif
                         <span class="hidden-xs">{{ $user->name }} {{ $user->sir_name }}</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header">
-                            @if($user->image_path)
-                            <img src="{{ $user->image_path }}" class="img-circle" alt="User Image">
+                            @if($user->image_path!=null && $user->image_path!='')
+                            <img src="/storage/{{ $user->image_path }}" class="img-circle" alt="User Image">
                             @else
                             <img src="{{ asset('img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
                             @endif

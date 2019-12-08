@@ -124,8 +124,12 @@ $("#cover").change(function(){
                             </select>
                         </div>
                         @endif
+
+                        @if(!isset($isCustomer) || (isset($isCustomer) && $isCustomer==false))
                         @include('admin.shared.status-select', ['status' => 0])
-                        
+                        @else
+                        <input type="hidden" name="status" value="0" />
+                        @endif
                     </div>
                     <div class="col-md-4">
                         <h2>Categories</h2>

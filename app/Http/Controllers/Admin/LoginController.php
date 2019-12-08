@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Shop\Admins\Requests\LoginRequest;
+use App\Shop\Customers\Customer;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -58,8 +60,13 @@ class LoginController extends Controller
         if (auth()->guard('employee')->attempt($details)) {
             return $this->sendLoginResponse($request);
         }
-        
-        if (auth()->guard('web')->attempt($details)) {
+
+        // if (auth()->guard('web')->attempt($details)) {
+        //     return $this->sendLoginResponse($request);
+        // }
+        $customer = Customer::where('email', $details['email'])->first();
+        if(password_verify($details['password'], $customer->password)) {
+            Auth::loginUsingId($customer->id);
             return $this->sendLoginResponse($request);
         }
 

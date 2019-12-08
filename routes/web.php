@@ -23,9 +23,9 @@ Route::namespace('Admin')->group(function () {
     Route::post('admin/login', 'LoginController@login')->name('admin.login');
     Route::get('admin/logout', 'LoginController@logout')->name('admin.logout');
 });
-Route::group(['prefix' => 'admin', 'middleware' => ['employee'], 'as' => 'admin.' ], function () {
+Route::group(['prefix' => 'admin', /*'middleware' => ['employee'],*/ 'as' => 'admin.' ], function () {
     Route::namespace('Admin')->group(function () {
-        Route::group(['middleware' => ['role:admin|superadmin|clerk, guard:employee']], function () {
+    Route::group([/*'middleware' => ['role:admin|superadmin|clerk, guard:employee']*/], function () {
             Route::get('/', 'DashboardController@index')->name('dashboard');
             Route::namespace('Products')->group(function () {
                 Route::resource('products', 'ProductController');

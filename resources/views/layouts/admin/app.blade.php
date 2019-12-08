@@ -36,6 +36,12 @@
 </noscript>
 <!-- Site wrapper -->
 <div class="wrapper">
+    @if(!isset($admin))
+    @php
+    $admin = $abbas;
+    @endphp
+    @endif
+
     @include('layouts.admin.header', ['user' => $admin])
 
     @include('layouts.admin.sidebar', ['user' => $admin])

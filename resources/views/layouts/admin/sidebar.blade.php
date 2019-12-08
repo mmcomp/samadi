@@ -7,7 +7,11 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
+                @if($user->image_path!=null && $user->image_path!='')
+                <img src="/storage/{{ $user->image_path }}" class="img-circle" alt="User Image">
+                @else
                 <img src="{{ asset('img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
+                @endif
             </div>
             <div class="pull-left info">
                 <p>{{ $user->name }} {{ $user->sir_name }}</p>

@@ -22,6 +22,7 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -82,10 +83,10 @@ class ProductController extends Controller
         $this->productAttribute = $productAttribute;
         $this->brandRepo = $brandRepository;
 
-        $this->middleware(['permission:create-product, guard:employee'], ['only' => ['create', 'store']]);
-        $this->middleware(['permission:update-product, guard:employee'], ['only' => ['edit', 'update']]);
-        $this->middleware(['permission:delete-product, guard:employee'], ['only' => ['destroy']]);
-        $this->middleware(['permission:view-product, guard:employee'], ['only' => ['index', 'show']]);
+        // $this->middleware(['permission:create-product, guard:employee'], ['only' => ['create', 'store']]);
+        // $this->middleware(['permission:update-product, guard:employee'], ['only' => ['edit', 'update']]);
+        // $this->middleware(['permission:delete-product, guard:employee'], ['only' => ['destroy']]);
+        // $this->middleware(['permission:view-product, guard:employee'], ['only' => ['index', 'show']]);
     }
 
     /**
@@ -118,13 +119,22 @@ class ProductController extends Controller
     public function create()
     {
         $categories = $this->categoryRepo->listCategories('id', 'asc');//->where('parent_id', 1);
-
+        $admin = Auth::user();
+        $roles = $admin->roles()->get();
+        $isCustomer = true;
+        foreach($roles as $role) {
+            if($role->name!='customer') {
+                $isCustomer = false;
+            }
+        }
         return view('admin.products.create', [
             'categories' => $categories,
             'brands' => $this->brandRepo->listBrands(['*'], 'id', 'asc'),
             'default_weight' => env('SHOP_WEIGHT'),
             'weight_units' => Product::MASS_UNIT,
-            'product' => new Product
+            'product' => new Product,
+            'abbas' => $admin,
+            'isCustomer' => $isCustomer
         ]);
     }
 
@@ -191,6 +201,14 @@ class ProductController extends Controller
      */
     public function edit(int $id)
     {
+        $admin = Auth::user();
+        $roles = $admin->roles()->get();
+        $isCustomer = true;
+        foreach($roles as $role) {
+            if($role->name!='customer') {
+                $isCustomer = false;
+            }
+        }
         $product = $this->productRepo->findProductById($id);
         $productAttributes = $product->attributes()->get();
 
@@ -220,7 +238,9 @@ class ProductController extends Controller
             'brands' => $this->brandRepo->listBrands(['*'], 'id', 'asc'),
             'weight' => $product->weight,
             'default_weight' => $product->mass_unit,
-            'weight_units' => Product::MASS_UNIT
+            'weight_units' => Product::MASS_UNIT,
+            'abbas' => $admin,
+            'isCustomer' => $isCustomer
         ]);
     }
 

@@ -72,7 +72,7 @@
                                             </div>
                                             <div class="row"></div>
                                             <div class="form-group">
-                                                <label for="cover">Cover </label>
+                                                <label for="cover">Cover </label><br/>
                                                 <input type="file" name="cover" id="cover" class="form-control">
                                             </div>                                            
                                             <div class="form-group">
@@ -91,7 +91,7 @@
                                             </div>
                                             <div class="row"></div>
                                             <div class="form-group">
-                                                <label for="image">Images </label>
+                                                <label for="image">Images </label><br/>
                                                 <input type="file" name="image[]" id="image" class="form-control" multiple>
                                                 <span class="text-warning">You can use ctr (cmd) to select multiple images</span>
                                             </div>
@@ -151,7 +151,11 @@
                                                 </div>
                                             @endif
                                             <div class="form-group">
+                                                @if(!isset($isCustomer) || (isset($isCustomer) && $isCustomer==false))
                                                 @include('admin.shared.status-select', ['status' => $product->status])
+                                                @else
+                                                <input type="hidden" name="status" value="0" />
+                                                @endif
                                             </div>
                                             <!-- /.box-body -->
                                         </div>
@@ -250,6 +254,39 @@
                     $('#combination').attr('disabled', true);
                 }
             });
+        });
+        function readURL(input, iscover) {
+            if(iscover===true) {
+                $(".preimgcover").remove();
+            }else {
+                $(".preimg").remove();
+            }
+            let readers = []
+            if (input.files) {
+                for(let i = 0;i < input.files.length;i++) {
+                    let tmpReader = new FileReader();
+
+                    tmpReader.onload = function (e) {
+                        if(iscover===true) {
+                            $('#cover').before('<img class="preimgcover" src="' + e.target.result + '" style="height: 70px;" />');
+                        }else {
+                            $('#image').before('<img class="preimg" src="' + e.target.result + '" style="height: 70px;" />');
+                        }
+                    }
+
+                    tmpReader.readAsDataURL(input.files[i]);
+
+                    readers.push(tmpReader);
+                }
+            }
+        }
+
+        $("#image").change(function(){
+            readURL(this);
+        });
+
+        $("#cover").change(function(){
+            readURL(this, true);
         });
     </script>
 @endsection

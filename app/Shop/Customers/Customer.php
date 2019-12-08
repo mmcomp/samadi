@@ -9,10 +9,11 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Cashier\Billable;
 use Nicolaslopezj\Searchable\SearchableTrait;
+use Laratrust\Traits\LaratrustUserTrait;
 
 class Customer extends Authenticatable
 {
-    use Notifiable, SoftDeletes, SearchableTrait, Billable;
+    use Notifiable, SoftDeletes, SearchableTrait, Billable, LaratrustUserTrait;
 
     /**
      * The attributes that are mass assignable.
