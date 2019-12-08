@@ -1,4 +1,9 @@
 @if(!$products->isEmpty())
+    @php
+    if(!isset($admin)){
+        $admin = $abbas;
+    }
+    @endphp
     <table class="table">
         <thead>
         <tr>

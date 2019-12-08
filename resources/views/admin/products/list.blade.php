@@ -10,7 +10,7 @@
                 <div class="box-body">
                     <h2>Products</h2>
                     @include('layouts.search', ['route' => route('admin.products.index')])
-                    @include('admin.shared.products')
+                    @include('admin.shared.products', ['abbas', $abbas])
                     {{ $products->links() }}
                 </div>
                 <!-- /.box-body -->

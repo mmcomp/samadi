@@ -96,10 +96,34 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $list = $this->productRepo->listProducts('id');
+        $admin = Auth::user();
+        $roles = $admin->roles()->get();
+        $isCustomer = true;
+        foreach($roles as $role) {
+            if($role->name!='customer') {
+                $isCustomer = false;
+            }
+        }
+        if($isCustomer==false) {
+            $list = $this->productRepo->listProducts('id');
+        }else {
+            $list = Product::where('customer_id', $admin->id)->orderBy('id')->get();
+        }
 
-        if (request()->has('q') && request()->input('q') != '') {
+        if (request()->has('q') && request()->input('q') != '' && $isCustomer==false) {
             $list = $this->productRepo->searchProduct(request()->input('q'));
+        }else if(request()->has('q') && request()->input('q') != '') {
+            $q = request()->input('q');
+            $list = Product::where('customer_id', $admin->id)->where(function ($query) use ($q) {
+                $query->where('name_fa', 'like', '%' . $q . '%');
+                $query->orWhere('name_en', 'like', '%' . $q . '%');
+                $query->orWhere('name_ar', 'like', '%' . $q . '%');
+                $query->orWhere('name_tr', 'like', '%' . $q . '%');
+                $query->orWhere('description_fa', 'like', '%' . $q . '%');
+                $query->orWhere('description_en', 'like', '%' . $q . '%');
+                $query->orWhere('description_ar', 'like', '%' . $q . '%');
+                $query->orWhere('description_tr', 'like', '%' . $q . '%');
+            })->orderBy('id')->get();
         }
 
         $products = $list->map(function (Product $item) {
@@ -107,7 +131,9 @@ class ProductController extends Controller
         })->all();
 
         return view('admin.products.list', [
-            'products' => $this->productRepo->paginateArrayResults($products, 25)
+            'products' => $this->productRepo->paginateArrayResults($products, 25),
+            'abbas' => $admin,
+            'isCustomer' => $isCustomer
         ]);
     }
 

@@ -221,10 +221,10 @@
                         <a href="/contact">{{__('app.contactus')}}</a>
                         <a href="/privacy">{{__('app.privacy')}}</a>
                         @if(auth()->check())
-                        <a href="/accounts?tab=profile">{{__('app.profile')}}</a>
-                        <a href="/login">{{__('app.exit')}}</a>
+                        <a href="/admin">{{__('app.profile')}}</a>
+                        <a href="/admin/login">{{__('app.exit')}}</a>
                         @else
-                        <a href="/login">{{__('app.login')}}</a>
+                        <a href="/admin/login">{{__('app.login')}}</a>
                         <a href="/register">{{__('main.register')}}</a>
                         @endif
                     </div>
