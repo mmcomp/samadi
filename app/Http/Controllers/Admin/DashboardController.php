@@ -11,8 +11,9 @@ class DashboardController extends Controller
     {
         $admin = Auth::user();
         if($admin==null) {
-            return redirect('/admin/login');
+            // return redirect('/admin/login');
         }
+        // dd($admin);
         return view('admin.dashboard', ["abbas"=>$admin]);
     }
 }
