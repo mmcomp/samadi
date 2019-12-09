@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Session;
 use App\Shop\Countries\Country;
+use App\Shop\Roles\RoleUser;
 
 class RegisterController extends Controller
 {
@@ -35,7 +36,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/accounts';
+    protected $redirectTo = '/admin';
 
     private $customerRepo;
 
@@ -77,7 +78,13 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return $this->customerRepo->createCustomer($data);
+        $customer = $this->customerRepo->createCustomer($data);
+        $roleUser = new RoleUser;
+        $roleUser->user_id = $customer->id;
+        $roleUser->user_type = 'App\Shop\Customers\Customer';
+        $roleUser->role_id = 4;
+        $roleUser->save();
+        return $customer;
     }
 
     /**
@@ -88,7 +95,7 @@ class RegisterController extends Controller
     {
         $customer = $this->create($request->except('_method', '_token'));
         Auth::login($customer);
-
-        return redirect()->route('accounts');
+        // return redirect()->route('accounts');
+        return redirect('/admin');
     }
 }

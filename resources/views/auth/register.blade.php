@@ -28,12 +28,12 @@
 <!--===============================================================================================-->
 </head>
 <body>
-	
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('images/bg-profile.jpg');">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
 				<form class="login100-form validate-form" method="POST" action="{{ route('register') }}">
 					{{ csrf_field() }}
+					@include('layouts.errors-and-messages')
 					<div  style="text-align: right;font-family: iranyekan;" class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
 						<span style="text-align: right;font-family: iranyekan;" class="label-input100">{{__('main.name')}}</span>
 						<input class="input100" type="text" name="name" placeholder="Type your Name">

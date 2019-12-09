@@ -2,6 +2,16 @@
 
 @section('js')
 <script>
+function removeSelected(iscover) {
+    if(iscover===true) {
+        $(".preimgcover").remove();
+        $('#cover').val('');
+    }else {
+        $(".preimg").remove();
+        $('#image').val('');
+    }
+}
+
 function readURL(input, iscover) {
     if(iscover===true) {
         $(".preimgcover").remove();
@@ -90,11 +100,11 @@ $("#cover").change(function(){
                             <textarea class="form-control" name="description_tr" id="description_tr" rows="5" placeholder="Description">{{ old('description_tr') }}</textarea>
                         </div>
                         <div class="form-group">
-                            <label for="cover">Cover </label><br/>
+                            <label for="cover">Cover </label> <i onclick="removeSelected(true);" class="fa fa-times" style="color: red;"></i><br/>
                             <input type="file" name="cover" id="cover" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="image">Images</label><br/>
+                            <label for="image">Images</label> <i onclick="removeSelected();" class="fa fa-times" style="color: red;"></i><br/>
                             <input type="file" name="image[]" id="image" class="form-control" multiple>
                             <small class="text-warning">You can use ctr (cmd) to select multiple images</small>
                         </div>

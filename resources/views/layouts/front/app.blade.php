@@ -222,7 +222,7 @@
                         <a href="/privacy">{{__('app.privacy')}}</a>
                         @if(auth()->check())
                         <a href="/admin">{{__('app.profile')}}</a>
-                        <a href="/admin/login">{{__('app.exit')}}</a>
+                        <a href="{{ route('admin.logout') }}">{{__('app.exit')}}</a>
                         @else
                         <a href="/admin/login">{{__('app.login')}}</a>
                         <a href="/register">{{__('main.register')}}</a>
