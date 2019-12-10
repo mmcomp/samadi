@@ -234,7 +234,6 @@ class ProductController extends Controller
     public function edit(int $id)
     {
         $admin = Auth::user();
-        $roles = $admin->roles()->get();
         $isCustomer = false;
         if($admin) {
             $roles = $admin->roles()->get();
