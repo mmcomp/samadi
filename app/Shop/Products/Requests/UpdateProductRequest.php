@@ -21,7 +21,7 @@ class UpdateProductRequest extends BaseFormRequest
             'name_ar' => ['required', Rule::unique('products')->ignore($this->segment(3))],
             'name_tr' => ['required', Rule::unique('products')->ignore($this->segment(3))],
             'price' => ['required'],
-            'cover' => ['required', 'file', 'image:png,jpeg,jpg,gif'],
+            // 'cover' => ['required', 'file', 'image:png,jpeg,jpg,gif'],
             'categories' => ['required'],
             'description_fa' => ['required'],
             'description_en' => ['required'],

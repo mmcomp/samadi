@@ -1,9 +1,23 @@
-/*!
- * Bootstrap v3.4.1 (https://getbootstrap.com/)
- * Copyright 2011-2019 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
-/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+/*//////////////////////////////////////////////////////////////////
+[ FONT ]*/
+@font-face {
+  font-family: vazir;
+  src: url('../fonts/vazir.ttf'); 
+}
+@font-face {
+  font-family: vazir-thin;
+  src: url('../fonts/poppins/vazir-thin.ttf'); 
+}
+
+@font-face {
+  font-family: vazir-medium;
+  src: url('../fonts/poppins/Poppins-Medium.ttf'); 
+}
+
+@font-face {
+  font-family: vazir-Bold;
+  src: url('../fonts/poppins/Poppins-Bold.ttf'); 
+}
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;

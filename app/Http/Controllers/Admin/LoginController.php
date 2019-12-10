@@ -61,14 +61,14 @@ class LoginController extends Controller
             return $this->sendLoginResponse($request);
         }
 
-        // if (auth()->guard('web')->attempt($details)) {
-        //     return $this->sendLoginResponse($request);
-        // }
-        $customer = Customer::where('email', $details['email'])->first();
-        if($customer && password_verify($details['password'], $customer->password)) {
-            Auth::loginUsingId($customer->id);
+        if (auth()->guard('web')->attempt($details)) {
             return $this->sendLoginResponse($request);
         }
+        // $customer = Customer::where('email', $details['email'])->first();
+        // if($customer && password_verify($details['password'], $customer->password)) {
+        //     Auth::loginUsingId($customer->id);
+        //     return $this->sendLoginResponse($request);
+        // }
 
         // If the login attempt was unsuccessful we will increment the number of attempts
         // to login and redirect the user back to the login form. Of course, when this

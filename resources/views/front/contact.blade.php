@@ -11,7 +11,7 @@
   body {
     margin: 0;
     background-color: #f1f1f1;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: vazir, Helvetica, sans-serif;
   }
 
   #navbar {
@@ -80,7 +80,7 @@
 
           <br>
           <div
-            style="backgrund-color:#00000087;text-align: JUSTIFY;line-height:220%;direction:RTL;width: 90%;font-size: 20PX;padding-right: 5%;margin-left: 10%;">
+            style="backgrund-color:#00000087;text-align: JUSTIFY;line-height:220%;direction:RTL;color: whitesmoke;width: 90%;font-size: 20PX;padding-right: 5%;margin-left: 10%;">
             <br> <br> <i class="fa fa-barcode" style="font-size: 45px;vertical-align: bottom;"></i> <span class="fade"
               style="color: red;font-size: 22px;padding-left: 15px;padding-right: 15px;"> حضور
               مداوم‌ در نمایشگاه های بین المللی :<br></span>با ورود فناوری به دنیای آدمی شاهد جهشی بزرگ

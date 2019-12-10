@@ -11,7 +11,7 @@
   body {
     margin: 0;
     background-color: #f1f1f1;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: vazir, Helvetica, sans-serif;
   }
 
   #navbar {

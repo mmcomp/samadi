@@ -19,6 +19,7 @@ use App\Shop\OrderStatuses\Repositories\OrderStatusRepository;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -72,15 +73,42 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $list = $this->orderRepo->listOrders('created_at', 'desc');
+        $admin = Auth::user();
+        $isCustomer = false;
+        if($admin) {
+            $roles = $admin->roles()->get();
+            $isCustomer = true;
+            foreach($roles as $role) {
+                if($role->name!='customer') {
+                    $isCustomer = false;
+                }
+            }
+        }
+        if($isCustomer) {
+            $list = Order::where('customer_id', $admin->id)->orderBy('created_at', 'desc')->get();
+        }else {
+            $list = $this->orderRepo->listOrders('created_at', 'desc');
+        }
 
         if (request()->has('q')) {
-            $list = $this->orderRepo->searchOrder(request()->input('q') ?? '');
+            if($isCustomer) {
+                $q = request()->input('q') ?? '';
+                $list = Order::where('customer_id', $admin->id)->where(function($query) use ($q) {
+                    $query->where('reference', 'like', '%' . $q . '%');
+                    $query->orWhere('tracking_number', 'like', '%' . $q . '%');
+                })->orderBy('created_at', 'desc')->get();
+            }else{
+                $list = $this->orderRepo->searchOrder(request()->input('q') ?? '');
+            }
         }
 
         $orders = $this->orderRepo->paginateArrayResults($this->transFormOrder($list), 10);
 
-        return view('admin.orders.list', ['orders' => $orders]);
+        return view('admin.orders.list', [
+            'orders' => $orders,
+            'abbas' => $admin,
+            'isCustomer' => $isCustomer
+        ]);
     }
 
     /**

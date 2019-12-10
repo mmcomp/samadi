@@ -3,17 +3,21 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class DashboardController extends Controller
 {
     public function index()
     {
-        $admin = Auth::user();
-        if($admin==null) {
-            // return redirect('/admin/login');
+        if (!auth()->guard('employee')->check() && !auth()->guard('web')->check()) {
+            return redirect('/admin/login');
         }
-        // dd($admin);
-        return view('admin.dashboard', ["abbas"=>$admin]);
+        if(auth()->guard('employee')->check()) {
+            $abbas = auth()->guard('employee')->user();
+        }else {
+            $abbas = auth()->guard('web')->user();
+        }
+
+        return view('admin.dashboard', ["abbas"=>$abbas]);
     }
 }

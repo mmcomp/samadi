@@ -1,13 +1,12 @@
-
-
-
-
 /*//////////////////////////////////////////////////////////////////
 [ FONT ]*/
-
 @font-face {
-  font-family: iranyekan;
-  src: url('../fonts/poppins/iranyekan.ttf'); 
+  font-family: vazir;
+  src: url('../fonts/vazir.ttf'); 
+}
+@font-face {
+  font-family: Poppins-Regular;
+  src: url('../fonts/poppins/Poppins-Regular.ttf'); 
 }
 
 @font-face {
@@ -35,17 +34,17 @@
 	margin: 0px; 
 	padding: 0px; 
   box-sizing: border-box;
-  font-family: iranyekan;
+  font-family: vazir;
 }
 
 body, html {
 	height: 100%;
-	font-family: iranyekan, sans-serif;
+	font-family: vazir, sans-serif;
 }
 
 /*---------------------------------------------*/
 a {
-	font-family: iranyekan;
+	font-family: vazir;
 	font-size: 14px;
 	line-height: 1.7;
 	color: #ffffffb5;
@@ -71,7 +70,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 p {
-	font-family: iranyekan;
+	font-family: vazir;
 	font-size: 14px;
 	line-height: 1.7;
 	color: #ffffffb5;
@@ -137,14 +136,14 @@ iframe {
 /*//////////////////////////////////////////////////////////////////
 [ Utility ]*/
 .txt1 {
-  font-family: iranyekan;
+  font-family: vazir;
   font-size: 14px;
   line-height: 1.5;
   color: #ffffffb5;
 }
 
 .txt2 {
-  font-family: iranyekan;
+  font-family: vazir;
   font-size: 14px;
   line-height: 1.5;
   color: white;
@@ -217,7 +216,7 @@ iframe {
 }
 
 .label-input100 {
-  font-family: iranyekan;
+  font-family: vazir;
   font-size: 14px;
   color: white;
   line-height: 1.5;
@@ -354,7 +353,7 @@ iframe {
 }
 
 .login100-form-btn {
-  font-family: iranyekan;;
+  font-family: vazir;;
   font-size: 16px;
   color: #fff;
   line-height: 1.2;
@@ -402,7 +401,7 @@ iframe {
   right: 2px;
   pointer-events: none;
 
-  font-family: iranyekan;
+  font-family: vazir;
   color: #c80000;
   font-size: 13px;
   line-height: 1.4;

@@ -22,6 +22,7 @@
         <ul class="sidebar-menu">
             <li class="header">HOME</li>
             <li><a href="{{ route('admin.dashboard') }}"> <i class="fa fa-home"></i> Home</a></li>
+            <li><a href="{{ route('home') }}"> <i class="fa fa-window-maximize"></i> Site</a></li>
             <li class="header">SELL</li>
             <li class="treeview @if(request()->segment(2) == 'products' || request()->segment(2) == 'attributes' || request()->segment(2) == 'brands') active @endif">
                 <a href="#">
@@ -108,7 +109,7 @@
                     <li><a href="{{ route('admin.orders.index') }}"><i class="fa fa-circle-o"></i> List orders</a></li>
                 </ul>
             </li>
-            <li class="treeview @if(request()->segment(2) == 'order-statuses') active @endif">
+            <!-- <li class="treeview @if(request()->segment(2) == 'order-statuses') active @endif">
                 <a href="#">
                     <i class="fa fa-anchor"></i> <span>Order Statuses</span>
                     <span class="pull-right-container">
@@ -119,7 +120,7 @@
                     <li><a href="{{ route('admin.order-statuses.index') }}"><i class="fa fa-circle-o"></i> List order statuses</a></li>
                     <li><a href="{{ route('admin.order-statuses.create') }}"><i class="fa fa-plus"></i> Create order status</a></li>
                 </ul>
-            </li>
+            </li> -->
             <!-- <li class="header">DELIVERY</li>
             <li class="treeview @if(request()->segment(2) == 'couriers') active @endif">
                 <a href="#">

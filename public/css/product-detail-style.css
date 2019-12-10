@@ -1,4 +1,23 @@
+/*//////////////////////////////////////////////////////////////////
+[ FONT ]*/
+@font-face {
+  font-family: vazir;
+  src: url('../fonts/vazir.ttf'); 
+}
+@font-face {
+  font-family: vazir-thin;
+  src: url('../fonts/poppins/vazir-thin.ttf'); 
+}
 
+@font-face {
+  font-family: vazir-medium;
+  src: url('../fonts/poppins/Poppins-Medium.ttf'); 
+}
+
+@font-face {
+  font-family: vazir-Bold;
+  src: url('../fonts/poppins/Poppins-Bold.ttf'); 
+}
 #art-main
 {
    background: azure;

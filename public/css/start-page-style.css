@@ -1,5 +1,24 @@
-/* Created by Artisteer v4.1.0.60046 */
+/* Created by Parsian Dadepardaz Radman pdr.co.ir */
+/*//////////////////////////////////////////////////////////////////
+[ FONT ]*/
+@font-face {
+  font-family: vazir;
+  src: url('../fonts/vazir.ttf'); 
+}
+@font-face {
+  font-family: vazir-thin;
+  src: url('../fonts/poppins/vazir-thin.ttf'); 
+}
 
+@font-face {
+  font-family: vazir-medium;
+  src: url('../fonts/poppins/Poppins-Medium.ttf'); 
+}
+
+@font-face {
+  font-family: vazir-Bold;
+  src: url('../fonts/poppins/Poppins-Bold.ttf'); 
+}
 #art-main
 {
    background: #FFFFFF url('images/start-page-bg.jpg') top center no-repeat fixed;

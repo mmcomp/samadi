@@ -21,6 +21,7 @@ class CreateProductRequest extends BaseFormRequest
             'name_tr' => ['required', 'unique:products'],
             'price' => ['required'],
             'cover' => ['required', 'file', 'image:png,jpeg,jpg,gif'],
+            'file_path' => ['required'],
             'categories' => ['required'],
             'description_fa' => ['required'],
             'description_en' => ['required'],

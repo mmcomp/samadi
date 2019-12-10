@@ -3,7 +3,7 @@
    background: #FFFFFF url('images/page.jpeg') top center fixed;
    margin:0 auto;
    font-size: 13px;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    font-weight: normal;
    font-style: normal;
    position: relative;
@@ -17,7 +17,7 @@
 table, ul.art-hmenu
 {
    font-size: 13px;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    font-weight: normal;
    font-style: normal;
 }
@@ -76,7 +76,7 @@ ul.art-vmenu a
 .art-postcontent a:hover,
 .art-postcontent a.hovered
 {
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    /* line-height: 175%;  */  
 }
 
@@ -98,14 +98,14 @@ ul.art-vmenu a
 .art-postheader, .art-postheader a, .art-postheader a:link, .art-postheader a:visited, .art-postheader a:hover
 {
    font-size: 18px;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    font-weight: normal;
    font-style: normal;
 }
 
 .art-postcontent a, .art-postcontent a:link
 {
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    text-decoration: none;
    color: #FAD189;
    font-size: 16px;
@@ -114,14 +114,14 @@ ul.art-vmenu a
 
 .art-postcontent a:visited, .art-postcontent a.visited
 {
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    text-decoration: none;
    color: #333333;
 }
 
 .art-postcontent  a:hover, .art-postcontent a.hover
 {
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    text-decoration: underline;
    color: #FCE0B1;
 }
@@ -131,20 +131,20 @@ ul.art-vmenu a
    color: #F98B90;
    margin: 10px 0 0;
    font-size: 16px;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
 }
 
 .art-blockcontent h1
 {
    margin: 10px 0 0;
    font-size: 18px;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
 }
 
 .art-postcontent h1 a, .art-postcontent h1 a:link, .art-postcontent h1 a:hover, .art-postcontent h1 a:visited, .art-blockcontent h1 a, .art-blockcontent h1 a:link, .art-blockcontent h1 a:hover, .art-blockcontent h1 a:visited 
 {
    font-size: 18px;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
 }
 
 .art-postcontent h2
@@ -152,20 +152,20 @@ ul.art-vmenu a
    color: #F98B90;
    margin: 10px 0 0;
    font-size: 22px;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
 }
 
 .art-blockcontent h2
 {
    margin: 10px 0 0;
    font-size: 22px;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
 }
 
 .art-postcontent h2 a, .art-postcontent h2 a:link, .art-postcontent h2 a:hover, .art-postcontent h2 a:visited, .art-blockcontent h2 a, .art-blockcontent h2 a:link, .art-blockcontent h2 a:hover, .art-blockcontent h2 a:visited 
 {
    font-size: 22px;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
 }
 
 .art-postcontent h3
@@ -173,20 +173,20 @@ ul.art-vmenu a
    color: #F98B90;
    margin: 10px 0 0;
    font-size: 20px;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
 }
 
 .art-blockcontent h3
 {
    margin: 10px 0 0;
    font-size: 20px;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
 }
 
 .art-postcontent h3 a, .art-postcontent h3 a:link, .art-postcontent h3 a:hover, .art-postcontent h3 a:visited, .art-blockcontent h3 a, .art-blockcontent h3 a:link, .art-blockcontent h3 a:hover, .art-blockcontent h3 a:visited 
 {
    font-size: 20px;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
 }
 
 .art-postcontent h4
@@ -194,20 +194,20 @@ ul.art-vmenu a
    color: #FFFFFF;
    margin: 10px 0 0;
    font-size: 18px;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
 }
 
 .art-blockcontent h4
 {
    margin: 10px 0 0;
    font-size: 18px;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
 }
 
 .art-postcontent h4 a, .art-postcontent h4 a:link, .art-postcontent h4 a:hover, .art-postcontent h4 a:visited, .art-blockcontent h4 a, .art-blockcontent h4 a:link, .art-blockcontent h4 a:hover, .art-blockcontent h4 a:visited 
 {
    font-size: 18px;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
 }
 
 .art-postcontent h5
@@ -215,40 +215,40 @@ ul.art-vmenu a
    color: #FEE7E8;
    margin: 10px 0 0;
    font-size: 15px;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
 }
 
 .art-blockcontent h5
 {
    margin: 10px 0 0;
    font-size: 15px;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
 }
 
 .art-postcontent h5 a, .art-postcontent h5 a:link, .art-postcontent h5 a:hover, .art-postcontent h5 a:visited, .art-blockcontent h5 a, .art-blockcontent h5 a:link, .art-blockcontent h5 a:hover, .art-blockcontent h5 a:visited 
 {
    font-size: 15px;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
 }
 
 .art-postcontent h6
 {
    margin: 10px 0 0;
    font-size: 13px;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
 }
 
 .art-blockcontent h6
 {
    margin: 10px 0 0;
    font-size: 12px;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
 }
 
 .art-postcontent h6 a, .art-postcontent h6 a:link, .art-postcontent h6 a:hover, .art-postcontent h6 a:visited, .art-blockcontent h6 a, .art-blockcontent h6 a:link, .art-blockcontent h6 a:hover, .art-blockcontent h6 a:visited 
 {
    font-size: 13px;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
 }
 
 header, footer, article, nav, #art-hmenu-bg, .art-sheet, .art-hmenu a, .art-vmenu a, .art-slidenavigator > a, .art-checkbox:before, .art-radiobutton:before
@@ -480,7 +480,7 @@ vertical-align: middle;
 .art-headline a:hover
 {
 font-size: 22px;
-font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
 font-weight: normal;
 font-style: normal;
 text-decoration: none;
@@ -706,7 +706,7 @@ ul.art-hmenu>li>a
 .art-hmenu>li>a:hover
 {
    font-size: 13px;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    font-weight: normal;
    font-style: normal;
    text-decoration: none;
@@ -789,7 +789,7 @@ ul.art-hmenu li li ul>li:last-child
    line-height: 27px;
    color: #79060C;
    font-size: 13px;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    text-decoration: none;
    margin:0;
 }
@@ -803,7 +803,7 @@ ul.art-hmenu li li ul>li:last-child
    line-height: 27px;
    color: #79060C;
    font-size: 13px;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    text-decoration: none;
    margin:0;
 }
@@ -999,7 +999,7 @@ div.art-block img
 {
    color: #F88187;
    font-size: 20px;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    font-weight: normal;
    font-style: normal;
    margin: 0 5px;
@@ -1012,7 +1012,7 @@ div.art-block img
    margin:0 auto;
    color: #F9868C;
    font-size: 13px;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    line-height: 175%;
 }
 .art-blockcontent table,
@@ -1024,7 +1024,7 @@ div.art-block img
 {
    color: #F9868C;
    font-size: 13px;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    line-height: 175%;
 }
 
@@ -1036,20 +1036,20 @@ div.art-block img
 .art-blockcontent a, .art-blockcontent a:link
 {
    color: #808080;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
 }
 
 .art-blockcontent a:visited, .art-blockcontent a.visited
 {
    color: #F87C82;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    text-decoration: none;
 }
 
 .art-blockcontent a:hover, .art-blockcontent a.hover
 {
    color: #F7B440;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    text-decoration: none;
 }
 .art-block ul>li:before
@@ -1077,7 +1077,7 @@ div.art-block img
 .art-block li
 {
    font-size: 13px;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    line-height: 175%;
    color: #FBADB1;
    margin: 5px 0 0 10px;
@@ -1109,7 +1109,7 @@ button.art-button
 {
    text-decoration: none;
    font-size: 13px;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    font-weight: normal;
    font-style: normal;
    position:relative;
@@ -1144,7 +1144,7 @@ input, select, textarea, a.art-search-button span
 {
    vertical-align: middle;
    font-size: 18px;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    font-weight: normal;
    font-style: normal;
 }
@@ -1225,7 +1225,7 @@ input[type="text"], input[type="password"], input[type="email"], input[type="url
    padding: 2px 0;
    color: #BE996A !important;
    font-size: 13px;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    font-weight: normal;
    font-style: normal;
    text-shadow: none;
@@ -1239,7 +1239,7 @@ input.art-error, textarea.art-error
 input.art-error, textarea.art-error {
    color: #FCE2B6 !important;
    font-size: 13px;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    font-weight: normal;
    font-style: normal;
 }
@@ -1258,7 +1258,7 @@ form.art-search input[type="text"]
    box-sizing: border-box;
    color: #7A4F05 !important;
    font-size: 13px;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    font-weight: normal;
    font-style: normal;
 }
@@ -1380,7 +1380,7 @@ label.art-radiobutton
 {
    cursor: pointer;
    font-size: 13px;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    font-weight: normal;
    font-style: normal;
    line-height: 12px;
@@ -1463,7 +1463,7 @@ label.art-radiobutton.hovered:before
 {
    padding:10px 0;
    color: #FCC0C3;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
 }
 
 .art-comment
@@ -1479,7 +1479,7 @@ label.art-radiobutton.hovered:before
 .art-comment-header
 {
    color: #D1D1D1;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    line-height: 100%;
 }
 
@@ -1490,13 +1490,13 @@ label.art-radiobutton.hovered:before
 .art-comment-header a:hover,
 .art-comment-header a.hovered
 {
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    line-height: 100%;
 }
 
 .art-comment-header a, .art-comment-header a:link
 {
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    font-weight: bold;
    font-style: normal;
    color: #FFFFFF;
@@ -1504,13 +1504,13 @@ label.art-radiobutton.hovered:before
 
 .art-comment-header a:visited, .art-comment-header a.visited
 {
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    color: #FFFFFF;
 }
 
 .art-comment-header a:hover,  .art-comment-header a.hovered
 {
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    color: #FFFFFF;
 }
 
@@ -1521,24 +1521,24 @@ label.art-radiobutton.hovered:before
 .art-comment-content a:hover,
 .art-comment-content a.hovered
 {
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
 }
 
 .art-comment-content a, .art-comment-content a:link
 {
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    color: #FEF5E7;
 }
 
 .art-comment-content a:visited, .art-comment-content a.visited
 {
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    color: #FDD3D5;
 }
 
 .art-comment-content a:hover,  .art-comment-content a.hovered
 {
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    color: #FEF5E7;
 }
 
@@ -1595,7 +1595,7 @@ label.art-radiobutton.hovered:before
 .art-pager .active
 {
    line-height: normal;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    text-decoration: none;
    color: #212121
 ;
@@ -1800,7 +1800,7 @@ pre
    color: #FFFFFF;
    margin: 5px 10px;
    font-size: 24px;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    font-weight: normal;
    font-style: normal;
 }
@@ -1813,14 +1813,14 @@ pre
 .art-postheader a.hovered
 {
    font-size: 24px;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    font-weight: normal;
    font-style: normal;
 }
 
 .art-postheader a, .art-postheader a:link
 {
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    text-decoration: none;
    text-align: left;
    color: #FCDEAC;
@@ -1828,7 +1828,7 @@ pre
 
 .art-postheader a:visited, .art-postheader a.visited
 {
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    text-decoration: none;
    text-align: left;
    color: #FCCACC;
@@ -1836,7 +1836,7 @@ pre
 
 .art-postheader a:hover,  .art-postheader a.hovered
 {
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    text-decoration: none;
    text-align: left;
    color: #F7B036;
@@ -1848,7 +1848,7 @@ pre
 .art-postheadericons a:visited,
 .art-postheadericons a:hover
 {
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    color: #FDD3D5;
 }
 
@@ -1860,14 +1860,14 @@ pre
 
 .art-postheadericons a, .art-postheadericons a:link
 {
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    text-decoration: none;
    color: #F9C771;
 }
 
 .art-postheadericons a:visited, .art-postheadericons a.visited
 {
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    font-weight: normal;
    font-style: normal;
    text-decoration: none;
@@ -1876,7 +1876,7 @@ pre
 
 .art-postheadericons a:hover, .art-postheadericons a.hover
 {
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    font-weight: normal;
    font-style: normal;
    text-decoration: underline;
@@ -1965,7 +1965,7 @@ pre
 
 .art-postcontent li, .art-post li, .art-textblock li
 {
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    color: #C7C7C7;
    margin: 3px 0 0 11px;
 }
@@ -2027,7 +2027,7 @@ blockquote
    padding:10px 47px 10px 10px;
    margin:10px 10px 10px 50px;
    color: #570509;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    font-weight: normal;
    font-style: italic;
    text-align: left;
@@ -2041,7 +2041,7 @@ blockquote a:visited, .art-postcontent blockquote a:visited, .art-blockcontent b
 blockquote a:hover, .art-postcontent blockquote a:hover, .art-blockcontent blockquote a:hover, .art-footer blockquote a:hover
 {
    color: #570509;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    font-weight: normal;
    font-style: italic;
    text-align: left;
@@ -2063,7 +2063,7 @@ blockquote p,
 .art-postfootericons a:visited,
 .art-postfootericons a:hover
 {
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    color: #FDD3D5;
 }
 
@@ -2075,21 +2075,21 @@ blockquote p,
 
 .art-postfootericons a, .art-postfootericons a:link
 {
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    text-decoration: none;
    color: #F9C771;
 }
 
 .art-postfootericons a:visited, .art-postfootericons a.visited
 {
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    text-decoration: none;
    color: #B5B5B5;
 }
 
 .art-postfootericons a:hover, .art-postfootericons a.hover
 {
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    text-decoration: none;
    color: #8A8A8A;
 }
@@ -2108,7 +2108,7 @@ blockquote p,
    position: relative;
    color: #FFFFFF;
    font-size: 13px;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    line-height: 175%;
    text-align: right;
    padding: 0;
@@ -2124,7 +2124,7 @@ blockquote p,
 {
    color: #FFFFFF;
    font-size: 13px;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    line-height: 175%;
 }
 
@@ -2138,58 +2138,58 @@ blockquote p,
 .art-footer a:link
 {
    color: #986206;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    text-decoration: none;
 }
 
 .art-footer a:visited
 {
    color: #986206;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    text-decoration: none;
 }
 
 .art-footer a:hover
 {
    color: #F59F0A;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    text-decoration: underline;
 }
 
 .art-footer h1
 {
    color: #A6A6A6;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
 }
 
 .art-footer h2
 {
    color: #B5B5B5;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
 }
 
 .art-footer h3
 {
    color: #F6AC2C;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
 }
 
 .art-footer h4
 {
    color: #F76E75;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
 }
 
 .art-footer h5
 {
    color: #F76E75;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
 }
 
 .art-footer h6
 {
    color: #F76E75;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
 }
 
 .art-footer img
@@ -2260,7 +2260,7 @@ blockquote p,
 .art-footer li
 {
    font-size: 13px;
-   font-family: IRANYekan, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+   font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    color: #FCDEAC;
 }
 
