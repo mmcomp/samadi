@@ -15,7 +15,7 @@
                             <td class="col-md-2">Name</td>
                             <td class="col-md-3">Description</td>
                             <td class="col-md-3">Cover</td>
-                            <td class="col-md-2">Quantity</td>
+                            <!-- <td class="col-md-2">Quantity</td> -->
                             <td class="col-md-2">Price</td>
                         </tr>
                         </thead>
@@ -35,10 +35,10 @@
                                 </td>
                                 <td>
                                     @if(isset($product->cover))
-                                        <img src="{{ asset("storage/$product->cover") }}" class="img-responsive" alt="">
+                                        <img src="/storage/{{ $product->cover }}" class="img-responsive" alt="">
                                     @endif
                                 </td>
-                                <td>{{ $product->quantity }}</td>
+                                <!-- <td>{{ $product->quantity }}</!--> -->
                                 <td>{{ config('cart.currency') }} {{ $product->price }}</td>
                             </tr>
                         </tbody>
