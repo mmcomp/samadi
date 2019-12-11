@@ -28,6 +28,7 @@ Route::group(['prefix' => 'admin', /*'middleware' => ['employee'],*/ 'as' => 'ad
     Route::group([/*'middleware' => ['role:admin|superadmin|clerk, guard:employee']*/], function () {
             Route::any('/', 'DashboardController@index')->name('dashboard');
             Route::namespace('Products')->group(function () {
+                Route::get('/products/bookmarks', 'ProductController@bookmarks')->name('product.bookmark');
                 Route::resource('products', 'ProductController');
                 Route::get('remove-image-product', 'ProductController@removeImage')->name('product.remove.image');
                 Route::get('remove-image-thumb', 'ProductController@removeThumbnail')->name('product.remove.thumb');
