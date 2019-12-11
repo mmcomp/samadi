@@ -19,3 +19,4 @@ storage/app/public/storage
 \.php_cs\.cache
 /public/storage
 /storage/framework
+/storage/logs
