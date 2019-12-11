@@ -76,9 +76,9 @@ class HomeController
         $allCats = Category::all();
         //\Categories
         // Products
-        $newProducts = $this->productRepo->newProducts(6);
-        $topSaleProducts = $this->productRepo->topSaleProducts();
-        $topWorkProducts = $this->productRepo->topWorkProducts();
+        $newProducts = $this->productRepo->newProducts(5);
+        $topSaleProducts = $this->productRepo->topSaleProducts(5);
+        $topWorkProducts = $this->productRepo->topWorkProducts(5);
         //\Products
         // News
         $topNews = News::orderBy('updated_at', 'desc')->limit(10)->get();

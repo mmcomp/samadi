@@ -42,7 +42,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
      */
     public function topWorkProducts(int $count = 10) : Collection
     {
-        return $this->model->orderBy('work_amount', 'desc')->limit($count)->get();
+        return $this->model->where('status', 1)->orderBy('work_amount', 'desc')->limit($count)->get();
     }
 
     /**
@@ -53,7 +53,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
      */
     public function topSaleProducts(int $count = 10) : Collection
     {
-        return $this->model->orderBy('sale_count', 'desc')->limit($count)->get();
+        return $this->model->where('status', 1)->orderBy('sale_count', 'desc')->limit($count)->get();
     }
 
     /**
@@ -64,7 +64,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
      */
     public function newProducts(int $count = 10) : Collection
     {
-        return $this->model->orderBy('created_at', 'desc')->limit($count)->get();
+        return $this->model->where('status', 1)->orderBy('created_at', 'desc')->limit($count)->get();
     }
 
     /**

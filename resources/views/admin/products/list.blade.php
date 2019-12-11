@@ -16,6 +16,10 @@
                 <!-- /.box-body -->
             </div>
             <!-- /.box -->
+        @else
+            <h3>
+            No Products
+            </h3>
         @endif
 
     </section>
