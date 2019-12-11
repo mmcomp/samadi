@@ -17,4 +17,5 @@ Envoy.blade.php
 /coverage
 storage/app/public/storage
 \.php_cs\.cache
-public/storage
+/public/storage
+/storage/framework
