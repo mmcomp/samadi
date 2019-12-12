@@ -26,7 +26,8 @@ class Customer extends Authenticatable
         'image_path',
         'email',
         'password',
-        'status'
+        'status',
+        'mobile',
     ];
 
     /**

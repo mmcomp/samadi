@@ -10,6 +10,7 @@ use App\Shop\Categories\CategoryProduct;
 use App\Shop\News\News;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use App\Shop\Customers\Customer;
 
 class HomeController
 {
@@ -131,5 +132,18 @@ class HomeController
     public function privacy(Request $request)
     {
         return view('front.privacy');
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function smsVeify(Request $request, $id, $code)
+    {
+        $customer = Customer::where('id', $id)->where('code', $code)->first();
+        if($customer) {
+            $customer->verfied = 1;
+            $customer->save();
+        }
+        return view('auth.admin.sms', ["customer"=>$customer]);
     }
 }

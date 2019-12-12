@@ -38,7 +38,9 @@
 <div class="wrapper">
     @if(!isset($admin))
     @php
-    $admin = $abbas;
+    if(isset($abbas)) {
+        $admin = $abbas;
+    }
     @endphp
     @endif
 

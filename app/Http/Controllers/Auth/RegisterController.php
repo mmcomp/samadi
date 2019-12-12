@@ -93,8 +93,40 @@ class RegisterController extends Controller
      */
     public function register(RegisterCustomerRequest $request)
     {
+        function generateRandomString($length = 4) {
+            $characters = '0123456789';
+            $charactersLength = strlen($characters);
+            $randomString = '';
+            for ($i = 0; $i < $length; $i++) {
+                $randomString .= $characters[rand(0, $charactersLength - 1)];
+            }
+            return $randomString;
+        }
         $customer = $this->create($request->except('_method', '_token'));
         Auth::login($customer);
+        $code = generateRandomString();
+        $customer->code = $code;
+        $customer->save();
+        try{
+            $client = new \SoapClient('http://sw5p80.pdr.co.ir/?wsdl', array('encoding'=>'UTF-8'));
+            $parameters['uUsername'] = "samadi";
+            $parameters['uPassword'] = "2235948";
+            $parameters['uNumber'] = "50001900500019";
+            $parameters['uCellphones'] = $customer->mobile;
+            $parameters['uMessage'] = 'پیوه ژن' . "\n" . 'تاییدیه تلفن همراه' . "\n" . route('smsverify', ["id"=>$customer->id, "code"=>$code]);
+            $parameters['uFarsi'] = false;
+            $parameters['uTopic'] = false;
+            $parameters['uFlash'] = false;
+            $parameters['uUDH'] = '';
+            $res = $client->doSendSMS($parameters);
+            // if(strpos($res->doSendSMSResult,'Send OK') === 0){
+            //   echo 'OK : '.$res->doSendSMSResult;
+            // }else{
+            //   echo 'ER : '.$res->doSendSMSResult;
+            // }
+        }catch(Exception $e) {
+            // echo 'Caught exception: ',  $e->getMessage(), "\n";
+        }
         // return redirect()->route('accounts');
         return redirect('/admin');
     }

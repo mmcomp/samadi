@@ -51,7 +51,6 @@ class CustomerRepository extends BaseRepository implements CustomerRepositoryInt
     {
         try {
             $data = collect($params)->except('password')->all();
-
             $customer = new Customer($data);
             if (isset($params['password'])) {
                 $customer->password = bcrypt($params['password']);
