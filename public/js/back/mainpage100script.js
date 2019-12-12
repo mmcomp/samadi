@@ -1,3 +1,20 @@
+/* Created by Artisteer v4.1.0.60046 */
+/*jshint forin:true, noarg:true, noempty:true, eqeqeq:true, bitwise:true, strict:true, undef:true, curly:false, browser:true, jquery:false */
+/*global jQuery BackgroundHelper */
+
+// css helper
+var expanded = false;
+
+function showCheckboxes() {
+  var checkboxes = document.getElementById("checkboxes");
+  if (!expanded) {
+    checkboxes.style.display = "block";
+    expanded = true;
+  } else {
+    checkboxes.style.display = "none";
+    expanded = false;
+  }
+}
 browser = function ($) {
     'use strict';
     var data = [

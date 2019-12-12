@@ -1165,7 +1165,7 @@ input, select, textarea, a.art-search-button span
    vertical-align: middle;
    font-size: 18px;
    font-family: vazir, Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
-   font-weight: bold;
+   font-weight: normal;
    font-style: normal;
 }
 
@@ -1176,7 +1176,7 @@ input, select, textarea, a.art-search-button span
 
 input.art-button
 {
-
+   float: none !important;
 }
 
 .art-button.active, .art-button.active:hover

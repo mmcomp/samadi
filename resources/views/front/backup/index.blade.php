@@ -167,7 +167,7 @@
                                     </button>
                                     <!-- <div class="overSelect"></div> -->
                                 </div>
-                                <!-- <div style="line-height:3rm;text-align:right;padding:15px;font-size: 17px;border-bottom-left-radius: 25px;BORDER-COLOR: #744e1c;border-top-right-radius: 25px;contain: layout;font-family:iranyekan;background-color:rgba(255, 255, 255, 0.73);margin-right: 18%;margin-top:3px;width:15%;color: black;" id="checkboxes">
+                                <!-- <div style="line-height:3rm;text-align:right;padding:15px;font-size: 17px;border-bottom-left-radius: 25px;BORDER-COLOR: #744e1c;border-top-right-radius: 25px;contain: layout;font-family:vazir;background-color:rgba(255, 255, 255, 0.73);margin-right: 18%;margin-top:3px;width:15%;color: black;" id="checkboxes">
                                     <label for="free">
                                         <input
                                             style="border-style: solid;border-width: 2px;border:#2E2314;font-size: 25px;"
@@ -202,29 +202,56 @@
                 </div>
             </div>
             @if($isSearch)
-            <div style="background-color: white;">
+            <!-- <div style="background-color: white;">
                 <h3 style="text-align: center;">
                     {{__('app.search_results')}} «{{$search}}»
                 </h3>
                 @foreach($searchResults as $searchRes)
                 <div style="text-align: right;color: black;">
-                    <img src="/storage/{{ $searchRes->cover }}" style="height: 100px;" />
                     <a href="/product/{{ $searchRes->id }}" target="_blank">
-                    <span style="font-size: 40px;">
-                    {{ $searchRes->{'name_' . $locale} }}
-                    </span>
+                    <img src="/storage/{{ $searchRes->cover }}" style="height: 100px;" />
                     </a>
                 </div>
                 @endforeach
+            </div> -->
+            <div class="art-content-layout layout-item-2">
+                <div class="art-content-layout-row">
+                    <div class="art-layout-cell layout-item-3" style="width: 100%">
+                        <h1 style="text-align: center;"><span style="font-family: 'vazir';"><br></span></h1>
+                        <h1 style="text-align: center;">
+                            <span style="font-family: 'vazir'; color: #000000;">
+                                {{__('app.search_results')}} «{{$search}}»
+                            </span>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+            <div class="art-content-layout layout-item-0">
+                <div class="art-content-layout-row">
+                    @foreach($searchResults as $newProduct)
+                    <div class="art-layout-cell layout-item-4" style="width: 20%">
+                        <p>
+                            <a href="/product/{{ $newProduct->id }}">
+                                @if($newProduct->cover!=null && $newProduct->cover!='')
+                                <img width="100%" height="100%" alt="{{ $newProduct->{'name_' . $locale} }}" class="fade" src="/storage/{{ $newProduct->cover }}">
+                                @else
+                                <img width="100%" height="100%" alt="{{ $newProduct->{'name_' . $locale} }}" class="fade" src="/images/11-1-copy.jpg">
+                                @endif
+                            </a>
+                            <br>
+                        </p>
+                    </div>
+                    @endforeach
+                </div>
             </div>
             @endif
             <!-- new products -->
             <div class="art-content-layout layout-item-2">
                 <div class="art-content-layout-row">
                     <div class="art-layout-cell layout-item-3" style="width: 100%">
-                        <h1 style="text-align: center;"><span style="font-family: 'iranYekan';"><br></span></h1>
+                        <h1 style="text-align: center;"><span style="font-family: 'vazir';"><br></span></h1>
                         <h1 style="text-align: center;">
-                            <span style="font-family: 'iranYekan'; color: #000000;">
+                            <span style="font-family: 'vazir'; color: #000000;">
                                 {{__('app.new_products')}}
                             </span>
                         </h1>
@@ -265,7 +292,7 @@
                         <p style="text-align: center;"><span
                                 style="color: rgb(92, 70, 40); font-size: 16px;"><br></span></p>
                         <p style="text-align: center;">
-                            <span style="font-family: IRANYekan;">
+                            <span style="font-family: vazir;">
                                 <span
                                     style="font-size: 16px; color: rgb(252, 230, 191); text-shadow: rgb(246, 172, 44) 0px 0px 25px;">---
                                     &nbsp;
@@ -309,9 +336,9 @@
                 <div class="art-content-layout-row">
                     <div class="art-layout-cell layout-item-3" style="width: 100%">
                         <h1 style="text-align: center;"><span
-                                style="color: rgb(67, 104, 107); font-family: 'iranyekan';"><br></span>
+                                style="color: rgb(67, 104, 107); font-family: 'vazir';"><br></span>
                         </h1>
-                        <h1 style="text-align: center;"><span style="font-family: 'iranyekan'; color: #000000;">
+                        <h1 style="text-align: center;"><span style="font-family: 'vazir'; color: #000000;">
                                 {{__('app.top_sales')}}
                             </span></h1>
                     </div>
@@ -425,10 +452,10 @@
                     <div class="art-content-layout-row">
                         <div class="art-layout-cell layout-item-3" style="width: 100%">
                             <h1 style="text-align: center;"><span
-                                    style="color: rgb(83, 108, 9); font-family: 'iranyekan';"><br></span>
+                                    style="color: rgb(83, 108, 9); font-family: 'vazir';"><br></span>
                             </h1>
                             <h1 style="text-align: center;"><span
-                                    style="font-family: IRANYekan; color: #000000;">{{__('app.news')}}</span><br></h1>
+                                    style="font-family: vazir; color: #000000;">{{__('app.news')}}</span><br></h1>
                         </div>
                     </div>
                 </div>

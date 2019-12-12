@@ -7,6 +7,93 @@
 @endsection
 
 @section('head')
+<script>
+    var expanded = false;
+
+    function showCheckboxes() {
+        var checkboxes = document.getElementById("checkboxes");
+        if (!expanded) {
+            checkboxes.style.display = "block";
+            expanded = true;
+        } else {
+            checkboxes.style.display = "none";
+            expanded = false;
+        }
+    }
+</script>
+
+<style>
+    .multiselect {
+        width: 100%;
+    }
+
+    .selectBox {
+        position: relative;
+        background-color: #333333;
+        text-align: center;
+        padding: 20px 25px 20px 25px;
+        font-family: vazir;
+        margin: 0px 0px 15px 0px;
+    }
+
+    .selectBox select {
+        width: 40%;
+        font-weight: bold;
+    }
+
+    .overSelect {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+    }
+
+    #checkboxes {
+        display: none;
+        border: 1px #33333330 solid;
+        width: fit-content;
+        padding: 15px;
+        font-size: 18px;
+        margin-right: 14%;
+        margin-left: 70%;
+        font-family: vazir;
+        border-radius: 5px;
+    }
+
+    #checkboxes label {
+        display: block;
+        padding-right: 3%;
+        font-weight: bold;
+        line-height: 1.5em;
+        width: max-content;
+    }
+
+    #checkboxes label:hover {
+        background-color: none;
+    }
+</style>
+<style>
+    input[type=button] {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 16px 32px;
+        text-decoration: none;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        margin-right: -6px;
+        cursor: pointer;
+    }
+
+    input[type="checkbox"i] {
+        cursor: default;
+        -webkit-appearance: checkbox;
+        height: 25px;
+        width: 25px;
+        vertical-align: middle;
+        margin: 5px 5px 5px 10px;
+</style>
 <style>
     .art-content .art-postcontent-0 .layout-item-0 {
         color: #4A4A4A;
@@ -132,70 +219,38 @@
                 </div>
             </div>
             <div style="z-index:1;align-content: center;align-items: center;align-self: center;text-align: center;padding:0px" class="art-content-layout layout-item-0">
-                <div style="z-index:1;align-content: center;align-items: center;align-self: center;text-align: center;padding:0px"
-                    class="art-content-layout-row">
-                    <div style="z-index:1;background-color:#333333;align-content: center;align-items: center;align-self: center;padding:0px;text-align: center;"
-                        class="art-layout-cell layout-item-1" style="width: 100%">
-                        <h1 style="color:whitesmoke;padding: 5px;">{{__('app.search_here')}}</h1>
-                        <form style="padding-top: 50px;margin-left: 150px;margin-right: 150px; text-align: center;border: #000000 ;background-color:none;border-radius: 0px;border-style: none; width:max-content%;height:60px;" method="POST">
+                <div style="z-index:1;align-content: center;align-items: center;align-self: center;text-align: center;padding:0px" class="art-content-layout-row">
+                    <div style="z-index:1;align-content: center;align-items: center;align-self: center;padding:0px;text-align: center;" class="art-layout-cell layout-item-1" style="width: 100%">
+                        <form method="POST">
                             {{ csrf_field() }}
-                            <div style="text-align: center;width: 100%;" class="multiselect">
-                                <div style="border-style: solid;border-width: 2px;border:#2E2314;font-size: 25px;" class="selectBox" > <!-- onclick="showCheckboxes()"> -->
-                                    <select style="/*color: #757575;*/padding-right:5px;font-size:15px;border-bottom-right-radius:5px;border-top-right-radius:5px;border-style: none;border-left:1px solid #000;width: 15%;margin: 0%;height: 50px;" name="filter[]" multiple class="select2">
-                                        <!-- <option style="height: 1px;width;1px ;" disabled>
-                                            {{__('app.search_filter')}}
-                                        </option> -->
-                                        <optgroup label="{{__('app.cost')}}">
-                                            <option value="free" style="height: 1px;width;1px ;">
-                                                {{__('app.free')}}
-                                            </option>
-                                            <option value="nofree" style="height: 1px;width;1px ;">
-                                                {{__('app.nofree')}}
-                                            </option>
-                                        </optgroup>
-                                        <optgroup label="{{__('app.category')}}">
-                                            @foreach($allCats as $cat)
-                                            <option value="{{ $cat->id }}" style="height: 1px;width;1px ;">
-                                                {{ $cat->{'name_' . $locale} }}
-                                            </option>
-                                            @endforeach
-                                        </optgroup>
+                            <div style="direction:rtl" class="multiselect">
+                                <div class="selectBox" onclick="showCheckboxes()" type=button>
+                                    <select style="border-top-right-radius:5px;border-bottom-right-radius: 5px;padding: 15px 30px;width:25%;text-decoration: none;margin:0px;">
+                                        <option style="display:none;">{{__('app.search_filter')}}</option>
                                     </select>
-                                    <input style="margin-left: -5px;font-size:17px;padding-right:2%;border-style: none;width: 40%;margin-right:-5px;height: 50px;" placeholder="&nbsp;&nbsp;&nbsp;{{__('app.search_file_title')}}&nbsp;&nbsp;&nbsp;" type="search" name="search">
-                                    <button style="font-size:24px;height:50px;width: 5%;" class="art-button" type="submit">
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                    <!-- <div class="overSelect"></div> -->
+                                    <input style="padding: 14px 30px;width:45%;text-decoration: none;margin: 4px -6px;color:black" placeholder="&nbsp;&nbsp;&nbsp;{{__('app.search_file_title')}}&nbsp;&nbsp;&nbsp;" type="search" name="search">
+                                    <input type=button value="{{__('app.search_now')}} !">
+                                    <div style="width:50px;padding-top:1px" class="overSelect"> </div>
                                 </div>
-                                <!-- <div style="line-height:3rm;text-align:right;padding:15px;font-size: 17px;border-bottom-left-radius: 25px;BORDER-COLOR: #744e1c;border-top-right-radius: 25px;contain: layout;font-family:vazir;background-color:rgba(255, 255, 255, 0.73);margin-right: 18%;margin-top:3px;width:15%;color: black;" id="checkboxes">
-                                    <label for="free">
-                                        <input
-                                            style="border-style: solid;border-width: 2px;border:#2E2314;font-size: 25px;"
-                                            class="art-checkbox" type="checkbox" id="free"
-                                            value="free" />{{__('app.free')}}
-                                    </label>
-                                    <label for="nofree">
-                                        <input type="checkbox" id="nofree" value="nofree" />{{__('app.nofree')}}
-                                    </label>
-                                    <hr style="color: black;font-size: 20px;font-style: initial;">
-                                    <label for="رایگان">
-                                        <input
-                                            style="border-style: solid;border-width: 2px;border:#2E2314;font-size: 25px;"
-                                            class="art-checkbox" type="checkbox" id="رایگان" />رایگان</label>
-                                    <label for="پولی">
-                                        <input type="checkbox" id="پولی" />پولی</label>
-                                    <hr style="color: black;font-size: 20px;font-style: initial;">
-                                    <label for="النگو">
-                                        <input type="checkbox" id="مدال" />مدال</label>
-                                    <label for="النگو">
-                                        <input type="checkbox" id="حلقه" /> حلقه ست </label>
-                                    <label for="النگو">
-                                        <input type="checkbox" id="النگو" />مدال</label>
-                                    <label for="گوشواره">
-                                        <input type="checkbox" id="النگو" />گوشواره</label>
-                                    <label for="نیم ست">
-                                        <input type="checkbox" id="النگو" />نیم ست</label>
-                                </div> -->
+                                <div id="checkboxes">
+                                    <label for="one">
+                                        <input name="filter[]" value="free" type="checkbox" id="one" />{{__('app.nofree')}}</label>
+                                    <label for="two">
+                                        <input name="filter[]" value="nofree" type="checkbox" id="two" />{{__('app.free')}}</label>
+                                    <hr>
+                                    @foreach($allCats as $i => $cat)
+                                    <label for="id-{{ $i }}">
+                                        <input name="filter[]" value="{{ $cat->id }}" type="checkbox" id="id-{{ $i }}" />{{ $cat->{'name_' . $locale} }}</label>
+                                    @endforeach
+                                    <!-- <label for="three">
+                                        <input type="checkbox" id="three" />انگشترها</label>
+                                    <label for="Four">
+                                        <input type="checkbox" id="Four" />گردنبندها</label>
+                                    <label for="Five">
+                                        <input type="checkbox" id="Five" />حلقه های ست</label>
+                                    <label for="Six">
+                                        <input type="checkbox" id="Six" />نیم ست ها</label> -->
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -233,9 +288,11 @@
                         <p>
                             <a href="/product/{{ $newProduct->id }}">
                                 @if($newProduct->cover!=null && $newProduct->cover!='')
-                                <img width="100%" height="100%" alt="{{ $newProduct->{'name_' . $locale} }}" class="fade" src="/storage/{{ $newProduct->cover }}">
+                                <img width="100%" height="100%" alt="{{ $newProduct->{'name_' . $locale} }}"
+                                    class="fade" src="/storage/{{ $newProduct->cover }}">
                                 @else
-                                <img width="100%" height="100%" alt="{{ $newProduct->{'name_' . $locale} }}" class="fade" src="/images/11-1-copy.jpg">
+                                <img width="100%" height="100%" alt="{{ $newProduct->{'name_' . $locale} }}"
+                                    class="fade" src="/images/11-1-copy.jpg">
                                 @endif
                             </a>
                             <br>
@@ -265,9 +322,11 @@
                         <p>
                             <a href="/product/{{ $newProduct->id }}">
                                 @if($newProduct->cover!=null && $newProduct->cover!='')
-                                <img width="100%" height="100%" alt="{{ $newProduct->{'name_' . $locale} }}" class="fade" src="/storage/{{ $newProduct->cover }}">
+                                <img width="100%" height="100%" alt="{{ $newProduct->{'name_' . $locale} }}"
+                                    class="fade" src="/storage/{{ $newProduct->cover }}">
                                 @else
-                                <img width="100%" height="100%" alt="{{ $newProduct->{'name_' . $locale} }}" class="fade" src="/images/11-1-copy.jpg">
+                                <img width="100%" height="100%" alt="{{ $newProduct->{'name_' . $locale} }}"
+                                    class="fade" src="/images/11-1-copy.jpg">
                                 @endif
                             </a>
                             <br>
@@ -351,9 +410,11 @@
                         <p>
                             <a href="/product/{{ $newProduct->id }}">
                                 @if($newProduct->cover!=null && $newProduct->cover!='')
-                                <img width="100%" height="100%" alt="{{ $newProduct->{'name_' . $locale} }}" class="fade" src="/storage/{{ $newProduct->cover }}">
+                                <img width="100%" height="100%" alt="{{ $newProduct->{'name_' . $locale} }}"
+                                    class="fade" src="/storage/{{ $newProduct->cover }}">
                                 @else
-                                <img width="100%" height="100%" alt="{{ $newProduct->{'name_' . $locale} }}" class="fade" src="/images/11-1-copy.jpg">
+                                <img width="100%" height="100%" alt="{{ $newProduct->{'name_' . $locale} }}"
+                                    class="fade" src="/images/11-1-copy.jpg">
                                 @endif
                             </a>
                             <br>
@@ -424,20 +485,22 @@
             <div class="art-content-layout layout-item-0">
                 <div class="art-content-layout layout-item-0">
                     <div class="art-content-layout-row">
-                    @foreach($topWorkProducts as $newProduct)
-                    <div class="art-layout-cell layout-item-4" style="width: 20%">
-                        <p>
-                            <a href="/product/{{ $newProduct->id }}">
-                                @if($newProduct->cover!=null && $newProduct->cover!='')
-                                <img width="100%" height="100%" alt="{{ $newProduct->{'name_' . $locale} }}" class="fade" src="/storage/{{ $newProduct->cover }}">
-                                @else
-                                <img width="100%" height="100%" alt="{{ $newProduct->{'name_' . $locale} }}" class="fade" src="/images/11-1-copy.jpg">
-                                @endif
-                            </a>
-                            <br>
-                        </p>
-                    </div>
-                    @endforeach
+                        @foreach($topWorkProducts as $newProduct)
+                        <div class="art-layout-cell layout-item-4" style="width: 20%">
+                            <p>
+                                <a href="/product/{{ $newProduct->id }}">
+                                    @if($newProduct->cover!=null && $newProduct->cover!='')
+                                    <img width="100%" height="100%" alt="{{ $newProduct->{'name_' . $locale} }}"
+                                        class="fade" src="/storage/{{ $newProduct->cover }}">
+                                    @else
+                                    <img width="100%" height="100%" alt="{{ $newProduct->{'name_' . $locale} }}"
+                                        class="fade" src="/images/11-1-copy.jpg">
+                                    @endif
+                                </a>
+                                <br>
+                            </p>
+                        </div>
+                        @endforeach
                     </div>
                 </div>
                 <div class="art-content-layout layout-item-5">
@@ -467,7 +530,8 @@
                                 @if($news->image_path!=null && $news->image_path!='')
                                 <img width="99" height="99" alt="" class="fade" src="{{ $news->image_path }}">
                                 @else
-                                <img width="99" height="99" alt="" class="fade" src="images/75f2fb3f-8631-4716-acf3-70cffdacb232.jpg">
+                                <img width="99" height="99" alt="" class="fade"
+                                    src="images/75f2fb3f-8631-4716-acf3-70cffdacb232.jpg">
                                 @endif
                                 <br>
                             </p>
@@ -514,9 +578,9 @@
     </article>
 </div>
 <script>
-$(".select2").select2({
-    placeholder: "{{__('app.search_filter')}}",
-    allowClear: true
-});
+    $(".select2").select2({
+        placeholder: "{{__('app.search_filter')}}",
+        allowClear: true
+    });
 </script>
 @endsection

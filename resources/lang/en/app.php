@@ -49,4 +49,5 @@ return [
     'cost'=>'Cost',
     'category'=>'Category',
     'search_results'=>'Search Results',
+    'search_now'=>'Search Now',
 ];

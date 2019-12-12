@@ -47,4 +47,5 @@ return [
     'cost'=>'قیمت',
     'category'=>'دسته',
     'search_results'=>'نتایج جستجو',
+    'search_now'=>'جستجو کن',
 ];
