@@ -141,7 +141,7 @@ class HomeController
     {
         $customer = Customer::where('id', $id)->where('code', $code)->first();
         if($customer) {
-            $customer->verfied = 1;
+            $customer->verified = 1;
             $customer->save();
         }
         return view('auth.admin.sms', ["customer"=>$customer]);

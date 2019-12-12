@@ -173,7 +173,7 @@ function addCredit() {
                         <div class="form-group">
                             <label for="mobile">Mobile</label>
                             @if($abbas->verified==1)
-                            <i class="fa fa-tick" style="color: green;"></i>
+                            <i class="fa fa-check" style="color: green;"></i>
                             @endif
                             <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile" value="{{ $abbas->mobile }}" />
                         </div>
