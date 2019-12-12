@@ -14,7 +14,7 @@ class CreateProductRequest extends BaseFormRequest
     public function rules()
     {
         return [
-            'sku' => ['required'],
+            // 'sku' => ['required'],
             'name_fa' => ['required', 'unique:products'],
             'name_en' => ['required', 'unique:products'],
             'name_ar' => ['required', 'unique:products'],

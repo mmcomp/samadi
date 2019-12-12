@@ -189,7 +189,20 @@ class ProductController extends Controller
         if ($request->hasFile('file_path') && $request->file('file_path') instanceof UploadedFile) {
             $data['file_path'] = $this->productRepo->saveFilePath($request->file('file_path'));
         }
-
+        $admin = Auth::user();
+        $isCustomer = false;
+        if($admin) {
+            $roles = $admin->roles()->get();
+            $isCustomer = true;
+            foreach($roles as $role) {
+                if($role->name!='customer') {
+                    $isCustomer = false;
+                }
+            }
+        }
+        if($isCustomer) {
+            $data['customer_id'] = $admin->id;
+        }
         $product = $this->productRepo->createProduct($data);
 
         $productRepo = new ProductRepository($product);

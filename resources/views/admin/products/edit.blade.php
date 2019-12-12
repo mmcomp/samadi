@@ -22,10 +22,10 @@
                                     <div class="row">
                                         <div class="col-md-8">
                                             <h2>{{ ucfirst($product->name_fa) }}</h2>
-                                            <div class="form-group">
+                                            <!-- <div class="form-group">
                                                 <label for="sku">SKU <span class="text-danger">*</span></label>
                                                 <input type="text" name="sku" id="sku" placeholder="xxxxx" class="form-control" value="{!! $product->sku !!}">
-                                            </div>
+                                            </div> -->
                                             <div class="form-group">
                                                 <label for="name_fa">Name Farsi<span class="text-danger">*</span></label>
                                                 <input type="text" name="name_fa" id="name_fa" placeholder="Name" class="form-control" value="{!! $product->name_fa !!}">
