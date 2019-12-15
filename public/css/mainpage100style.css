@@ -533,7 +533,7 @@ text-decoration: none;
    height: 550px;
    z-index: auto;
    background-position: center top;
-   background-image: url('images/header.png');
+   background-image: url('images/header.jpg');
    background-repeat: no-repeat;
 }
 
@@ -563,7 +563,7 @@ text-decoration: none;
 {
    margin:0 auto;
    height: 550px;
-   background-image: url('images/header.png');
+   background-image: url('images/header.jpg');
    background-position: center top;
    background-repeat: no-repeat;
    position: relative;
@@ -572,7 +572,7 @@ text-decoration: none;
 
 .responsive .art-header 
 {
-   background-image: url('images/header.png');
+   background-image: url('images/header.jpg');
    background-position: center center;
 }
 
