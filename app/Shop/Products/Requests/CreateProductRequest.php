@@ -16,17 +16,17 @@ class CreateProductRequest extends BaseFormRequest
         return [
             // 'sku' => ['required'],
             'name_fa' => ['required', 'unique:products'],
-            'name_en' => ['required', 'unique:products'],
-            'name_ar' => ['required', 'unique:products'],
-            'name_tr' => ['required', 'unique:products'],
+            // 'name_en' => ['required', 'unique:products'],
+            // 'name_ar' => ['required', 'unique:products'],
+            // 'name_tr' => ['required', 'unique:products'],
             'price' => ['required'],
             'cover' => ['required', 'file', 'image:png,jpeg,jpg,gif'],
             'file_path' => ['required'],
             'categories' => ['required'],
             'description_fa' => ['required'],
-            'description_en' => ['required'],
-            'description_ar' => ['required'],
-            'description_tr' => ['required'],
+            // 'description_en' => ['required'],
+            // 'description_ar' => ['required'],
+            // 'description_tr' => ['required'],
         ];
     }
 }

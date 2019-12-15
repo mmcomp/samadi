@@ -67,15 +67,15 @@ $("#cover").change(function(){
                             <input type="text" name="name_fa" id="name_fa" placeholder="Name" class="form-control" value="{{ old('name_fa') }}">
                         </div>
                         <div class="form-group">
-                            <label for="name_en">Name English<span class="text-danger">*</span></label>
+                            <label for="name_en">Name English</label>
                             <input type="text" name="name_en" id="name_en" placeholder="Name" class="form-control" value="{{ old('name_en') }}">
                         </div>
                         <div class="form-group">
-                            <label for="name_ar">Name Arabic<span class="text-danger">*</span></label>
+                            <label for="name_ar">Name Arabic</label>
                             <input type="text" name="name_ar" id="name_ar" placeholder="Name" class="form-control" value="{{ old('name_ar') }}">
                         </div>
                         <div class="form-group">
-                            <label for="name_tr">Name Turkey<span class="text-danger">*</span></label>
+                            <label for="name_tr">Name Turkey</label>
                             <input type="text" name="name_tr" id="name_tr" placeholder="Name" class="form-control" value="{{ old('name_tr') }}">
                         </div>
                         <div>
