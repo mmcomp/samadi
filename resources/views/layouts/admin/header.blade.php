@@ -104,6 +104,9 @@
                         <img src="{{ asset('img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
                         @endif
                         <span class="hidden-xs">{{ $user->name }} {{ $user->sir_name }}</span>
+                        @if($user->email_verified==1)
+                        <i class="fa fa-check-circle" style="color: green;"></i>
+                        @endif
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
