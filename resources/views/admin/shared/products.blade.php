@@ -9,7 +9,7 @@
         <tr>
             <td>ID</td>
             <td>Name</td>
-            <td>Quantity</td>
+            <!-- <td>Quantity</td> -->
             <td>Price</td>
             <td>Status</td>
             <td>Actions</td>
@@ -21,18 +21,19 @@
                 <td>{{ $product->id }}</td>
                 <td>
                     @if($admin->hasPermission('view-product'))
-                        <a href="{{ route('admin.products.show', $product->id) }}">{{ $product->name_fa }}</a><br/>
+                        {{ $product->name_en }}
+                        <!-- <a href="{{ route('admin.products.show', $product->id) }}">{{ $product->name_fa }}</a><br/>
                         {{ $product->name_en }}<br/>
                         {{ $product->name_ar }}<br/>
-                        {{ $product->name_tr }}
+                        {{ $product->name_tr }} -->
                     @else
                         {{ $product->name_fa }}<br/>
-                        {{ $product->name_en }}<br/>
+                        <!-- {{ $product->name_en }}<br/>
                         {{ $product->name_ar }}<br/>
-                        {{ $product->name_tr }}
+                        {{ $product->name_tr }} -->
                     @endif
                 </td>
-                <td>{{ $product->quantity }}</td>
+                <!-- <td>{{ $product->quantity }}</td> -->
                 <td>{{ config('cart.currency') }} {{ $product->price }}</td>
                 <td>@include('layouts.status', ['status' => $product->status])</td>
                 <td>

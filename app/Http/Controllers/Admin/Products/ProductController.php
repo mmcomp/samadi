@@ -14,6 +14,8 @@ use App\Shop\Products\Repositories\Interfaces\ProductRepositoryInterface;
 use App\Shop\Products\Repositories\ProductRepository;
 use App\Shop\Products\Requests\CreateProductRequest;
 use App\Shop\Products\Requests\UpdateProductRequest;
+use App\Shop\Categories\Category;
+use App\Shop\Categories\CategoryProduct;
 use App\Shop\Customers\CustomerBookmark;
 use App\Http\Controllers\Controller;
 use App\Shop\Products\Transformations\ProductTransformable;
@@ -127,6 +129,7 @@ class ProductController extends Controller
                 $query->orWhere('description_en', 'like', '%' . $q . '%');
                 $query->orWhere('description_ar', 'like', '%' . $q . '%');
                 $query->orWhere('description_tr', 'like', '%' . $q . '%');
+                $query->orWhere('id', $q);
             })->orderBy('id')->get();
         }
 
