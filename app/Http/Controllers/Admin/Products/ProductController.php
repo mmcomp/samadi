@@ -17,6 +17,7 @@ use App\Shop\Products\Requests\UpdateProductRequest;
 use App\Shop\Categories\Category;
 use App\Shop\Categories\CategoryProduct;
 use App\Shop\Customers\CustomerBookmark;
+use App\Shop\Orders\OrderProduct;
 use App\Http\Controllers\Controller;
 use App\Shop\Products\Transformations\ProductTransformable;
 use App\Shop\Tools\UploadableTrait;
@@ -535,6 +536,60 @@ class ProductController extends Controller
         })->all();
 
         return view('admin.products.bookmark', [
+            'products' => $this->productRepo->paginateArrayResults($products, 25),
+            'abbas' => $admin,
+            'isCustomer' => $isCustomer
+        ]);
+    }
+
+    /**
+     * Display a listing of the selled .
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function selled()
+    {
+        $admin = Auth::user();
+        $isCustomer = false;
+        if($admin) {
+            $roles = $admin->roles()->get();
+            $isCustomer = true;
+            foreach($roles as $role) {
+                if($role->name!='customer') {
+                    $isCustomer = false;
+                }
+            }
+        }
+        if($isCustomer==false) {
+            return redirect('/admin/products');
+        }
+
+        $productIds = Product::where('customer_id', $admin->id)->pluck('id');
+        $productIds = OrderProduct::whereIn('product_id', $productIds)->pluck('product_id');
+        $list = Product::whereIn('id', $productIds)->get();
+
+        if(request()->has('q') && request()->input('q') != '') {
+            // dump($productIds);
+            $q = request()->input('q');
+            // dump($q);
+            $list = Product::whereIn('id', $productIds)->where(function ($query) use ($q) {
+                $query->where('name_fa', 'like', '%' . $q . '%');
+                $query->orWhere('name_en', 'like', '%' . $q . '%');
+                $query->orWhere('name_ar', 'like', '%' . $q . '%');
+                $query->orWhere('name_tr', 'like', '%' . $q . '%');
+                $query->orWhere('description_fa', 'like', '%' . $q . '%');
+                $query->orWhere('description_en', 'like', '%' . $q . '%');
+                $query->orWhere('description_ar', 'like', '%' . $q . '%');
+                $query->orWhere('description_tr', 'like', '%' . $q . '%');
+            })->orderBy('id')->get();
+            // dd($list);
+        }
+
+        $products = $list->map(function (Product $item) {
+            return $this->transformProduct($item);
+        })->all();
+
+        return view('admin.products.selled', [
             'products' => $this->productRepo->paginateArrayResults($products, 25),
             'abbas' => $admin,
             'isCustomer' => $isCustomer
