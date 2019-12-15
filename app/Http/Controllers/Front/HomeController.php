@@ -12,6 +12,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use App\Shop\Customers\Customer;
 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendMailable;
+
 class HomeController
 {
     /**
@@ -145,5 +148,25 @@ class HomeController
             $customer->save();
         }
         return view('auth.admin.sms', ["customer"=>$customer]);
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function emailVeify(Request $request, $id)
+    {
+        $customer = Customer::where('id', $id)->first();
+        if($customer) {
+            $customer->email_verified = 1;
+            $customer->save();
+        }
+        return view('auth.admin.email', ["customer"=>$customer]);
+    }
+    public function mail()
+    {
+    $link = 'http://google.com';
+    Mail::to('m.mirsamie@gmail.com')->send(new SendMailable($link));
+    
+    return 'Email was sent';
     }
 }

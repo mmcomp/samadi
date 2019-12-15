@@ -15,6 +15,8 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Session;
 use App\Shop\Countries\Country;
 use App\Shop\Roles\RoleUser;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendMailable;
 
 class RegisterController extends Controller
 {
@@ -127,6 +129,9 @@ class RegisterController extends Controller
         }catch(Exception $e) {
             // echo 'Caught exception: ',  $e->getMessage(), "\n";
         }
+
+        Mail::to($customer->email)->send(new SendMailable(route('emailverify', ["id"=>$customer->id])));
+
         // return redirect()->route('accounts');
         return redirect('/admin');
     }

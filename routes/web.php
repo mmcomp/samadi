@@ -78,6 +78,7 @@ Route::namespace('Auth')->group(function () {
 
 Route::namespace('Front')->group(function () {
     Route::get('/smsverify/{id}/{code}', 'HomeController@smsVeify')->name('smsverify');
+    Route::get('/emailverify/{id}', 'HomeController@emailVeify')->name('emailverify');
     Route::get('/lang/{locale}', function (Request $request, $locale) {
         $request->session()->put('locale', $locale);
         if(app('router')->getRoutes()->match(app('request')->create(url()->previous()))->getName()=='splash') {
@@ -87,6 +88,7 @@ Route::namespace('Front')->group(function () {
     });
     Route::get('/', 'HomeController@splash')->name('splash');
     Route::any('/home', 'HomeController@index')->name('home');
+    Route::any('/mail', 'HomeController@mail');
     Route::group(['middleware' => ['auth', 'web']], function () {
 
         Route::namespace('Payments')->group(function () {
