@@ -80,6 +80,7 @@ class Product extends Model implements Buyable
         'slug',
         'file_path',
         'customer_id',
+        'like_count',
     ];
 
     /**

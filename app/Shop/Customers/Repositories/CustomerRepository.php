@@ -55,7 +55,12 @@ class CustomerRepository extends BaseRepository implements CustomerRepositoryInt
             if (isset($params['password'])) {
                 $customer->password = bcrypt($params['password']);
             }
-
+            if($data['commission_percent']==null || (int)$data['commission_percent']<0) {
+                unset($data['commission_percent']);
+            }else {
+                $customer->commission_percent=(int)$data['commission_percent'];
+            }
+            
             $customer->save();
 
             return $customer;
@@ -75,6 +80,10 @@ class CustomerRepository extends BaseRepository implements CustomerRepositoryInt
     public function updateCustomer(array $params) : bool
     {
         try {
+            if($params['commission_percent']==null || (int)$params['commission_percent']<0) {
+                unset($params['commission_percent']);
+            }
+            $params['commission_percent']=(int)$params['commission_percent'];
             return $this->model->update($params);
         } catch (QueryException $e) {
             throw new UpdateCustomerInvalidArgumentException($e);

@@ -58,10 +58,12 @@ $("#cover").change(function(){
                     {{ csrf_field() }}
                     <div class="col-md-8">
                         <h2>Product</h2>
-                        <!-- <div class="form-group">
+                        @if(!$isCustomer)
+                        <div class="form-group">
                             <label for="sku">SKU <span class="text-danger">*</span></label>
                             <input type="text" name="sku" id="sku" placeholder="xxxxx" class="form-control" value="{{ old('sku') }}">
-                        </div> -->
+                        </div>
+                        @endif
                         <div class="form-group">
                             <label for="name_fa">Name Farsi<span class="text-danger">*</span></label>
                             <input type="text" name="name_fa" id="name_fa" placeholder="Name" class="form-control" value="{{ old('name_fa') }}">

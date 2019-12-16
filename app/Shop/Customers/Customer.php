@@ -28,6 +28,7 @@ class Customer extends Authenticatable
         'password',
         'status',
         'mobile',
+        'commission_percent',
     ];
 
     /**

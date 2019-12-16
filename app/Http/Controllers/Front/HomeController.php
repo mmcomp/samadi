@@ -43,6 +43,7 @@ class HomeController
         $isSearch = false;
         $searchResults = null;
         $search = "";
+        $filter = null;
         if ($request->isMethod('post')) {
             $isSearch = true;
             $search = $request->input('search');
@@ -102,6 +103,7 @@ class HomeController
             "searchResults"=>$searchResults,
             "allCats"=>$allCats,
             "search"=>$search,
+            "filter"=>$filter,
         ]);
     }
 

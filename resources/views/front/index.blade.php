@@ -206,6 +206,7 @@
         color: black !important;
     }
 </style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 @endsection
 
 @section('content')
@@ -224,14 +225,29 @@
                         <form method="POST">
                             {{ csrf_field() }}
                             <div style="direction:rtl" class="multiselect">
-                                <div class="selectBox" onclick="showCheckboxes()" type=button>
-                                    <select style="border-top-right-radius:5px;border-bottom-right-radius: 5px;padding: 15px 30px;width:25%;text-decoration: none;margin:0px;">
+                                <div class="checkboxes">
+                                    <h1 style="text-align: center;">
+                                    {{__('app.category')}}
+                                    </h1>
+                                @foreach($allCats as $i => $cat)
+                                    <label for="id-{{ $i }}">
+                                        @if($filter!=null && in_array($cat->id, $filter))
+                                        <input name="filter[]" value="{{ $cat->id }}" type="checkbox" id="id-{{ $i }}" checked />{{ $cat->{'name_' . $locale} }}
+                                        @else
+                                        <input name="filter[]" value="{{ $cat->id }}" type="checkbox" id="id-{{ $i }}" />{{ $cat->{'name_' . $locale} }}
+                                        @endif
+                                    </label>
+                                @endforeach
+                                </div>
+                                <div class="selectBox" ><!-- onclick="showCheckboxes()" type=button> -->
+                                    <!-- <select style="border-top-right-radius:5px;border-bottom-right-radius: 5px;padding: 15px 30px;width:25%;text-decoration: none;margin:0px;">
                                         <option style="display:none;">{{__('app.search_filter')}}</option>
-                                    </select>
+                                    </select> -->
                                     <input style="padding: 14px 30px;width:45%;text-decoration: none;margin: 4px -6px;color:black" placeholder="&nbsp;&nbsp;&nbsp;{{__('app.search_file_title')}}&nbsp;&nbsp;&nbsp;" type="search" name="search">
-                                    <input type=button value="{{__('app.search_now')}} !">
+                                    <!-- <input type=button value="{{__('app.search_now')}} !"> -->
                                     <div style="width:50px;padding-top:1px" class="overSelect"> </div>
                                 </div>
+                                <!--
                                 <div id="checkboxes">
                                     <label for="one">
                                         <input name="filter[]" value="free" type="checkbox" id="one" />{{__('app.nofree')}}</label>
@@ -242,15 +258,8 @@
                                     <label for="id-{{ $i }}">
                                         <input name="filter[]" value="{{ $cat->id }}" type="checkbox" id="id-{{ $i }}" />{{ $cat->{'name_' . $locale} }}</label>
                                     @endforeach
-                                    <!-- <label for="three">
-                                        <input type="checkbox" id="three" />انگشترها</label>
-                                    <label for="Four">
-                                        <input type="checkbox" id="Four" />گردنبندها</label>
-                                    <label for="Five">
-                                        <input type="checkbox" id="Five" />حلقه های ست</label>
-                                    <label for="Six">
-                                        <input type="checkbox" id="Six" />نیم ست ها</label> -->
                                 </div>
+                                -->
                             </div>
                         </form>
                     </div>
@@ -281,23 +290,30 @@
                     </div>
                 </div>
             </div>
-            <div class="art-content-layout layout-item-0">
-                <div class="art-content-layout-row">
+            <div class="content" style="background-color: white;">
+                <div class="row">
                     @foreach($searchResults as $newProduct)
-                    <div class="art-layout-cell layout-item-4" style="width: 20%">
-                        <p>
-                            <a href="/product/{{ $newProduct->id }}">
-                                @if($newProduct->cover!=null && $newProduct->cover!='')
-                                <img width="100%" height="100%" alt="{{ $newProduct->{'name_' . $locale} }}"
-                                    class="fade" src="/storage/{{ $newProduct->cover }}">
-                                @else
-                                <img width="100%" height="100%" alt="{{ $newProduct->{'name_' . $locale} }}"
-                                    class="fade" src="/images/11-1-copy.jpg">
-                                @endif
-                            </a>
-                            <br>
-                        </p>
-                    </div>
+                        <div class="col-2" onmouseenter="$('#info_{{ $newProduct->id }}').show();" onmouseleave="$('#info_{{ $newProduct->id }}').hide();">
+                            @if($newProduct->cover!=null && $newProduct->cover!='')
+                            <img alt="{{ $newProduct->{'name_' . $locale} }}" style="width: 100%height: 100%;" src="/storage/{{ $newProduct->cover }}">
+                            @else
+                            <img width="100%" height="100%" alt="{{ $newProduct->{'name_' . $locale} }}"
+                                class="fade" src="/images/11-1-copy.jpg">
+                            @endif
+                            <div id="info_{{ $newProduct->id }}" style="position: absolute;background-color: rgba(255, 242, 242, 0.89);width: 300px;height: 300px;top: 0px;display: none;color: rgb(127, 96, 8);">
+                                <div class="row text-center">
+                                    <div class="col-12" style="font-size: 40px;">
+                                        {{ $newProduct->{'name_' . $locale} }}
+                                    </div>
+                                    <div class="col-12" style="font-size: 20px;">
+                                        LIKEs : <span style="color: green;">{{ $newProduct->like_count }}</span>
+                                    </div>
+                                    <div class="col-12">
+                                        <a class="btn btn-primary" href="/product/{{ $newProduct->id }}"><i class="fa fa-home"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     @endforeach
                 </div>
             </div>
@@ -374,7 +390,7 @@
                                 <a href="#" target="_blank" title="{{__('app.subscribe_newsletter')}}"
                                     class="art-button">
                                     {{__('app.subscribe_newsletter')}}
-                                </a>
+                                </!-->
                                 &nbsp;
                                 </span>
                             </form>
@@ -583,4 +599,6 @@
         allowClear: true
     });
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 @endsection

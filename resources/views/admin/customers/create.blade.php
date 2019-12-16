@@ -32,6 +32,10 @@
                         <input type="file" name="image_path" id="image_path">
                     </div>
                     <div class="form-group">
+                        <label for="commission_percent">Comission % <span class="text-danger">*</span></label>
+                        <input type="number" name="commission_percent" id="commission_percent" placeholder="Comission %" class="form-control">
+                    </div>
+                    <div class="form-group">
                         <label for="status">Status </label>
                         <select name="status" id="status" class="form-control">
                             <option value="0">Disable</option>

@@ -16,6 +16,7 @@ trait CustomerTransformable
         $prop->name = $customer->name;
         $prop->email = $customer->email;
         $prop->status = (int) $customer->status;
+        $prop->commission_percent = (int) $customer->commission_percent;
 
         return $prop;
     }
