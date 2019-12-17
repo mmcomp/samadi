@@ -64,6 +64,19 @@
                     </li> -->
                 </ul>
             </li>
+            <li class="@if(request()->segment(2) == 'credit') active @endif">
+                <a href="#">
+                    <i class="fa fa-tag"></i> <span>Credits</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="#"><i class="fa fa-circle-o"></i> List incomes</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o"></i> List credit to cash</a></li>
+                    <li><a href="#"><i class="fa fa-plus"></i> Add to credit</a></li>
+                </ul>
+            </li>
             @if($user->hasPermission('update-order'))
             <li class="treeview @if(request()->segment(2) == 'categories') active @endif">
                 <a href="#">

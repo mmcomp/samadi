@@ -15,7 +15,7 @@ class CreateProductRequest extends BaseFormRequest
     {
         return [
             // 'sku' => ['required'],
-            'name_fa' => ['required', 'unique:products'],
+            'name_fa' => ['required'],//, 'unique:products'],
             // 'name_en' => ['required', 'unique:products'],
             // 'name_ar' => ['required', 'unique:products'],
             // 'name_tr' => ['required', 'unique:products'],

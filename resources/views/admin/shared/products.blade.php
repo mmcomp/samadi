@@ -21,13 +21,13 @@
                 <td>{{ $product->id }}</td>
                 <td>
                     @if($admin->hasPermission('view-product'))
-                        {{ $product->name_en }}
+                        <a target="_blank" href="/product/{{ $product->id }}">{{ $product->name_en }}</a>
                         <!-- <a href="{{ route('admin.products.show', $product->id) }}">{{ $product->name_fa }}</a><br/>
                         {{ $product->name_en }}<br/>
                         {{ $product->name_ar }}<br/>
                         {{ $product->name_tr }} -->
                     @else
-                        {{ $product->name_fa }}<br/>
+                    <a target="_blank" href="/product/{{ $product->id }}">{{ $product->name_fa }}</a>
                         <!-- {{ $product->name_en }}<br/>
                         {{ $product->name_ar }}<br/>
                         {{ $product->name_tr }} -->

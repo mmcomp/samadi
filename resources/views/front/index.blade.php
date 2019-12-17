@@ -305,11 +305,11 @@
                                     <div class="col-12" style="font-size: 40px;">
                                         {{ $newProduct->{'name_' . $locale} }}
                                     </div>
-                                    <div class="col-12" style="font-size: 20px;">
-                                        LIKEs : <span style="color: green;">{{ $newProduct->like_count }}</span>
+                                    <div class="col-12" style="font-size: 20px;direction: ltr !important;">
+                                        <i class="fa fa-thumbs-up"></i> : <span style="color: green;">{{ $newProduct->like_count }}</span>
                                     </div>
                                     <div class="col-12">
-                                        <a class="btn btn-primary" href="/product/{{ $newProduct->id }}"><i class="fa fa-home"></i></a>
+                                        <a class="btn btn-primary" href="/product/{{ $newProduct->id }}"><i class="fa fa-angle-double-right"></i></a>
                                     </div>
                                 </div>
                             </div>

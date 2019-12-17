@@ -22,14 +22,17 @@
                                     <div class="row">
                                         <div class="col-md-8">
                                             <h2>{{ ucfirst($product->name_fa) }}</h2>
-                                            <!-- <div class="form-group">
+                                            @if(!$isCustomer)
+                                            <div class="form-group">
                                                 <label for="sku">SKU <span class="text-danger">*</span></label>
                                                 <input type="text" name="sku" id="sku" placeholder="xxxxx" class="form-control" value="{!! $product->sku !!}">
-                                            </div> -->
+                                            </div>
+                                            @endif
                                             <div class="form-group">
                                                 <label for="name_fa">Name Farsi<span class="text-danger">*</span></label>
                                                 <input type="text" name="name_fa" id="name_fa" placeholder="Name" class="form-control" value="{!! $product->name_fa !!}">
                                             </div>
+                                            @if(!$isCustomer)
                                             <div class="form-group">
                                                 <label for="name_en">Name English<span class="text-danger">*</span></label>
                                                 <input type="text" name="name_en" id="name_en" placeholder="Name" class="form-control" value="{!! $product->name_en !!}">
@@ -42,6 +45,7 @@
                                                 <label for="name_tr">Name Turkey<span class="text-danger">*</span></label>
                                                 <input type="text" name="name_tr" id="name_tr" placeholder="Name" class="form-control" value="{!! $product->name_tr !!}">
                                             </div>
+                                            @endif
                                             <div>
                                                 <p>
                                                 Description should be seperated by |
@@ -51,6 +55,7 @@
                                                 <label for="description_fa">Description Farsi</label>
                                                 <textarea class="form-control ckeditor" name="description_fa" id="description_fa" rows="5" placeholder="Description">{!! $product->description_fa  !!}</textarea>
                                             </div>
+                                            @if(!$isCustomer)
                                             <div class="form-group">
                                                 <label for="description_en">Description English</label>
                                                 <textarea class="form-control ckeditor" name="description_en" id="description_en" rows="5" placeholder="Description">{!! $product->description_en  !!}</textarea>
@@ -63,6 +68,7 @@
                                                 <label for="description_tr">Description Turkey</label>
                                                 <textarea class="form-control ckeditor" name="description_tr" id="description_tr" rows="5" placeholder="Description">{!! $product->description_tr  !!}</textarea>
                                             </div>
+                                            @endif
                                             <div class="form-group">
                                                 <div class="col-md-3">
                                                     <div class="row">
