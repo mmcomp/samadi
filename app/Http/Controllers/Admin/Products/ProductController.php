@@ -206,24 +206,24 @@ class ProductController extends Controller
         }
         if($isCustomer) {
             $data['customer_id'] = $admin->id;
-            // if($data['name_en']==null || $data['name_en']=='') {
-            //     $data['name_en'] = $data['name_fa'];
-            // }
-            // if($data['name_ar']==null || $data['name_ar']=='') {
-            //     $data['name_ar'] = $data['name_fa'];
-            // }
-            // if($data['name_tr']==null || $data['name_tr']=='') {
-            //     $data['name_tr'] = $data['name_fa'];
-            // }
-            // if($data['description_en']==null || $data['description_en']=='') {
-            //     $data['description_en'] = $data['description_fa'];
-            // }
-            // if($data['description_ar']==null || $data['description_ar']=='') {
-            //     $data['description_ar'] = $data['description_fa'];
-            // }
-            // if($data['description_tr']==null || $data['description_tr']=='') {
-            //     $data['description_tr'] = $data['description_fa'];
-            // }
+            if(!isset($data['name_en']) || $data['name_en']==null || $data['name_en']=='') {
+                $data['name_en'] = $data['name_fa'];
+            }
+            if(!isset($data['name_ar']) || $data['name_ar']==null || $data['name_ar']=='') {
+                $data['name_ar'] = $data['name_fa'];
+            }
+            if(!isset($data['name_tr']) || $data['name_tr']==null || $data['name_tr']=='') {
+                $data['name_tr'] = $data['name_fa'];
+            }
+            if(!isset($data['description_en']) || $data['description_en']==null || $data['description_en']=='') {
+                $data['description_en'] = $data['description_fa'];
+            }
+            if(!isset($data['description_ar']) || $data['description_ar']==null || $data['description_ar']=='') {
+                $data['description_ar'] = $data['description_fa'];
+            }
+            if(!isset($data['description_tr']) || $data['description_tr']==null || $data['description_tr']=='') {
+                $data['description_tr'] = $data['description_fa'];
+            }
         }
         $product = $this->productRepo->createProduct($data);
 

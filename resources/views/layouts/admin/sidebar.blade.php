@@ -72,7 +72,7 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-circle-o"></i> List incomes</a></li>
+                    <li><a href="{{ route('admin.transactions.income') }}"><i class="fa fa-circle-o"></i> List incomes</a></li>
                     <li><a href="#"><i class="fa fa-circle-o"></i> List credit to cash</a></li>
                     <li><a href="#"><i class="fa fa-plus"></i> Add to credit</a></li>
                 </ul>

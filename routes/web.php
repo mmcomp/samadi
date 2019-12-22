@@ -48,6 +48,9 @@ Route::group(['prefix' => 'admin', /*'middleware' => ['employee'],*/ 'as' => 'ad
             Route::namespace('Tickets')->group(function () {
                 Route::resource('tickets', 'TicketController');
             });
+            Route::namespace('Transactions')->group(function () {
+                Route::any('transactions.income', 'TransactionController@income')->name('transactions.income');
+            });
             Route::namespace('Categories')->group(function () {
                 Route::resource('categories', 'CategoryController');
                 Route::get('remove-image-category', 'CategoryController@removeImage')->name('category.remove.image');
