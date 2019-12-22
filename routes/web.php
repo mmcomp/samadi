@@ -50,6 +50,7 @@ Route::group(['prefix' => 'admin', /*'middleware' => ['employee'],*/ 'as' => 'ad
             });
             Route::namespace('Transactions')->group(function () {
                 Route::any('transactions.income', 'TransactionController@income')->name('transactions.income');
+                Route::any('transactions.cash', 'TransactionController@cash')->name('transactions.cash');
             });
             Route::namespace('Categories')->group(function () {
                 Route::resource('categories', 'CategoryController');

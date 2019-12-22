@@ -9,13 +9,12 @@
         @if($transactions)
             <div class="box">
                 <div class="box-body">
-                    <h2>Income Transactions</h2>
-                    @include('layouts.search', ['route' => route('admin.transactions.income')])
+                    <h2>Cash Transactions</h2>
+                    @include('layouts.search', ['route' => route('admin.transactions.cash')])
                     <table class="table">
                         <thead>
                             <tr>
                                 <td class="col-md-2">ID</td>
-                                <td class="col-md-2">Product</td>
                                 <td class="col-md-2">Amount</td>
                                 <td class="col-md-2">Date</td>
                             </tr>
@@ -24,7 +23,6 @@
                         @foreach ($transactions as $transaction)
                             <tr>
                                 <td>{{ $transaction->id }}</td>
-                                <td>{{ $transaction->product->name_fa }}</td>
                                 <td>{{ $transaction->amount }}</td>
                                 <td>{{ date("Y/m/d", strtotime($transaction->updated_at)) }}</td>
                             </tr>
