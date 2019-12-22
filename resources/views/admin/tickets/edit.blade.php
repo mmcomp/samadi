@@ -33,6 +33,10 @@ $statuses = ['registered','processing','answered','closed'];
                         @endforeach
                         </select>
                     </div>
+                    <div class="form-group">
+                        <label for="answer">Answer </label>
+                        <textarea id="answer" name="answer" class="form-control" >{{ $ticket->answer }}</textarea>
+                    </div>
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer">

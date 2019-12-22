@@ -13,5 +13,7 @@ class Ticket extends Model
         'customers_id',
         'employees_id',
         'status',
+        'unit',
+        'answer',
     ];
 }

@@ -15,9 +15,11 @@
                         <thead>
                             <tr>
                                 <td class="col-md-2">ID</td>
+                                <td class="col-md-2">Unit</td>
                                 <td class="col-md-2">Subject</td>
                                 <td class="col-md-2">Content</td>
                                 <td class="col-md-2">Status</td>
+                                <td class="col-md-2">Answer</td>
                                 <td class="col-md-2">Created At</td>
                                 <td class="col-md-2">Updated At</td>
                                 <td class="col-md-4">Actions</td>
@@ -27,9 +29,11 @@
                         @foreach ($tickets as $ticket)
                             <tr>
                                 <td>{{ $ticket->id }}</td>
+                                <td>{{ $ticket->unit }}</td>
                                 <td>{{ $ticket->subject }}</td>
                                 <td>{{ $ticket->content }}</td>
                                 <td>{{ $ticket->status }}</td>
+                                <td>{{ $ticket->answer }}</td>
                                 <td>{{ date("Y/m/d", strtotime($ticket->created_at)) }}</td>
                                 <td>{{ date("Y/m/d", strtotime($ticket->updated_at)) }}</td>
                                 <td>
