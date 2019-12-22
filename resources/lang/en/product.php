@@ -11,4 +11,5 @@ return [
     'new_products'=>'New Products',
     'category'=>'Category',
     'categories'=>'Categories',
+    'download'=>'Download',
 ];

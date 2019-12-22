@@ -11,4 +11,5 @@ return [
     'new_products'=>'جدیدترین محصولات',
     'category'=>'دسته',
     'categories'=>'دسته بندی ها',
+    'download'=>'دریاف',
 ];

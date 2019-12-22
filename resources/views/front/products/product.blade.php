@@ -162,11 +162,17 @@
           <input type="hidden" name="product" value="{{ $product->id }}" />
           <button  class="art-button"><i class="fa fa-heart" style="color: red;"> {{ $product->like_count }}</i></button>
         </form>
+        @if($product->price<=0)
+        <p style="text-align: center;">
+        <a class="art-button" href="/storage/{{ $product->file_path }}">{{__('product.download')}}</a>
+        </p>
+        @else
         <form action="{{ route('cart.store') }}" method="post" style="text-align: center;">
           {{ csrf_field() }}
           <input type="hidden" name="product" value="{{ $product->id }}" />
           <button accesskey="{{__('product.purchase_product')}}" class="art-button">{{__('product.purchase_product')}}</button>
         </form>
+        @endif
         &nbsp;
         <span style="font-size: 20px; color: #D50B15;"><br></span>
       </p>
