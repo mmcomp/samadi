@@ -347,10 +347,11 @@
     </div>
     <div class="art-blockcontent">
       @foreach($newProducts as $newProduct)
-      <p>
-        <img width="75" height="73" style="float: right; margin-top: 11px; margin-left: 4px;" alt="" class="art-lightbox" src="{{ $newProduct->cover }}">
-      </p>
-      <p>
+      <p style="position: relative;">
+        <img width="75" height="73" style="/*float: right;margin-top: 11px;*/margin-left: 4px;" alt="" class="art-lightbox" src="/storage/{{ $newProduct->cover }}">
+      <!-- </p>
+      <p> -->
+        <span style="position: absolute;top: 50%;">
         <span style="color: #262626;">
         {{ $newProduct->{'name_' . $locale } }}
         </span>
@@ -362,9 +363,11 @@
         {{ $newProduct->categories[0]->{'name_' . $locale} }}
         </span>
         @endif
+        </span>
         <br>
       </p>
-      <p><span style="color: #A26907;"><br></span></p>
+      <!-- <p><span style="color: #A26907;"><br></span></p> -->
+
       @endforeach`
       <!-- <p>
         <img width="75" height="73" style="float: right; margin-top: 11px; margin-left: 4px;" alt="" class="art-lightbox" src="/images/70b78f57-c2b3-4688-a334-a34ba0e4bfef.jpg">
