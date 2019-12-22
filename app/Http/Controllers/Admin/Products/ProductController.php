@@ -112,13 +112,13 @@ class ProductController extends Controller
             }
         }
         if($isCustomer==false) {
-            $list = $this->productRepo->listProducts('id');
+            $list = Product::where('id', '>', 0)->with('customer')->get();//$this->productRepo->listProducts('id');
         }else {
             $list = Product::where('customer_id', $admin->id)->orderBy('id')->get();
         }
 
         if (request()->has('q') && request()->input('q') != '' && $isCustomer==false) {
-            $list = $this->productRepo->searchProduct(request()->input('q'));
+            $list = Product::where('name_fa', 'like', '%' . request()->input('q') . '%')->with('customer')->get();//$this->productRepo->searchProduct(request()->input('q'));
         }else if(request()->has('q') && request()->input('q') != '') {
             $q = request()->input('q');
             $list = Product::where('customer_id', $admin->id)->where(function ($query) use ($q) {

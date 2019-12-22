@@ -38,6 +38,7 @@ trait ProductTransformable
         $prod->file_path = $product->file_path;
         $prod->customer_id = (int) $product->customer_id;
         $prod->like_count = (int) $product->like_count;
+        $prod->customer = $product->customer;
         return $prod;
     }
 }

@@ -9,7 +9,9 @@
         <tr>
             <td>ID</td>
             <td>Name</td>
-            <!-- <td>Quantity</td> -->
+            @if(!$isCustomer)
+            <td>Designer</td>
+            @endif
             <td>Price</td>
             <td>Status</td>
             <td>Actions</td>
@@ -33,7 +35,9 @@
                         {{ $product->name_tr }} -->
                     @endif
                 </td>
-                <!-- <td>{{ $product->quantity }}</td> -->
+                @if(!$isCustomer)
+                <td>{{ ($product->customer)?$product->customer->name . ' ' . $product->customer->sir_name:'-' }}</td>
+                @endif
                 <td>{{ config('cart.currency') }} {{ $product->price }}</td>
                 <td>@include('layouts.status', ['status' => $product->status])</td>
                 <td>
