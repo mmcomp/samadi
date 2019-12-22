@@ -199,6 +199,67 @@
         padding: 0 !important;
     }
 </style>
+<style>
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+</style>
 <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
 <script src="vendor/select2/select2.min.js"></script>
 <style>
@@ -222,7 +283,7 @@
             <div style="z-index:1;align-content: center;align-items: center;align-self: center;text-align: center;padding:0px" class="art-content-layout layout-item-0">
                 <div style="z-index:1;align-content: center;align-items: center;align-self: center;text-align: center;padding:0px" class="art-content-layout-row">
                     <div style="z-index:1;align-content: center;align-items: center;align-self: center;padding:0px;text-align: center;" class="art-layout-cell layout-item-1" style="width: 100%">
-                        <form method="POST">
+                        <form method="POST" id="search-form">
                             {{ csrf_field() }}
                             <div style="direction:rtl" class="multiselect">
                                 <div class="checkboxes">
@@ -230,12 +291,14 @@
                                     {{__('app.category')}}
                                     </h1>
                                 @foreach($allCats as $i => $cat)
-                                    <label for="id-{{ $i }}">
+                                    <span>{{ $cat->{'name_' . $locale} }}</span>
+                                    <label for="id-{{ $i }}" class="switch">
                                         @if($filter!=null && in_array($cat->id, $filter))
-                                        <input name="filter[]" value="{{ $cat->id }}" type="checkbox" id="id-{{ $i }}" checked />{{ $cat->{'name_' . $locale} }}
+                                        <input name="filter[]" value="{{ $cat->id }}" type="checkbox" id="id-{{ $i }}" checked />
                                         @else
-                                        <input name="filter[]" value="{{ $cat->id }}" type="checkbox" id="id-{{ $i }}" />{{ $cat->{'name_' . $locale} }}
+                                        <input name="filter[]" value="{{ $cat->id }}" type="checkbox" id="id-{{ $i }}" />
                                         @endif
+                                        <span class="slider round"></span>
                                     </label>
                                 @endforeach
                                 </div>
@@ -244,8 +307,8 @@
                                         <option style="display:none;">{{__('app.search_filter')}}</option>
                                     </select> -->
                                     <input style="padding: 14px 30px;width:45%;text-decoration: none;margin: 4px -6px;color:black" placeholder="&nbsp;&nbsp;&nbsp;{{__('app.search_file_title')}}&nbsp;&nbsp;&nbsp;" type="search" name="search">
-                                    <!-- <input type=button value="{{__('app.search_now')}} !"> -->
-                                    <div style="width:50px;padding-top:1px" class="overSelect"> </div>
+                                    <input type="button" value="{{__('app.search_now')}} !" onclick="$('#search-form').submit();">
+                                    <!-- <div style="width:50px;padding-top:1px" class="overSelect"> </div> -->
                                 </div>
                                 <!--
                                 <div id="checkboxes">
