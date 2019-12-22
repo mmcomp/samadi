@@ -393,7 +393,7 @@
                                 <a href="#" target="_blank" title="{{__('app.subscribe_newsletter')}}"
                                     class="art-button">
                                     {{__('app.subscribe_newsletter')}}
-                                </!-->
+                                </a>
                                 &nbsp;
                                 </span>
                             </form>
