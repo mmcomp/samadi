@@ -115,4 +115,22 @@ class ProductController extends Controller
             'newProducts'
         ));
     }
+
+    /**
+     * Like a product
+     *
+     * @param int $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function like(Request $request)
+    {
+        $id = (int)$request->input('product', 0);
+        $product = Product::find($id);
+        if(!$product){
+            return redirect()->route('home');
+        }
+        $product->like_count++;
+        $product->save();
+        return redirect()->route('front.get.productid', ['id'=>$id]);
+    }
 }

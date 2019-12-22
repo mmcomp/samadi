@@ -157,6 +157,11 @@
       <p style="text-align: center;"><span style="color: rgb(213, 11, 21); font-size: 5px;"><br></span></p>
       <p style="text-align: center;">
         &nbsp;
+        <form action="{{ route('product.like') }}" method="post" style="text-align: center;">
+          {{ csrf_field() }}
+          <input type="hidden" name="product" value="{{ $product->id }}" />
+          <button  class="art-button"><i class="fa fa-heart" style="color: red;"> {{ $product->like_count }}</i></button>
+        </form>
         <form action="{{ route('cart.store') }}" method="post" style="text-align: center;">
           {{ csrf_field() }}
           <input type="hidden" name="product" value="{{ $product->id }}" />

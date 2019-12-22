@@ -38,6 +38,16 @@ Route::group(['prefix' => 'admin', /*'middleware' => ['employee'],*/ 'as' => 'ad
                 Route::resource('customers', 'CustomerController');
                 Route::resource('customers.addresses', 'CustomerAddressController');
             });
+            Route::namespace('Offers')->group(function () {
+                Route::resource('offers', 'OfferController');
+                Route::any('offers.category', 'OfferController@category')->name('offers.category');
+                Route::any('offers.category_create', 'OfferController@categoryCreate')->name('offers.category_create');
+                Route::any('offers.category_store', 'OfferController@categoryStore')->name('offers.category_store');
+                Route::any('offers.category_destroy', 'OfferController@categoryDestroy')->name('offers.category_destroy');
+            });
+            Route::namespace('Tickets')->group(function () {
+                Route::resource('tickets', 'TicketController');
+            });
             Route::namespace('Categories')->group(function () {
                 Route::resource('categories', 'CategoryController');
                 Route::get('remove-image-category', 'CategoryController@removeImage')->name('category.remove.image');
@@ -117,6 +127,7 @@ Route::namespace('Front')->group(function () {
     Route::get('about', 'HomeController@about')->name('about');
     Route::get('contact', 'HomeController@contact')->name('contact');
     Route::get('privacy', 'HomeController@contact')->name('privacy');
+    Route::post("product/like", 'ProductController@like')->name('product.like');
     Route::get("product/{id}", 'ProductController@showId')->name('front.get.productid');
     Route::get("{product}", 'ProductController@show')->name('front.get.product');
 });

@@ -107,10 +107,12 @@ $("#cover").change(function(){
                         @endif
                         <div class="form-group">
                             <label for="cover">Cover </label> <i onclick="removeSelected(true);" class="fa fa-times" style="color: red;"></i><br/>
+                            Drag image to the "Choose File" button below:<br/>
                             <input type="file" name="cover" id="cover" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="image">Images</label> <i onclick="removeSelected();" class="fa fa-times" style="color: red;"></i><br/>
+                            Drag image to the "Choose File" button below:<br/>
                             <input type="file" name="image[]" id="image" class="form-control" multiple>
                             <small class="text-warning">You can use ctr (cmd) to select multiple images</small>
                         </div>
