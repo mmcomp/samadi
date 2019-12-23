@@ -290,7 +290,19 @@ input:checked + .slider:before {
                                     <h1 style="text-align: center;">
                                     {{__('app.category')}}
                                     </h1>
-                                @foreach($allCats as $i => $cat)
+                                    <div class="text-center">
+                                        {{__('app.free')}}
+                                        <label for="free" class="switch">
+                                            <input name="filter[]" value="free" type="checkbox" id="free" />
+                                            <span class="slider round"></span>
+                                        </label>
+                                        {{__('app.nofree')}}
+                                        <label for="nofree" class="switch">
+                                            <input name="filter[]" value="nofree" type="checkbox" id="nofree" />
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </div>
+                                    @foreach($allCats as $i => $cat)
                                     <span>{{ $cat->{'name_' . $locale} }}</span>
                                     <label for="id-{{ $i }}" class="switch">
                                         @if($filter!=null && in_array($cat->id, $filter))
@@ -300,7 +312,7 @@ input:checked + .slider:before {
                                         @endif
                                         <span class="slider round"></span>
                                     </label>
-                                @endforeach
+                                    @endforeach
                                 </div>
                                 <div class="selectBox" ><!-- onclick="showCheckboxes()" type=button> -->
                                     <!-- <select style="border-top-right-radius:5px;border-bottom-right-radius: 5px;padding: 15px 30px;width:25%;text-decoration: none;margin:0px;">
