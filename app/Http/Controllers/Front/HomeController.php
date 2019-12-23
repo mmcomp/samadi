@@ -88,7 +88,7 @@ class HomeController
         $topWorkProducts = $newProducts;
         //\Products
         // News
-        $topNews = News::orderBy('updated_at', 'desc')->limit(10)->get();
+        $topNews = News::orderBy('updated_at', 'desc')->limit(5)->get();
         //\News
         $locale = $request->session()->get('locale');
         if($locale==null) {

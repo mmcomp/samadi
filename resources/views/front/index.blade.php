@@ -622,9 +622,9 @@ input:checked + .slider:before {
                         <div class="art-layout-cell layout-item-1" style="width: 20%">
                             <p style="text-align: center;">
                                 @if($news->image_path!=null && $news->image_path!='')
-                                <img width="99" height="99" alt="" class="fade" src="{{ $news->image_path }}">
+                                <img width="99" height="99" alt="" class="fade1" src="/storage/{{ $news->image_path }}">
                                 @else
-                                <img width="99" height="99" alt="" class="fade"
+                                <img width="99" height="99" alt="" class="fade1"
                                     src="images/75f2fb3f-8631-4716-acf3-70cffdacb232.jpg">
                                 @endif
                                 <br>

@@ -167,6 +167,19 @@ $isCustomer = isset($isCustomer)?$isCustomer:false;
                 </ul>
             </li>
             @if($user->hasRole('admin|superadmin'))
+                <li class="header">NEWS</li>
+                <li class="treeview @if(request()->segment(2) == 'news') active @endif">
+                    <a href="#">
+                        <i class="fa fa-star"></i> <span>News</span>
+                        <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{ route('admin.news.index') }}"><i class="fa fa-circle-o"></i> List news</a></li>
+                        <li><a href="{{ route('admin.news.create') }}"><i class="fa fa-plus"></i> Create news</a></li>
+                    </ul>
+                </li>
                 <li class="header">CONFIG</li>
                 <li class="treeview @if(request()->segment(2) == 'employees' || request()->segment(2) == 'roles' || request()->segment(2) == 'permissions') active @endif">
                     <a href="#">
