@@ -397,7 +397,7 @@ input:checked + .slider:before {
             </div>
             @endif
             <!-- new products -->
-            <div class="art-content-layout layout-item-2">
+            <div class="art-content-layout layout-item-2" style="margin-top: 100px;">
                 <div class="art-content-layout-row">
                     <div class="art-layout-cell layout-item-3" style="width: 100%">
                         <h1 style="text-align: center;"><span style="font-family: 'vazir';"><br></span></h1>
