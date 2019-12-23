@@ -17,7 +17,9 @@ trait CustomerTransformable
         $prop->email = $customer->email;
         $prop->status = (int) $customer->status;
         $prop->commission_percent = (int) $customer->commission_percent;
-
+        $prop->sales_count = (int) $customer->sales_count;
+        $prop->files_count = (int) $customer->files_count;
+        $prop->likes_count = (int) $customer->likes_count;
         return $prop;
     }
 }

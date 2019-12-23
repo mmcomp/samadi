@@ -8,6 +8,7 @@ use App\Shop\Orders\OrderProduct;
 use App\Shop\Products\Repositories\Interfaces\ProductRepositoryInterface;
 use App\Http\Controllers\Controller;
 use App\Shop\Products\Transformations\ProductTransformable;
+use App\Shop\Customers\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 
@@ -131,6 +132,11 @@ class ProductController extends Controller
         }
         $product->like_count++;
         $product->save();
+        if($product->customer_id && $product->customer_id>0) {
+            $customer = Customer::find($product->customer_id);
+            $customer->likes_count++;
+            $customer->save();
+        }
         return redirect()->route('front.get.productid', ['id'=>$id]);
     }
 }

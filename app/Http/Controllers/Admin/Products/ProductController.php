@@ -206,6 +206,8 @@ class ProductController extends Controller
         }
         if($isCustomer) {
             $data['customer_id'] = $admin->id;
+            $admin->files_count++;
+            $admin->save();
             if(!isset($data['name_en']) || $data['name_en']==null || $data['name_en']=='') {
                 $data['name_en'] = $data['name_fa'];
             }

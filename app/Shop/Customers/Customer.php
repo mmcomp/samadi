@@ -29,6 +29,9 @@ class Customer extends Authenticatable
         'status',
         'mobile',
         'commission_percent',
+        'sales_count',
+        'files_count',
+        'likes_count',
     ];
 
     /**
