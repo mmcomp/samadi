@@ -11,6 +11,7 @@ use App\Shop\News\News;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use App\Shop\Customers\Customer;
+use App\Shop\Slides\Slide;
 
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendMailable;
@@ -23,6 +24,7 @@ class HomeController
     private $categoryRepo;
     private $productRepo;
     private $newsRepo;
+    private $slides = [];
 
     /**
      * HomeController constructor.
@@ -33,6 +35,7 @@ class HomeController
     {
         $this->categoryRepo = $categoryRepository;
         $this->productRepo = $productRepository;
+        $this->slides = Slide::all();
     }
 
     /**
@@ -106,6 +109,7 @@ class HomeController
             "allCats"=>$allCats,
             "search"=>$search,
             "filter"=>$filter,
+            "slides"=>$this->slides,
         ]);
     }
 
@@ -122,7 +126,7 @@ class HomeController
      */
     public function about(Request $request)
     {
-        return view('front.about');
+        return view('front.about', ["slides"=>$this->slides]);
     }
 
     /**
@@ -130,7 +134,7 @@ class HomeController
      */
     public function contact(Request $request)
     {
-        return view('front.contact');
+        return view('front.contact', ["slides"=>$this->slides]);
     }
 
     /**
@@ -138,7 +142,7 @@ class HomeController
      */
     public function privacy(Request $request)
     {
-        return view('front.privacy');
+        return view('front.privacy', ["slides"=>$this->slides]);
     }
 
     /**
@@ -151,7 +155,7 @@ class HomeController
             $customer->verified = 1;
             $customer->save();
         }
-        return view('auth.admin.sms', ["customer"=>$customer]);
+        return view('auth.admin.sms', ["customer"=>$customer, "slides"=>$this->slides]);
     }
 
     /**
@@ -164,7 +168,7 @@ class HomeController
             $customer->email_verified = 1;
             $customer->save();
         }
-        return view('auth.admin.email', ["customer"=>$customer]);
+        return view('auth.admin.email', ["customer"=>$customer, "slides"=>$this->slides]);
     }
     public function mail()
     {

@@ -192,6 +192,9 @@
     @yield('og')
 
     @yield('head')
+
+    <link rel="/slideshow/responsiveslides.css" />
+    <script src="/slideshow/responsiveslides.min.js"></script>
 </head>
 
 <!-- End Head -->
@@ -207,7 +210,19 @@
             <header class="art-header">
 
                 <div class="art-shapes">
-
+                    <ul class="rslides">
+                        @if(isset($slides) && isset($slides[0]))
+                        @foreach($slides as $slide)
+                        <li>
+                            <img src="{{ $slide->image_path }}" alt="">
+                        </li>
+                        @endforeach
+                        @else
+                        <li><img src="/images/header.jpg" alt=""></li>
+                        <li><img src="/images/header.jpg" alt=""></li>
+                        <li><img src="/images/header.jpg" alt=""></li>
+                        @endif
+                    </ul>
 
                     <h1 class="art-headline" data-left="50.36%">
                     </h1>
@@ -215,7 +230,7 @@
                     <div style="z-index: 99999;" id="navbar">
                         <a href="/home">{{__('app.home')}}</a>
                         <a href="#">{{__('app.samples')}}</a>
-                        <a href="#">{{__('app.products')}}</a>
+                        <!-- <a href="#">{{__('app.products')}}</a> -->
                         <a href="#">{{__('app.lesson')}}</a>
                         <a href="/about">{{__('app.aboutus')}}</a>
                         <a href="/contact">{{__('app.contactus')}}</a>
@@ -369,6 +384,11 @@
 
     </div>
     @yield('js')
+    <script>
+    $(function() {
+        $(".rslides").responsiveSlides();
+    });
+    </script>
 </body>
 
 </html>

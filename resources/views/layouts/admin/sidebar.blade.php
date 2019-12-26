@@ -180,6 +180,19 @@ $isCustomer = isset($isCustomer)?$isCustomer:false;
                         <li><a href="{{ route('admin.news.create') }}"><i class="fa fa-plus"></i> Create news</a></li>
                     </ul>
                 </li>
+                <li class="header">SLIDESHOW</li>
+                <li class="treeview @if(request()->segment(2) == 'slides') active @endif">
+                    <a href="#">
+                        <i class="fa fa-star"></i> <span>SlideShows</span>
+                        <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{ route('admin.slides.index') }}"><i class="fa fa-circle-o"></i> List slides</a></li>
+                        <li><a href="{{ route('admin.slides.create') }}"><i class="fa fa-plus"></i> Create slides</a></li>
+                    </ul>
+                </li>
                 <li class="header">CONFIG</li>
                 <li class="treeview @if(request()->segment(2) == 'employees' || request()->segment(2) == 'roles' || request()->segment(2) == 'permissions') active @endif">
                     <a href="#">

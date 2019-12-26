@@ -1,4 +1,4 @@
-@extends('layouts.front.app')
+@extends('layouts.front.app', ['slides', $slides])
 
 @section('og')
 <meta property="og:type" content="home" />

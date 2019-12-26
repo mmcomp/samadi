@@ -11,6 +11,7 @@ use App\Shop\Products\Transformations\ProductTransformable;
 use App\Shop\Customers\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use App\Shop\Slides\Slide;
 
 class ProductController extends Controller
 {
@@ -20,6 +21,7 @@ class ProductController extends Controller
      * @var ProductRepositoryInterface
      */
     private $productRepo;
+    private $slides = [];
 
     /**
      * ProductController constructor.
@@ -28,6 +30,7 @@ class ProductController extends Controller
     public function __construct(ProductRepositoryInterface $productRepository)
     {
         $this->productRepo = $productRepository;
+        $this->slides = Slide::all();
     }
 
     /**
@@ -46,7 +49,8 @@ class ProductController extends Controller
         });
 
         return view('front.products.product-search', [
-            'products' => $this->productRepo->paginateArrayResults($products->all(), 10)
+            'products' => $this->productRepo->paginateArrayResults($products->all(), 10),
+            "slides"=>$this->slides,
         ]);
     }
 
@@ -67,14 +71,15 @@ class ProductController extends Controller
             $locale = 'fa';
         }
         App::setlocale($locale);
-
+        $slides = $this->slides;
         return view('front.products.product', compact(
             'product',
             'images',
             'productAttributes',
             'category',
             'combos',
-            'locale'
+            'locale',
+            "slides"
         ));
     }
 
@@ -103,6 +108,7 @@ class ProductController extends Controller
         }
         App::setlocale($locale);
         // dd($images);
+        $slides = $this->slides;
         return view('front.products.product', compact(
             'product',
             'images',
@@ -113,7 +119,8 @@ class ProductController extends Controller
             'locale',
             'owner',
             'otherProducts',
-            'newProducts'
+            'newProducts',
+            "slides"
         ));
     }
 

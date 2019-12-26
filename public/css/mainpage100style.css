@@ -532,9 +532,9 @@ text-decoration: none;
    width: 100%;
    height: 550px;
    z-index: auto;
-   background-position: center top;
+   /* background-position: center top;
    background-image: url('images/header.jpg');
-   background-repeat: no-repeat;
+   background-repeat: no-repeat; */
 }
 
 #art-hmenu-bg
@@ -563,9 +563,9 @@ text-decoration: none;
 {
    margin:0 auto;
    height: 550px;
-   background-image: url('images/header.jpg');
+   /* background-image: url('images/header.jpg');
    background-position: center top;
-   background-repeat: no-repeat;
+   background-repeat: no-repeat; */
    position: relative;
    z-index: auto !important;
 }
