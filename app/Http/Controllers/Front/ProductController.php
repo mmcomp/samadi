@@ -9,6 +9,8 @@ use App\Shop\Products\Repositories\Interfaces\ProductRepositoryInterface;
 use App\Http\Controllers\Controller;
 use App\Shop\Products\Transformations\ProductTransformable;
 use App\Shop\Customers\Customer;
+use App\Shop\Customers\CustomerBookmark;
+use App\Shop\Categories\CategoryProduct;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use App\Shop\Slides\Slide;
@@ -91,6 +93,12 @@ class ProductController extends Controller
      */
     public function showId(Request $request, int $id)
     {
+        $customerBookmark = null;
+        if (auth()->guard('web')->check()) {
+            $customer = auth()->guard('web')->user();
+            $customerBookmark = CustomerBookmark::where('customer_id', $customer->id)->where('product_id', $id)->first();
+        }
+
         $product = $this->productRepo->findProductById($id);
         $images = $product->images()->get();
         $categories = $product->categories()->get();
@@ -101,6 +109,8 @@ class ProductController extends Controller
         $otherProductsIds = OrderProduct::whereIn('order_id', $orders)->where('product_id', '!=', $product->id)->groupBy('product_id')->pluck('product_id')->toArray();
         $otherProducts = Product::whereIn('id', $otherProductsIds)->get();
         $newProducts = Product::orderBy('created_at', 'desc')->limit(4)->with('categories')->get();
+        $similarProductIds = CategoryProduct::whereIn('category_id', $categories->pluck('id'))->pluck('product_id');
+        $similarProducts = Product::whereIn('id', $similarProductIds)->get();
         // dd($newProducts);
         $locale = $request->session()->get('locale');
         if($locale==null) {
@@ -120,7 +130,9 @@ class ProductController extends Controller
             'owner',
             'otherProducts',
             'newProducts',
-            "slides"
+            "slides",
+            "customerBookmark",
+            "similarProducts"
         ));
     }
 
@@ -145,5 +157,34 @@ class ProductController extends Controller
             $customer->save();
         }
         return redirect()->route('front.get.productid', ['id'=>$id]);
+    }
+
+    /**
+     * Toggle bookmark of a product
+     *
+     * @param int $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function bookmark(Request $request)
+    {
+        $id = (int)$request->input('product', 0);
+        $product = Product::find($id);
+        if(!$product){
+            return redirect()->route('home');
+        }
+        if (auth()->guard('web')->check()) {
+            $customer = auth()->guard('web')->user();
+            $customerBookmark = CustomerBookmark::where('customer_id', $customer->id)->where('product_id', $id)->first();
+            if($customerBookmark) {
+                $customerBookmark->delete();
+            }else {
+                $customerBookmark = new CustomerBookmark;
+                $customerBookmark->customer_id = $customer->id;
+                $customerBookmark->product_id = $id;
+                $customerBookmark->save();
+            }
+            return redirect()->route('front.get.productid', ['id'=>$id]);
+        }
+        return redirect()->route('admin.login');
     }
 }

@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Laravel\Cashier\Cashier;
+use Illuminate\Support\Facades\Validator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,6 +16,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Cashier::useCurrency(config('cart.currency'), config('cart.currency_symbol'));
+        Validator::extend('recaptcha', 'App\\Validators\\ReCaptcha@validate');
     }
 
     /**

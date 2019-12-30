@@ -2,7 +2,7 @@
 
 return [
     'product_price_purchase'=>'Product Price & Purchase',
-    'tooman'=>'Toman',
+    'tooman'=>'USD',
     'purchase_product'=>'Purchase',
     'name_star_customer'=>'Name & Score of the Designer',
     'product_name'=>'Product Name',
@@ -12,4 +12,5 @@ return [
     'category'=>'Category',
     'categories'=>'Categories',
     'download'=>'Download',
+    'similar_products'=>'Similar Products',
 ];

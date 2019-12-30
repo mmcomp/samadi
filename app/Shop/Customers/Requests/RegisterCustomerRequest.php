@@ -17,6 +17,7 @@ class RegisterCustomerRequest extends BaseFormRequest
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:customers',
             'password' => 'required|string|min:6|confirmed',
+            'g-recaptcha-response' => 'required|recaptcha',
         ];
     }
 }

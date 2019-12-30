@@ -78,7 +78,7 @@ class HomeController
                 if(count($catRes)>0) {
                     $query->whereIn('id', $catRes);
                 }
-            })->get();
+            })->orderBy('created_at', 'desc')->orderBy('like_count', 'desc')->get();
         }
         // Categories
         $allCats = Category::all();

@@ -288,6 +288,7 @@
         <!-- Footer -->
         <footer class="art-footer">
             <div class="art-footer-inner">
+                @section('extra_footer')
                 <div class="art-content-layout-wrapper layout-item-0">
                     <div class="art-content-layout">
                         <div class="art-content-layout-row">
@@ -353,6 +354,7 @@
                         </div>
                     </div>
                 </div>
+                @show
                 <div class="art-content-layout layout-item-4">
                     <div style="vertical-align: middle:" class="art-content-layout-row">
                         <div class="art-layout-cell layout-item-5" style="width: 50%">

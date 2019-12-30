@@ -126,6 +126,9 @@
 </script>
 @endsection
 
+@section('extra_footer')
+@endsection
+
 @section('content')
 <div class="art-layout-cell art-sidebar1">
   <div class="art-block clearfix">
@@ -157,6 +160,15 @@
       <p style="text-align: center;"><span style="color: rgb(213, 11, 21); font-size: 5px;"><br></span></p>
       <p style="text-align: center;">
         &nbsp;
+        <form action="{{ route('product.bookmark') }}" method="post" style="text-align: center;">
+          {{ csrf_field() }}
+          <input type="hidden" name="product" value="{{ $product->id }}" />
+          @if($customerBookmark)
+          <button  class="art-button"><i class="fa fa-bookmark" style="color: blue;"></i></button>
+          @else
+          <button class="art-button"><i class="fa fa-bookmark" style="color: #fff;"></i></button>
+          @endif
+        </form>        
         <form action="{{ route('product.like') }}" method="post" style="text-align: center;">
           {{ csrf_field() }}
           <input type="hidden" name="product" value="{{ $product->id }}" />
@@ -187,7 +199,7 @@
     <div class="art-blockcontent">
       <hr>
       <p style="text-align: center;">
-        <img width="119" height="119" style="border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;" alt="" class="art-lightbox" src="{{ $owner->image_path }}">
+        <img width="119" height="119" style="border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;" alt="" class="art-lightbox" src="/storage/{{ $owner->image_path }}">
         <span style="font-size: 20px; color: #43686B;">
           <br>
         </span>
@@ -529,4 +541,48 @@
     </div>
   </div>
 </div>
+
+</div></div>
+
+<div class="art-content-layout layout-item-2" style="margin-top: 100px;">
+    <div class="art-content-layout-row">
+        <div class="art-layout-cell layout-item-3" style="width: 100%">
+            <h1 style="text-align: center;"><span style="font-family: 'vazir';"><br></span></h1>
+            <h1 style="text-align: center;">
+                <span style="font-family: 'vazir'; color: #000000;">
+                    {{__('product.similar_products')}}
+                </span>
+            </h1>
+        </div>
+    </div>
+</div>
+<div class="art-content-layout layout-item-0">
+    <div class="art-content-layout-row">
+        @foreach($similarProducts as $newProduct)
+        <div class="art-layout-cell layout-item-4" style="width: 20%">
+            <p>
+                <a href="/product/{{ $newProduct->id }}">
+                    @if($newProduct->cover!=null && $newProduct->cover!='')
+                    <img width="100%" height="100%" alt="{{ $newProduct->{'name_' . $locale} }}"
+                        class="fade1" src="/storage/{{ $newProduct->cover }}">
+                    @else
+                    <img width="100%" height="100%" alt="{{ $newProduct->{'name_' . $locale} }}"
+                        class="fade1" src="/images/11-1-copy.jpg">
+                    @endif
+                </a>
+                <br>
+            </p>
+        </div>
+        @endforeach
+    <!-- </div>
+</div>
+<div class="art-content-layout layout-item-5">
+    <div class="art-content-layout-row">
+        <div class="art-layout-cell layout-item-6" style="width: 100%">
+            <p><br></p>
+            <p style="text-align: center;"><br></p>
+            <p><br></p>
+        </div>
+    </div>
+</div> -->
 @endsection

@@ -69,6 +69,13 @@
 						<input style="text-align: right;font-family: iranyekan;height: 25px;width: 25px;float: right;"class="input100" type="checkbox" name="Conditions" id="conditions" placeholder="Conditions"><a style="padding-right: 10px; color:red;font-family: iranyekan;" href="#">{{__('main.accept_roles')}}</a>
 					</div>
 					
+					@if(env('GOOGLE_RECAPTCHA_KEY'))
+					<div style="text-align: center;">
+						<div class="g-recaptcha" data-sitekey="{{env('GOOGLE_RECAPTCHA_KEY')}}">
+						</div>
+					</div>
+					@endif
+
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
@@ -100,6 +107,6 @@
 	<script src="Login-Page-vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
-
+	<script src='https://www.google.com/recaptcha/api.js'></script>
 </body>
 </html>

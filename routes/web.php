@@ -138,6 +138,7 @@ Route::namespace('Front')->group(function () {
     Route::get('contact', 'HomeController@contact')->name('contact');
     Route::get('privacy', 'HomeController@contact')->name('privacy');
     Route::post("product/like", 'ProductController@like')->name('product.like');
+    Route::post("product/bookmark", 'ProductController@bookmark')->name('product.bookmark');
     Route::get("product/{id}", 'ProductController@showId')->name('front.get.productid');
     // Route::get("{product}", 'ProductController@show')->name('front.get.product');
 });

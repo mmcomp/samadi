@@ -293,19 +293,27 @@ input:checked + .slider:before {
                                     <div class="text-center">
                                         {{__('app.free')}}
                                         <label for="free" class="switch">
+                                            @if($filter!=null && in_array("free", $filter) || !$isSearch)
+                                            <input name="filter[]" value="free" type="checkbox" id="free" checked />
+                                            @else
                                             <input name="filter[]" value="free" type="checkbox" id="free" />
+                                            @endif
                                             <span class="slider round"></span>
                                         </label>
                                         {{__('app.nofree')}}
                                         <label for="nofree" class="switch">
+                                            @if($filter!=null && in_array("nofree", $filter) || !$isSearch)
+                                            <input name="filter[]" value="nofree" type="checkbox" id="nofree" checked />
+                                            @else
                                             <input name="filter[]" value="nofree" type="checkbox" id="nofree" />
+                                            @endif
                                             <span class="slider round"></span>
                                         </label>
                                     </div>
                                     @foreach($allCats as $i => $cat)
                                     <span>{{ $cat->{'name_' . $locale} }}</span>
                                     <label for="id-{{ $i }}" class="switch">
-                                        @if($filter!=null && in_array($cat->id, $filter))
+                                        @if($filter!=null && in_array($cat->id, $filter) || !$isSearch)
                                         <input name="filter[]" value="{{ $cat->id }}" type="checkbox" id="id-{{ $i }}" checked />
                                         @else
                                         <input name="filter[]" value="{{ $cat->id }}" type="checkbox" id="id-{{ $i }}" />

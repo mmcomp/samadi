@@ -2,7 +2,7 @@
 
 return [
     'product_price_purchase'=>'قیمت محصول و خرید',
-    'tooman'=>'تومان',
+    'tooman'=>'دلارآمریکا',
     'purchase_product'=>'خرید محصول',
     'name_star_customer'=>'نام و امتیاز طراح',
     'product_name'=>'نام محصول',
@@ -12,4 +12,5 @@ return [
     'category'=>'دسته',
     'categories'=>'دسته بندی ها',
     'download'=>'دریاف',
+    'similar_products'=>'محصولات مشابه',
 ];
