@@ -55,9 +55,9 @@ class CustomerRepository extends BaseRepository implements CustomerRepositoryInt
             if (isset($params['password'])) {
                 $customer->password = bcrypt($params['password']);
             }
-            if($data['commission_percent']==null || (int)$data['commission_percent']<0) {
+            if(isset($data['commission_percent']) && (int)$data['commission_percent']<0) {
                 unset($data['commission_percent']);
-            }else {
+            }else if(isset($data['commission_percent'])){
                 $customer->commission_percent=(int)$data['commission_percent'];
             }
             

@@ -50,5 +50,10 @@ return [
     'register_data'=>'Register',
     'country_of_bank_account'=>'Select the country that your Bank Account blongs to',
     'username_must_be_email'=>'Username (Username must be your Email)',
-    'accept_roles'=>'* I accept the roles and conditios of this site'
+    'accept_roles'=>'* I accept the roles and conditios of this site',
+    'forgetpassword'=>'Please enter you Email or Mobile to recieve your new Temperary password.',
+    'reset_pass'=>'Reset Password',
+    'foregetemailsent'=>'Your new temporary password emailed to you!',
+    'foregetsmssent'=>'Your new temporary password sent to you by sms!',
+    'foregetnotsent'=>'You need to specify your email or mobile in order to reset password!',
 ];

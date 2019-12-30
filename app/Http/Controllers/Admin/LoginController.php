@@ -7,6 +7,9 @@ use App\Shop\Customers\Customer;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendForgetMailable;
 
 class LoginController extends Controller
 {
@@ -76,5 +79,72 @@ class LoginController extends Controller
         $this->incrementLoginAttempts($request);
 
         return $this->sendFailedLoginResponse($request);
+    }
+
+    public function forget()
+    {
+        Auth::logout();
+        $locale = request()->session()->get('locale');
+        if($locale==null) {
+            $locale = 'fa';
+        }
+        App::setlocale($locale);
+        $msg = '';
+        if(request()->method()=='POST') {
+            $msg = 'none';
+            if(request()->input('email') && trim(request()->input('email'))!='') {
+                
+                $customer = Customer::where('email', request()->input('email'))->first();
+                if($customer) {
+                    $newpassword = uniqid('P');
+                    $customer->password = bcrypt($newpassword);
+                    $customer->save();
+                    Mail::to($customer->email)->send(new SendForgetMailable($newpassword));
+                    $msg = 'email';
+                    return view('auth.forget', [
+                        'locale' => $locale,
+                        'msg' => $msg,
+                    ]);
+                }
+            }
+            if(request()->input('mobile')) {
+                $customer = Customer::where('mobile', request()->input('mobile'))->first();
+                if($customer) {
+                    $newpassword = uniqid('P');
+                    $customer->password = bcrypt($newpassword);
+                    $customer->save();
+                    try{
+                        $client = new \SoapClient('http://sw5p80.pdr.co.ir/?wsdl', array('encoding'=>'UTF-8'));
+                        $parameters['uUsername'] = "samadi";
+                        $parameters['uPassword'] = "2235948";
+                        $parameters['uNumber'] = "50001900500019";
+                        $parameters['uCellphones'] = $customer->mobile;
+                        $parameters['uMessage'] = 'پیوه ژن' . "\n" . 'رمز عبور جدید شما :' . "\n" . $newpassword;
+                        $parameters['uFarsi'] = false;
+                        $parameters['uTopic'] = false;
+                        $parameters['uFlash'] = false;
+                        $parameters['uUDH'] = '';
+                        $res = $client->doSendSMS($parameters);
+                        // if(strpos($res->doSendSMSResult,'Send OK') === 0){
+                        //   echo 'OK : '.$res->doSendSMSResult;
+                        // }else{
+                        //   echo 'ER : '.$res->doSendSMSResult;
+                        // }
+                        $msg= 'sms';
+                        return view('auth.forget', [
+                            'locale' => $locale,
+                            'msg' => $msg,
+                        ]);
+                    }catch(Exception $e) {
+                        // echo 'Caught exception: ',  $e->getMessage(), "\n";
+                        
+                    }
+                }
+            }
+        }
+        return view('auth.forget', [
+            'locale' => $locale,
+            'msg' => $msg,
+        ]);
     }
 }
