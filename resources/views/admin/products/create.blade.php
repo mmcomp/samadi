@@ -121,7 +121,7 @@ $("#cover").change(function(){
                             <input type="text" name="quantity" id="quantity" placeholder="Quantity" class="form-control" value="{{ old('quantity') }}">
                         </div> -->
                         <div class="form-group">
-                            <label for="price">Price <span class="text-danger">*</span></label>
+                            <label for="price">Price (USD)<span class="text-danger">*</span></label>
                             <div class="input-group">
                                 <span class="input-group-addon">PHP</span>
                                 <input type="text" name="price" id="price" placeholder="Price" class="form-control" value="{{ old('price') }}">

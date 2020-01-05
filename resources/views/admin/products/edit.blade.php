@@ -121,7 +121,7 @@
                                             </div>
                                             -->
                                             <div class="form-group">
-                                                <label for="price">Price</label>
+                                                <label for="price">Price (USD)</label>
                                                 @if($productAttributes->isEmpty())
                                                     <div class="input-group">
                                                         <span class="input-group-addon">{{ config('cart.currency') }}</span>

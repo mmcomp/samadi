@@ -12,7 +12,7 @@
             @if(!$isCustomer)
             <td>Designer</td>
             @endif
-            <td>Price</td>
+            <td>Price (USD)</td>
             <td>Status</td>
             <td>Actions</td>
         </tr>
