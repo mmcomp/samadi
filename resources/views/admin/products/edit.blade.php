@@ -121,6 +121,13 @@
                                             </div>
                                             -->
                                             <div class="form-group">
+                                                <label for="sale_price">Sale Price (USD)</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">{{ config('cart.currency') }}</span>
+                                                    <input type="text" name="sale_price" id="sale_price" placeholder="Sale Price" class="form-control" value="{!! $product->sale_price !!}">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
                                                 <label for="price">Price (USD)</label>
                                                 @if($productAttributes->isEmpty())
                                                     <div class="input-group">

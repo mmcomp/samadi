@@ -128,6 +128,13 @@ $("#cover").change(function(){
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="sale_price">Sale Price (USD)<span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <span class="input-group-addon">PHP</span>
+                                <input type="text" name="sale_price" id="sale_price" placeholder="Sale Price" class="form-control" value="{{ old('sale_price') }}">
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label for="file_path">File <span class="text-danger">*</span></label>
                             <input type="file" name="file_path" id="file_path" placeholder="File" class="form-control">
                         </div>

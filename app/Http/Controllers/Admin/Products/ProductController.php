@@ -557,11 +557,11 @@ class ProductController extends Controller
                 }
             }
         }
-        if($isCustomer==false) {
-            return redirect('/admin/products');
-        }
+        // if($isCustomer==false) {
+        //     return redirect('/admin/products');
+        // }
 
-        $productIds = Product::where('customer_id', $admin->id)->pluck('id');
+        $productIds = Product::where('id', '>', 0)->pluck('id');
         $productIds = OrderProduct::whereIn('product_id', $productIds)->pluck('product_id');
         $list = Product::whereIn('id', $productIds)->get();
 

@@ -25,6 +25,20 @@ $isCustomer = isset($isCustomer)?$isCustomer:false;
             <li class="header">HOME</li>
             <li><a href="{{ route('admin.dashboard') }}"> <i class="fa fa-home"></i> Home</a></li>
             <li><a href="{{ route('home') }}"> <i class="fa fa-window-maximize"></i> Site</a></li>
+            @if(!$isCustomer)
+            <li class="header">REPORT</li>
+            <li class="treeview @if(request()->segment(2) == 'reports') active @endif">
+                <a href="#">
+                    <i class="fa fa-gift"></i> <span>Reports</span>
+                    <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ route('admin.product.selled') }}"><i class="fa fa-file"></i> Selled products</a></li>
+                </ul>
+            </li>
+            @endif
             <li class="header">SELL</li>
             <li class="treeview @if(request()->segment(2) == 'products' || request()->segment(2) == 'attributes' || request()->segment(2) == 'brands') active @endif">
                 <a href="#">
