@@ -9,7 +9,7 @@
             <div class="box">
                 <div class="box-body">
                     <h2>Selled Products</h2>
-                    @include('layouts.search', ['route' => '/admin/products/selled'])
+                    @include('layouts.search_date', ['route' => '/admin/products/selled'])
                     @include('admin.shared.products', ['abbas', $abbas])
                     {{ $products->links() }}
                 </div>
