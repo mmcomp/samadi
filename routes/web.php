@@ -48,6 +48,8 @@ Route::group(['prefix' => 'admin', /*'middleware' => ['employee'],*/ 'as' => 'ad
             });
             Route::namespace('Tickets')->group(function () {
                 Route::resource('tickets', 'TicketController');
+                Route::get('tickets/history/{id}', 'TicketController@history')->name('tickets.history');
+                Route::post('tickets/history', 'TicketController@addHistory')->name('tickets.addhistory');
             });
             Route::namespace('News')->group(function () {
                 Route::resource('news', 'NewsController');

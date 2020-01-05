@@ -37,15 +37,19 @@
                                 <td>{{ date("Y/m/d", strtotime($ticket->created_at)) }}</td>
                                 <td>{{ date("Y/m/d", strtotime($ticket->updated_at)) }}</td>
                                 <td>
+                                    <a href="{{ route('admin.tickets.history', $ticket->id) }}" class="btn btn-warning btn-sm"><i class="fa fa-eye"></i> View</a>
                                     @if(!$isCustomer)
-                                    <form action="{{ route('admin.tickets.destroy', $ticket->id) }}" method="post" class="form-horizontal">
+                                    <a href="{{ route('admin.tickets.edit', $ticket->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Edit</a>
+                                    <!-- <form action="{{ route('admin.tickets.destroy', $ticket->id) }}" method="post" class="form-horizontal">
                                         {{ csrf_field() }}
                                         <input type="hidden" name="_method" value="delete">
                                         <div class="btn-group">
                                             <a href="{{ route('admin.tickets.edit', $ticket->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Edit</a>
                                             <button onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger btn-sm"><i class="fa fa-times"></i> Delete</button>
                                         </div>
-                                    </form>
+                                    </form> -->
+                                    @else
+                                    <!-- <a href="{{ route('admin.tickets.history', $ticket->id) }}" class="btn btn-warning btn-sm"><i class="fa fa-eye"></i> View</a> -->
                                     @endif
                                 </td>
                             </tr>
