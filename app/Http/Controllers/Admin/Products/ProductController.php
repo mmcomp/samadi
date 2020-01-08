@@ -227,6 +227,7 @@ class ProductController extends Controller
             if(!isset($data['description_tr']) || $data['description_tr']==null || $data['description_tr']=='') {
                 $data['description_tr'] = $data['description_fa'];
             }
+            $data['sale_price'] = $data['price'];
         }
         $product = $this->productRepo->createProduct($data);
 
@@ -363,6 +364,10 @@ class ProductController extends Controller
             $productRepo->syncCategories($request->input('categories'));
         } else {
             $productRepo->detachCategories();
+        }
+
+        if(!isset($data['sale_price'])) {
+            $data['sale_price'] = $data['price'];
         }
 
         $productRepo->updateProduct($data);

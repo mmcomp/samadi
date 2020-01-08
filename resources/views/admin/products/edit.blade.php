@@ -120,6 +120,7 @@
                                                 @if(!$productAttributes->isEmpty())<span class="text-danger">Note: Quantity is disabled. Total quantity is calculated by the sum of all the combinations.</span> @endif
                                             </div>
                                             -->
+                                            @if(!$isCustomer)
                                             <div class="form-group">
                                                 <label for="sale_price">Sale Price (USD)</label>
                                                 <div class="input-group">
@@ -127,6 +128,7 @@
                                                     <input type="text" name="sale_price" id="sale_price" placeholder="Sale Price" class="form-control" value="{!! $product->sale_price !!}">
                                                 </div>
                                             </div>
+                                            @endif
                                             <div class="form-group">
                                                 <label for="price">Price (USD)</label>
                                                 @if($productAttributes->isEmpty())

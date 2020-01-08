@@ -127,6 +127,7 @@ $("#cover").change(function(){
                                 <input type="text" name="price" id="price" placeholder="Price" class="form-control" value="{{ old('price') }}">
                             </div>
                         </div>
+                        @if(!$isCustomer)
                         <div class="form-group">
                             <label for="sale_price">Sale Price (USD)<span class="text-danger">*</span></label>
                             <div class="input-group">
@@ -134,6 +135,7 @@ $("#cover").change(function(){
                                 <input type="text" name="sale_price" id="sale_price" placeholder="Sale Price" class="form-control" value="{{ old('sale_price') }}">
                             </div>
                         </div>
+                        @endif
                         <div class="form-group">
                             <label for="file_path">File <span class="text-danger">*</span></label>
                             <input type="file" name="file_path" id="file_path" placeholder="File" class="form-control">
