@@ -26,10 +26,27 @@ class TransactionController extends Controller
             $abbas = auth()->guard('web')->user();
         }
 
-        $list = Transaction::with('product')->where('type', 'charge')->where('owner_id', $abbas->id)->get();
+        $list = Transaction::with('product')->where('type', 'charge')->where('owner_id', $abbas->id)->orderBy('created_at', 'desc')->get();
 
-        if (request()->has('q')) {
-            $list = Transaction::where('description', 'like', '%' . request()->input('q') . '%')->with('product')->where('type', 'charge')->where('owner_id', $abbas->id)->get();
+        if (request()->has('q') && (request()->input('q') != '' || request()->input('from') != '' || request()->input('to') != '')) {
+            // $list = Transaction::where('description', 'like', '%' . request()->input('q') . '%')->with('product')->where('type', 'charge')->where('owner_id', $abbas->id)->get();
+            $q = request()->input('q');
+            $from = request()->input('from');
+            $to = request()->input('to');
+            $list = Transaction::where(function ($query) use ($q, $from, $to) {
+                if($q!='') {
+                    $query->Where('description', 'like', '%' . $q . '%');
+                    $query->orWhere('id', $q);
+                }
+                if($from!='') {
+                    $from = date("Y-m-d", strtotime($from));
+                    $query->where('created_at', '>=', $from);
+                }
+                if($to!='') {
+                    $to = date("Y-m-d", strtotime($to));
+                    $query->where('created_at', '<=', $to);
+                }
+            })->where('type', 'charge')->where('owner_id', $abbas->id)->with('product')->orderBy('created_at', 'desc')->get();
         }
 
         return view('admin.transactions.list', [
@@ -58,10 +75,30 @@ class TransactionController extends Controller
             $abbas = auth()->guard('web')->user();
         }
 
-        $list = Transaction::with('product')->where('type', 'cash')->where('owner_id', $abbas->id)->get();
+        $list = Transaction::with('product')->where('type', 'cash')->where('owner_id', $abbas->id)->orderBy('created_at', 'desc')->get();
 
-        if (request()->has('q')) {
-            $list = Transaction::where('description', 'like', '%' . request()->input('q') . '%')->with('product')->where('type', 'cash')->where('owner_id', $abbas->id)->get();
+        // if (request()->has('q')) {
+        //     $list = Transaction::where('description', 'like', '%' . request()->input('q') . '%')->with('product')->where('type', 'cash')->where('owner_id', $abbas->id)->get();
+        // }
+        if (request()->has('q') && (request()->input('q') != '' || request()->input('from') != '' || request()->input('to') != '')) {
+            // $list = Transaction::where('description', 'like', '%' . request()->input('q') . '%')->with('product')->where('type', 'charge')->where('owner_id', $abbas->id)->get();
+            $q = request()->input('q');
+            $from = request()->input('from');
+            $to = request()->input('to');
+            $list = Transaction::where(function ($query) use ($q, $from, $to) {
+                if($q!='') {
+                    $query->Where('description', 'like', '%' . $q . '%');
+                    $query->orWhere('id', $q);
+                }
+                if($from!='') {
+                    $from = date("Y-m-d", strtotime($from));
+                    $query->where('created_at', '>=', $from);
+                }
+                if($to!='') {
+                    $to = date("Y-m-d", strtotime($to));
+                    $query->where('created_at', '<=', $to);
+                }
+            })->where('type', 'cash')->where('owner_id', $abbas->id)->with('product')->orderBy('created_at', 'desc')->get();
         }
 
         return view('admin.transactions.cash', [

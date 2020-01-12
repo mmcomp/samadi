@@ -18,8 +18,24 @@ class OfferController extends Controller
     {
         $list = Offer::where('deleted', 0)->get();
 
-        if (request()->has('q')) {
-            $list = Offer::where('name', 'like', '%' . request()->input('q') . '%')->where('deleted', 0)->get();
+        if (request()->has('q') && (request()->input('q') != '' || request()->input('from') != '' || request()->input('to') != '')) {
+            // $list = Offer::where('name', 'like', '%' . request()->input('q') . '%')->where('deleted', 0)->get();
+            $q = request()->input('q') ?? '';
+            $from = request()->input('from');
+            $to = request()->input('to');
+            $list = Offer::where(function($query) use ($q, $from, $to, $isCustomer, $abbas) {
+                if($q!='') {
+                    $query->where('name', 'like', '%' . $q . '%');
+                }
+                if($from!='') {
+                    $from = date("Y-m-d", strtotime($from));
+                    $query->where('end_date', '>=', $from);
+                }
+                if($to!='') {
+                    $to = date("Y-m-d", strtotime($to));
+                    $query->where('start_date', '<=', $to);
+                }
+            })->where('deleted', 0)->get();
         }
 
         return view('admin.offers.list', [

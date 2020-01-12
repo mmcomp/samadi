@@ -25,7 +25,7 @@
                             <tr>
                                 <td>{{ $slide->id }}</td>
                                 @if($slide->image_path)
-                                <td><img src="{{ $slide->image_path }}" style="height: 50px;" /></td>
+                                <td><img src="/storage/{{ $slide->image_path }}" style="height: 50px;" /></td>
                                 @else
                                 <td></td>
                                 @endif
@@ -35,6 +35,7 @@
                                     <form action="{{ route('admin.slides.destroy', $slide->id) }}" method="post" class="form-horizontal">
                                         {{ csrf_field() }}
                                         <input type="hidden" name="_method" value="delete">
+                                        <a href="{{ route('admin.slides.edit', $slide->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Edit</a>
                                         <div class="btn-group">
                                             <button onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger btn-sm"><i class="fa fa-times"></i> Delete</button>
                                         </div>

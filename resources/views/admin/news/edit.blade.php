@@ -17,6 +17,10 @@ $statuses = ['registered','processing','answered','closed'];
                         <label for="title">Title <span class="text-danger">*</span></label>
                         <textarea name="title" id="title" class="form-control" >{{ $news->title }}</textarea>
                     </div>
+                    <div class="form-group">
+                        <label for="content">Content <span class="text-danger">*</span></label>
+                        <textarea name="content" id="content" class="form-control" >{{ $news->content }}</textarea>
+                    </div>
                     @if($news->image_path)
                     <img src="/storage/{{ $news->image_path }}" />
                     @endif

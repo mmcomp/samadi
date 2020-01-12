@@ -9,16 +9,12 @@ $statuses = ['registered','processing','answered','closed'];
     <section class="content">
         @include('layouts.errors-and-messages')
         <div class="box">
-            <form action="{{ route('admin.news.update', $news->id) }}" method="post" class="form" enctype="multipart/form-data">
+            <form action="{{ route('admin.slides.update', $slide->id) }}" method="post" class="form" enctype="multipart/form-data">
                 <div class="box-body">
                     {{ csrf_field() }}
                     <input type="hidden" name="_method" value="put">
-                    <div class="form-group">
-                        <label for="title">Title <span class="text-danger">*</span></label>
-                        <textarea name="title" id="title" class="form-control" >{{ $news->title }}</textarea>
-                    </div>
-                    @if($news->image_path)
-                    <img src="/storage/{{ $news->image_path }}" />
+                    @if($slide->image_path)
+                    <img src="/storage/{{ $slide->image_path }}" />
                     @endif
                     <div class="form-group">
                         <label for="image_path">Image <span class="text-danger">*</span></label>
@@ -28,7 +24,7 @@ $statuses = ['registered','processing','answered','closed'];
                 <!-- /.box-body -->
                 <div class="box-footer">
                     <div class="btn-group">
-                        <a href="{{ route('admin.news.index') }}" class="btn btn-default btn-sm">Back</a>
+                        <a href="{{ route('admin.slides.index') }}" class="btn btn-default btn-sm">Back</a>
                         <button type="submit" class="btn btn-primary btn-sm">Update</button>
                     </div>
                 </div>

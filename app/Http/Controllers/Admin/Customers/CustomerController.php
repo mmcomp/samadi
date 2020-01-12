@@ -35,10 +35,29 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $list = $this->customerRepo->listCustomers('created_at', 'desc');
+        // $this->customerRepo->listCustomers('created_at', 'desc');
+        $list = Customer::orderBy('created_at', 'desc')->orderBy('status', 'desc')->get(); 
 
-        if (request()->has('q')) {
-            $list = $this->customerRepo->searchCustomer(request()->input('q'));
+        if (request()->has('q') && (request()->input('q') != '' || request()->input('from') != '' || request()->input('to') != '')) {
+            // $list = $this->customerRepo->searchCustomer(request()->input('q'));
+            $q = request()->input('q');
+            $from = request()->input('from');
+            $to = request()->input('to');
+            $list = Customer::where(function ($query) use ($q, $from, $to) {
+                if($q!='') {
+                    $query->Where('name', 'like', '%' . $q . '%');
+                    $query->orWhere('sir_name', 'like', '%' . $q . '%');
+                    $query->orWhere('id', $q);
+                }
+                if($from!='') {
+                    $from = date("Y-m-d", strtotime($from));
+                    $query->where('created_at', '>=', $from);
+                }
+                if($to!='') {
+                    $to = date("Y-m-d", strtotime($to));
+                    $query->where('created_at', '<=', $to);
+                }
+            })->orderBy('created_at', 'desc')->orderBy('status', 'desc')->get();
         }
 
         $customers = $list->map(function (Customer $customer) {

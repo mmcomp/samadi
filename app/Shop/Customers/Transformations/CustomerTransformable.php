@@ -20,6 +20,7 @@ trait CustomerTransformable
         $prop->sales_count = (int) $customer->sales_count;
         $prop->files_count = (int) $customer->files_count;
         $prop->likes_count = (int) $customer->likes_count;
+        $prop->created_at = $customer->created_at;
         return $prop;
     }
 }

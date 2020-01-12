@@ -25,14 +25,35 @@ class TicketController extends Controller
         if(auth()->guard('employee')->check()) {
             $isCustomer = false;
             $abbas = auth()->guard('employee')->user();
+            $list = Ticket::where('deleted', 0)->orderBy('created_at', 'desc')->get();
         }else {
             $abbas = auth()->guard('web')->user();
+            $list = Ticket::where('deleted', 0)->where('customer_id', $abbas->id)->orderBy('created_at', 'desc')->get();
         }
 
-        $list = Ticket::where('deleted', 0)->get();
+        
 
-        if (request()->has('q')) {
-            $list = Ticket::where('subject', 'like', '%' . request()->input('q') . '%')->where('deleted', 0)->get();
+        if (request()->has('q') && (request()->input('q') != '' || request()->input('from') != '' || request()->input('to') != '')) {
+            // $list = Ticket::where('subject', 'like', '%' . request()->input('q') . '%')->where('deleted', 0)->get();
+            $q = request()->input('q') ?? '';
+            $from = request()->input('from');
+            $to = request()->input('to');
+            $list = Ticket::where(function($query) use ($q, $from, $to, $isCustomer, $abbas) {
+                if($q!='') {
+                    $query->where('subject', 'like', '%' . $q . '%');
+                }
+                if($from!='') {
+                    $from = date("Y-m-d", strtotime($from));
+                    $query->where('created_at', '>=', $from);
+                }
+                if($to!='') {
+                    $to = date("Y-m-d", strtotime($to));
+                    $query->where('created_at', '<=', $to);
+                }
+                if($isCustomer) {
+                    $query->where('customer_id', $abbas->id);
+                }
+            })->orderBy('created_at', 'desc')->get();
         }
 
         return view('admin.tickets.list', [

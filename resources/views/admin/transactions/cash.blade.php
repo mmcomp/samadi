@@ -10,7 +10,7 @@
             <div class="box">
                 <div class="box-body">
                     <h2>Cash Transactions</h2>
-                    @include('layouts.search', ['route' => route('admin.transactions.cash')])
+                    @include('layouts.search_date', ['route' => route('admin.transactions.cash')])
                     <table class="table">
                         <thead>
                             <tr>

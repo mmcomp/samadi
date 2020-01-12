@@ -10,14 +10,14 @@
             <div class="box">
                 <div class="box-body">
                     <h2>Customers</h2>
-                    @include('layouts.search', ['route' => route('admin.customers.index')])
+                    @include('layouts.search_date', ['route' => route('admin.customers.index')])
                     <table class="table">
                         <thead>
                             <tr>
                                 <td class="col-md-1">ID</td>
                                 <td class="col-md-2">Image</td>
                                 <td class="col-md-2">Name</td>
-                                <!-- <td class="col-md-2">Email</td> -->
+                                <td class="col-md-2">Register Date</td>
                                 <td class="col-md-1">Sales</td>
                                 <td class="col-md-1">Files</td>
                                 <td class="col-md-1">Likes</td>
@@ -35,7 +35,7 @@
                                 @endif
                                 </td>
                                 <td>{{ $customer['name'] }} {{ $customer['sir_name'] }}</td>
-                                <!-- <td>{{ $customer['email'] }}</td> -->
+                                <td>{{ $customer['created_at']->format('Y/m/d') }}</td>
                                 <td>{{ $customer['sales_count'] }}</td>
                                 <td>{{ $customer['files_count'] }}</td>
                                 <td>{{ $customer['likes_count'] }}</td>

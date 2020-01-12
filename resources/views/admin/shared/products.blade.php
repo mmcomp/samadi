@@ -14,6 +14,7 @@
             @endif
             <td>Price (USD)</td>
             <td>Status</td>
+            <td>Register Date</td>
             <td>Actions</td>
         </tr>
         </thead>
@@ -40,6 +41,7 @@
                 @endif
                 <td>{{ config('cart.currency') }} {{ $product->price }}</td>
                 <td>@include('layouts.status', ['status' => $product->status])</td>
+                <td>{{ $product->created_at->format("Y/m/d") }}</td>
                 <td>
                     <form action="{{ route('admin.products.destroy', $product->id) }}" method="post" class="form-horizontal">
                         {{ csrf_field() }}

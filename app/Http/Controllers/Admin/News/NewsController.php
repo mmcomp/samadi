@@ -26,10 +26,26 @@ class NewsController extends Controller
             $abbas = auth()->guard('web')->user();
         }
 
-        $list = News::where('deleted', 0)->get();
+        $list = News::where('deleted', 0)->orderBy('created_at', 'desc')->get();
 
-        if (request()->has('q')) {
-            $list = News::where('title', 'like', '%' . request()->input('q') . '%')->where('deleted', 0)->get();
+        if (request()->has('q') && (request()->input('q') != '' || request()->input('from') != '' || request()->input('to') != '')) {
+            // $list = News::where('title', 'like', '%' . request()->input('q') . '%')->where('deleted', 0)->get();
+            $q = request()->input('q') ?? '';
+            $from = request()->input('from');
+            $to = request()->input('to');
+            $list = News::where(function($query) use ($q, $from, $to, $isCustomer, $abbas) {
+                if($q!='') {
+                    $query->where('title', 'like', '%' . $q . '%');
+                }
+                if($from!='') {
+                    $from = date("Y-m-d", strtotime($from));
+                    $query->where('created_at', '>=', $from);
+                }
+                if($to!='') {
+                    $to = date("Y-m-d", strtotime($to));
+                    $query->where('created_at', '<=', $to);
+                }
+            })->where('deleted', 0)->orderBy('created_at', 'desc')->get();
         }
 
         return view('admin.news.list', [

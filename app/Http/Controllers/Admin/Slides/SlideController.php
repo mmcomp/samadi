@@ -96,11 +96,11 @@ class SlideController extends Controller
             $isCustomer = false;
             $abbas = auth()->guard('employee')->user();
         }else {
-            $abbas = auth()->guard('web')->user();
+            return redirect('/admin');
         }
 
-        return view('admin.news.edit', [
-            'news' => News::find($id),
+        return view('admin.slides.edit', [
+            'slide' => Slide::find($id),
             "abbas"=>$abbas, 
             "isCustomer"=>$isCustomer,
         ]);
@@ -120,10 +120,10 @@ class SlideController extends Controller
             $data['image_path'] = request()->file('image_path')->store('news', ['disk' => 'public']);
         }
 
-        $news = News::where('id', $id)->update($data);
+        $slide = Slide::where('id', $id)->update($data);
 
         request()->session()->flash('message', 'Update successful');
-        return redirect()->route('admin.news.edit', $id);
+        return redirect()->route('admin.slides.edit', $id);
     }
 
     /**

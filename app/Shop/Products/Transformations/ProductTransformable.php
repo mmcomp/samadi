@@ -39,6 +39,7 @@ trait ProductTransformable
         $prod->customer_id = (int) $product->customer_id;
         $prod->like_count = (int) $product->like_count;
         $prod->customer = $product->customer;
+        $prod->created_at = $product->created_at;
         return $prod;
     }
 }

@@ -13,6 +13,10 @@
                         <textarea name="title" id="title" class="form-control" >{{ old('title') }}</textarea>
                     </div>
                     <div class="form-group">
+                        <label for="content">Content <span class="text-danger">*</span></label>
+                        <textarea name="content" id="content" class="form-control" >{{ old('content') }}</textarea>
+                    </div>
+                    <div class="form-group">
                         <label for="image_path">Image <span class="text-danger">*</span></label>
                         <input type="file" name="image_path" id="image_path" class="form-control">
                     </div>

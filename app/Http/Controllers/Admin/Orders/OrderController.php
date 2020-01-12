@@ -90,15 +90,44 @@ class OrderController extends Controller
             $list = $this->orderRepo->listOrders('created_at', 'desc');
         }
 
-        if (request()->has('q')) {
+        if (request()->has('q') && (request()->input('q') != '' || request()->input('from') != '' || request()->input('to') != '')) {
             if($isCustomer) {
                 $q = request()->input('q') ?? '';
-                $list = Order::where('customer_id', $admin->id)->where(function($query) use ($q) {
-                    $query->where('reference', 'like', '%' . $q . '%');
-                    $query->orWhere('tracking_number', 'like', '%' . $q . '%');
+                $from = request()->input('from');
+                $to = request()->input('to');
+                $list = Order::where('customer_id', $admin->id)->where(function($query) use ($q, $from, $to) {
+                    if($q!='') {
+                        $query->where('reference', 'like', '%' . $q . '%');
+                        $query->orWhere('tracking_number', 'like', '%' . $q . '%');    
+                    }
+                    if($from!='') {
+                        $from = date("Y-m-d", strtotime($from));
+                        $query->where('created_at', '>=', $from);
+                    }
+                    if($to!='') {
+                        $to = date("Y-m-d", strtotime($to));
+                        $query->where('created_at', '<=', $to);
+                    }
                 })->orderBy('created_at', 'desc')->get();
             }else{
-                $list = $this->orderRepo->searchOrder(request()->input('q') ?? '');
+                // $list = $this->orderRepo->searchOrder(request()->input('q') ?? '');
+                $q = request()->input('q') ?? '';
+                $from = request()->input('from');
+                $to = request()->input('to');
+                $list = Order::where(function($query) use ($q, $from, $to) {
+                    if($q!='') {
+                        $query->where('reference', 'like', '%' . $q . '%');
+                        $query->orWhere('tracking_number', 'like', '%' . $q . '%');    
+                    }
+                    if($from!='') {
+                        $from = date("Y-m-d", strtotime($from));
+                        $query->where('created_at', '>=', $from);
+                    }
+                    if($to!='') {
+                        $to = date("Y-m-d", strtotime($to));
+                        $query->where('created_at', '<=', $to);
+                    }
+                })->orderBy('created_at', 'desc')->get();
             }
         }
 

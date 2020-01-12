@@ -81,6 +81,7 @@ class Product extends Model implements Buyable
         'file_path',
         'customer_id',
         'like_count',
+        'created_at',
     ];
 
     /**

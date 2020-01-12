@@ -10,7 +10,7 @@
             <div class="box">
                 <div class="box-body">
                     <h2>Offers</h2>
-                    @include('layouts.search', ['route' => route('admin.offers.index')])
+                    @include('layouts.search_date', ['route' => route('admin.offers.index')])
                     <table class="table">
                         <thead>
                             <tr>

@@ -113,26 +113,77 @@ class ProductController extends Controller
             }
         }
         if($isCustomer==false) {
-            $list = Product::where('id', '>', 0)->with('customer')->get();//$this->productRepo->listProducts('id');
+            $list = Product::where('id', '>', 0)->with('customer')->orderBy('created_at', 'desc')->orderBy('status', 'desc')->get();//$this->productRepo->listProducts('id');
         }else {
-            $list = Product::where('customer_id', $admin->id)->orderBy('id')->get();
+            $list = Product::where('customer_id', $admin->id)->orderBy('created_at', 'desc')->orderBy('status', 'desc')->get();
         }
 
-        if (request()->has('q') && request()->input('q') != '' && $isCustomer==false) {
-            $list = Product::where('name_fa', 'like', '%' . request()->input('q') . '%')->with('customer')->get();//$this->productRepo->searchProduct(request()->input('q'));
-        }else if(request()->has('q') && request()->input('q') != '') {
+
+        if (request()->has('q') && (request()->input('q') != '' || request()->input('from') != '' || request()->input('to') != '') && $isCustomer==false) {
+            // $list = Product::where('name_fa', 'like', '%' . request()->input('q') . '%')->with('customer')->get();//$this->productRepo->searchProduct(request()->input('q'));
             $q = request()->input('q');
-            $list = Product::where('customer_id', $admin->id)->where(function ($query) use ($q) {
-                $query->where('name_fa', 'like', '%' . $q . '%');
-                $query->orWhere('name_en', 'like', '%' . $q . '%');
-                $query->orWhere('name_ar', 'like', '%' . $q . '%');
-                $query->orWhere('name_tr', 'like', '%' . $q . '%');
-                $query->orWhere('description_fa', 'like', '%' . $q . '%');
-                $query->orWhere('description_en', 'like', '%' . $q . '%');
-                $query->orWhere('description_ar', 'like', '%' . $q . '%');
-                $query->orWhere('description_tr', 'like', '%' . $q . '%');
-                $query->orWhere('id', $q);
-            })->orderBy('id')->get();
+            $from = request()->input('from');
+            $to = request()->input('to');
+
+            $list = Product::where(function ($query) use ($q, $from, $to) {
+                if($q!='') {
+                    $query->where('name_fa', 'like', '%' . $q . '%');
+                    $query->orWhere('name_en', 'like', '%' . $q . '%');
+                    $query->orWhere('name_ar', 'like', '%' . $q . '%');
+                    $query->orWhere('name_tr', 'like', '%' . $q . '%');
+                    $query->orWhere('description_fa', 'like', '%' . $q . '%');
+                    $query->orWhere('description_en', 'like', '%' . $q . '%');
+                    $query->orWhere('description_ar', 'like', '%' . $q . '%');
+                    $query->orWhere('description_tr', 'like', '%' . $q . '%');
+                    $query->orWhere('id', $q);
+                }
+                if($from!='') {
+                    $from = date("Y-m-d", strtotime($from));
+                    $query->where('created_at', '>=', $from);
+                }
+                if($to!='') {
+                    $to = date("Y-m-d", strtotime($to));
+                    $query->where('created_at', '<=', $to);
+                }
+            })->with('customer')->orderBy('created_at', 'desc')->orderBy('status', 'desc')->get();
+        }else if(request()->has('q') && (request()->input('q') != '' || request()->input('from') != '' || request()->input('to') != '')) {
+            // $q = request()->input('q');
+            // $list = Product::where('customer_id', $admin->id)->where(function ($query) use ($q) {
+            //     $query->where('name_fa', 'like', '%' . $q . '%');
+            //     $query->orWhere('name_en', 'like', '%' . $q . '%');
+            //     $query->orWhere('name_ar', 'like', '%' . $q . '%');
+            //     $query->orWhere('name_tr', 'like', '%' . $q . '%');
+            //     $query->orWhere('description_fa', 'like', '%' . $q . '%');
+            //     $query->orWhere('description_en', 'like', '%' . $q . '%');
+            //     $query->orWhere('description_ar', 'like', '%' . $q . '%');
+            //     $query->orWhere('description_tr', 'like', '%' . $q . '%');
+            //     $query->orWhere('id', $q);
+            // })->orderBy('id')->get();
+            $q = request()->input('q');
+            $from = request()->input('from');
+            $to = request()->input('to');
+
+            $list = Product::where(function ($query) use ($q, $from, $to) {
+                if($q!='') {
+                    $query->where('name_fa', 'like', '%' . $q . '%');
+                    $query->orWhere('name_en', 'like', '%' . $q . '%');
+                    $query->orWhere('name_ar', 'like', '%' . $q . '%');
+                    $query->orWhere('name_tr', 'like', '%' . $q . '%');
+                    $query->orWhere('description_fa', 'like', '%' . $q . '%');
+                    $query->orWhere('description_en', 'like', '%' . $q . '%');
+                    $query->orWhere('description_ar', 'like', '%' . $q . '%');
+                    $query->orWhere('description_tr', 'like', '%' . $q . '%');
+                    $query->orWhere('id', $q);
+                }
+                if($from!='') {
+                    $from = date("Y-m-d", strtotime($from));
+                    $query->where('created_at', '>=', $from);
+                }
+                if($to!='') {
+                    $to = date("Y-m-d", strtotime($to));
+                    $query->where('created_at', '<=', $to);
+                }
+            })->where('customer_id', $admin->id)->orderBy('created_at', 'desc')->orderBy('status', 'desc')->get();
         }
 
         $products = $list->map(function (Product $item) {
