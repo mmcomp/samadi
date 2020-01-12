@@ -64,11 +64,12 @@ $("#cover").change(function(){
                             <input type="text" name="sku" id="sku" placeholder="xxxxx" class="form-control" value="{{ old('sku') }}">
                         </div>
                         @endif
+
+                        @if(!$isCustomer)
                         <div class="form-group">
                             <label for="name_fa">Name Farsi<span class="text-danger">*</span></label>
                             <input type="text" name="name_fa" id="name_fa" placeholder="Name" class="form-control" value="{{ old('name_fa') }}">
                         </div>
-                        @if(!$isCustomer)
                         <div class="form-group">
                             <label for="name_en">Name English</label>
                             <input type="text" name="name_en" id="name_en" placeholder="Name" class="form-control" value="{{ old('name_en') }}">
@@ -81,17 +82,22 @@ $("#cover").change(function(){
                             <label for="name_tr">Name Turkey</label>
                             <input type="text" name="name_tr" id="name_tr" placeholder="Name" class="form-control" value="{{ old('name_tr') }}">
                         </div>
+                        @else
+                        <div class="form-group">
+                            <label for="name_fa">Name<span class="text-danger">*</span></label>
+                            <input type="text" name="name_fa" id="name_fa" placeholder="Name" class="form-control" value="{{ old('name_fa') }}">
+                        </div>
                         @endif
                         <div>
                             <p>
                             Description should be seperated by |
                             </p>
                         </div>
+                        @if(!$isCustomer)
                         <div class="form-group">
                             <label for="description_fa">Description Farsi</label>
                             <textarea class="form-control" name="description_fa" id="description_fa" rows="5" placeholder="Description">{{ old('description_fa') }}</textarea>
                         </div>
-                        @if(!$isCustomer)
                         <div class="form-group">
                             <label for="description_en">Description English</label>
                             <textarea class="form-control" name="description_en" id="description_en" rows="5" placeholder="Description">{{ old('description_en') }}</textarea>
@@ -103,6 +109,11 @@ $("#cover").change(function(){
                         <div class="form-group">
                             <label for="description_tr">Description Turkey</label>
                             <textarea class="form-control" name="description_tr" id="description_tr" rows="5" placeholder="Description">{{ old('description_tr') }}</textarea>
+                        </div>
+                        @else
+                        <div class="form-group">
+                            <label for="description_fa">Description</label>
+                            <textarea class="form-control" name="description_fa" id="description_fa" rows="5" placeholder="Description">{{ old('description_fa') }}</textarea>
                         </div>
                         @endif
                         <div class="form-group">
