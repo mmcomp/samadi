@@ -84,7 +84,7 @@ $("#cover").change(function(){
                         </div>
                         @else
                         <div class="form-group">
-                            <label for="name_fa">Name<span class="text-danger">*</span></label>
+                            <label for="name_fa">Name <span class="text-danger">*</span></label>
                             <input type="text" name="name_fa" id="name_fa" placeholder="Name" class="form-control" value="{{ old('name_fa') }}">
                         </div>
                         @endif
