@@ -6,6 +6,7 @@ use App\Shop\Products\Product;
 use App\Shop\Orders\Order;
 use App\Shop\Orders\OrderProduct;
 use App\Shop\Products\Repositories\Interfaces\ProductRepositoryInterface;
+use App\Shop\Carts\Repositories\Interfaces\CartRepositoryInterface;
 use App\Http\Controllers\Controller;
 use App\Shop\Products\Transformations\ProductTransformable;
 use App\Shop\Customers\Customer;
@@ -23,15 +24,17 @@ class ProductController extends Controller
      * @var ProductRepositoryInterface
      */
     private $productRepo;
+    private $cartRepo;
     private $slides = [];
 
     /**
      * ProductController constructor.
      * @param ProductRepositoryInterface $productRepository
      */
-    public function __construct(ProductRepositoryInterface $productRepository)
+    public function __construct(ProductRepositoryInterface $productRepository, CartRepositoryInterface $cartRepository)
     {
         $this->productRepo = $productRepository;
+        $this->cartRepo = $cartRepository;
         $this->slides = Slide::all();
     }
 
@@ -119,6 +122,7 @@ class ProductController extends Controller
         App::setlocale($locale);
         // dd($images);
         $slides = $this->slides;
+        $cartItems = $this->cartRepo->getCartItemsTransformed();
         return view('front.products.product', compact(
             'product',
             'images',
@@ -130,9 +134,10 @@ class ProductController extends Controller
             'owner',
             'otherProducts',
             'newProducts',
-            "slides",
-            "customerBookmark",
-            "similarProducts"
+            'slides',
+            'customerBookmark',
+            'similarProducts',
+            'cartItems'
         ));
     }
 

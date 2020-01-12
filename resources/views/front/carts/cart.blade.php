@@ -1,24 +1,155 @@
 @extends('layouts.front.app')
 
+@section('og')
+<meta property="og:type" content="home" />
+<meta property="og:title" content="{{ config('app.name') }}" />
+<meta property="og:description" content="{{ config('app.name') }}" />
+@endsection
+
+@section('css')
+<link rel="stylesheet" href="/css/product-detail-style.css" media="screen">
+<!--[if lte IE 7]><link rel="stylesheet" href="/css/mainpage100style.ie7.css" media="screen" /><![endif]-->
+<link rel="stylesheet" href="/css/product-detail-style.responsive.css" media="all">
+@endsection
+
+@section('head')
+<style>
+  .art-content .art-postcontent-0 .layout-item-0 {
+    color: #4A4A4A;
+    background: #FFFFFF;
+    border-collapse: separate;
+  }
+
+  .art-content .art-postcontent-0 .layout-item-1 {
+    color: #4A4A4A;
+  }
+
+  .art-content .art-postcontent-0 .layout-item-2 {
+    color: #454545;
+    background: #FFFFFF url('/images/19f9e.png') top center no-repeat scroll;
+  }
+
+  .art-content .art-postcontent-0 .layout-item-3 {
+    color: #454545;
+    padding: 25px;
+  }
+
+  .art-content .art-postcontent-0 .layout-item-4 {
+    color: #4A4A4A;
+    padding: 0px;
+  }
+
+  .art-content .art-postcontent-0 .layout-item-5 {
+    color: #4A4A4A;
+    background: #FFFFFF;
+    border-spacing: 3px 0px;
+    border-collapse: separate;
+  }
+
+  .art-content .art-postcontent-0 .layout-item-6 {
+    color: #4A4A4A;
+    padding: 5px;
+  }
+
+  .art-content .art-postcontent-0 .layout-item-7 {
+    border-top-style: solid;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-width: 0px;
+    border-top-color: #A6A6A6;
+    border-right-color: #A6A6A6;
+    border-bottom-color: #A6A6A6;
+    border-left-color: #A6A6A6;
+    color: #F2F2F2;
+    background: ;
+    border-collapse: separate;
+  }
+
+  .art-content .art-postcontent-0 .layout-item-8 {
+    color: #F2F2F2;
+    padding: 25px;
+  }
+
+  .art-content .art-postcontent-0 .layout-item-9 {
+    color: #454545;
+    background: #FFFFFF url('images/6f9ee.png') top center no-repeat scroll;
+    border-collapse: separate;
+  }
+
+  .art-content .art-postcontent-0 .layout-item-10 {
+    color: #F2F2F2;
+    background: ;
+    border-spacing: 3px 0px;
+    border-collapse: separate;
+  }
+
+  .art-content .art-postcontent-0 .layout-item-11 {
+    color: #F2F2F2;
+    padding: 15px;
+  }
+
+  .art-content .art-postcontent-0 .layout-item-12 {
+    color: #F2F2F2;
+    padding: 5px;
+  }
+
+  .art-content .art-postcontent-0 .layout-item-13 {
+    color: #454545;
+    background: #FFFFFF url('images/7463d.png') top center no-repeat scroll;
+    border-spacing: 3px 0px;
+    border-collapse: separate;
+  }
+
+  .art-content .art-postcontent-0 .layout-item-14 {
+    color: #454545;
+    background: #FFFFFF url('images/178ac.png') top center no-repeat scroll;
+    border-spacing: 3px 0px;
+    border-collapse: separate;
+  }
+
+  .ie7 .art-post .art-layout-cell {
+    border: none !important;
+    padding: 0 !important;
+  }
+
+  .ie6 .art-post .art-layout-cell {
+    border: none !important;
+    padding: 0 !important;
+  }
+</style>
+@endsection
+
+@section('js')
+<script>
+
+</script>
+@endsection
+
+@section('extra_footer')
+@endsection
+
 @section('content')
+<div class="art-content-layout layout-item-0">
+    <div class="art-content-layout-row">
         <div class="container product-in-cart-list">
             @if(!$cartItems->isEmpty())
                 <div class="row">
-                    <div class="col-md-12">
+                    <!-- <div class="col-md-12">
                         <ol class="breadcrumb">
                             <li><a href="{{ route('home') }}"> <i class="fa fa-home"></i> {{__('main.home')}}</a></li>
                             <li class="active">{{__('main.cart')}}</li>
                         </ol>
-                    </div>
+                    </div> -->
                     <div class="col-md-12 content">
                         <div class="box-body">
                             @include('layouts.errors-and-messages')
                         </div>
-                        <h3><i class="fa fa-cart-plus"></i> {{__('main.shoppingcart')}}</h3>
+                        <h3 class="text-right"><i class="fa fa-cart-plus"></i> {{__('main.shoppingcart')}}</h3>
                         <table class="table table-striped">
                             <thead>
-                                <th class="col-md-2 col-lg-2">{{__('main.cover')}}</th>
-                                <th class="col-md-2 col-lg-5">{{__('main.name')}}</th>
+                                <th class="text-center">{{__('main.cover')}}</th>
+                                <th class="col-md-2 col-lg-5 text-right">{{__('main.name')}}</th>
                                 <!-- <th class="col-md-2 col-lg-2">Quantity</th> -->
                                 <th class="col-md-2 col-lg-1"></th>
                                 <th class="col-md-2 col-lg-2">{{__('main.price')}}</th>
@@ -60,16 +191,16 @@
                             <tbody>
                             @foreach($cartItems as $cartItem)
                                 <tr>
-                                    <td>
-                                        <a href="{{ route('front.get.product', [$cartItem->product->slug]) }}" class="hover-border">
+                                    <td class="text-right" width="20%">
+                                        <a href="{{ route('front.get.productid', [$cartItem->product->id]) }}" class="hover-border">
                                             @if(isset($cartItem->cover))
-                                                <img src="{{$cartItem->cover}}" alt="{{ $cartItem->name }}" class="img-responsive img-thumbnail">
+                                                <img src="{{$cartItem->cover}}" alt="{{ $cartItem->name }}" class="img-responsive img-thumbnail" >
                                             @else
                                                 <img src="https://placehold.it/120x120" alt="" class="img-responsive img-thumbnail">
                                             @endif
                                         </a>
                                     </td>
-                                    <td>
+                                    <td class="text-right">
                                         <h3>{{ $cartItem->name }}</h3>
                                         @if($cartItem->options->has('combination'))
                                             @foreach($cartItem->options->combination as $option)
@@ -90,7 +221,7 @@
                                             </div>
                                         </form>
                                     </td> -->
-                                    <td>
+                                    <td class="text-center">
                                         <form action="{{ route('cart.destroy', $cartItem->rowId) }}" method="post">
                                             {{ csrf_field() }}
                                             <input type="hidden" name="_method" value="delete">

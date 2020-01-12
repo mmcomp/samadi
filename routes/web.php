@@ -136,6 +136,8 @@ Route::namespace('Front')->group(function () {
         Route::resource('customer.address', 'CustomerAddressController');
     });
     Route::resource('cart', 'CartController');
+    Route::post('cart/add', 'CartController@add')->name('cart.add');
+    Route::get('cart/view', 'CartController@show')->name('cart.view');
     Route::get("category/{slug}", 'CategoryController@getCategory')->name('front.category.slug');
     Route::get("search", 'ProductController@search')->name('search.product');
     Route::get('about', 'HomeController@about')->name('about');

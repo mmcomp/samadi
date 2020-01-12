@@ -58,6 +58,35 @@ class CartController extends Controller
         $this->productAttributeRepo = $productAttributeRepository;
     }
 
+    public function add(Request $request) {
+        $product = $this->productRepo->findProductById($request->input('product'));
+        // dd($product);
+        $this->cartRepo->addToCart($product, 1, []);
+
+        // dd($this->cartRepo->getCartItemsTransformed());
+        return redirect()->back();
+            /*->with('message', 'Add to cart successful');*/
+    }
+
+    public function show(Request $request)
+    {
+        // $courier = $this->courierRepo->findCourierById(request()->session()->get('courierId', 1));
+        $shippingFee = 0; //$this->cartRepo->getShippingFee($courier);
+        $locale = $request->session()->get('locale');
+        if($locale==null) {
+            $locale = 'fa';
+        }
+        App::setlocale($locale);
+        return view('front.carts.cart', [
+            'cartItems' => $this->cartRepo->getCartItemsTransformed(),
+            'subtotal' => $this->cartRepo->getSubTotal(),
+            'tax' => $this->cartRepo->getTax(),
+            'shippingFee' => $shippingFee,
+            'total' => $this->cartRepo->getTotal(2, $shippingFee),
+            'locale'=>$locale
+        ]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -91,7 +120,6 @@ class CartController extends Controller
     public function store(AddToCartRequest $request)
     {
         $product = $this->productRepo->findProductById($request->input('product'));
-
         if ($product->attributes()->count() > 0) {
             $productAttr = $product->attributes()->where('default', 1)->first();
 

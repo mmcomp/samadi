@@ -179,7 +179,7 @@
         <a class="art-button" href="/storage/{{ $product->file_path }}">{{__('product.download')}}</a>
         </p>
         @else
-        <form action="{{ route('cart.store') }}" method="post" style="text-align: center;">
+        <form action="{{ route('cart.add') }}" method="post" style="text-align: center;">
           {{ csrf_field() }}
           <input type="hidden" name="product" value="{{ $product->id }}" />
           <button accesskey="{{__('product.purchase_product')}}" class="art-button">{{__('product.purchase_product')}}</button>

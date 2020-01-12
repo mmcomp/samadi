@@ -242,6 +242,11 @@
                         <a href="/admin/login">{{__('app.login')}}</a>
                         <a href="/register">{{__('main.register')}}</a>
                         @endif
+                        @if(isset($cartItems))
+                        <a href="{{ route('cart.view') }}" style="float: left;">{{ count($cartItems) }} <i class="fa fa-shopping-cart"></i></a>
+                        @else
+                        <a href="#" style="float: left;">0 <i class="fa fa-shopping-cart"></i></a>
+                        @endif
                     </div>
                     <!--   <div class="art-nav-inner">
             <ul class="art-hmenu"><a href="محصولات/نیم-ست.html">نیم ست</a></li><li><a href="محصولات/حلقه-ست.html">حلقه ست</a></li><li><a href="محصولات/انگشتر.html">انگشتر</a></li><li><a href="محصولات/گردنبند.html">گردنبند</a></li><li><a href="محصولات/گوشواره.html">گوشواره</a></li><li><a href="محصولات/ابزار-جواهرات.html">ابزار جواهرات</a></li></ul></li><li><a href="سوالات-متداول.html">سوالات متداول</a></li><li><a href="اموزش.html">آموزش</a></li><li><a href="درباره-ما.html">درباره ما</a></li><li><a href="تماس-باما.html">تماس باما</a></li><li><a href="اطلاعات-کاربری.html">اطلاعات کاربری</a><ul><li><a href="اطلاعات-کاربری/داشبورد-من.html">داشبورد من</a></li><li><a href="اطلاعات-کاربری/ویرایش-کاربری.html">ویرایش کاربری</a></li><li><a href="اطلاعات-کاربری/درج-محصولات.html">درج محصولات</a></li><li><a href="اطلاعات-کاربری/تغییر-کلمه-عبور.html">تغییر کلمه عبور</a></li></ul></li><li><a href="ثبت-نام.html">ثبت نام</a></li><li><a href="ورود-به-سایت.html">ورود به سایت</a></li></ul> 
