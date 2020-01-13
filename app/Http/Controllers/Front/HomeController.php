@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Shop\Categories\Repositories\Interfaces\CategoryRepositoryInterface;
 use App\Shop\Products\Repositories\Interfaces\ProductRepositoryInterface;
+use App\Shop\Carts\Repositories\Interfaces\CartRepositoryInterface;
 use App\Shop\Products\Product;
 use App\Shop\Categories\Category;
 use App\Shop\Categories\CategoryProduct;
@@ -31,10 +32,11 @@ class HomeController
      * @param CategoryRepositoryInterface $categoryRepository
      * @param ProductRepositoryInterface $productRepository
      */
-    public function __construct(CategoryRepositoryInterface $categoryRepository, ProductRepositoryInterface $productRepository)
+    public function __construct(CategoryRepositoryInterface $categoryRepository, ProductRepositoryInterface $productRepository, CartRepositoryInterface $cartRepository)
     {
         $this->categoryRepo = $categoryRepository;
         $this->productRepo = $productRepository;
+        $this->cartRepo = $cartRepository;
         $this->slides = Slide::all();
     }
 
@@ -98,6 +100,7 @@ class HomeController
             $locale = 'fa';
         }
         App::setlocale($locale);
+        $cartItems = $this->cartRepo->getCartItemsTransformed();
         return view('front.index', [
             "locale"=>$locale,
             "newProducts"=>$newProducts,
@@ -109,6 +112,7 @@ class HomeController
             "allCats"=>$allCats,
             "search"=>$search,
             "filter"=>$filter,
+            "cartItems"=>$cartItems,
             "slides"=>$this->slides,
         ]);
     }
