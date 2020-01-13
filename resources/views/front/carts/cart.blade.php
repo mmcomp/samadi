@@ -117,6 +117,13 @@
     border: none !important;
     padding: 0 !important;
   }
+
+  table td {
+    border-top: solid 1px #000;
+  }
+  .border-left{
+    border-left: solid 1px #000;
+  }
 </style>
 @endsection
 
@@ -141,33 +148,33 @@
                             <li class="active">{{__('main.cart')}}</li>
                         </ol>
                     </div> -->
-                    <div class="col-md-12 content">
+                    <div class="col-md-12 content" style="padding: 10px;">
                         <div class="box-body">
                             @include('layouts.errors-and-messages')
                         </div>
-                        <h3 class="text-right"><i class="fa fa-cart-plus"></i> {{__('main.shoppingcart')}}</h3>
-                        <table class="table table-striped">
+                        <h1 class="text-right"><i class="fa fa-cart-plus"></i> {{__('main.shoppingcart')}}</h1>
+                        <table class="table table-striped" cellspacing="0" style="width: 100%;font-size: 20px;">
                             <thead>
-                                <th class="text-center">{{__('main.cover')}}</th>
-                                <th class="col-md-2 col-lg-5 text-right">{{__('main.name')}}</th>
-                                <!-- <th class="col-md-2 col-lg-2">Quantity</th> -->
-                                <th class="col-md-2 col-lg-1"></th>
+                                <th class="text-center border-left">{{__('main.cover')}}</th>
+                                <th class="col-md-2 col-lg-5 text-right border-left">{{__('main.name')}}</th>
+                                <!-- <th class="col-md-2 col-lg-2 border-left">Quantity</th> -->
+                                <th class="col-md-2 col-lg-1 border-left"></th>
                                 <th class="col-md-2 col-lg-2">{{__('main.price')}}</th>
                             </thead>
                             <tfoot>
                             <tr>
-                                <td class="bg-warning">{{__('main.subtotal')}}</td>
-                                <td class="bg-warning"></td>
-                                <!-- <td class="bg-warning"></td> -->
-                                <td class="bg-warning"></td>
+                                <td class="bg-warning border-left">{{__('main.subtotal')}}</td>
+                                <td class="bg-warning border-left"></td>
+                                <!-- <td class="bg-warning border-left"></td> -->
+                                <td class="bg-warning border-left"></td>
                                 <td class="bg-warning">{{config('cart.currency')}} {{ number_format($subtotal, 2, '.', ',') }}</td>
                             </tr>
                             @if(isset($shippingFee) && $shippingFee != 0)
                             <tr>
-                                <td class="bg-warning">Shipping</td>
-                                <td class="bg-warning"></td>
-                                <!-- <td class="bg-warning"></td> -->
-                                <td class="bg-warning"></td>
+                                <td class="bg-warning border-left">Shipping</td>
+                                <td class="bg-warning border-left"></td>
+                                <!-- <td class="bg-warning border-left"></td> -->
+                                <td class="bg-warning border-left"></td>
                                 <td class="bg-warning">{{config('cart.currency')}} {{ $shippingFee }}</td>
                             </tr>
                             @endif
@@ -181,26 +188,26 @@
                             </tr>
                             -->
                             <tr>
-                                <td class="bg-success">{{__('main.total')}}</td>
-                                <td class="bg-success"></td>
-                                <!-- <td class="bg-success"></td> -->
-                                <td class="bg-success"></td>
+                                <td class="bg-success border-left">{{__('main.total')}}</td>
+                                <td class="bg-success border-left"></td>
+                                <!-- <td class="bg-success border-left"></td> -->
+                                <td class="bg-success border-left"></td>
                                 <td class="bg-success">{{config('cart.currency')}} {{ number_format($total, 2, '.', ',') }}</td>
                             </tr>
                             </tfoot>
                             <tbody>
                             @foreach($cartItems as $cartItem)
                                 <tr>
-                                    <td class="text-right" width="20%">
+                                    <td class="text-right border-left width="20%">
                                         <a href="{{ route('front.get.productid', [$cartItem->product->id]) }}" class="hover-border">
                                             @if(isset($cartItem->cover))
-                                                <img src="{{$cartItem->cover}}" alt="{{ $cartItem->name }}" class="img-responsive img-thumbnail" >
+                                                <img src="{{$cartItem->cover}}" alt="{{ $cartItem->name_fa }}" class="img-responsive img-thumbnail" style="height: 120px;" >
                                             @else
                                                 <img src="https://placehold.it/120x120" alt="" class="img-responsive img-thumbnail">
                                             @endif
                                         </a>
                                     </td>
-                                    <td class="text-right">
+                                    <td class="text-right border-left">
                                         <h3>{{ $cartItem->name }}</h3>
                                         @if($cartItem->options->has('combination'))
                                             @foreach($cartItem->options->combination as $option)
@@ -221,11 +228,11 @@
                                             </div>
                                         </form>
                                     </td> -->
-                                    <td class="text-center">
+                                    <td class="text-center border-left">
                                         <form action="{{ route('cart.destroy', $cartItem->rowId) }}" method="post">
                                             {{ csrf_field() }}
                                             <input type="hidden" name="_method" value="delete">
-                                            <button onclick="return confirm('Are you sure?')" class="btn btn-danger"><i class="fa fa-times"></i></button>
+                                            <button onclick="return confirm('Are you sure?')" class="btn btn-danger art-button"><i class="fa fa-times"></i></button>
                                         </form>
                                     </td>
                                     <td>{{config('cart.currency')}} {{ number_format($cartItem->price, 2) }}</td>
@@ -237,11 +244,12 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="btn-group pull-right">
-                                    <a href="{{ route('home') }}" class="btn btn-default">{{__('main.continue_shopping')}}</a>
-                                    <a href="{{ route('checkout.index') }}" class="btn btn-primary">{{__('main.go_to_checkout')}}</a>
+                                    <a href="{{ route('home') }}" class="btn btn-default art-button">{{__('main.continue_shopping')}}</a>
+                                    <a href="{{ route('checkout.index') }}" class="btn btn-primary art-button">{{__('main.go_to_checkout')}}</a>
                                 </div>
                             </div>
                         </div>
+                        <br/><br/>
                     </div>
                 </div>
             @else
