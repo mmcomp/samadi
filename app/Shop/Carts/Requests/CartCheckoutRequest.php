@@ -19,7 +19,7 @@ class CartCheckoutRequest extends BaseFormRequest
     public function rules()
     {
         return [
-            'billing_address' => ['required']
+            // 'billing_address' => ['required']
         ];
     }
 }

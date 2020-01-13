@@ -120,7 +120,7 @@ class CheckoutController extends Controller
         })->all();
         // dump($paymentGateways);
 
-        $billingAddress = $customer->addresses()->first();
+        $billingAddress = null; // $customer->addresses()->first();
         $locale = $request->session()->get('locale');
         if($locale==null) {
             $locale = 'fa';
@@ -129,7 +129,7 @@ class CheckoutController extends Controller
         return view('front.checkout', [
             'customer' => $customer,
             'billingAddress' => $billingAddress,
-            'addresses' => $customer->addresses()->get(),
+            'addresses' => [], // $customer->addresses()->get(),
             'products' => $this->cartRepo->getCartItems(),
             'subtotal' => $this->cartRepo->getSubTotal(),
             'tax' => $this->cartRepo->getTax(),

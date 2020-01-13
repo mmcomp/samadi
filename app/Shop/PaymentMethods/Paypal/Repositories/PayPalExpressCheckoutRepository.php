@@ -69,8 +69,8 @@ class PayPalExpressCheckoutRepository implements PayPalExpressCheckoutRepository
         $this->payPal->setAmount($cartRepo->getTotal(2, $shippingFee));
         $this->payPal->setTransactions();
 
-        $billingAddress = $addressRepo->findAddressById($request->input('billing_address'));
-        $this->payPal->setBillingAddress($billingAddress);
+        // $billingAddress = $addressRepo->findAddressById($request->input('billing_address'));
+        // $this->payPal->setBillingAddress($billingAddress);
 
         if ($request->has('shipping_address')) {
             $shippingAddress = $addressRepo->findAddressById($request->input('shipping_address'));

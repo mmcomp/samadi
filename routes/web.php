@@ -114,7 +114,7 @@ Route::namespace('Front')->group(function () {
     Route::get('/', 'HomeController@splash')->name('splash');
     Route::any('/home', 'HomeController@index')->name('home');
     Route::any('/mail', 'HomeController@mail');
-    Route::group(['middleware' => ['auth', 'web']], function () {
+Route::group([/*'middleware' => ['auth', 'web']*/], function () {
 
         Route::namespace('Payments')->group(function () {
             Route::get('bank-transfer', 'BankTransferController@index')->name('bank-transfer.index');
