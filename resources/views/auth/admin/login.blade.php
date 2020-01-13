@@ -52,8 +52,8 @@
             </div> -->
             <!-- /.social-auth-links -->
 
-            <a href="#">I forgot my password</a><br>
-            <a href="{{ url('/') }}" class="text-center">Register a new membership</a>
+            <a href="{{ route('admin.forget') }}">I forgot my password</a><br>
+            <a href="{{ url('/register') }}" class="text-center">Register a new membership</a>
 
         </div>
         <!-- /.login-box-body -->
