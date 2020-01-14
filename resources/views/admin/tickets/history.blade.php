@@ -14,7 +14,7 @@
                         <textarea name="answer" id="answer" class="form-control" >{{ old('answer') }}</textarea>
                     </div>
                     <div class="form-group">
-                        <label for="file_path">Attachment <span class="text-danger">*</span></label>
+                        <label for="file_path">Attachment</label>
                         <input type="file" name="file_path" id="file_path" class="form-control" />
                     </div>
                 </div>

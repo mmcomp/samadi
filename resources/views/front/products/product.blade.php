@@ -117,6 +117,13 @@
     border: none !important;
     padding: 0 !important;
   }
+
+  .similar-img {
+    margin: 0 0 0 0;
+    height: 300px;
+    width: 300px;
+    padding: 0px;
+  }
 </style>
 @endsection
 
@@ -563,11 +570,11 @@
             <p>
                 <a href="/product/{{ $newProduct->id }}">
                     @if($newProduct->cover!=null && $newProduct->cover!='')
-                    <img width="100%" height="100%" alt="{{ $newProduct->{'name_' . $locale} }}"
-                        class="fade1" src="/storage/{{ $newProduct->cover }}">
+                    <img alt="{{ $newProduct->{'name_' . $locale} }}"
+                        class="fade1 similar-img" src="/storage/{{ $newProduct->cover }}">
                     @else
-                    <img width="100%" height="100%" alt="{{ $newProduct->{'name_' . $locale} }}"
-                        class="fade1" src="/images/11-1-copy.jpg">
+                    <img alt="{{ $newProduct->{'name_' . $locale} }}"
+                        class="fade1 similar-img" src="/images/11-1-copy.jpg">
                     @endif
                 </a>
                 <br>

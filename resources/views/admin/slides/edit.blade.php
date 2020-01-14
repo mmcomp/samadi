@@ -14,7 +14,7 @@ $statuses = ['registered','processing','answered','closed'];
                     {{ csrf_field() }}
                     <input type="hidden" name="_method" value="put">
                     @if($slide->image_path)
-                    <img src="/storage/{{ $slide->image_path }}" />
+                    <img src="{{ $slide->image_path }}" />
                     @endif
                     <div class="form-group">
                         <label for="image_path">Image <span class="text-danger">*</span></label>

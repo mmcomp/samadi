@@ -28,7 +28,7 @@ class TicketController extends Controller
             $list = Ticket::where('deleted', 0)->orderBy('created_at', 'desc')->get();
         }else {
             $abbas = auth()->guard('web')->user();
-            $list = Ticket::where('deleted', 0)->where('customer_id', $abbas->id)->orderBy('created_at', 'desc')->get();
+            $list = Ticket::where('deleted', 0)->where('customers_id', $abbas->id)->orderBy('created_at', 'desc')->get();
         }
 
         
@@ -51,7 +51,7 @@ class TicketController extends Controller
                     $query->where('created_at', '<=', $to);
                 }
                 if($isCustomer) {
-                    $query->where('customer_id', $abbas->id);
+                    $query->where('customers_id', $abbas->id);
                 }
             })->orderBy('created_at', 'desc')->get();
         }
@@ -192,7 +192,34 @@ class TicketController extends Controller
     {
         $data = request()->except('_token', '_method');
         // $data['register_id'] = Auth::getUser();
+
+        $isCustomer = true;
+        if(auth()->guard('employee')->check()) {
+            $isCustomer = false;
+            $abbas = auth()->guard('employee')->user();
+        }else {
+            $abbas = auth()->guard('web')->user();
+        }
+
+        $data = request()->except('_token', '_method', 'file_path');
+        if(!$isCustomer) {
+            $data['employee_id'] = $abbas->id;
+        }else {
+            $data['customers_id'] = $abbas->id;
+        }
+
         $ticket = Ticket::create($data);
+
+        $data['ticket_id'] = $ticket->id;
+        $data['answer'] = $ticket->content;
+        $ticketHistory = TicketHistory::create($data);
+        if(request()->file('file_path')) {
+            $file_path = '/storage/' . request()->file('file_path')->store('tickets', ['disk' => 'public']);
+            TicketFile::create([
+                "ticket_history_id"=>$ticketHistory->id,
+                "file_path"=>$file_path,
+            ]);
+        }
 
         try{
             $client = new \SoapClient('http://sw5p80.pdr.co.ir/?wsdl', array('encoding'=>'UTF-8'));

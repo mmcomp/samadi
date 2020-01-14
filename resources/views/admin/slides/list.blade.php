@@ -25,7 +25,7 @@
                             <tr>
                                 <td>{{ $slide->id }}</td>
                                 @if($slide->image_path)
-                                <td><img src="/storage/{{ $slide->image_path }}" style="height: 50px;" /></td>
+                                <td><img src="{{ $slide->image_path }}" style="height: 50px;" /></td>
                                 @else
                                 <td></td>
                                 @endif

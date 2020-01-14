@@ -9,6 +9,8 @@ use App\Shop\Products\Product;
 use App\Shop\Categories\Category;
 use App\Shop\Categories\CategoryProduct;
 use App\Shop\News\News;
+use App\Shop\Offers\Offer;
+use App\Shop\Offers\OfferCatagory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use App\Shop\Customers\Customer;
@@ -49,6 +51,29 @@ class HomeController
         $searchResults = null;
         $search = "";
         $filter = null;
+
+        // Categories
+        $allCats = Category::all();
+        //\Categories
+        // Offers
+        $todayOffers = Offer::where("start_date", "<=", date("Y-m-d"))->where("end_date", ">=", date("Y-m-d"))->with('categories')->get();
+        $categoriesOffers = [];
+        $allOffers = [];
+        foreach($todayOffers as $todayOffer) {
+            if($todayOffer->categories) {
+                foreach($todayOffer->categories as $offerCategory) {
+                    if(!isset($categoriesOffers[$offerCategory->categories_id])) {
+                        $categoriesOffers[$offerCategory->categories_id] = [];
+                    }
+                    $categoriesOffers[$offerCategory->categories_id] [] = $todayOffer;
+                }
+            }else {
+                $allOffers[] = $todayOffer;
+            }
+        }
+        // dump($allOffers);
+        // dd($categoriesOffers);
+        //\Offers
         if ($request->isMethod('post')) {
             $isSearch = true;
             $search = $request->input('search');
@@ -85,21 +110,100 @@ class HomeController
                 }else if($free && !$nofree) {
                     $query->where('price', 0);
                 }
-            })->orderBy('created_at', 'desc')->orderBy('like_count', 'desc')->get();
+            })->where('status', 1)->orderBy('created_at', 'desc')->orderBy('like_count', 'desc')->get();
+            foreach($searchResults as $i=>$newProduct) {
+                $searchResults[$i]->offers = [];
+                foreach($newProduct->categories as $productCategory) {
+                    $thisProductOffers = $searchResults[$i]->offers;
+                    if(isset($categoriesOffers[$productCategory->id])) {
+                        foreach($categoriesOffers[$productCategory->id] as $cOffer) {
+                            $found = false;
+                            foreach($searchResults[$i]->offers as $pOffer) {
+                                if($pOffer->id==$cOffer->id) {
+                                    $found = true;
+                                }
+                            }
+                            if(!$found) {
+                                $thisProductOffers[] = $cOffer;
+                            }
+                        }
+                    }
+                    $searchResults[$i]->offers = $thisProductOffers;
+                }
+            }
         }
-        // Categories
-        $allCats = Category::all();
-        //\Categories
         // Products
         $newProducts = $this->productRepo->newProducts(5);
         $topSaleProducts = $this->productRepo->topSaleProducts(5);
         $topWorkProducts = $this->productRepo->topWorkProducts(5);
+        foreach($newProducts as $i=>$newProduct) {
+            $newProducts[$i]->offers = [];
+            foreach($newProduct->categories as $productCategory) {
+                $thisProductOffers = $newProducts[$i]->offers;
+                if(isset($categoriesOffers[$productCategory->id])) {
+                    foreach($categoriesOffers[$productCategory->id] as $cOffer) {
+                        $found = false;
+                        foreach($newProducts[$i]->offers as $pOffer) {
+                            if($pOffer->id==$cOffer->id) {
+                                $found = true;
+                            }
+                        }
+                        if(!$found) {
+                            $thisProductOffers[] = $cOffer;
+                        }
+                    }
+                }
+                $newProducts[$i]->offers = $thisProductOffers;
+            }
+        }
+        foreach($topSaleProducts as $i=>$newProduct) {
+            $topSaleProducts[$i]->offers = [];
+            foreach($newProduct->categories as $productCategory) {
+                $thisProductOffers = $topSaleProducts[$i]->offers;
+                if(isset($categoriesOffers[$productCategory->id])) {
+                    foreach($categoriesOffers[$productCategory->id] as $cOffer) {
+                        $found = false;
+                        foreach($topSaleProducts[$i]->offers as $pOffer) {
+                            if($pOffer->id==$cOffer->id) {
+                                $found = true;
+                            }
+                        }
+                        if(!$found) {
+                            $thisProductOffers[] = $cOffer;
+                        }
+                    }
+                }
+                $topSaleProducts[$i]->offers = $thisProductOffers;
+            }
+        }
+        foreach($topWorkProducts as $i=>$newProduct) {
+            $topWorkProducts[$i]->offers = [];
+            foreach($newProduct->categories as $productCategory) {
+                $thisProductOffers = $topWorkProducts[$i]->offers;
+                if(isset($categoriesOffers[$productCategory->id])) {
+                    foreach($categoriesOffers[$productCategory->id] as $cOffer) {
+                        $found = false;
+                        foreach($topWorkProducts[$i]->offers as $pOffer) {
+                            if($pOffer->id==$cOffer->id) {
+                                $found = true;
+                            }
+                        }
+                        if(!$found) {
+                            $thisProductOffers[] = $cOffer;
+                        }
+                    }
+                }
+                $topWorkProducts[$i]->offers = $thisProductOffers;
+            }
+        }
+        // dd($newProducts[0]->offers);
         $topSaleProducts = $newProducts;
         $topWorkProducts = $newProducts;
         //\Products
         // News
         $topNews = News::orderBy('updated_at', 'desc')->limit(5)->get();
         //\News
+
         $locale = $request->session()->get('locale');
         if($locale==null) {
             $locale = 'fa';
@@ -119,6 +223,7 @@ class HomeController
             "filter"=>$filter,
             "cartItems"=>$cartItems,
             "slides"=>$this->slides,
+            "offers"=>$todayOffers,
         ]);
     }
 

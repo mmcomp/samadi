@@ -377,6 +377,9 @@ input:checked + .slider:before {
                 <div class="row">
                     @foreach($searchResults as $newProduct)
                         <div class="col-2" onmouseenter="$('#info_{{ $newProduct->id }}').show();" onmouseleave="$('#info_{{ $newProduct->id }}').hide();">
+                            @if(isset($newProduct->offers) && isset($newProduct->offers[0]))
+                            <img class="fade" src="/images/offer.png" style="position: absolute;height: 150px;width: 150px;margin-top: -8px;margin-right: -8px;" />
+                            @endif
                             @if($newProduct->cover!=null && $newProduct->cover!='')
                             <img alt="{{ $newProduct->{'name_' . $locale} }}" style="width: 100%height: 100%;" src="/storage/{{ $newProduct->cover }}">
                             @else
@@ -423,6 +426,9 @@ input:checked + .slider:before {
                     <div class="art-layout-cell layout-item-4" style="width: 20%">
                         <p>
                             <a href="/product/{{ $newProduct->id }}">
+                                @if(isset($newProduct->offers) && isset($newProduct->offers[0]))
+                                <img class="fade" src="/images/offer.png" style="position: absolute;height: 150px;width: 150px;margin-top: -8px;margin-right: -8px;" />
+                                @endif
                                 @if($newProduct->cover!=null && $newProduct->cover!='')
                                 <img width="100%" height="100%" alt="{{ $newProduct->{'name_' . $locale} }}"
                                     class="fade" src="/storage/{{ $newProduct->cover }}">
@@ -511,6 +517,9 @@ input:checked + .slider:before {
                     <div class="art-layout-cell layout-item-4" style="width: 20%">
                         <p>
                             <a href="/product/{{ $newProduct->id }}">
+                                @if(isset($newProduct->offers) && isset($newProduct->offers[0]))
+                                <img class="fade" src="/images/offer.png" style="position: absolute;height: 150px;width: 150px;margin-top: -8px;margin-right: -8px;" />
+                                @endif
                                 @if($newProduct->cover!=null && $newProduct->cover!='')
                                 <img width="100%" height="100%" alt="{{ $newProduct->{'name_' . $locale} }}"
                                     class="fade" src="/storage/{{ $newProduct->cover }}">
@@ -591,6 +600,9 @@ input:checked + .slider:before {
                         <div class="art-layout-cell layout-item-4" style="width: 20%">
                             <p>
                                 <a href="/product/{{ $newProduct->id }}">
+                                    @if(isset($newProduct->offers) && isset($newProduct->offers[0]))
+                                    <img class="fade" src="/images/offer.png" style="position: absolute;height: 150px;width: 150px;margin-top: -8px;margin-right: -8px;" />
+                                    @endif
                                     @if($newProduct->cover!=null && $newProduct->cover!='')
                                     <img width="100%" height="100%" alt="{{ $newProduct->{'name_' . $locale} }}"
                                         class="fade" src="/storage/{{ $newProduct->cover }}">

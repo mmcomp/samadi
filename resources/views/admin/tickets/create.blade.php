@@ -23,6 +23,10 @@
                         <label for="content">Content <span class="text-danger">*</span></label>
                         <textarea name="content" id="content" class="form-control" >{{ old('content') }}</textarea>
                     </div>
+                    <div class="form-group">
+                        <label for="file_path">Attachment </label>
+                        <input type="file" name="file_path" id="file_path" class="form-control" />
+                    </div>
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer">
