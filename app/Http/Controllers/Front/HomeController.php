@@ -80,6 +80,11 @@ class HomeController
                 if(count($catRes)>0) {
                     $query->whereIn('id', $catRes);
                 }
+                if(!$free && $nofree) {
+                    $query->where('price', '>', 0);
+                }else if($free && !$nofree) {
+                    $query->where('price', 0);
+                }
             })->orderBy('created_at', 'desc')->orderBy('like_count', 'desc')->get();
         }
         // Categories
