@@ -51,7 +51,7 @@
         <div style="text-align: center;" class="art-content-layout-row">
         </div>
       </div>
-      {{__('app.contact')}}
+      {!!__('app.contact')!!}
   </article>
 </div>
 @endsection
