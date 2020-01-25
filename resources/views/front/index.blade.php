@@ -639,7 +639,7 @@ input:checked + .slider:before {
                 <div class="art-content-layout layout-item-5">
                     <div class="art-content-layout-row">
                         @foreach($topNews as $news)
-                        <div class="art-layout-cell layout-item-1" style="width: 20%">
+                        <div class="art-layout-cell layout-item-1" style="width: 20%" onclick="loadNews('{{ $news->title }}', '{{ $news->content }}', '{{ $news->image_path }}');" data-toggle="modal" data-target="#myModal">
                             <p style="text-align: center;">
                                 @if($news->image_path!=null && $news->image_path!='')
                                 <img width="99" height="99" alt="" class="fade1" src="/storage/{{ $news->image_path }}">
@@ -691,7 +691,19 @@ input:checked + .slider:before {
             </div>
     </article>
 </div>
+
 <script>
+    var topNews = @json($topNews);
+    function loadNews(title, content, image_path) {
+        console.log(title, content, image_path);
+        $("#myModal").find('h4.modal-title').text(title);
+        if(image_path) {
+            $("#myModal").find('div.modal-body').find('img').prop('src', '/storage/' + image_path);
+        }else {
+            $("#myModal").find('div.modal-body').find('img').prop('src', '');
+        }
+        $("#myModal").find('div.modal-body').find('div').html(content);
+    }
     $(".select2").select2({
         placeholder: "{{__('app.search_filter')}}",
         allowClear: true
