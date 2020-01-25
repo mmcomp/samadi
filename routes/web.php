@@ -142,7 +142,7 @@ Route::group([/*'middleware' => ['auth', 'web']*/], function () {
     Route::get("search", 'ProductController@search')->name('search.product');
     Route::get('about', 'HomeController@about')->name('about');
     Route::get('contact', 'HomeController@contact')->name('contact');
-    Route::get('privacy', 'HomeController@contact')->name('privacy');
+    Route::get('privacy', 'HomeController@privacy')->name('privacy');
     Route::post("product/like", 'ProductController@like')->name('product.like');
     Route::post("product/bookmark", 'ProductController@bookmark')->name('product.bookmark');
     Route::get("product/{id}", 'ProductController@showId')->name('front.get.productid');

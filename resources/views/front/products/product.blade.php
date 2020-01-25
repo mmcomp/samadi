@@ -2,8 +2,18 @@
 
 @section('og')
 <meta property="og:type" content="home" />
-<meta property="og:title" content="{{ config('app.name') }}" />
+<meta property="og:site_name" content="طراحی طلا و جواهرات با نرم افزار ماتریکس و راینو" />
+<meta property="og:title" content="{{ $product->{'name_' . $locale} }},{{ $category->{'name_' . $locale} }}" />
 <meta property="og:description" content="{{ config('app.name') }}" />
+@endsection
+
+@section('meta_description')
+<meta name="description" content="{{ $product->{'name_' . $locale} }},{{ $category->{'name_' . $locale} }},طراحی جواهرات با نرم افزار ماتریکس و راینو، خرید و فروش فایل طلا و جواهر مدل" />
+<meta name="Keywords" content="{{ $product->{'name_' . $locale} }},{{ $category->{'name_' . $locale} }},طراحی انلاین فایل ماتریکس راینو" />
+@endsection
+
+@section('title')
+{{ $product->{'name_' . $locale} }} - {{ $category->{'name_' . $locale} }}
 @endsection
 
 @section('css')

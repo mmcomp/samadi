@@ -38,7 +38,17 @@
     </style>
     <!-- End  Scroll Menu -->
     <meta charset="utf-8">
-    <title>{{ config('app.name') }}</title>
+    <title>     
+    @section('title') 
+    {{ config('app.name') }}
+    @show
+    </title>
+    
+    @section('meta_description')
+    <meta name="description" content=" طراحی جواهرات با نرم افزار ماتریکس و راینو زیبراش، خرید و فروش انلاین  فایل طلا و جواهر ">
+    <meta name="Keywords" content="فایل 3dm,طراحی فایل طلا و جواهر با ماتریکس راینو زیبراش">
+    @show
+
     <meta name="viewport" content="initial-scale = 1.0, maximum-scale = 1.0, user-scalable = no, width = device-width">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!--[if lt IE 9]><script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->

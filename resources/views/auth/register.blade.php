@@ -66,7 +66,7 @@
 					</div>
 					
 					<div style="text-align: right;font-family: iranyekan;direction: rtl;" class="text-right p-t-8 p-b-31">
-						<input style="text-align: right;font-family: iranyekan;height: 25px;width: 25px;float: right;"class="input100" type="checkbox" name="Conditions" id="conditions" placeholder="Conditions"><a style="padding-right: 10px; color:red;font-family: iranyekan;" href="#">{{__('main.accept_roles')}}</a>
+						<input style="text-align: right;font-family: iranyekan;height: 25px;width: 25px;float: right;"class="input100" type="checkbox" name="Conditions" id="conditions" placeholder="Conditions"><a style="padding-right: 10px; color:red;font-family: iranyekan;" href="{{ route('privacy') }}">{{__('main.accept_roles')}}</a>
 					</div>
 					
 					@if(env('GOOGLE_RECAPTCHA_KEY'))
