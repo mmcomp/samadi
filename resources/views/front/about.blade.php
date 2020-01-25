@@ -54,12 +54,27 @@
       <div class="art-content-layout layout-item-2">
         <div class="art-content-layout-row">
           <div class="art-layout-cell layout-item-3" style="width: 100%">
-            <br>
+            <video style="width: 100%;" autoplay id="vid">
+              <source src="/videos/about_{{ $locale }}.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <br/>
+            <br/>
             <div
               style="text-align: JUSTIFY;line-height:220%;direction:RTL;width: 90%;font-size: 20PX;padding-right: 5%;margin-left: 10%;">
-              {{__('app.about')}}
+              {!!__('app.about')!!}
             </div><br>
           </div>
   </article>
 </div>
+@endsection
+
+@section('js')
+<script>
+  $(document).ready(function() {
+    setTimeout(function() {
+      document.getElementById('vid').play();
+    }, 5000);
+  });
+</script>
 @endsection

@@ -240,7 +240,12 @@ class HomeController
      */
     public function about(Request $request)
     {
-        return view('front.about', ["slides"=>$this->slides]);
+        $locale = $request->session()->get('locale');
+        if($locale==null) {
+            $locale = 'fa';
+        }
+        App::setlocale($locale);
+        return view('front.about', ["slides"=>$this->slides, "locale"=>$locale]);
     }
 
     /**
