@@ -7,6 +7,7 @@ use App\Shop\Tickets\TicketHistory;
 use App\Shop\Tickets\TicketFile;
 use App\Shop\Employees\Employee;
 use App\Http\Controllers\Controller;
+use App\Shop\Configs\Config;
 
 class TicketController extends Controller
 {
@@ -162,7 +163,7 @@ class TicketController extends Controller
                 $parameters['uUsername'] = "samadi";
                 $parameters['uPassword'] = "2235948";
                 $parameters['uNumber'] = "50001900500019";
-                $parameters['uCellphones'] = env('TICKET_MOBILE');
+                $parameters['uCellphones'] = Config::getKeyValue('TICKET_MOBILE');
                 $parameters['uMessage'] = 'Ticket Resent' . "\n" . 'ID : ' . request()->input('ticket_id');
                 $parameters['uFarsi'] = false;
                 $parameters['uTopic'] = false;
@@ -226,7 +227,7 @@ class TicketController extends Controller
             $parameters['uUsername'] = "samadi";
             $parameters['uPassword'] = "2235948";
             $parameters['uNumber'] = "50001900500019";
-            $parameters['uCellphones'] = env('TICKET_MOBILE');
+            $parameters['uCellphones'] = Config::getKeyValue('TICKET_MOBILE');
             $parameters['uMessage'] = 'Ticket Registered' . "\n" . 'ID : ' . $ticket->id;
             $parameters['uFarsi'] = false;
             $parameters['uTopic'] = false;

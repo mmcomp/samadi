@@ -109,6 +109,13 @@ function addCredit() {
                             <label for="password">Password</label>
                             <input type="password" class="form-control" id="password" name="password" placeholder="Password" />
                         </div>
+
+                        @if(!$isCustomer)
+                        <div class="form-group">
+                            <label for="ticket_support_mobile">Ticket Support Mobile</label>
+                            <input type="text" class="form-control" id="ticket_support_mobile" name="ticket_support_mobile" placeholder="Ticket Support Mobile" value="{{ $ticket_support_mobile }}" />
+                        </div>
+                        @endif
                     </div>
                 </div>
                 @if($isCustomer)
