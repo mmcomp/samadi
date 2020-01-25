@@ -11,6 +11,9 @@ use Gloudemans\Shoppingcart\Contracts\Buyable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Nicolaslopezj\Searchable\SearchableTrait;
+use App\Shop\Offers\Offer;
+use App\Shop\Offers\OfferCategory;
+use App\Shop\Categories\CategoryProduct;
 
 class Product extends Model implements Buyable
 {
@@ -127,6 +130,50 @@ class Product extends Model implements Buyable
     public function getBuyablePrice($options = null)
     {
         return $this->price;
+    }
+
+    /**
+     * Get the sale price of the item.
+     *
+     * @return float
+     */
+    public function getSalePriceAttribute($value)
+    {
+        $categories = CategoryProduct::where("product_id", $this->id)->pluck('category_id')->toArray();
+        $offerCategories = [];
+        if(count($categories)>0) {
+            $offerCategories = OfferCategory::whereIn('categories_id', $categories)->pluck('categories_id')->toArray();
+        }
+        $todayOffers = Offer::where("start_date", "<=", date("Y-m-d"))->where("end_date", ">=", date("Y-m-d"))->with('categories')->get();
+        $allOffers = [];
+        $theOffer = null;
+        foreach($todayOffers as $todayOffer) {
+            if($todayOffer->categories) {
+                foreach($todayOffer->categories as $offerCategory) {
+                    if(count($offerCategories)>0 && in_array($offerCategory->categories_id, $offerCategories)) {
+                        $allOffers[] [] = $todayOffer;
+                        if($theOffer==null || $theOffer->percent<$todayOffer->percent) {
+                            $theOffer = $todayOffer;
+                        }
+                    }
+                }
+            }else {
+                $allOffers[] = $todayOffer;
+                if($theOffer==null || $theOffer->percent<$todayOffer->percent) {
+                    $theOffer = $todayOffer;
+                }
+            }
+        }
+        if($theOffer) {
+            $sale_price = ceil($this->price * (100 - $theOffer->percent) / 100);
+            if($value==null || $sale_price<$value){
+                $value = $sale_price;
+            }
+        }
+        if($value>=$this->price) {
+            $value = null;
+        }
+        return $value;
     }
 
     /**
