@@ -2,7 +2,7 @@
 
 return [
     'product_price_purchase'=>'قیمت محصول و خرید',
-    'tooman'=>'دلارآمریکا',
+    'tooman'=>'یورو',
     'purchase_product'=>'خرید محصول',
     'name_star_customer'=>'نام و امتیاز طراح',
     'product_name'=>'نام محصول',

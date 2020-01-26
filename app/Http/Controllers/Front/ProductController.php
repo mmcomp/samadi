@@ -97,12 +97,20 @@ class ProductController extends Controller
     public function showId(Request $request, int $id)
     {
         $customerBookmark = null;
+        $isCustomer = true;
         if (auth()->guard('web')->check()) {
             $customer = auth()->guard('web')->user();
             $customerBookmark = CustomerBookmark::where('customer_id', $customer->id)->where('product_id', $id)->first();
+        }else if(auth()->guard('employee')->check()) {
+            $isCustomer = false;
         }
 
         $product = $this->productRepo->findProductById($id);
+
+        if(!$isCustomer && $product->status!=1) {
+            return redirect('/home');
+        }
+
         $images = $product->images()->get();
         $categories = $product->categories()->get();
         $category = $product->categories()->first();

@@ -38,6 +38,19 @@ $isCustomer = isset($isCustomer)?$isCustomer:false;
                     <li><a href="{{ route('admin.product.selled') }}"><i class="fa fa-file"></i> Selled products</a></li>
                 </ul>
             </li>
+            @else
+            <li class="header">COOPERATION REQUEST</li>
+            <li class="treeview @if(request()->segment(2) == 'reports') active @endif">
+                <a href="#">
+                    <i class="fa fa-gift"></i> <span>Cooperation</span>
+                    <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="#" onclick="alert('In order to request cooperation , please be kind and create a ticket instead.');return false;"><i class="fa fa-file"></i> Request</a></li>
+                </ul>
+            </li>
             @endif
             <li class="header">SELL</li>
             <li class="treeview @if(request()->segment(2) == 'products' || request()->segment(2) == 'attributes' || request()->segment(2) == 'brands') active @endif">
