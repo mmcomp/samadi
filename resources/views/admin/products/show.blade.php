@@ -16,7 +16,7 @@
                             <td class="col-md-3">Description</td>
                             <td class="col-md-3">Cover</td>
                             <!-- <td class="col-md-2">Quantity</td> -->
-                            <td class="col-md-2">Price (USD)</td>
+                            <td class="col-md-2">Price (€)</td>
                         </tr>
                         </thead>
                         <tbody>

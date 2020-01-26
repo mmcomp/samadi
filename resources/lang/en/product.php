@@ -2,7 +2,7 @@
 
 return [
     'product_price_purchase'=>'Product Price & Purchase',
-    'tooman'=>'USD',
+    'tooman'=>'€',
     'purchase_product'=>'Purchase',
     'name_star_customer'=>'Name & Score of the Designer',
     'product_name'=>'Product Name',

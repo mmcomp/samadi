@@ -122,7 +122,7 @@
                                             -->
                                             @if(!$isCustomer)
                                             <div class="form-group">
-                                                <label for="sale_price">Sale Price (USD)</label>
+                                                <label for="sale_price">Sale Price (€)</label>
                                                 <div class="input-group">
                                                     <span class="input-group-addon">{{ config('cart.currency') }}</span>
                                                     <input type="text" name="sale_price" id="sale_price" placeholder="Sale Price" class="form-control" value="{!! $product->sale_price !!}">
@@ -130,7 +130,7 @@
                                             </div>
                                             @endif
                                             <div class="form-group">
-                                                <label for="price">Price (USD)</label>
+                                                <label for="price">Price (€)</label>
                                                 @if($productAttributes->isEmpty())
                                                     <div class="input-group">
                                                         <span class="input-group-addon">{{ config('cart.currency') }}</span>

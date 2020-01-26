@@ -117,7 +117,7 @@ class ShippoShipmentRepository implements ShippingInterface
      *
      * @return \Shippo_Shipment
      */
-    public function getRates(string $id, string $currency = 'USD')
+    public function getRates(string $id, string $currency = 'EURO')
     {
         return Shippo_Shipment::get_shipping_rates(compact('id', 'currency'));
     }

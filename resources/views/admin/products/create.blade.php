@@ -132,7 +132,7 @@ $("#cover").change(function(){
                             <input type="text" name="quantity" id="quantity" placeholder="Quantity" class="form-control" value="{{ old('quantity') }}">
                         </div> -->
                         <div class="form-group">
-                            <label for="price">Price (USD)<span class="text-danger">*</span></label>
+                            <label for="price">Price (€)<span class="text-danger">*</span></label>
                             <div class="input-group">
                                 <span class="input-group-addon">PHP</span>
                                 <input type="text" name="price" id="price" placeholder="Price" class="form-control" value="{{ old('price') }}">
@@ -140,7 +140,7 @@ $("#cover").change(function(){
                         </div>
                         @if(!$isCustomer)
                         <div class="form-group">
-                            <label for="sale_price">Sale Price (USD)<span class="text-danger">*</span></label>
+                            <label for="sale_price">Sale Price (€)<span class="text-danger">*</span></label>
                             <div class="input-group">
                                 <span class="input-group-addon">PHP</span>
                                 <input type="text" name="sale_price" id="sale_price" placeholder="Sale Price" class="form-control" value="{{ old('sale_price') }}">
