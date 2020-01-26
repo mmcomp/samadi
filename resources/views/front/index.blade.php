@@ -639,7 +639,7 @@ input:checked + .slider:before {
                 <div class="art-content-layout layout-item-5">
                     <div class="art-content-layout-row">
                         @foreach($topNews as $news)
-                        <div class="art-layout-cell layout-item-1" style="width: 20%" onclick="loadNews('{{ $news->title }}', '{{ $news->content }}', '{{ $news->image_path }}');" data-toggle="modal" data-target="#myModal">
+                        <div class="art-layout-cell layout-item-1" style="width: 20%" onclick="loadNews(`{{ $news->title }}`, `{{ $news->content }}`, '{{ $news->image_path }}');" data-toggle="modal" data-target="#myModal">
                             <p style="text-align: center;">
                                 @if($news->image_path!=null && $news->image_path!='')
                                 <img width="99" height="99" alt="" class="fade1" src="/storage/{{ $news->image_path }}">
