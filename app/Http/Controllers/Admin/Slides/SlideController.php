@@ -117,7 +117,7 @@ class SlideController extends Controller
     {
         $data = request()->except('_token', '_method', 'image_path');
         if (request()->hasFile('image_path')) {
-            $data['image_path'] = request()->file('image_path')->store('news', ['disk' => 'public']);
+            $data['image_path'] = '/storage/' . request()->file('image_path')->store('news', ['disk' => 'public']);
         }
 
         $slide = Slide::where('id', $id)->update($data);
