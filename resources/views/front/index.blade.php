@@ -702,7 +702,7 @@ input:checked + .slider:before {
         }else {
             $("#myModal").find('div.modal-body').find('img').prop('src', '');
         }
-        $("#myModal").find('div.modal-body').find('div').html(content);
+        $("#myModal").find('div.modal-body').find('div').html(content.replace(/\n/g, "<br/>\n"));
     }
     $(".select2").select2({
         placeholder: "{{__('app.search_filter')}}",
