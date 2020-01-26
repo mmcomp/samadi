@@ -155,8 +155,8 @@ class NewsController extends Controller
      */
     public function destroy($id)
     {
-        Ticket::where('id', $id)->update(['deleted'=>1]);
+        News::where('id', $id)->update(['deleted'=>1]);
 
-        return redirect()->route('admin.tickets.index')->with('message', 'Delete successful');
+        return redirect()->route('admin.news.index')->with('message', 'Delete successful');
     }
 }
