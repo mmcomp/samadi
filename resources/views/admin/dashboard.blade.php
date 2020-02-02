@@ -170,6 +170,11 @@ function addCredit() {
                             <label for="account_description">Account Description</label>
                             <input type="text" class="form-control" id="account_description" name="account_description" placeholder="Account Description" value="{{ $abbas->account_description }}" />
                         </div>
+
+                        <div class="form-group">
+                            <label for="postal_code">Postal Code</label>
+                            <input type="text" class="form-control" id="postal_code" name="postal_code" placeholder="Postal Code" value="{{ $abbas->postal_code }}" />
+                        </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
@@ -252,6 +257,11 @@ function addCredit() {
                         <div class="form-group">
                             <label for="aboutme">About Me</label>
                             <input type="text" class="form-control" id="aboutme" name="aboutme" placeholder="About Me" value="{{ $abbas->aboutme }}" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input type="text" class="form-control" id="city" name="city" placeholder="City" value="{{ $abbas->city }}" />
                         </div>
                     </div>
                 </div>

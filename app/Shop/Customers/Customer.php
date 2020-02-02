@@ -32,6 +32,8 @@ class Customer extends Authenticatable
         'sales_count',
         'files_count',
         'likes_count',
+        'postal_code',
+        'city',
     ];
 
     /**
