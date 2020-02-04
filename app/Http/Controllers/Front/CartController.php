@@ -61,10 +61,12 @@ class CartController extends Controller
     public function add(Request $request) {
         $product = $this->productRepo->findProductById($request->input('product'));
         // dd($product);
+        $product->price = $product->sale_price;
         $this->cartRepo->addToCart($product, 1, []);
 
         // dd($this->cartRepo->getCartItemsTransformed());
-        return redirect()->back();
+        return redirect(route('cart.view'));
+        // return redirect()->back();
             /*->with('message', 'Add to cart successful');*/
     }
 

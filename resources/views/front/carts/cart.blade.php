@@ -255,7 +255,7 @@
             @else
                 <div class="row">
                     <div class="col-md-12">
-                        <p class="alert alert-warning">{{__('main.no_products_in_cart')}} <a href="{{ route('home') }}">{{__('main.shop_now')}}</a></p>
+                        <p class="alert alert-warning"><h1>{{__('main.no_products_in_cart')}} <a href="{{ route('home') }}">{{__('main.shop_now')}}</a></h1></p>
                     </div>
                 </div>
             @endif

@@ -100,6 +100,14 @@ class CheckoutController extends Controller
      */
     public function index(Request $request)
     {
+        $isCustomer = true;
+        $customer = null;
+        if (auth()->guard('web')->check()) {
+            $customer = auth()->guard('web')->user();
+        }else {
+            return \redirect(route('admin.login'));
+        }
+        // dd('ss');
         $products = $this->cartRepo->getCartItems();
         $customer = $request->user();
         $rates = null;

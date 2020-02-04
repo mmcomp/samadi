@@ -34,6 +34,11 @@ function addCredit() {
             </div>
             <div class="box-body">
                 Pivejhan Jewellery Design Site Dashboard
+                @if($isCustomer && $cartItems && count($cartItems)>0)
+                <a href="{{ route('checkout.index') }}" class="btn btn-danger pull-right">
+                CHECK OUT
+                </a>
+                @endif
             </div>
             <!-- /.box-body -->
             <div class="box-footer">

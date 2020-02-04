@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Shop\Carts\Repositories\Interfaces\CartRepositoryInterface;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Shop\Countries\Country;
@@ -9,6 +10,11 @@ use App\Shop\Configs\Config;
 
 class DashboardController extends Controller
 {
+    private $cartRepo;
+    public function __construct(CartRepositoryInterface $cartRepository) {
+        $this->cartRepo = $cartRepository;
+    }
+
     public function index()
     {
         if (!auth()->guard('employee')->check() && !auth()->guard('web')->check()) {
@@ -50,12 +56,15 @@ class DashboardController extends Controller
             $ticket_support_mobile = Config::setKeyValue('TICKET_MOBILE', env('TICKET_MOBILE'));
         }
 
+        $cartItems = $this->cartRepo->getCartItemsTransformed();
+
         return view('admin.dashboard', [
             "abbas"=>$abbas, 
             "ticket_support_mobile"=>$ticket_support_mobile,
             "isCustomer"=>$isCustomer,
             "countries"=>$coutries,
             "error"=>$error,
+            "cartItems"=>$cartItems,
         ]);
     }
 }
