@@ -343,20 +343,23 @@
                             <div class="art-layout-cell layout-item-2" style="width: 25%">
                                 <h3 style="text-align: center;"><span
                                         style="color: rgb(190, 153, 106);">{{__('app.products')}}</span><br></h3>
-                                <p><span style="color: rgb(190, 153, 106);"><br></span></p>
+                                <!-- <p><span style="color: rgb(190, 153, 106);"><br></span></p>
                                 <p style="text-align: center;">نیم ست</p>
                                 <p style="text-align: center;">حلقه ست</p>
                                 <p style="text-align: center;">گوشواره</p>
                                 <p style="text-align: center;">دستبند</p>
                                 <p style="text-align: center;">گردنبند</p>
                                 <p style="text-align: center;">خلخال</p>
-                                <p style="text-align: center;">انگشتر</p>
+                                <p style="text-align: center;">انگشتر</p> -->
+                                @foreach($newProducts as $newProduct)
+                                <p style="text-align: center;">{{ $newProducts[0]->{'name_'.$locale} }}</p>
+                                @endforeach
                                 <h3 style="text-align: center;"><span style="color: #BE996A;"></span></h3>
                                 <ul>
                                     <li style="text-align: center;"><a href="#"></a></li>
                                 </ul>
                             </div>
-                            <div class="art-layout-cell layout-item-3" style="width: 35%">
+                            <!-- <div class="art-layout-cell layout-item-3" style="width: 35%">
                                 <h3 style="text-align: center;"><span style="color: rgb(190, 153, 106);">{{__('app.news')}}</span><br></h3>
                                 <p><span style="color: rgb(190, 153, 106);"><br></span></p>
                                 <p style="text-align: center;">النگو</p>
@@ -364,8 +367,8 @@
                                 <p style="text-align: center;">گردنبند</p>
                                 <p style="text-align: center;">خلخال</p>
                                 <p style="text-align: center;">نیم ست</p>
-                                <p style="text-align: center;">گردنبند<br></p>
-                            </div>
+                                <p style="text-align: center;">گردنبند<br></p> 
+                            </div> -->
                         </div>
                     </div>
                 </div>
