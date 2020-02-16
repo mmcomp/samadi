@@ -136,6 +136,7 @@ class ProductController extends Controller
                     $query->orWhere('description_ar', 'like', '%' . $q . '%');
                     $query->orWhere('description_tr', 'like', '%' . $q . '%');
                     $query->orWhere('id', $q);
+                    $query->orWhere('sku', $q);
                 }
                 if($from!='') {
                     $from = date("Y-m-d", strtotime($from));
@@ -174,6 +175,7 @@ class ProductController extends Controller
                     $query->orWhere('description_ar', 'like', '%' . $q . '%');
                     $query->orWhere('description_tr', 'like', '%' . $q . '%');
                     $query->orWhere('id', $q);
+                    $query->orWhere('sku', $q);
                 }
                 if($from!='') {
                     $from = date("Y-m-d", strtotime($from));

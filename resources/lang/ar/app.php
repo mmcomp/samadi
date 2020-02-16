@@ -46,6 +46,7 @@ return [
     'search_file_title'=>' ابحث عن عنوان الملف',
     'cost'=>'السعر',
     'category'=>'المجموعة',
+    'more'=>'أكثر',
     'search_results'=>'نتائج البحث',
     'search_now'=>'بحث',
     'about'=>'النص الأصلي

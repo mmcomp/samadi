@@ -46,6 +46,7 @@ return [
     'search_file_title'=>'Dosya adını ara',
     'cost'=>'Fiyat',
     'category'=>'kategori',
+    'more'=>'Daha',
     'search_results'=>'Arama Sonuçları',
     'search_now'=>'şimdi araştır',
     'about'=>'Orijinal metin

@@ -48,6 +48,7 @@ return [
     'search_file_title'=>'Search file here',
     'cost'=>'Cost',
     'category'=>'Category',
+    'more'=>'More',
     'search_results'=>'Search Results',
     'search_now'=>'Search Now',
     'about'=>'',

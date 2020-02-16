@@ -283,11 +283,11 @@ input:checked + .slider:before {
             <div style="z-index:1;align-content: center;align-items: center;align-self: center;text-align: center;padding:0px" class="art-content-layout layout-item-0">
                 <div style="z-index:1;align-content: center;align-items: center;align-self: center;text-align: center;padding:0px" class="art-content-layout-row">
                     <div style="z-index:1;align-content: center;align-items: center;align-self: center;padding:0px;text-align: center;" class="art-layout-cell layout-item-1" style="width: 100%">
-                        <form method="POST" id="search-form">
+                        <form method="POST" id="search-form" style="height: auto !important;">
                             {{ csrf_field() }}
                             <div style="direction:rtl" class="multiselect">
                                 <div class="checkboxes">
-                                    <h1 style="text-align: center;">
+                                    <h1 style="text-align: center;margin-bottom: 20px;">
                                     {{__('app.category')}}
                                     </h1>
                                     <div class="text-center">
@@ -378,7 +378,7 @@ input:checked + .slider:before {
                     @foreach($searchResults as $newProduct)
                         <div class="col-2" onmouseenter="$('#info_{{ $newProduct->id }}').show();" onmouseleave="$('#info_{{ $newProduct->id }}').hide();">
                             @if(isset($newProduct->offers) && isset($newProduct->offers[0]))
-                            <img class="fade" src="/images/offer.png" style="position: absolute;height: 150px;width: 150px;margin-top: -8px;margin-right: -8px;" />
+                            <img class="fade" src="/images/offer.png" style="position: absolute;height: 150px;width: 150px;margin-top: -9px;right: 5px;z-index: 10;" />
                             @endif
                             @if($newProduct->cover!=null && $newProduct->cover!='')
                             <img alt="{{ $newProduct->{'name_' . $locale} }}" style="width: 100%height: 100%;" src="/storage/{{ $newProduct->cover }}">
@@ -388,17 +388,19 @@ input:checked + .slider:before {
                             @endif
                             <div id="info_{{ $newProduct->id }}" style="position: absolute;background-color: rgba(255, 242, 242, 0.89);width: 300px;height: 300px;top: 0px;display: none;color: rgb(127, 96, 8);">
                                 <div class="row text-center">
-                                    <div class="col-12" style="font-size: 40px;">
+                                    <div class="col-12" style="font-size: 40px;padding-left: 100px;padding-top: 100px;">
                                         {{ $newProduct->{'name_' . $locale} }}
                                     </div>
                                     <div class="col-12" style="font-size: 20px;direction: ltr !important;">
-                                        <i class="fa fa-thumbs-up"></i> : <span style="color: green;">{{ $newProduct->like_count }}</span>
-                                    </div>
-                                    <div class="col-12" style="font-size: 20px;direction: ltr !important;">
-                                        <i class="fa fa-money"></i> : <span style="color: green;">{{ $newProduct->price }}</span>
+                                        <div style="width: 100px;text-align: left !important;margin-left: 100px;">
+                                        <i class="fa fa-heart" style="color: red;"></i> : <span style="color: green;">{{ $newProduct->like_count }}</span><br/>
+                                    <!-- </div>
+                                    <div class="col-12" style="font-size: 20px;direction: ltr !important;"> -->
+                                        <span style="color: black;">€</span> : <span style="color: green;">{{ $newProduct->price }}</span>
+                                        </div>
                                     </div>
                                     <div class="col-12">
-                                        <a class="btn btn-primary" href="/product/{{ $newProduct->id }}"><i class="fa fa-angle-double-right"></i></a>
+                                        <a class="btn btn-primary" style="margin-left: 86px;" href="/product/{{ $newProduct->id }}"><i class="fa fa-angle-double-right"></i> {{ __('app.more') }}</a>
                                     </div>
                                 </div>
                             </div>
