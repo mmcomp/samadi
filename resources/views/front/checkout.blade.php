@@ -152,6 +152,9 @@
                 <div class="col-md-12 content">
                     <div class="box-body">
                         @include('layouts.errors-and-messages')
+                        @if($error)
+                        <p class="alert alert-danger" style="text-align: center;font-size: 40px;color: white;background: #ce6262;margin: 10px;padding: 10px;">{{ __('main.' . $error) }}</p>
+                        @endif
                     </div>
                     @if(count($addresses) >= 0)
                         <div class="row">

@@ -103,7 +103,7 @@ $isCustomer = isset($isCustomer)?$isCustomer:false;
                 <ul class="treeview-menu">
                     <li><a href="{{ route('admin.transactions.income') }}"><i class="fa fa-circle-o"></i> List incomes</a></li>
                     <li><a href="{{ route('admin.transactions.cash') }}"><i class="fa fa-circle-o"></i> List credit to cash</a></li>
-                    <li><a href="#" onclick="prompt('How much do you want to increase your credit?');"><i class="fa fa-plus"></i> Add to credit</a></li>
+                    <li><a href="{{ route('admin.transactions.add') }}"><i class="fa fa-plus"></i> Add to credit</a></li>
                 </ul>
             </li>
             @if($user->hasPermission('update-order'))

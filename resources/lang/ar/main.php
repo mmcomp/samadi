@@ -35,6 +35,8 @@ return [
     'pay_with'=>'الدفع عن طريق',
     'paypal'=>'بي بال',
     'PayPal - Safe, Secured and Easy to pay online!'=>'بي بال – لدفع آمن و سهل عبر الإنترنت',
+    'wallet'=>'wallet',
+    'Wallet is your credit in Pivejhan'=>'Wallet is your credit in Pivejhan',
     'no_products_in_cart'=>'لا يوجد منتج في سلة المشتريات',
     'shop_now'=>'تبضع الآن',
     'e-mail_address'=>'البريد الإلكتروني',
@@ -56,4 +58,5 @@ return [
     'foregetemailsent'=>'تم ارسال كلمة عبور مؤقتة إلى بريىك الإلكتروني',
     'foregetsmssent'=>'تم إرسال كلمة عبور مؤقتة في رسالة قصيرة إلى هاتفك المحمول',
     'foregetnotsent'=>'البريد الإلكتروني أو الهاتف المحمول اجباري لإجراء هذه العملية',
+    'credit'=>'Your wallet credit is lower than cart total!',
 ];

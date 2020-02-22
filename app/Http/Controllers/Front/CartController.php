@@ -59,8 +59,11 @@ class CartController extends Controller
     }
 
     public function add(Request $request) {
+        // dd($request->all());
+        // $request->session()->put('cart_mode', $request->input('mode', 'online'));
         $product = $this->productRepo->findProductById($request->input('product'));
         // dd($product);
+        // dd($request->session()->all());
         $product->price = $product->sale_price;
         $this->cartRepo->addToCart($product, 1, []);
 

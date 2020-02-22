@@ -35,6 +35,8 @@ return [
     'pay_with'=>'Pay with',
     'paypal'=>'paypal',
     'PayPal - Safe, Secured and Easy to pay online!'=>'PayPal - Safe, Secured and Easy to pay online!',
+    'wallet'=>'wallet',
+    'Wallet is your credit in Pivejhan'=>'Wallet is your credit in Pivejhan',
     'no_products_in_cart'=>'No products in cart yet.',
     'shop_now'=>'Shop now!',
     'e-mail_address'=>'E-Mail Address',
@@ -56,4 +58,5 @@ return [
     'foregetemailsent'=>'Your new temporary password emailed to you!',
     'foregetsmssent'=>'Your new temporary password sent to you by sms!',
     'foregetnotsent'=>'You need to specify your email or mobile in order to reset password!',
+    'credit'=>'Your wallet credit is lower than cart total!',
 ];

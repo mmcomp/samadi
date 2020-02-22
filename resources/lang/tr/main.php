@@ -35,6 +35,8 @@ return [
     'pay_with'=>'İle ödemek',
     'paypal'=>'paypal',
     'PayPal - Safe, Secured and Easy to pay online!'=>'PayPal - Güvenli, sağlam ve Online ödeme yöntemidir!',
+    'wallet'=>'wallet',
+    'Wallet is your credit in Pivejhan'=>'Wallet is your credit in Pivejhan',
     'no_products_in_cart'=>'sepette hiçbir Ürün yoktur',
     'shop_now'=>'şimdi satın al',
     'e-mail_address'=>'e-posta adresi',
@@ -56,4 +58,5 @@ return [
     'foregetemailsent'=>'Geçici bir şifre size e-postayla gönderildi!',
     'foregetsmssent'=>'Geçici bir şifre kısa mesaj olarak gönderildi!',
     'foregetnotsent'=>'Geçici bir şifre gönderilmedi!',
+    'credit'=>'Your wallet credit is lower than cart total!',
 ];

@@ -3,7 +3,8 @@
 return [
     'product_price_purchase'=>'Product Price & Purchase',
     'tooman'=>'€',
-    'purchase_product'=>'Purchase',
+    'purchase_product'=>'Purchase Online',
+    'purchase_product_wallet'=>'Purchase from Wallet',
     'name_star_customer'=>'Name & Score of the Designer',
     'product_name'=>'Product Name',
     'product_description'=>'Product Description',

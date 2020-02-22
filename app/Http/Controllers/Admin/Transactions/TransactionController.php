@@ -107,4 +107,24 @@ class TransactionController extends Controller
             "isCustomer"=>$isCustomer,
         ]);
     }
+
+    public function add()
+    {
+        if (!auth()->guard('employee')->check() && !auth()->guard('web')->check()) {
+            return redirect('/admin/login');
+        }
+
+        $isCustomer = true;
+        if(auth()->guard('employee')->check()) {
+            $isCustomer = false;
+            return redirect('/admin');
+        }else {
+            $abbas = auth()->guard('web')->user();
+        }
+
+        return view('admin.transactions.add', [
+            "abbas"=>$abbas, 
+            "isCustomer"=>$isCustomer,
+        ]);
+    }
 }

@@ -17,6 +17,13 @@ use App\Shop\PaymentMethods\Paypal\Repositories\PayPalExpressCheckoutRepository;
 use App\Shop\PaymentMethods\Stripe\Exceptions\StripeChargingErrorException;
 use App\Shop\PaymentMethods\Stripe\StripeRepository;
 use App\Shop\Products\Repositories\Interfaces\ProductRepositoryInterface;
+
+
+use App\Shop\Checkout\CheckoutRepository;
+use Ramsey\Uuid\Uuid;
+use App\Shop\Transactions\Transaction;
+
+
 use App\Shop\Products\Transformations\ProductTransformable;
 use App\Shop\Shipping\ShippingInterface;
 use Exception;
@@ -126,7 +133,7 @@ class CheckoutController extends Controller
         $paymentGateways = collect(explode(',', config('payees.name')))->transform(function ($name) {
             return config($name);
         })->all();
-        // dump($paymentGateways);
+        // dd($paymentGateways);
 
         $billingAddress = null; // $customer->addresses()->first();
         $locale = $request->session()->get('locale');
@@ -134,6 +141,7 @@ class CheckoutController extends Controller
             $locale = 'fa';
         }
         App::setlocale($locale);
+        $error = $request->session()->get('msg_error');
         return view('front.checkout', [
             'customer' => $customer,
             'billingAddress' => $billingAddress,
@@ -146,7 +154,8 @@ class CheckoutController extends Controller
             'cartItems' => $this->cartRepo->getCartItemsTransformed(),
             'shipment_object_id' => $shipment_object_id,
             'rates' => $rates,
-            'locale' => $locale
+            'locale' => $locale,
+            "error" => $error
         ]);
     }
 
@@ -165,6 +174,57 @@ class CheckoutController extends Controller
         $shippingFee = 0;
 
         switch ($request->input('payment')) {
+            case 'wallet':
+                $customer = $this->customerRepo->findCustomerById(auth()->id());
+                $cart = $this->cartRepo->getCartItems()->all();
+                // dump($cart);
+                $total = 0;
+                foreach($cart as $cartItem) {
+                    $total += $cartItem->price;
+                }
+                if($total>$customer->credit) {
+                    $request->session()->flash('msg_error', 'credit');
+                    // dd('a');
+                    return redirect(route('checkout.index'));
+                    // return redirect()->route('checkout.index')->with('error', 'There is an error in the shipment details. Check logs.');
+                }
+
+                $customer->credit -= $total;
+                $customer->save();
+
+                $checkoutRepo = new CheckoutRepository;
+                $order = $checkoutRepo->buildCheckoutItems([
+                    'reference' => Uuid::uuid4()->toString(),
+                    'courier_id' => 0, // @deprecated
+                    'customer_id' => $request->user()->id,
+                    'address_id' => 0,
+                    'order_status_id' => 0,
+                    'payment' => strtolower(config('wallet.name')),
+                    'discounts' => 0,
+                    'total_products' => $this->cartRepo->getSubTotal(),
+                    'total' => $this->cartRepo->getTotal(2, 0),
+                    'total_shipping' => 0,
+                    'total_paid' => 0,
+                    'tax' =>0
+                ]);
+
+                foreach($cart as $cartItem) {
+                    // dump($cartItem);
+                    $transaction = new Transaction;
+                    $transaction->customer_id = $customer->id;
+                    $transaction->order_id = $order->id;
+                    $transaction->product_id = $cartItem->product->id;
+                    $transaction->owner_id = $cartItem->product->customer_id;
+                    $transaction->amount = $cartItem->price;
+                    $transaction->save();
+                }
+                // dd('a');
+
+                Cart::destroy();
+                // dd($order);
+                // return redirect()->
+                return redirect('/admin/orders');
+                break;
             case 'paypal':
                 return $this->payPal->process($shippingFee, $request);
                 break;

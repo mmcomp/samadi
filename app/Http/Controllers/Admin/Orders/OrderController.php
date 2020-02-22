@@ -85,7 +85,7 @@ class OrderController extends Controller
             }
         }
         if($isCustomer) {
-            $list = Order::where('customer_id', $admin->id)->orderBy('created_at', 'desc')->get();
+            $list = Order::where('customer_id', $admin->id)->with('products')->orderBy('created_at', 'desc')->get();
         }else {
             $list = $this->orderRepo->listOrders('created_at', 'desc');
         }
@@ -250,9 +250,9 @@ class OrderController extends Controller
         $orderStatusRepo = new OrderStatusRepository(new OrderStatus());
 
         return $list->transform(function (Order $order) use ($courierRepo, $customerRepo, $orderStatusRepo) {
-            $order->courier = $courierRepo->findCourierById($order->courier_id);
+            $order->courier = null; //$courierRepo->findCourierById($order->courier_id);
             $order->customer = $customerRepo->findCustomerById($order->customer_id);
-            $order->status = $orderStatusRepo->findOrderStatusById($order->order_status_id);
+            $order->status = null; //$orderStatusRepo->findOrderStatusById($order->order_status_id);
             return $order;
         })->all();
     }

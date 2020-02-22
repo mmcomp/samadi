@@ -315,7 +315,7 @@
                                 <p style="text-align: center;">{{__('app.aboutus')}}<span style="color: #FFFFFF;"><br></span></p>
                                 <p style="text-align: center;">{{__('app.lesson')}}</p>
                                 <p style="text-align: center;"><span style="color: #FFFFFF;">{{__('app.faq')}}</span></p>
-                                <p style="text-align: center;"><span style="color: #FFFFFF;"><a href="/login">{{__('main.login')}}</a></span></p>
+                                <p style="text-align: center;"><span style="color: #FFFFFF;"><a href="/admin/login">{{__('main.login')}}</a></span></p>
                                 <p style="text-align: center;"><span style="color: #FFFFFF;"><a href="/register">{{__('main.register')}}</a></span></p>
                                 <p style="text-align: center;"><span style="color: #FFFFFF;"><br></span></p>
                                 <p style="text-align: center;"><span style="color: #FFFFFF;"><br></span></p>
@@ -351,9 +351,11 @@
                                 <p style="text-align: center;">گردنبند</p>
                                 <p style="text-align: center;">خلخال</p>
                                 <p style="text-align: center;">انگشتر</p> -->
+                                @if(isset($newProducts))
                                 @foreach($newProducts as $newProduct)
                                 <p style="text-align: center;">{{ $newProducts[0]->{'name_'.$locale} }}</p>
                                 @endforeach
+                                @endif
                                 <h3 style="text-align: center;"><span style="color: #BE996A;"></span></h3>
                                 <ul>
                                     <li style="text-align: center;"><a href="#"></a></li>

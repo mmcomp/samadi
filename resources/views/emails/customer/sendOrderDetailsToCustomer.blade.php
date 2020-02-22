@@ -15,17 +15,14 @@
 <body>
 <section class="container">
     <div class="col-md-12">
-        <h2>Hello {{$customer->name}}!</h2>
-        @php($country = \App\Shop\Countries\Country::find($address->country_id))
-        <p>This order is for deliver to your: <strong>{{ ucfirst($address->alias) }} <br /></strong></p>
-        <p>Address: {{$address->address_1}} {{$address->address_2}} {{$address->city}} {{$address->state_code}}, {{$country->name}}</p>
+        <h2>Hello {{$customer->name_fa}}!</h2>
         <table class="table table-striped" width="100%" border="0" cellspacing="0" cellpadding="0">
             <thead>
             <tr>
                 <th class="col-md-2">SKU</th>
                 <th class="col-md-2">Name</th>
                 <th class="col-md-3">Description</th>
-                <th class="col-md-1">Quantity</th>
+                <th class="col-md-1">File</th>
                 <th class="col-md-4 text-right">Price</th>
             </tr>
             </thead>
@@ -43,7 +40,7 @@
                         @endforeach
                         @endif
                     </td>
-                    <td>{{$product->pivot->quantity}}</td>
+                    <td><a href="{{url('/storage/' . $product->file_path)}}">Download</a></td>
                     <td class="text-right">{{config('cart.currency')}} {{number_format($product->price * $product->pivot->quantity, 2)}}</td>
                 </tr>
             @endforeach
@@ -56,14 +53,14 @@
                 <td>Subtotal:</td>
                 <td class="text-right">{{config('cart.currency')}} {{number_format($order->total_products, 2)}}</td>
             </tr>
-            <tr>
+            <!-- <tr>
                 <td></td>
                 <td></td>
                 <td></td>
                 <td>Shipping:</td>
                 <td class="text-right">{{config('cart.currency')}} {{number_format($order->total_shipping, 2)}}</td>
-            </tr>
-            <tr>
+            </tr> -->
+            <!-- <tr>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -76,7 +73,7 @@
                 <td></td>
                 <td>Tax:</td>
                 <td class="text-right">{{config('cart.currency')}} {{number_format($order->tax, 2)}}</td>
-            </tr>
+            </tr> -->
             <tr class="bg-warning">
                 <td></td>
                 <td></td>

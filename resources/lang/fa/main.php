@@ -35,6 +35,8 @@ return [
     'pay_with'=>'پرداخت با',
     'paypal'=>'پی پل',
     'PayPal - Safe, Secured and Easy to pay online!'=>'پی پل - امن ، ایمن و آسان در پرداخت آنلاین است',
+    'wallet'=>'کیف پول',
+    'Wallet is your credit in Pivejhan'=>'کیف پول شما نزد پیوه ژن',
     'no_products_in_cart'=>'محصولی در سبد نیست',
     'shop_now'=>'خرید کنید',
     'e-mail_address'=>'آدرس ایمیل',
@@ -56,4 +58,5 @@ return [
     'foregetemailsent'=>'رمز عبور موقت برایتان ایمیل شد',
     'foregetsmssent'=>'رمز عبور موقت برایتان پیامک شد',
     'foregetnotsent'=>'ایمیل و یا موبایل برای اینکار لازم است',
+    'credit'=>'موجودی کیف پول کمتر از جمع سبد خرید است!',
 ];

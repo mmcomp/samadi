@@ -3,7 +3,8 @@
 return [
     'product_price_purchase'=>'تسعير المنتج الشراء',
     'tooman'=>'دولار أمريكي',
-    'purchase_product'=>'شراء المنتج',
+    'purchase_product'=>'شراء عبر الانترنت',
+    'purchase_product_wallet'=>'شراء من محفظة',
     'name_star_customer'=>'اسم و نقاط المصمم',
     'product_name'=>'اسم المنتج',
     'product_description'=>'خصائص المنتج',

@@ -3,7 +3,8 @@
 return [
     'product_price_purchase'=>'Ürünü satın alma fiyatı',
     'tooman'=>'€',
-    'purchase_product'=>'Ürünü Satın Al',
+    'purchase_product'=>'Online satın al',
+    'purchase_product_wallet'=>'Cüzdandan satın alın',
     'name_star_customer'=>'Tasarımcı adı ve değerlendirmesi',
     'product_name'=>'Ürün Adı',
     'product_description'=>'Ürün Özellikleri',
