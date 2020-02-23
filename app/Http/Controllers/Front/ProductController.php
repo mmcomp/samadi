@@ -120,7 +120,7 @@ class ProductController extends Controller
         $otherProductsIds = OrderProduct::whereIn('order_id', $orders)->where('product_id', '!=', $product->id)->groupBy('product_id')->pluck('product_id')->toArray();
         $otherProducts = Product::whereIn('id', $otherProductsIds)->get();
         $newProducts = Product::orderBy('created_at', 'desc')->limit(4)->with('categories')->get();
-        $similarProductIds = CategoryProduct::whereIn('category_id', $categories->pluck('id'))->pluck('product_id');
+        $similarProductIds = CategoryProduct::whereIn('category_id', $categories->pluck('id'))->limit(10)->pluck('product_id');
         $similarProducts = Product::whereIn('id', $similarProductIds)->get();
         // dd($newProducts);
         $locale = $request->session()->get('locale');
