@@ -14,6 +14,7 @@
             @endif
             <td>SKU</td>
             <td>Price (€)</td>
+            <td>Weight</td>
             <td>Status</td>
             <td>Register Date</td>
             <td>Actions</td>
@@ -42,6 +43,7 @@
                 @endif
                 <td>{{ $product->sku }}</td>
                 <td>{{ config('cart.currency') }} {{ $product->price }}</td>
+                <td>{{ $product->weight }}</td>
                 <td>@include('layouts.status', ['status' => $product->status])</td>
                 <td>{{ $product->created_at->format("Y/m/d") }}</td>
                 <td>

@@ -70,6 +70,10 @@
                                             </div>
                                             @endif
                                             <div class="form-group">
+                                                <label for="weight">Weight <span class="text-danger">*</span></label>
+                                                <input type="text" name="weight" id="weight" placeholder="Weight" class="form-control" value="{{ $product->weight }}">
+                                            </div>
+                                            <div class="form-group">
                                                 <div class="col-md-3">
                                                     <div class="row">
                                                         <img src="{{ $product->cover }}" alt="" class="img-responsive img-thumbnail">
