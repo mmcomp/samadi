@@ -3,7 +3,7 @@
 return [
     'product_price_purchase'=>'قیمت محصول و خرید',
     'tooman'=>'یورو',
-    'purchase_product'=>'خرید آنلاین',
+    'purchase_product'=>'اضافه به سبد خرید',
     'purchase_product_wallet'=>'خرید از کیف پول',
     'name_star_customer'=>'نام و امتیاز طراح',
     'product_name'=>'نام محصول',
