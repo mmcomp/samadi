@@ -193,7 +193,7 @@
         </form>
         @if($product->price<=0)
         <p style="text-align: center;">
-        <a class="art-button" href="/storage/{{ $product->file_path }}">
+        <a class="art-button" href="/storage/{{ $product->file_path }}" style="background: #4caf50 !important;">
           <img src="/images/download.png" style="height: 100%;border: none !important;" />
           {{__('product.download')}}
         </a>
@@ -203,7 +203,7 @@
           {{ csrf_field() }}
           <input type="hidden" name="product" value="{{ $product->id }}" />
           <input type="hidden" id="mode" name="mode" value="online" />
-          <button accesskey="{{__('product.purchase_product')}}" class="art-button">
+          <button accesskey="{{__('product.purchase_product')}}" class="art-button" style="background: #4caf50 !important;">
             <img src="/images/add_to_cart.png" style="height: 100%;border: none !important;" />
             {{__('product.purchase_product')}}
           </button>
