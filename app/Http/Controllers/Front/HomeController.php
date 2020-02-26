@@ -110,7 +110,7 @@ class HomeController
                 }else if($free && !$nofree) {
                     $query->where('price', 0);
                 }
-            })->where('status', 1)->orderBy('created_at', 'desc')->orderBy('like_count', 'desc')->get();
+            })->where('status', 1)->orderBy('created_at', 'desc')->orderBy('like_count', 'desc')->limit(10)->get();
             foreach($searchResults as $i=>$newProduct) {
                 $searchResults[$i]->offers = [];
                 foreach($newProduct->categories as $productCategory) {
