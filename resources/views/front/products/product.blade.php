@@ -296,7 +296,10 @@
               <br>
             </h1>
             <p>
-              {{ $product->sku }}
+              sku : {{ $product->sku }}
+            </p>
+            <p>
+              Weight : {{ $product->weight }}
             </p>
             <p>
               <span style="color: rgb(61, 160, 28); font-family: IRANYekan; font-size: 16px; line-height: 19px;">

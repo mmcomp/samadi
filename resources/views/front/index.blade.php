@@ -388,15 +388,18 @@ input:checked + .slider:before {
                             @endif
                             <div id="info_{{ $newProduct->id }}" style="position: absolute;background-color: rgba(255, 242, 242, 0.89);width: 300px;height: 300px;top: 0px;display: none;color: rgb(127, 96, 8);">
                                 <div class="row text-center">
-                                    <div class="col-12" style="font-size: 40px;padding-left: 100px;padding-top: 100px;">
+                                    <div class="col-12" style="font-size: 25    px;padding-left: 100px;padding-top: 50px;">
+                                        <h3>
                                         {{ $newProduct->{'name_' . $locale} }}
+                                        </h3>
                                     </div>
                                     <div class="col-12" style="font-size: 20px;direction: ltr !important;">
                                         <div style="width: 100px;text-align: left !important;margin-left: 100px;">
                                         <i class="fa fa-heart" style="color: red;"></i> : <span style="color: green;">{{ $newProduct->like_count }}</span><br/>
                                     <!-- </div>
                                     <div class="col-12" style="font-size: 20px;direction: ltr !important;"> -->
-                                        <span style="color: black;">€</span> : <span style="color: green;">{{ $newProduct->price }}</span>
+                                        <span style="color: black;">€</span> : <span style="color: green;">{{ $newProduct->price }}</span><br/>
+                                        <span style="color: black;">W</span> : <span style="color: green;">{{ $newProduct->weight }}</span><br/>
                                         </div>
                                     </div>
                                     <div class="col-12">
