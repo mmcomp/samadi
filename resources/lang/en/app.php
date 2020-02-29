@@ -30,6 +30,7 @@ return [
             in social media
         </span> &nbsp; ---</span>',
     'top_works'=>'Top work designs',
+    'top_likes'=>'Top Liked designs',
     'news'=>'Top News and Amazing articles',
     'links'=>'Links',
     'faq'=>'Frequently asked Questions',

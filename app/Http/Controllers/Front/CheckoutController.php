@@ -17,6 +17,7 @@ use App\Shop\PaymentMethods\Paypal\Repositories\PayPalExpressCheckoutRepository;
 use App\Shop\PaymentMethods\Stripe\Exceptions\StripeChargingErrorException;
 use App\Shop\PaymentMethods\Stripe\StripeRepository;
 use App\Shop\Products\Repositories\Interfaces\ProductRepositoryInterface;
+use App\Shop\Products\Product;
 
 
 use App\Shop\Checkout\CheckoutRepository;
@@ -216,6 +217,22 @@ class CheckoutController extends Controller
                     $transaction->product_id = $cartItem->product->id;
                     $transaction->owner_id = $cartItem->product->customer_id;
                     $transaction->amount = $cartItem->price;
+                    $transaction->save();
+                    $product = Product::find($cartItem->product->id);
+                    $product->sale_count++;
+                    $product->save();
+                    $sellerCut = (int)($product->price * $seller->commission_percent / 100);
+                    $seller = Customer::find($product->customer_id);
+                    $seller->sales_count++;
+                    $seller->credit += $sellerCut;
+                    $seller->save();
+                    $transaction = new Transaction;
+                    $transaction->customer_id = $seller->id;
+                    $transaction->order_id = $order->id;
+                    $transaction->product_id = $cartItem->product->id;
+                    $transaction->owner_id = $cartItem->product->customer_id;
+                    $transaction->amount = $sellerCut;
+                    $transaction->type = "sell";
                     $transaction->save();
                 }
                 // dd('a');

@@ -38,6 +38,7 @@ Route::group(['prefix' => 'admin', /*'middleware' => ['employee'],*/ 'as' => 'ad
             Route::namespace('Customers')->group(function () {
                 Route::resource('customers', 'CustomerController');
                 Route::resource('customers.addresses', 'CustomerAddressController');
+                Route::any('credit/{id}', 'CustomerController@credit')->name('customers.credit');
             });
             Route::namespace('Offers')->group(function () {
                 Route::resource('offers', 'OfferController');

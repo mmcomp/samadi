@@ -46,7 +46,7 @@ class TransactionController extends Controller
                     $to = date("Y-m-d", strtotime($to));
                     $query->where('created_at', '<=', $to);
                 }
-            })->where('type', 'charge')->where('owner_id', $abbas->id)->with('product')->orderBy('created_at', 'desc')->get();
+            })->whereIn('type', ['charge', 'sell'])->where('owner_id', $abbas->id)->with('product')->orderBy('created_at', 'desc')->get();
         }
 
         return view('admin.transactions.list', [

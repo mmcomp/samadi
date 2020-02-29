@@ -68,6 +68,17 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
     }
 
     /**
+     * List top like products
+     *
+     * @param string $count
+     * @return Collection
+     */
+    public function topLikeProducts(int $count = 10) : Collection
+    {
+        return $this->model->where('status', 1)->with('categories')->orderBy('like_count', 'desc')->limit($count)->get();
+    }
+
+    /**
      * List all the products
      *
      * @param string $order

@@ -8,6 +8,7 @@ use App\Shop\Customers\Repositories\Interfaces\CustomerRepositoryInterface;
 use App\Shop\Customers\Requests\CreateCustomerRequest;
 use App\Shop\Customers\Requests\UpdateCustomerRequest;
 use App\Shop\Customers\Transformations\CustomerTransformable;
+use App\Shop\Transactions\Transaction;
 use App\Http\Controllers\Controller;
 
 class CustomerController extends Controller
@@ -110,6 +111,42 @@ class CustomerController extends Controller
             'customer' => $customer,
             'addresses' => $customer->addresses
         ]);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function credit(int $id)
+    {
+        $customer = $this->customerRepo->findCustomerById($id);
+        
+        if (request()->isMethod('get')) {
+
+            return view('admin.customers.credit', [
+                'credit' => $customer->credit,
+            ]);
+        }
+
+        $customer->credit += request()->input('credit', 0);
+        if($customer->credit>=0) {
+            $customer->save();
+            $transaction = new Transaction;
+            $transaction->customer_id = $id;
+            $transaction->order_id = 0;
+            $transaction->product_id = 0;
+            $transaction->owner_id = $id;
+            $transaction->amount = request()->input('credit', 0);
+            $transaction->type = "charge";
+            $transaction->description = request()->input('description');
+            $transaction->save();
+            return redirect('/admin/customers')->with('message', 'Credit update successful');
+        }else {
+            return redirect('/admin/customers')->with('error', 'Credit update unsuccessful');
+        }
+
     }
 
     /**

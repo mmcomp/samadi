@@ -28,6 +28,7 @@ return [
             style="text-shadow: rgba(246, 172, 44, 0.976563) 0px 0px 25px;">bizi sosyal medyada takip edin</span>   
         </span> &nbsp; ---</span>',
     'top_works'=>'En Çok gönderilen Portföy',
+    'top_likes'=>'Top Liked designs',
     'news'=>'En son ve heyecan verici haberler ve içerik',
     'links'=>'site bağlantıları',
     'faq'=>'sık sorulan sorular',

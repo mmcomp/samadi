@@ -259,6 +259,12 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+ul.pagination {
+    margin-right: 43%;
+}
+a.page-link {
+    color: black !important;
+}
 </style>
 <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
 <script src="vendor/select2/select2.min.js"></script>
@@ -348,7 +354,7 @@ input:checked + .slider:before {
                     </div>
                 </div>
             </div>
-            @if($isSearch)
+            
             <!-- <div style="background-color: white;">
                 <h3 style="text-align: center;">
                     {{__('app.search_results')}} «{{$search}}»
@@ -367,7 +373,11 @@ input:checked + .slider:before {
                         <h1 style="text-align: center;"><span style="font-family: 'vazir';"><br></span></h1>
                         <h1 style="text-align: center;">
                             <span style="font-family: 'vazir'; color: #000000;">
+                                @if($isSearch)
                                 {{__('app.search_results')}} «{{$search}}»
+                                @else
+                                {{__('app.new_products')}}
+                                @endif
                             </span>
                         </h1>
                     </div>
@@ -410,9 +420,13 @@ input:checked + .slider:before {
                         </div>
                     @endforeach
                 </div>
+                @if($isSearch)
+                {{ $searchResults->links() }}
+                @endif
             </div>
-            @endif
+            
             <!-- new products -->
+            <!--
             <div class="art-content-layout layout-item-2" style="margin-top: 100px;">
                 <div class="art-content-layout-row">
                     <div class="art-layout-cell layout-item-3" style="width: 100%">
@@ -457,6 +471,7 @@ input:checked + .slider:before {
                     </div>
                 </div>
             </div>
+            -->
             <!-- newsletter register -->
             <div class="art-content-layout layout-item-7">
                 <div class="art-content-layout-row">
@@ -586,14 +601,14 @@ input:checked + .slider:before {
                     </div>
                 </div>
             </div>
-            <!-- Top works -->
+            <!-- Top likes -->
             <div class="art-content-layout layout-item-13">
                 <div class="art-content-layout-row">
                     <div class="art-layout-cell layout-item-3" style="width: 100%">
                         <p style="text-align: left;"><span style="font-size: 18px;"><br></span>
                         </p>
                         <p style="text-align: center;"><span style="font-size: 18px; text-align: left; color: #000000;">
-                                {{__('app.top_works')}}
+                                {{__('app.top_likes')}}
                             </span><br></p>
                     </div>
                 </div>
@@ -601,7 +616,7 @@ input:checked + .slider:before {
             <div class="art-content-layout layout-item-0">
                 <div class="art-content-layout layout-item-0">
                     <div class="art-content-layout-row">
-                        @foreach($topWorkProducts as $newProduct)
+                        @foreach($topLikeProducts as $newProduct)
                         <div class="art-layout-cell layout-item-4" style="width: 20%">
                             <p>
                                 <a href="/product/{{ $newProduct->id }}">
