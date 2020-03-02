@@ -85,6 +85,10 @@ class HomeController
             $search = $request->input('search');
             $filter = $request->input('filter');
             $isSearch = true;
+        }else {
+            if($request->input('cat')) {
+                $filter[] = $request->input('cat');
+            }
         }
         $catRes = [];
         $free = false;

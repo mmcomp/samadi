@@ -4,7 +4,14 @@ namespace App\Http\Controllers\Front;
 
 use App\Shop\Categories\Repositories\CategoryRepository;
 use App\Shop\Categories\Repositories\Interfaces\CategoryRepositoryInterface;
+
+use App\Shop\Products\Repositories\Interfaces\ProductRepositoryInterface;
+use App\Shop\Carts\Repositories\Interfaces\CartRepositoryInterface;
+use App\Shop\Categories\Category;
+
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\App;
+use App\Http\Controllers\Front\HomeController;
 
 class CategoryController extends Controller
 {
@@ -31,7 +38,15 @@ class CategoryController extends Controller
      */
     public function getCategory(string $slug)
     {
-        $category = $this->categoryRepo->findCategoryBySlug(['slug' => $slug]);
+        return redirect('/home?cat=' . $slug);
+        // dd($slug);
+        $locale = request()->session()->get('locale');
+        if($locale==null) {
+            $locale = 'fa';
+        }
+        App::setlocale($locale);
+
+        $category = $this->categoryRepo->findCategoryById($slug);
 
         $repo = new CategoryRepository($category);
 
@@ -39,7 +54,8 @@ class CategoryController extends Controller
 
         return view('front.categories.category', [
             'category' => $category,
-            'products' => $repo->paginateArrayResults($products, 20)
+            'products' => $repo->paginateArrayResults($products, 20),
+            'locale' => $locale
         ]);
     }
 }
