@@ -397,7 +397,9 @@
     <div class="art-blockcontent">
       @foreach($newProducts as $newProduct)
       <p style="position: relative;">
-        <img width="75" height="73" style="/*float: right;margin-top: 11px;*/margin-left: 4px;" alt="" class="art-lightbox" src="/storage/{{ $newProduct->cover }}">
+        <a href="/product/{{ $newProduct->id }}">
+        <img width="75" height="73" style="/*float: right;margin-top: 11px;*/margin-left: 4px;" alt="" class="art-lightbox1" src="/storage/{{ $newProduct->cover }}">
+        </a>
       <!-- </p>
       <p> -->
         <span style="position: absolute;top: 50%;">
