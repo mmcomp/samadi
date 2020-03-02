@@ -332,7 +332,7 @@ a.page-link {
                                     <!-- <select style="border-top-right-radius:5px;border-bottom-right-radius: 5px;padding: 15px 30px;width:25%;text-decoration: none;margin:0px;">
                                         <option style="display:none;">{{__('app.search_filter')}}</option>
                                     </select> -->
-                                    <input style="padding: 14px 30px;width:45%;text-decoration: none;margin: 4px -6px;color:black" placeholder="&nbsp;&nbsp;&nbsp;{{__('app.search_file_title')}}&nbsp;&nbsp;&nbsp;" type="search" name="search">
+                                    <input style="padding: 14px 30px;width:45%;text-decoration: none;margin: 4px -6px;color:black" placeholder="&nbsp;&nbsp;&nbsp;{{__('app.search_file_title')}} {{ $productCount }}&nbsp;&nbsp;&nbsp;" type="search" name="search">
                                     <input type="button" value="{{__('app.search_now')}} !" onclick="$('#search-form').submit();">
                                     <!-- <div style="width:50px;padding-top:1px" class="overSelect"> </div> -->
                                 </div>

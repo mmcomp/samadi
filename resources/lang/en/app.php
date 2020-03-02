@@ -46,7 +46,7 @@ return [
     'develop'=>' Created by ',
     'pdco'=>'Parsian Dade Pardaz',
     'privacy'=>'ًRules and Regulations',
-    'search_file_title'=>'Search file here',
+    'search_file_title'=>'Search file here, total file count : ',
     'cost'=>'Cost',
     'category'=>'Category',
     'more'=>'More',

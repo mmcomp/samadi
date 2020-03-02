@@ -44,7 +44,7 @@ return [
     'develop'=>'tarafından tasarlanmış',
     'pdco'=>'Parsian Veri Şirketi  ',
     'privacy'=>'Şartlar ve Kurallar',
-    'search_file_title'=>'Dosya adını ara',
+    'search_file_title'=>'Dosya adını ara :',
     'cost'=>'Fiyat',
     'category'=>'kategori',
     'more'=>'Daha',

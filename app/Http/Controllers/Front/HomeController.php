@@ -52,6 +52,9 @@ class HomeController
         $search = "";
         $filter = null;
 
+        $productCount = Product::where('status', 1)->count();
+        // dd($productCount);
+
         // Categories
         $allCats = Category::all();
         //\Categories
@@ -255,6 +258,7 @@ class HomeController
             "cartItems"=>$cartItems,
             "slides"=>$this->slides,
             "offers"=>$todayOffers,
+            "productCount"=>$productCount,
         ]);
     }
 
