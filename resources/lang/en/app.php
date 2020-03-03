@@ -54,4 +54,6 @@ return [
     'search_now'=>'Search Now',
     'about'=>'',
     'contact'=>'',
+    'description_tag'=>'Explore pivezhanjewellery site "jewelry design", See more ideas about Jewelry design, 3dmax design and buy online 3dm files.',
+    'keyword_tag'=>'Jewelry Design, Jewelry File Design, 3dm File Design, Matrix Jewelry Design, Rhino Jewelry Design, Download Jewelry File, Free Download sdm File, Buy 3D Jewelery File, Buy Jewelry Online, Design Gold Jewelry File, Buy 3dm File, jewellery design, online jewellery design',
 ];

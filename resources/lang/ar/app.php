@@ -75,4 +75,6 @@ return [
   </div>
     </div>
   </div>',
+  'description_tag'=>'Keşfet pavizham jewellery site "mücevher tasarımı", Takı tasarımı, 3d max tasarımı hakkında daha fazla fikir görün ve çevrimiçi 3dm dosyaları satın alın.',
+  'keyword_tag'=>'تصميم المجوهرات ، تصميم ملف المجوهرات ، تصميم ملف ثلاثي الأبعاد ، تصميم مجوهرات ماتريكس ، تصميم مجوهرات الكركدن ، تنزيل ملف مجوهرات ، تنزيل مجاني ملف ، تصميم ثلاثي الأبعادشراء ملف مجوهرات 3D ، شراء مجوهرات على الإنترنت ، تصميم ملف مجوهرات الذهب ، شراء ملف 3dm',
 ];

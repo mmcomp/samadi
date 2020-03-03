@@ -75,4 +75,6 @@ return [
   </div>
     </div>
   </div>',
+  'description_tag'=>'Keşfet pavizham jewellery site "mücevher tasarımı", Takı tasarımı, 3d max tasarımı hakkında daha fazla fikir görün ve çevrimiçi 3dm dosyaları satın alın.',
+  'keyword_tag'=>'Takı Tasarımı, Takı Dosyası Tasarımı, 3dm Dosya Tasarımı, Matris Takı Tasarımı, Gergedan Takı Tasarımı, Takı Dosyası İndir, Ücretsiz İndirme Dosyası, 3dm3D mücevher dosyası satın, takı Online satın, tasarım altın takı dosyası, 3dm dosyası satın',
 ];

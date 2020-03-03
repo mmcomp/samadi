@@ -45,8 +45,10 @@
     </title>
     
     @section('meta_description')
-    <meta name="description" content=" طراحی جواهرات با نرم افزار ماتریکس و راینو زیبراش، خرید و فروش انلاین  فایل طلا و جواهر ">
-    <meta name="Keywords" content="فایل 3dm,طراحی فایل طلا و جواهر با ماتریکس راینو زیبراش">
+    <!-- <meta name="description" content=" طراحی جواهرات با نرم افزار ماتریکس و راینو زیبراش، خرید و فروش انلاین  فایل طلا و جواهر "> -->
+    <!-- <meta name="Keywords" content="فایل 3dm,طراحی فایل طلا و جواهر با ماتریکس راینو زیبراش"> -->
+    <meta name="description" content="{{__('app.description_tag')}}" />
+    <meta name="keywords" content="{{__('app.keyword_tag')}}" />
     @show
 
     <meta name="viewport" content="initial-scale = 1.0, maximum-scale = 1.0, user-scalable = no, width = device-width">
