@@ -24,7 +24,7 @@
                         @foreach ($transactions as $transaction)
                             <tr>
                                 <td>{{ $transaction->id }}</td>
-                                <td>{{ $transaction->product->name_fa }}</td>
+                                <td>{{ ($transaction->product)$transaction->product->name_fa:'-' }}</td>
                                 <td>{{ $transaction->amount }}</td>
                                 <td>{{ date("Y/m/d", strtotime($transaction->updated_at)) }}</td>
                             </tr>
