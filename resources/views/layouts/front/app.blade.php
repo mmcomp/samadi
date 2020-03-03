@@ -262,30 +262,31 @@
             <ul class="art-hmenu"><a href="محصولات/نیم-ست.html">نیم ست</a></li><li><a href="محصولات/حلقه-ست.html">حلقه ست</a></li><li><a href="محصولات/انگشتر.html">انگشتر</a></li><li><a href="محصولات/گردنبند.html">گردنبند</a></li><li><a href="محصولات/گوشواره.html">گوشواره</a></li><li><a href="محصولات/ابزار-جواهرات.html">ابزار جواهرات</a></li></ul></li><li><a href="سوالات-متداول.html">سوالات متداول</a></li><li><a href="اموزش.html">آموزش</a></li><li><a href="درباره-ما.html">درباره ما</a></li><li><a href="تماس-باما.html">تماس باما</a></li><li><a href="اطلاعات-کاربری.html">اطلاعات کاربری</a><ul><li><a href="اطلاعات-کاربری/داشبورد-من.html">داشبورد من</a></li><li><a href="اطلاعات-کاربری/ویرایش-کاربری.html">ویرایش کاربری</a></li><li><a href="اطلاعات-کاربری/درج-محصولات.html">درج محصولات</a></li><li><a href="اطلاعات-کاربری/تغییر-کلمه-عبور.html">تغییر کلمه عبور</a></li></ul></li><li><a href="ثبت-نام.html">ثبت نام</a></li><li><a href="ورود-به-سایت.html">ورود به سایت</a></li></ul> 
                 </div>   -->
                     <script>
+                        document.getElementById("navbar").style.top = "0";
                         // When the user scrolls down 30px from the top of the document, slide down the navbar
-                        window.onscroll = function () {
-                            scrollFunction()
-                        };
+                        // window.onscroll = function () {
+                        //     scrollFunction()
+                        // };
 
-                        function scrollFunction() {
-                            if (document.body.scrollTop > 30 || document.documentElement.scrollTop > 20) {
-                                document.getElementById("navbar").style.top = "0";
-                            } else {
-                                document.getElementById("navbar").style.top = "-50px";
-                            }
-                        }
+                        // function scrollFunction() {
+                        //     if (document.body.scrollTop > 30 || document.documentElement.scrollTop > 20) {
+                        //         document.getElementById("navbar").style.top = "0";
+                        //     } else {
+                        //         document.getElementById("navbar").style.top = "-50px";
+                        //     }
+                        // }
                     </script>
                     <script>
-                        var prevScrollpos = window.pageYOffset;
-                        window.onscroll = function () {
-                            var currentScrollPos = window.pageYOffset;
-                            if (prevScrollpos < currentScrollPos) {
-                                document.getElementById("navbar").style.top = "0";
-                            } else {
-                                document.getElementById("navbar").style.top = "-50px";
-                            }
-                            prevScrollpos = currentScrollPos;
-                        }
+                        // var prevScrollpos = window.pageYOffset;
+                        // window.onscroll = function () {
+                        //     var currentScrollPos = window.pageYOffset;
+                        //     if (prevScrollpos < currentScrollPos) {
+                        //         document.getElementById("navbar").style.top = "0";
+                        //     } else {
+                        //         document.getElementById("navbar").style.top = "-50px";
+                        //     }
+                        //     prevScrollpos = currentScrollPos;
+                        // }
                     </script>
 
 
