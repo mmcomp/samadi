@@ -124,11 +124,11 @@ class HomeController
             }
         })->where('status', 1)->orderBy('created_at', 'desc')->orderBy('like_count', 'desc');
         // dd($isSearch);
-        if($isSearch) {
+        // if($isSearch) {
             $searchResults = $searchResults->paginate($searchLimit);
-        }else {
-            $searchResults = $searchResults->limit($searchLimit)->get();
-        }
+        // }else {
+        //     $searchResults = $searchResults->limit($searchLimit)->get();
+        // }
         foreach($searchResults as $i=>$newProduct) {
             $searchResults[$i]->offers = [];
             foreach($newProduct->categories as $productCategory) {
