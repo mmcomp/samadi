@@ -260,10 +260,9 @@
       </div>
       <div class="art-content-layout layout-item-0">
         <div class="art-content-layout-row">
-          <div class="art-layout-cell layout-item-2" style="width: 100%">
+          <div class="art-layout-cell layout-item-2" style="width: 100%;background: none !important;">
             <p style="text-align: center;">
               @foreach($images as $i=>$image)
-              {{$i}}
               <img width="78" height="79" alt="" class="art-lightbox" src="/storage/{{ $image->src }}">
               @if($i>0)
               &nbsp; &nbsp;&nbsp;
