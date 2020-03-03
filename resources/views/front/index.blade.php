@@ -420,7 +420,7 @@ a.page-link {
                         </div>
                     @endforeach
                 </div>
-                @if($isSearch)
+                @if($isSearch || true)
                 {{ $searchResults->links() }}
                 @endif
             </div>
