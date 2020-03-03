@@ -156,20 +156,20 @@
       <hr>
       @if($product->sale_price!=null && (int)$product->sale_price>0)
       <p style="text-align: center;">
-        <span style="font-size: 20px; color: #000000;">
+        <span style="font-size: 20px; color: #000000;font-family: 'vazir';">
           <strike>
             {{ $product->price }}&nbsp;{{__('product.tooman')}}
           </strike>
         </span>
       </p>
       <p style="text-align: center;">
-        <span style="font-size: 20px; color: #D50B15;">
+        <span style="font-size: 20px; color: #D50B15;font-family: 'vazir';">
         {{ $product->sale_price }} &nbsp;{{__('product.tooman')}}
         </span>
       </p>
       @else
       <p style="text-align: center;">
-        <span style="font-size: 20px; color: #D50B15;">
+        <span style="font-size: 20px; color: #D50B15;font-family: 'vazir';">
         {{ $product->price }} &nbsp;{{__('product.tooman')}}
         </span>
       </p>
@@ -193,7 +193,7 @@
         </form>
         @if($product->price<=0)
         <p style="text-align: center;">
-        <a class="art-button" href="/storage/{{ $product->file_path }}" style="background: #4caf50 !important;font-size: 20">
+        <a class="art-button" href="/storage/{{ $product->file_path }}" style="background: #4caf50 !important;font-size: 20;font-family: 'vazir';">
           <img src="/images/download.png" style="height: 100%;border: none !important;" />
           {{__('product.download')}}
         </a>
@@ -203,7 +203,7 @@
           {{ csrf_field() }}
           <input type="hidden" name="product" value="{{ $product->id }}" />
           <input type="hidden" id="mode" name="mode" value="online" />
-          <button accesskey="{{__('product.purchase_product')}}" class="art-button" style="background: #4caf50 !important;font-size: 20">
+          <button accesskey="{{__('product.purchase_product')}}" class="art-button" style="background: #4caf50 !important;font-size: 20;font-family: 'vazir';">
             <img src="/images/add_to_cart.png" style="height: 100%;border: none !important;" />
             {{__('product.purchase_product')}}
           </button>
@@ -230,7 +230,7 @@
         </span>
       </p>
       <p style="text-align: center;">
-        <span style="color: rgb(67, 104, 107); font-size: 15px;">
+        <span style="color: rgb(67, 104, 107); font-size: 15px;font-family: 'vazir';">
           {{ $owner->name }} {{ $owner->sir_name }}
         </span>
       </p>
@@ -285,11 +285,11 @@
         <div class="art-content-layout-row">
           <div class="art-layout-cell layout-item-3" style="width: 100%">
             <h1 itemprop="name" style="box-sizing: border-box; margin-bottom: 0.5rem; font-weight: 500; line-height: 1.2; color: rgb(51, 51, 51); -webkit-font-smoothing: antialiased;">
-              <span style="color: rgb(213, 11, 21); font-family: IRANYekan; line-height: 19px;">
-                <span style="font-size: 18px; color: #000000;">
+              <span style="color: rgb(213, 11, 21);line-height: 19px;">
+                <span style="font-size: 18px; color: #000000;font-family: 'vazir';">
                 {{__('product.product_name')}} :
                 </span> 
-                <span style="font-size: 20px;">
+                <span style="font-size: 20px;font-family: 'vazir';">
                 {{ $product->{'name_' . $locale} }}
                 </span>
               </span>
@@ -302,7 +302,7 @@
               Weight : {{ $product->weight }}
             </p>
             <p>
-              <span style="color: rgb(61, 160, 28); font-family: IRANYekan; font-size: 16px; line-height: 19px;">
+              <span style="color: rgb(61, 160, 28); font-family: 'vazir'; font-size: 16px; line-height: 19px;">
               {{__('product.product_description')}} :
               </span>
               <br>
@@ -317,7 +317,7 @@
                   @foreach($description as $desc)
                     <li>
                       <span style="font-family: IRANYekan; font-size: 14px;">
-                        <span style="line-height: 28px; color: rgb(162, 105, 7);">
+                        <span style="line-height: 28px; color: rgb(162, 105, 7);font-family: 'vazir';">
                         {{ $desc }}
                         </span>
                         <br>
@@ -347,7 +347,7 @@
           <div class="art-content-layout-row">
             <div class="art-layout-cell layout-item-5" style="width: 100%">
               <p style="text-align: right;">
-                <span style="color: rgb(170, 14, 167); font-size: 16px;">
+                <span style="color: rgb(170, 14, 167); font-size: 16px;font-family: 'vazir';">
                 {{__('product.customers_also_buy')}}
                 </span>
               </p>
@@ -403,12 +403,12 @@
       <!-- </p>
       <p> -->
         <span style="position: absolute;top: 50%;">
-        <span style="color: #262626;">
+        <span style="color: #262626;font-family: 'vazir';">
         {{ $newProduct->{'name_' . $locale } }}
         </span>
         @if(isset($newProduct->categories[0]))
          / 
-        <span style="color: #A26907;">
+        <span style="color: #A26907;font-family: 'vazir';">
         {{__('product.category')}} 
         :
         {{ $newProduct->categories[0]->{'name_' . $locale} }}
@@ -471,7 +471,7 @@
             </span>
             <span style="font-family: IRANYekan;">
               <a href="/category/{{ $cat->id }}" style="text-decoration: underline; font-size: 14px; ">
-                <span style="color: rgb(0, 0, 0); padding-right: 20px; ">
+                <span style="color: rgb(0, 0, 0); padding-right: 20px;font-family: 'vazir'; ">
                 {{ $cat->{'name_' . $locale} }}
                 </span>
               </a>
@@ -487,7 +487,7 @@
           </span>
           <i class="fa fa-circle-o" style="font-family: IRANYekan; box-sizing: border-box; display: inline-block; font: normal normal normal 10px/1 FontAwesome; color: red;">
             <a href="/category/{{ $cat->id }}" style="text-decoration: underline; font-size: 14px; ">
-              <span style="color: rgb(0, 0, 0); padding-right: 20px; ">
+              <span style="color: rgb(0, 0, 0); padding-right: 20px;font-family: 'vazir';">
               {{ $cat->{'name_' . $locale} }}
               </span>
             </a>
