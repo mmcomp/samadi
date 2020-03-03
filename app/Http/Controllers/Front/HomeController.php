@@ -80,7 +80,7 @@ class HomeController
         $search = "";
         $filter = [];
         $isSearch = false;
-        $searchLimit = 100;
+        $searchLimit = 30;
         if ($request->isMethod('post')) {
             $search = $request->input('search');
             $filter = $request->input('filter');
