@@ -208,7 +208,7 @@
                                         </a>
                                     </td>
                                     <td class="text-right border-left">
-                                        <h3>{{ $cartItem->name }}</h3>
+                                        <h3>{{ $cartItem->product->{'name_' . $locale} }}</h3>
                                         @if($cartItem->options->has('combination'))
                                             @foreach($cartItem->options->combination as $option)
                                                 <small class="label label-primary">{{$option['value']}}</small>
