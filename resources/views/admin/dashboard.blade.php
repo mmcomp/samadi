@@ -65,7 +65,7 @@ function addCredit() {
                         <i class="fa fa-address-card"></i>
                         {{ $abbas->credit }}
                         Credit
-                        <button class="btn btn-success" onclick="addCredit();"><i class="fa fa-plus"></i></button>
+                        <a class="btn btn-success" href="/admin/transactions.add"><i class="fa fa-plus"></i></a>
                     </span>
                 @endif
                 <div class="box-tools pull-right">
