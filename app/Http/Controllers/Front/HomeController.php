@@ -153,7 +153,7 @@ class HomeController
         $newProducts = $this->productRepo->newProducts(5);
         $topSaleProducts = $this->productRepo->topSaleProducts(5);
         // $topWorkProducts = $this->productRepo->topWorkProducts(5);
-        $topLikeProducts = $this->productRepo->topLikeProducts(10);
+        $topLikeProducts = $this->productRepo->topLikeProducts(5);
         foreach($newProducts as $i=>$newProduct) {
             $newProducts[$i]->offers = [];
             foreach($newProduct->categories as $productCategory) {

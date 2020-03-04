@@ -222,10 +222,12 @@ class CheckoutController extends Controller
                     $product->sale_count++;
                     $product->save();
                     $seller = Customer::find($product->customer_id);
-                    $sellerCut = (int)($product->price * $seller->commission_percent / 100);
-                    $seller->sales_count++;
-                    $seller->credit += $sellerCut;
-                    $seller->save();
+                    if($seller) {
+                        $sellerCut = (int)($product->price * $seller->commission_percent / 100);
+                        $seller->sales_count++;
+                        $seller->credit += $sellerCut;
+                        $seller->save();
+                    }
                     $transaction = new Transaction;
                     $transaction->customer_id = $seller->id;
                     $transaction->order_id = $order->id;
