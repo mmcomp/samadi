@@ -56,7 +56,11 @@ class BankController extends Controller
     }
 
     public function pay(Request $request) {
-        $customer =  Customer::find(auth()->id());
+        $customer = null;
+        if (auth()->guard('web')->check()) {
+            $customer = auth()->guard('web')->user();
+        }
+        // $customer =  Customer::find(auth()->id());
         dump($customer);
         $cart = $this->cartRepo->getCartItems()->all();
         dd($cart);
