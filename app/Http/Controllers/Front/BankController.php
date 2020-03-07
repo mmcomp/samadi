@@ -7,9 +7,16 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Shop\Customers\Customer;
+use App\Shop\Carts\Repositories\Interfaces\CartRepositoryInterface;
 
 class BankController extends Controller
 {
+    private $cartRepo;
+
+    public function __construct( CartRepositoryInterface $cartRepository ) {
+        $this->cartRepo = $cartRepository;
+    }
+
     public function yekPay($amount, $orderNumber, $customer_id, $description = "") {
         $customer = Customer::find($customer_id);
         $result = new \stdClass;
@@ -46,6 +53,13 @@ class BankController extends Controller
         $result = json_decode($res->getBody());
         dump($result);
         return $result;
+    }
+
+    public function pay(Request $request) {
+        $customer = $this->customerRepo->findCustomerById(auth()->id());
+        dump($customer);
+        $cart = $this->cartRepo->getCartItems()->all();
+        dd($cart);
     }
 
     public function test(Request $request) {
