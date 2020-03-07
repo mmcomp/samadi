@@ -59,6 +59,8 @@ class BankController extends Controller
         $customer = null;
         if (auth()->guard('web')->check()) {
             $customer = auth()->guard('web')->user();
+        }else  if (auth()->guard('web')->check()) {
+            echo "AAAAAAAAAA";
         }else {
             echo "!SASDSD<br/>";
         }
