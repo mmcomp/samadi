@@ -37,8 +37,10 @@ class BankController extends Controller
             "city"=>$customer->city,
             "description"=>$description,
         ];
+        dump($myBody);
         $res = $client->request('POST', $url,  ['form_params'=>$myBody, 'connect_timeout' => 3.14]);
         $body = json_decode($res->getBody());
+        dump($body);
         if($body->Code==100) {
             return $body->Authority;
         }
