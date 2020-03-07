@@ -12,6 +12,10 @@ class BankController extends Controller
 {
     public function yekPay($amount, $orderNumber, $customer_id, $description = "") {
         $customer = Customer::find($customer_id);
+        $result = new stdClass;
+        $result->Code = -1000;
+        $result->Authority = 0;
+        $result->Description = "Customer not Found!";
         if($customer==null) {
             return null;
         }
@@ -39,16 +43,13 @@ class BankController extends Controller
         ];
         dump($myBody);
         $res = $client->request('POST', $url,  ['form_params'=>$myBody, 'connect_timeout' => 3.14]);
-        $body = json_decode($res->getBody());
-        dump($body);
-        if($body->Code==100) {
-            return $body->Authority;
-        }
-        return null;
+        $result = json_decode($res->getBody());
+        dump($result);
+        return $result;
     }
 
     public function test(Request $request) {
-        $result = $this->yekPay(100, 3, 1);
+        $result = $this->yekPay(100, 3, 3);
         dd($result);
         // $baseUrl = env("YEK_PAY_BASEURL");
         // $url = $baseUrl . "payment/request";
