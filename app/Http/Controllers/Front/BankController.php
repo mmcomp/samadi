@@ -19,7 +19,7 @@ class BankController extends Controller
             "amount"=>100,
             "fromCurrencyCode"=>978,
             "toCurrencyCode"=>978,
-            "orderNumber"=>1,
+            "orderNumber"=>2,
             "callback"=>"http://google.com",
             "firstName"=>"Mehrdad",
             "lastName"=>"Mirsamie",
