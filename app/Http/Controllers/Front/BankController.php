@@ -16,7 +16,7 @@ class BankController extends Controller
         $client = new \GuzzleHttp\Client();
         $myBody = [
             "merchantId"=>env("YEK_PAY_MERCHANT"),
-            "amount"=>1,
+            "amount"=>100,
             "fromCurrencyCode"=>978,
             "toCurrencyCode"=>978,
             "orderNumber"=>1,
