@@ -12,7 +12,7 @@ class BankController extends Controller
 {
     public function yekPay($amount, $orderNumber, $customer_id, $description = "") {
         $customer = Customer::find($customer_id);
-        $result = new StdClass;
+        $result = new \stdClass;
         $result->Code = -1000;
         $result->Authority = 0;
         $result->Description = "Customer not Found!";
