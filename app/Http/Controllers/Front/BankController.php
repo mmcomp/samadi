@@ -18,7 +18,7 @@ class BankController extends Controller
             "merchantId"=>env("YEK_PAY_MERCHANT"),
             "amount"=>1,
             "fromCurrencyCode"=>978,
-            "toCurrencyCode"=>364,
+            "toCurrencyCode"=>978,
             "orderNumber"=>1,
             "callback"=>"http://google.com",
             "firstName"=>"Mehrdad",
