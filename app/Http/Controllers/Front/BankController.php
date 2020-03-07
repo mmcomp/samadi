@@ -56,7 +56,7 @@ class BankController extends Controller
     }
 
     public function pay(Request $request) {
-        $customer = $this->customerRepo->findCustomerById(auth()->id());
+        $customer =  Customer::find(auth()->id());
         dump($customer);
         $cart = $this->cartRepo->getCartItems()->all();
         dd($cart);
