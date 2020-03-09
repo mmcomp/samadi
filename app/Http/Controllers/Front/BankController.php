@@ -72,12 +72,14 @@ class BankController extends Controller
         // dd($request->all());
         if($success!="0") {
             $order = Order::where("reference", $reqs['authority'])->where('order_status_id', 1)->first();
+            dd($order);
             if($order==null) {
                 // Order Not Found
                 return redirect('/admin');
             }
             $order->order_status_id = 0;
             $order->save();
+            Cart::destroy();
             return redirect('/admin/orders');
         }
         // Yek Pay unsuccessful
@@ -97,7 +99,7 @@ class BankController extends Controller
         $checkoutRepo = new CheckoutRepository;
         $orderNumber = Uuid::uuid4()->toString();
         $order = $checkoutRepo->buildCheckoutItems([
-            'reference' => $orderNumber,
+            'invoice' => $orderNumber,
             'courier_id' => 0, // @deprecated
             'customer_id' => $customer->id,
             'address_id' => 0,
@@ -112,11 +114,12 @@ class BankController extends Controller
         ]);
         // dump($order);
         // xS5zueZZNfD4tB
-        $yekResult = $this->yekPay($order->total, $order->reference, $order->customer_id);
-        // dd($yekResult);
+        $yekResult = $this->yekPay($order->total, $order->invoice, $order->customer_id);
+        dd($yekResult);
         if($yekResult->Code==100) {
-            return 'https://gate.yekpay.com/api/payment/start/' . $yekResult->Authority;
-            // return redirect('https://gate.yekpay.com/api/payment/start/' . $yekResult->Authority);
+            $order->reference = $yekResult->Authority;
+            // return 'https://gate.yekpay.com/api/payment/start/' . $yekResult->Authority;
+            return redirect('https://gate.yekpay.com/api/payment/start/' . $yekResult->Authority);
         }else {
             return redirect('/checkout');
         }
