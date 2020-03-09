@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 
 use App\Shop\Customers\Customer;
 use App\Shop\Carts\Repositories\Interfaces\CartRepositoryInterface;
+use App\Shop\Checkout\CheckoutRepository;
+use Ramsey\Uuid\Uuid;
+use App\Shop\Transactions\Transaction;
 
 class BankController extends Controller
 {
@@ -82,6 +85,7 @@ class BankController extends Controller
             'tax' =>0
         ]);
         dd($order);
+        // xS5zueZZNfD4tB
     }
 
     public function test(Request $request) {
