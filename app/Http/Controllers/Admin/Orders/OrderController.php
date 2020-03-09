@@ -85,7 +85,7 @@ class OrderController extends Controller
             }
         }
         if($isCustomer) {
-            $list = Order::where('customer_id', $admin->id)->with('products')->orderBy('created_at', 'desc')->get();
+            $list = Order::where('customer_id', $admin->id)->where('order_status_id', 0)->with('products')->orderBy('created_at', 'desc')->get();
         }else {
             $list = $this->orderRepo->listOrders('created_at', 'desc');
         }
@@ -95,7 +95,7 @@ class OrderController extends Controller
                 $q = request()->input('q') ?? '';
                 $from = request()->input('from');
                 $to = request()->input('to');
-                $list = Order::where('customer_id', $admin->id)->where(function($query) use ($q, $from, $to) {
+                $list = Order::where('customer_id', $admin->id)->where('order_status_id', 0)->where(function($query) use ($q, $from, $to) {
                     if($q!='') {
                         $query->where('reference', 'like', '%' . $q . '%');
                         $query->orWhere('tracking_number', 'like', '%' . $q . '%');    
@@ -127,7 +127,7 @@ class OrderController extends Controller
                         $to = date("Y-m-d", strtotime($to));
                         $query->where('created_at', '<=', $to);
                     }
-                })->orderBy('created_at', 'desc')->get();
+                })->where('order_status_id', 0)->orderBy('created_at', 'desc')->get();
             }
         }
 

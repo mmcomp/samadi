@@ -58,6 +58,10 @@ class BankController extends Controller
         return $result;
     }
 
+    public function payBackYekPay(Request $request) {
+        dd($request->all());
+    }
+
     public function pay(Request $request) {
         $customer = null;
         if (auth()->guard('web')->check()) {
@@ -66,7 +70,7 @@ class BankController extends Controller
             return redirect('/admin');
         }
         // $customer =  Customer::find(auth()->id());
-        dump($customer);
+        // dump($customer);
         $cart = $this->cartRepo->getCartItems()->all();
         $checkoutRepo = new CheckoutRepository;
         $orderNumber = Uuid::uuid4()->toString();
@@ -84,12 +88,13 @@ class BankController extends Controller
             'total_paid' => 0,
             'tax' =>0
         ]);
-        dump($order);
+        // dump($order);
         // xS5zueZZNfD4tB
         $yekResult = $this->yekPay($order->total, $order->reference, $order->customer_id);
         // dd($yekResult);
         if($yekResult->Code==100) {
-            return redirect('https://gate.yekpay.com/api/payment/start/' . $yekResult->Authority);
+            return 'https://gate.yekpay.com/api/payment/start/' . $yekResult->Authority;
+            // return redirect('https://gate.yekpay.com/api/payment/start/' . $yekResult->Authority);
         }else {
             return redirect('/checkout');
         }
