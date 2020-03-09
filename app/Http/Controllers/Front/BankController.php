@@ -11,6 +11,7 @@ use App\Shop\Carts\Repositories\Interfaces\CartRepositoryInterface;
 use App\Shop\Checkout\CheckoutRepository;
 use Ramsey\Uuid\Uuid;
 use App\Shop\Transactions\Transaction;
+use App\Shop\Orders\Order;
 
 class BankController extends Controller
 {
@@ -69,7 +70,18 @@ class BankController extends Controller
             }
         }
         // dd($request->all());
-        return "success = " . $success;
+        if($success!="0") {
+            $order = Order::where("reference", $reqs['authority'])->where('order_status_id', 1)->first();
+            if($order==null) {
+                // Order Not Found
+                return redirect('/admin');
+            }
+            $order->order_status_id = 0;
+            $order->save();
+            return redirect('/admin/orders');
+        }
+        // Yek Pay unsuccessful
+        return redirect('/admin');
     }
 
     public function pay(Request $request) {
