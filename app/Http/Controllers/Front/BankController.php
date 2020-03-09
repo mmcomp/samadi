@@ -59,15 +59,29 @@ class BankController extends Controller
         $customer = null;
         if (auth()->guard('web')->check()) {
             $customer = auth()->guard('web')->user();
-        }else  if (auth()->guard('web')->check()) {
-            echo "AAAAAAAAAA";
         }else {
-            echo "!SASDSD<br/>";
+            return redirect('/admin');
         }
         // $customer =  Customer::find(auth()->id());
         dump($customer);
         $cart = $this->cartRepo->getCartItems()->all();
-        dd($cart);
+        $checkoutRepo = new CheckoutRepository;
+        $orderNumber = Uuid::uuid4()->toString();
+        $order = $checkoutRepo->buildCheckoutItems([
+            'reference' => $orderNumber,
+            'courier_id' => 0, // @deprecated
+            'customer_id' => $customer->id,
+            'address_id' => 0,
+            'order_status_id' => 0,
+            'payment' => strtolower(config('yekpay.name')),
+            'discounts' => 0,
+            'total_products' => $this->cartRepo->getSubTotal(),
+            'total' => $this->cartRepo->getTotal(2, 0),
+            'total_shipping' => 0,
+            'total_paid' => 0,
+            'tax' =>0
+        ]);
+        dd($order);
     }
 
     public function test(Request $request) {
