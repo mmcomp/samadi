@@ -11,3 +11,6 @@
         @include('front.payments.yekpay')
     @endif
 @endif
+<h1>
+    {{$payment['name']}} --- {{config('yekpay.name')}}
+</h1>
