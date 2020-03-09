@@ -52,10 +52,10 @@ class BankController extends Controller
             "city"=>($customer->city)?$customer->city:"unknown",
             "description"=>$description,
         ];
-        dump($myBody);
+        // dump($myBody);
         $res = $client->request('POST', $url,  ['form_params'=>$myBody, 'connect_timeout' => 3.14]);
         $result = json_decode($res->getBody());
-        dump($result);
+        // dump($result);
         return $result;
     }
 
@@ -72,7 +72,7 @@ class BankController extends Controller
         // dd($request->all());
         if($success!="0") {
             $order = Order::where("invoice", $reqs['authority'])->where('order_status_id', 1)->first();
-            dd($order);
+            // dd($order);
             if($order==null) {
                 // Order Not Found
                 return redirect('/admin');
@@ -118,16 +118,18 @@ class BankController extends Controller
         // dump($order);
         // xS5zueZZNfD4tB
         $yekResult = $this->yekPay($order->total, $order->reference, $order->customer_id);
-        dump($yekResult);
+        // dump($yekResult);
         if($yekResult->Code==100) {
             $order->invoice = $yekResult->Authority;
             $order->save();
-            dd($order);
+            // dd($order);
             // return 'https://gate.yekpay.com/api/payment/start/' . $yekResult->Authority;
             return redirect('https://gate.yekpay.com/api/payment/start/' . $yekResult->Authority);
         }else {
-            dd('error');
-            return redirect('/checkout');
+            $request->session()->flash('msg_error', 'YekPay Error(' . $yekResult->Code . ') : ' . $yekResult->Description);
+            // dd('a');
+            return redirect(route('checkout.index'));
+            // return redirect('/checkout');
         }
     }
 
