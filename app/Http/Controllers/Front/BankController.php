@@ -126,6 +126,7 @@ class BankController extends Controller
             // return 'https://gate.yekpay.com/api/payment/start/' . $yekResult->Authority;
             return redirect('https://gate.yekpay.com/api/payment/start/' . $yekResult->Authority);
         }else {
+            dd('error');
             return redirect('/checkout');
         }
     }
