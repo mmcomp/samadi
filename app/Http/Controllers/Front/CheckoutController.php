@@ -130,11 +130,11 @@ class CheckoutController extends Controller
         }
 
         // Get payment gateways
-        // dump(config('payees.name'));
+        dump(config('payees.name'));
         $paymentGateways = collect(explode(',', config('payees.name')))->transform(function ($name) {
             return config($name);
         })->all();
-        // dd($paymentGateways);
+        dd($paymentGateways);
 
         $billingAddress = null; // $customer->addresses()->first();
         $locale = $request->session()->get('locale');
