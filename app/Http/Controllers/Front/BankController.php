@@ -59,7 +59,17 @@ class BankController extends Controller
     }
 
     public function payBackYekPay(Request $request) {
-        dd($request->all());
+        $reqs = $request->all();
+        $success = 0;
+        if(isset($reqs['authority'])) {
+            foreach($reqs as $key=>$value) {
+                if(strpos("success", $key)!==false) {
+                    $success = $value;
+                }
+            }
+        }
+        // dd($request->all());
+        return "success = " $success;
     }
 
     public function pay(Request $request) {
