@@ -95,6 +95,10 @@ class BankController extends Controller
         // $customer =  Customer::find(auth()->id());
         // dump($customer);
         $cart = $this->cartRepo->getCartItems()->all();
+        if($this->cartRepo->getTotal(2, 0)<=0) {
+            // Total less or equal by zero
+            return redirect('/checkout');
+        }
         $checkoutRepo = new CheckoutRepository;
         $orderNumber = Uuid::uuid4()->toString();
         $order = $checkoutRepo->buildCheckoutItems([
