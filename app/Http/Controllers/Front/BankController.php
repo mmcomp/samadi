@@ -75,7 +75,7 @@ class BankController extends Controller
             'courier_id' => 0, // @deprecated
             'customer_id' => $customer->id,
             'address_id' => 0,
-            'order_status_id' => 0,
+            'order_status_id' => 1,
             'payment' => strtolower(config('yekpay.name')),
             'discounts' => 0,
             'total_products' => $this->cartRepo->getSubTotal(),
@@ -84,8 +84,10 @@ class BankController extends Controller
             'total_paid' => 0,
             'tax' =>0
         ]);
-        dd($order);
+        dump($order);
         // xS5zueZZNfD4tB
+        $yekResult = $this->yekPay($order->total, $order->reference, $order->customer_id)
+        dd($yekResult);
     }
 
     public function test(Request $request) {
