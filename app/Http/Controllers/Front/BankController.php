@@ -87,7 +87,12 @@ class BankController extends Controller
         dump($order);
         // xS5zueZZNfD4tB
         $yekResult = $this->yekPay($order->total, $order->reference, $order->customer_id);
-        dd($yekResult);
+        // dd($yekResult);
+        if($yekResult->Code==100) {
+            return redirect('https://gate.yekpay.com/api/payment/start/' . $yekResult->Authority);
+        }else {
+            return redirect('/checkout');
+        }
     }
 
     public function test(Request $request) {
