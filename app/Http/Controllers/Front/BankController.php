@@ -69,7 +69,7 @@ class BankController extends Controller
             }
         }
         // dd($request->all());
-        return "success = " $success;
+        return "success = " . $success;
     }
 
     public function pay(Request $request) {
