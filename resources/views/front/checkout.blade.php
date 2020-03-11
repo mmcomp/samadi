@@ -263,6 +263,9 @@
                                         </thead>
                                         <tbody>
                                         @foreach($payments as $payment)
+                                            @php
+                                            var_dump($payment);
+                                            @endphp
                                             @include('layouts.front.payment-options', compact('payment', 'total', 'shipment'))
                                         @endforeach
                                         </tbody>
