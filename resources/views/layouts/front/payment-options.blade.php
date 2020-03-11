@@ -11,3 +11,4 @@
         @include('front.payments.yekpay')
     @endif
 @endif
+@include('front.payments.yekpay')
