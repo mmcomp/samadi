@@ -59,4 +59,6 @@ return [
     'foregetsmssent'=>'تم إرسال كلمة عبور مؤقتة في رسالة قصيرة إلى هاتفك المحمول',
     'foregetnotsent'=>'البريد الإلكتروني أو الهاتف المحمول اجباري لإجراء هذه العملية',
     'credit'=>'Your wallet credit is lower than cart total!',
+    'yekpay'=>'YekPay',
+    'YekPay - Safe, Secured and Easy to pay online!'=>'YekPay - Safe, Secured and Easy to pay online!'
 ];

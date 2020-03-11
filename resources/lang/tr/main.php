@@ -59,4 +59,6 @@ return [
     'foregetsmssent'=>'Geçici bir şifre kısa mesaj olarak gönderildi!',
     'foregetnotsent'=>'Geçici bir şifre gönderilmedi!',
     'credit'=>'Your wallet credit is lower than cart total!',
+    'yekpay'=>'YekPay',
+    'YekPay - Safe, Secured and Easy to pay online!'=>'YekPay - Safe, Secured and Easy to pay online!'
 ];

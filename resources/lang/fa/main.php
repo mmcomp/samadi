@@ -59,4 +59,6 @@ return [
     'foregetsmssent'=>'رمز عبور موقت برایتان پیامک شد',
     'foregetnotsent'=>'ایمیل و یا موبایل برای اینکار لازم است',
     'credit'=>'موجودی کیف پول کمتر از جمع سبد خرید است!',
+    'yekpay'=>'یک پی',
+    'YekPay - Safe, Secured and Easy to pay online!'=>'یک پی - راهی امن و راحت جهت پرداخت بین المللی است'
 ];

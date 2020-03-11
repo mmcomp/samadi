@@ -59,4 +59,6 @@ return [
     'foregetsmssent'=>'Your new temporary password sent to you by sms!',
     'foregetnotsent'=>'You need to specify your email or mobile in order to reset password!',
     'credit'=>'Your wallet credit is lower than cart total!',
+    'yekpay'=>'YekPay',
+    'YekPay - Safe, Secured and Easy to pay online!'=>'YekPay - Safe, Secured and Easy to pay online!'
 ];
