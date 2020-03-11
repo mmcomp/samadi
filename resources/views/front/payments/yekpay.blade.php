@@ -1,8 +1,5 @@
 <tr>
     <td class="border-left">
-        @php
-        var_dump($payment);
-        @endphp
         @if(isset($payment['name']))
             {{ ucwords(__('main.' . $payment['name'])) }}
         @else
