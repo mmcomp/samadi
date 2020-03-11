@@ -7,7 +7,7 @@
         @include('front.payments.bank-transfer')
     @elseif($payment['name'] == config('wallet.name'))
         @include('front.payments.wallet')
-    @elseif($payment['name'] == config('yekapy.name'))
+    @elseif($payment['name'] == config('yekpay.name'))
         @include('front.payments.yekpay')
     @endif
 @endif
