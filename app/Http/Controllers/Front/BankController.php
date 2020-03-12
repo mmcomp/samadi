@@ -194,10 +194,14 @@ class BankController extends Controller
             "description"=>$description,
         ];
         // dump($myBody);
-        $res = $client->request('POST', $url,  ['form_params'=>$myBody, 'connect_timeout' => 3.14]);
-        $result = json_decode($res->getBody());
-        // dump($result);
-        return $result;
+        try{
+            $res = $client->request('POST', $url,  ['form_params'=>$myBody, 'connect_timeout' => 3.14]);
+            $result = json_decode($res->getBody());
+            // dump($result);
+            return $result;
+        }catch(Exception $e) {
+            var_dump($e);
+        }
     }
 
 
