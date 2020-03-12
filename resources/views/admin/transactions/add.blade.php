@@ -15,7 +15,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="amount">Amount</label>
-                                <input type="number" class="form-control" id="amount" name="amount" placeholder="Amount"  />
+                                <input type="number" class="form-control" id="amount" name="total" placeholder="Amount"  />
                             </div>
                         </div>
                         <div class="col-md-6">

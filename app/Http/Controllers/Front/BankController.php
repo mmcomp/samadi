@@ -217,7 +217,7 @@ class BankController extends Controller
             $customer->authority = null;
             $customer->recharge = 0;
             $customer->save();
-            return redirect(route('/admin/transactions.add'));
+            return redirect('/admin/transactions.add');
         }
         $yekResult = $this->yekPayC($total, $orderNumber, $customer->id);
         // dump($yekResult);
