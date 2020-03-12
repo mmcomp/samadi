@@ -85,6 +85,35 @@ class BankController extends Controller
         return redirect('/admin');
     }
 
+    public function payBackYekPayCharge(Request $request) {
+        $reqs = $request->all();
+        $success = 0;
+        if(isset($reqs['authority'])) {
+            foreach($reqs as $key=>$value) {
+                if(strpos("success", $key)!==false) {
+                    $success = $value;
+                }
+            }
+        }
+        // dd($request->all());
+        if($success!="0") {
+            $customer = Customer::where("authority", $reqs['authority'])->first();
+            // dd($order);
+            if($customer==null) {
+                // Order Not Found
+                return redirect('/admin');
+            }
+            $total = $customer->recharge;
+            $customer->authority = null;
+            $customer->credit += $total;
+            $customer->recharge = 0;
+            $customer->save();
+            return redirect('/admin/transactions.add');
+        }
+        // Yek Pay unsuccessful
+        return redirect('/admin');
+    }
+
     public function pay(Request $request) {
         $customer = null;
         if (auth()->guard('web')->check()) {
@@ -133,6 +162,45 @@ class BankController extends Controller
         }
     }
 
+    public function yekPayC($amount, $orderNumber, $customer_id, $description = "") {
+        $customer = Customer::find($customer_id);
+        $result = new \stdClass;
+        $result->Code = -1000;
+        $result->Authority = 0;
+        $result->Description = "Customer not Found!";
+        if($customer==null) {
+            return null;
+        }
+
+        $baseUrl = env("YEK_PAY_BASEURL");
+        $url = $baseUrl . "payment/request";
+
+        $client = new \GuzzleHttp\Client();
+        $myBody = [
+            "merchantId"=>env("YEK_PAY_MERCHANT"),
+            "amount"=>$amount,
+            "fromCurrencyCode"=>978,
+            "toCurrencyCode"=>978,
+            "orderNumber"=>$orderNumber,
+            "callback"=>"https://pivezhanjewellery.com/bank/yekpaycharge/",
+            "firstName"=>($customer->name)?$customer->name:"unknown",
+            "lastName"=>($customer->sir_name)?$customer->sir_name:"unknown",
+            "email"=>($customer->email)?$customer->email:"info@pivezhanjewellery.com",
+            "mobile"=>($customer->mobile)?$customer->mobile:"unknown",
+            "address"=>($customer->address)?$customer->address:"unknown",
+            "postalCode"=>($customer->postal_code)?$customer->postal_code:"unknown",
+            "country"=>($customer->country)?$customer->country->name:"unknown",
+            "city"=>($customer->city)?$customer->city:"unknown",
+            "description"=>$description,
+        ];
+        // dump($myBody);
+        $res = $client->request('POST', $url,  ['form_params'=>$myBody, 'connect_timeout' => 3.14]);
+        $result = json_decode($res->getBody());
+        // dump($result);
+        return $result;
+    }
+
+
     public function charge(Request $request) {
         $customer = null;
         if (auth()->guard('web')->check()) {
@@ -142,11 +210,20 @@ class BankController extends Controller
         }
 
         $orderNumber = Uuid::uuid4()->toString() . $customer->id;
-
-        $yekResult = $this->yekPay($total, $orderNumber, $customer->id);
+        $total = (int)$request->input("total", 0);
+        if($total<=0) {
+            $request->session()->flash('msg_error', 'Invalid Charge value!');
+            // dd('a');
+            $customer->authority = null;
+            $customer->recharge = 0;
+            $customer->save();
+            return redirect(route('/admin/transactions.add'));
+        }
+        $yekResult = $this->yekPayC($total, $orderNumber, $customer->id);
         // dump($yekResult);
         if($yekResult->Code==100) {
             $customer->authority = $yekResult->Authority;
+            $customer->recharge = $total;
             $customer->save();
             // dd($order);
             // return 'https://gate.yekpay.com/api/payment/start/' . $yekResult->Authority;
@@ -155,6 +232,7 @@ class BankController extends Controller
             $request->session()->flash('msg_error', 'YekPay Error(' . $yekResult->Code . ') : ' . $yekResult->Description);
             // dd('a');
             $customer->authority = null;
+            $customer->recharge = 0;
             $customer->save();
             return redirect(route('/admin/transactions.add'));
             // return redirect('/checkout');
