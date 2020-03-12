@@ -105,7 +105,7 @@ Route::namespace('Auth')->group(function () {
 Route::namespace('Front')->group(function () {
     Route::get('/bank/yekpay', 'BankController@payBackYekPay');
     Route::get('/bank/yekpaycharge', 'BankController@payBackYekPayCharge');
-    Route::get('/bank/charge', 'BankController@charge');
+    Route::get('/bank/charge', 'BankController@charge')->name('chargeyekpay');
     Route::get('/bank', 'BankController@pay');
     Route::get('/smsverify/{id}/{code}', 'HomeController@smsVeify')->name('smsverify');
     Route::get('/emailverify/{id}', 'HomeController@emailVeify')->name('emailverify');

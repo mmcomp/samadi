@@ -34,7 +34,8 @@ class Customer extends Authenticatable
         'likes_count',
         'postal_code',
         'city',
-        'authority'
+        'authority',
+        'recharge'
     ];
 
     /**
