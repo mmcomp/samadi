@@ -133,6 +133,34 @@ class BankController extends Controller
         }
     }
 
+    public function charge(Request $request) {
+        $customer = null;
+        if (auth()->guard('web')->check()) {
+            $customer = auth()->guard('web')->user();
+        }else {
+            return redirect('/admin');
+        }
+
+        $orderNumber = Uuid::uuid4()->toString() . $customer->id;
+
+        $yekResult = $this->yekPay($total, $orderNumber, $customer->id);
+        // dump($yekResult);
+        if($yekResult->Code==100) {
+            $customer->authority = $yekResult->Authority;
+            $customer->save();
+            // dd($order);
+            // return 'https://gate.yekpay.com/api/payment/start/' . $yekResult->Authority;
+            return redirect('https://gate.yekpay.com/api/payment/start/' . $yekResult->Authority);
+        }else {
+            $request->session()->flash('msg_error', 'YekPay Error(' . $yekResult->Code . ') : ' . $yekResult->Description);
+            // dd('a');
+            $customer->authority = null;
+            $customer->save();
+            return redirect(route('/admin/transactions.add'));
+            // return redirect('/checkout');
+        }
+    }
+
     public function test(Request $request) {
         $result = $this->yekPay(100, 3, 3);
         dd($result);
