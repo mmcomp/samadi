@@ -23,6 +23,7 @@
                         </thead>
                         <tbody>
                         @foreach ($orders as $order)
+                            {{dd$order}}
                             <tr>
                                 <!-- <td><a title="Show order" href="{{ route('admin.orders.show', $order->id) }}">{{ date('M d, Y h:i a', strtotime($order->created_at)) }}</a></td> -->
                                 <td>{{ date('M d, Y h:i a', strtotime($order->created_at)) }}</td>
