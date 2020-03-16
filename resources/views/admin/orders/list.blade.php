@@ -31,7 +31,7 @@
                                 <td>
                                     <span class="label @if($order->total != $order->total_paid) label-danger @else label-success @endif">{{ config('cart.currency') }} {{ $order->total }}</span>
                                 </td>
-                                <td><p class="text-center" style="color: #ffffff; background-color: green;">DONE</p></td>
+                                <td><p class="text-center" style="color: #ffffff; background-color: green;">DONE</p><br/><a href="/product/{{ $order->product->id }}">Product</a></td>
                             </tr>
                         @endforeach
                         </tbody>
