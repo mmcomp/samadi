@@ -79,7 +79,6 @@ class HomeController
         //\Offers
         $search = "";
         $filter = [];
-        $isSearch = false;
         $searchLimit = 30;
         if ($request->isMethod('post')) {
             $search = $request->input('search');
@@ -123,6 +122,7 @@ class HomeController
                 $query->where('price', 0);
             }
         })->where('status', 1)->orderBy('created_at', 'desc')->orderBy('like_count', 'desc');
+        dump($search);
         // dd($isSearch);
         // if($isSearch) {
             $searchResults = $searchResults->paginate($searchLimit);
