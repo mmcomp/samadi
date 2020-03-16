@@ -23,7 +23,6 @@
                         </thead>
                         <tbody>
                         @foreach ($orders as $order)
-                            {{dd($order)}}
                             <tr>
                                 <!-- <td><a title="Show order" href="{{ route('admin.orders.show', $order->id) }}">{{ date('M d, Y h:i a', strtotime($order->created_at)) }}</a></td> -->
                                 <td>{{ date('M d, Y h:i a', strtotime($order->created_at)) }}</td>
@@ -32,7 +31,14 @@
                                 <td>
                                     <span class="label @if($order->total != $order->total_paid) label-danger @else label-success @endif">{{ config('cart.currency') }} {{ $order->total }}</span>
                                 </td>
-                                <td><p class="text-center" style="color: #ffffff; background-color: green;">DONE</p><br/><a href="/product/{{ $order->product->id }}">Product</a></td>
+                                <td>
+                                    <p class="text-center" style="color: #ffffff; background-color: green;">DONE</p>
+                                    
+                                    @foreach($order->products as $product)
+                                    <br/>
+                                    <a href="/product/{{ $product->id }}">{{ $product->name_en }}</a>
+                                    @@endforeach
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>
