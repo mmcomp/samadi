@@ -37,7 +37,7 @@
                                     @foreach($order->products as $product)
                                     <br/>
                                     <a href="/product/{{ $product->id }}">{{ $product->name_en }}</a>
-                                    @@endforeach
+                                    @endforeach
                                 </td>
                             </tr>
                         @endforeach
