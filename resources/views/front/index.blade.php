@@ -389,7 +389,7 @@ a.page-link {
                     @foreach($searchResults as $newProduct)
                         <div class="col-2" onmouseenter="$('#info_{{ $newProduct->id }}').show();" onmouseleave="$('#info_{{ $newProduct->id }}').hide();">
                             @if(isset($newProduct->offers) && isset($newProduct->offers[0]))
-                            <img class="fade" src="/images/offer.png" style="position: absolute;height: 150px;width: 150px;margin-top: -9px;right: 5px;z-index: 10;" />
+                            <img class="fade" src="/images/offer.png" style="position: absolute;height: 100px;width: 100px;margin-top: -9px;right: 5px;z-index: 10;" />
                             @endif
                             @if($newProduct->cover!=null && $newProduct->cover!='')
                             <img alt="{{ $newProduct->{'name_' . $locale} }}" style="width: 100%height: 100%;" src="/storage/{{ $newProduct->cover }}">
@@ -399,13 +399,13 @@ a.page-link {
                             @endif
                             <div id="info_{{ $newProduct->id }}" style="position: absolute;background-color: rgba(255, 242, 242, 0.89);width: 300px;height: 300px;top: 0px;display: none;color: rgb(127, 96, 8);">
                                 <div class="row text-center">
-                                    <div class="col-12" style="font-size: 25    px;padding-left: 100px;padding-top: 50px;">
+                                    <div class="col-12" style="text-align:left;font-size:25px;padding-left: 50px;padding-top: 15px;">
                                         <h3>
                                         {{ $newProduct->{'name_' . $locale} }}
                                         </h3>
                                     </div>
                                     <div class="col-12" style="font-size: 20px;direction: ltr !important;">
-                                        <div style="width: 100px;text-align: left !important;margin-left: 100px;">
+                                        <div style="width: 100px;text-align: left !important;margin-left: 50px;">
                                         <i class="fa fa-heart" style="color: red;"></i> : <span style="color: green;">{{ $newProduct->like_count }}</span><br/>
                                     <!-- </div>
                                     <div class="col-12" style="font-size: 20px;direction: ltr !important;"> -->
@@ -414,7 +414,7 @@ a.page-link {
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <a class="btn btn-primary" style="margin-left: 86px;" href="/product/{{ $newProduct->id }}"><i class="fa fa-angle-double-right"></i> {{ __('app.more') }}</a>
+                                        <a class="btn btn-primary" style="margin-left: 100px;top-margin:-50px" href="/product/{{ $newProduct->id }}"><i class="fa fa-angle-double-right"></i> {{ __('app.more') }}</a>
                                     </div>
                                 </div>
                             </div>
@@ -539,7 +539,7 @@ a.page-link {
                         <p>
                             <a href="/product/{{ $newProduct->id }}">
                                 @if(isset($newProduct->offers) && isset($newProduct->offers[0]))
-                                <img class="fade" src="/images/offer.png" style="position: absolute;height: 150px;width: 150px;margin-top: -8px;margin-right: -8px;" />
+                                <img class="fade" src="/images/offer.png" style="position: absolute;height: 100px;width: 100px;margin-top: -8px;margin-right: -8px;" />
                                 @endif
                                 @if($newProduct->cover!=null && $newProduct->cover!='')
                                 <img width="100%" height="100%" alt="{{ $newProduct->{'name_' . $locale} }}"
@@ -622,7 +622,7 @@ a.page-link {
                             <p>
                                 <a href="/product/{{ $newProduct->id }}">
                                     @if(isset($newProduct->offers) && isset($newProduct->offers[0]))
-                                    <img class="fade" src="/images/offer.png" style="position: absolute;height: 150px;width: 150px;margin-top: -8px;margin-right: -8px;" />
+                                    <img class="fade" src="/images/offer.png" style="position: absolute;height: 100px;width: 100px;margin-top: -8px;margin-right: -8px;" />
                                     @endif
                                     @if($newProduct->cover!=null && $newProduct->cover!='')
                                     <img width="100%" height="100%" alt="{{ $newProduct->{'name_' . $locale} }}"

@@ -203,8 +203,8 @@
           {{ csrf_field() }}
           <input type="hidden" name="product" value="{{ $product->id }}" />
           <input type="hidden" id="mode" name="mode" value="online" />
-          <button accesskey="{{__('product.purchase_product')}}" class="art-button" style="background: #4caf50 !important;font-size: 20;font-family: 'vazir';">
-            <img src="/images/add_to_cart.png" style="height: 100%;border: none !important;" />
+          <button accesskey="{{__('product.purchase_product')}}" class="art-button" style="background: #4caf50 !important;font-size: 20;padding:10px;font-family: 'vazir';">
+            <img src="/images/add_to_cart.png" style="height: 40px;width:40px;border: none !important;" />
             {{__('product.purchase_product')}}
           </button>
           <!-- <button onclick="$('#mode').val('wallet');" accesskey="{{__('product.purchase_product')}}" class="art-button">{{__('product.purchase_product_wallet')}}</button> -->
