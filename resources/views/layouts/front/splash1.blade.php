@@ -12,6 +12,12 @@
     <!--[if lte IE 7]><link rel="stylesheet" href="css/style.ie7.css" media="screen" /><![endif]-->
     <link rel="stylesheet" href="css/start-page-style.responsive.css" media="all">
 
+    @section('meta_description')
+    <!-- <meta name="description" content=" طراحی جواهرات با نرم افزار ماتریکس و راینو زیبراش، خرید و فروش انلاین  فایل طلا و جواهر "> -->
+    <!-- <meta name="Keywords" content="فایل 3dm,طراحی فایل طلا و جواهر با ماتریکس راینو زیبراش"> -->
+    <meta name="description" content='سایت جواهرات پیوه ژن را کاوش کنید "طراحی فایل سه بعدی جواهرات" ، ایده های بیشتر در مورد طراحی جواهرات ، طراحی فایلهای 3dm را ببینید و فایلهای سه بعدی آنلاین را خریداری کنید.' />
+    <meta name="keywords" content='طراحی جواهر,طراحی فایل جواهر,طراحی فایل 3dm جواهر,طراحی جواهر با ماتریکس,طراحی جواهر با راینو,دانلود فایل جواهر,دانلود رایگان فایل ,3dmخرید فایل سه بعدی جواهرات,خرید انلاین جواهر,فایل طراحی طلا جواهر,خرید فایل 3dm' />
+    @show
 
     <script src="js/start-page-jquery.js"></script>
     <script src="js/start-page-script.js"></script>
